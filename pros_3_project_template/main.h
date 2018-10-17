@@ -3,7 +3,7 @@
 
 #define PROS_USE_SIMPLE_NAMES //If defined, instead of using long names for enums like E_CONTROLLER_MASTER, use more convient names usch as CONTROLLER_MASTER
 
-#define PROS_USE_LITERALS //If defined, C++ literals will be available for use. Make sure to also use the namespace pros::literals if you want it to work
+//#define PROS_USE_LITERALS //If defined, C++ literals will be available for use. Make sure to also use the namespace pros::literals if you want it to work
                           //For instance, you can do `4_mtr = 50` to set motor 4's target velocity to 50
 
 #include "api.h" //Includes all of the functions, variables, etc. of the PROS 3 language
@@ -12,7 +12,7 @@
 //ex: #include "file.h"
 
 using namespace pros; //Instead of typing pros::Motor() all the time, if you use this namepsace you can just do Motor()
-using namespace pros::literals; //Make sure to use this namespace if you defined PROS_USE_SIMPLE_NAMES
+//using namespace pros::literals; //Make sure to use this namespace if you defined PROS_USE_SIMPLE_NAMES
 
 //DO NOT TOUCH BELOW STUFF, THIS MAKES THE CODE RUN
 #ifdef __cplusplus
