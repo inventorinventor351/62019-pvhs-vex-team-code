@@ -23,35 +23,35 @@ void moveRightChassis(int speed) {
 
 }
 
-void move_absoluteLeftChassis(int distance) {
+void move_absoluteLeftChassis(int distance, int maxSpeed) {
 
-    leftChassis1.move_absolute(distance);
-    leftChassis2.move_absolute(distance);
-    leftChassis3.move_absolute(distance);
-
-}
-
-void move_absoluteRightChassis(int distance) {
-
-    rightChassis1.move_absolute(distance);
-    rightChassis2.move_absolute(distance);
-    rightChassis3.move_absolute(distance);
+    leftChassis1.move_absolute(distance, maxSpeed);
+    leftChassis2.move_absolute(distance, maxSpeed);
+    leftChassis3.move_absolute(distance, maxSpeed);
 
 }
 
-void move_relativeLeftChassis(int distance) {
+void move_absoluteRightChassis(int distance, int maxSpeed) {
 
-    leftChassis1.move_relative(distance);
-    leftChassis2.move_relative(distance);
-    leftChassis3.move_relative(distance);
+    rightChassis1.move_absolute(distance, maxSpeed);
+    rightChassis2.move_absolute(distance, maxSpeed);
+    rightChassis3.move_absolute(distance, maxSpeed);
 
 }
 
-void move_relativeRightChassis(int distance) {
+void move_relativeLeftChassis(int distance, int maxSpeed) {
 
-    rightChassis1.move_relative(distance);
-    rightChassis2.move_relative(distance);
-    rightChassis3.move_relative(distance);
+    leftChassis1.move_relative(distance, maxSpeed);
+    leftChassis2.move_relative(distance, maxSpeed);
+    leftChassis3.move_relative(distance, maxSpeed);
+
+}
+
+void move_relativeRightChassis(int distance, int maxSpeed) {
+
+    rightChassis1.move_relative(distance, maxSpeed);
+    rightChassis2.move_relative(distance, maxSpeed);
+    rightChassis3.move_relative(distance, maxSpeed);
 
 }
 
