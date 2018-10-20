@@ -11,8 +11,8 @@ extern Motor rightChassis3;
 void moveLeftChassis(int speed);
 void moveRightChassis(int speed);
 
-void move_absoluteLeftChassis(int distance, int maxSpeed);
-void move_absoluteRightChassis(int distance, int maxSpeed);
+void move_absoluteLeftChassis(int distance);
+void move_absoluteRightChassis(int distance); // smart boi
 
 void move_relativeLeftChassis(int distance, int maxSpeed);
 void move_relativeRightChassis(int distance, int maxSpeed);
