@@ -12,7 +12,7 @@ void moveLeftChassis(int speed);
 void moveRightChassis(int speed);
 
 void move_absoluteLeftChassis(int distance);
-void move_absoluteRightChassis(int distance);
+void move_absoluteRightChassis(int distance); // smart boi
 
 void move_relativeLeftChassis(int distance);
 void move_relativeRightChassis(int distance);
