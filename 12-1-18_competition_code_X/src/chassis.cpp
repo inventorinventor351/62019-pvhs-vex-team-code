@@ -1,3 +1,5 @@
+#include "main.h"
+
 Motor leftChassis1(1, MOTOR_GEARSET_18, 0, MOTOR_ENCODER_DEGREES); //Port 1, 200 RPM, not reversed, degrees for encoder units
 Motor leftChassis2(2, MOTOR_GEARSET_18, 0, MOTOR_ENCODER_DEGREES); //Port 2, 200 RPM, not reversed, degrees for encoder units
 Motor leftChassis3(3, MOTOR_GEARSET_18, 0, MOTOR_ENCODER_DEGREES); //Port 3, 200 RPM, not reversed, degrees for encoder units
