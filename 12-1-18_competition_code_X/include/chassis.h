@@ -1,5 +1,6 @@
 #ifndef CHASSIS_H
 #define CHASSIS_H
+#include "api.h"
 
 extern Motor leftChassis1;
 extern Motor leftChassis2;

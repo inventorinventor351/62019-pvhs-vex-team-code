@@ -4,7 +4,7 @@
 void opcontrol() {
 	
 	while(true) {
-
+		while()
 
 		
 	}
