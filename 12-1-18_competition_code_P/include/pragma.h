@@ -10,4 +10,6 @@ extern Motor rightChassis3;
 extern Motor intake;
 extern Motor catapult;
 
+extern ADIAnalogIn catapultPotent;
+
 #endif
