@@ -7,5 +7,7 @@ extern Motor leftChassis3;
 extern Motor rightChassis1;
 extern Motor rightChassis2;
 extern Motor rightChassis3;
+extern Motor intake;
+extern Motor catapult;
 
 #endif
