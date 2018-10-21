@@ -13,9 +13,7 @@ using namespace pros; //Instead of typing pros::Motor() all the time, if you use
 
 //You should include more files right under here
 //ex: #include "file.h"
-#include "chassis.h"
-#include "lift.h"
-#include "intake.h"
+#include "chassis.h"\
 
 //DO NOT TOUCH BELOW STUFF, THIS MAKES THE CODE RUN
 #ifdef __cplusplus
