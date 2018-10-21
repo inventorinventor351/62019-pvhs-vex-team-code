@@ -8,13 +8,13 @@
 
 #include "api.h" //Includes all of the functions, variables, etc. of the PROS 3 language
 
+using namespace pros; //Instead of typing pros::Motor() all the time, if you use this namepsace you can just do Motor()
+//using namespace pros::literals; //Make sure to use this namespace if you defined PROS_USE_SIMPLE_NAMES
+
 //You should include more files right under here
 //ex: #include "file.h"
 #include "pragma.h"
 #include "chassis.h"
-
-using namespace pros; //Instead of typing pros::Motor() all the time, if you use this namepsace you can just do Motor()
-//using namespace pros::literals; //Make sure to use this namespace if you defined PROS_USE_SIMPLE_NAMES
 
 //DO NOT TOUCH BELOW STUFF, THIS MAKES THE CODE RUN
 #ifdef __cplusplus

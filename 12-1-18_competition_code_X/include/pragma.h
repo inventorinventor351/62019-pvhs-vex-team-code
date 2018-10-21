@@ -10,6 +10,6 @@ extern Motor rightChassis3;
 extern Motor intake;
 extern Motor shooter;
 
-extern ADIAnalogIn 
+extern ADIAnalogIn potentiometer;
 
 #endif
