@@ -79,3 +79,15 @@ void move_voltageRightChassis(int voltage) {
     rightChassis3.move_voltage(voltage);
 
 }
+
+float getLeftChassisPosition() {
+
+    return (leftChassis1.get_position() + leftChassis2.get_position() + leftChassis3.get_position())/3;
+
+}
+
+float getRightChassisPosition() {
+
+    return (rightChassis1.get_position() + rightChassis2.get_position() + rightChassis3.get_position())/3;
+    
+}

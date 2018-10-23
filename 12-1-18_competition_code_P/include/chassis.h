@@ -16,4 +16,7 @@ void move_velocityRightChassis(int rpm);
 void move_voltageLeftChassis(int voltage);
 void move_voltageRightChassis(int voltage);
 
+float getLeftChassisPosition();
+float getRightChassisPosition();
+
 #endif
