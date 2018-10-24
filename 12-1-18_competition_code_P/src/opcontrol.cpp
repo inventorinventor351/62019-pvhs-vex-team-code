@@ -6,7 +6,7 @@ void opcontrol() {
 	Controller master(CONTROLLER_MASTER);
 	Controller partner(CONTROLLER_PARTNER);
 
-	int setPoint = 3 * 360;
+	int setPoint = 3;
 	
 	while(true) {
 
