@@ -91,3 +91,16 @@ float getRightChassisPosition() {
     return (rightChassis1.get_position() + rightChassis2.get_position() + rightChassis3.get_position())/3;
     
 }
+
+void pivotChassis(float angle, int maxSpeed, int time) {
+
+    move_relativeLeftChassis((angle * 2.34 * -1), maxSpeed);
+    move_relativeRightChassis((angle * 2.34), maxSpeed);
+
+    for(int x = 0; x < time; x++) {
+
+        delay(1);
+
+    }
+
+}

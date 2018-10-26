@@ -19,4 +19,6 @@ void move_voltageRightChassis(int voltage);
 float getLeftChassisPosition();
 float getRightChassisPosition();
 
+void pivotChassis(float angle, int maxSpeed);
+
 #endif
