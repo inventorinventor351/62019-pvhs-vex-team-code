@@ -23,7 +23,7 @@ void driveRight(int speed) {
 
 }
 
-void driveabsLeft(int distance) {
+void driveAbsLeft(int distance) {
 
     leftChassis1.move_absolute(distance);
     leftChassis2.move_absolute(distance);
@@ -31,7 +31,7 @@ void driveabsLeft(int distance) {
 
 }
 
-void driveabsRight(int distance) {
+void driveAbsRight(int distance) {
 
     rightChassis1.move_absolute(distance);
     rightChassis2.move_absolute(distance);
