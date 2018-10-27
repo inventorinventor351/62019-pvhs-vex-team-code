@@ -2,6 +2,7 @@
 
 void redFlagAuton()
 {
+    
     driveAbsLeft(inToRot(45), 200);
     driveAbsRight(inToRot(45), 200);
     delay(1000);

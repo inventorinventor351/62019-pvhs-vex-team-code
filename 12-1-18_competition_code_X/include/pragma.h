@@ -3,15 +3,22 @@
 
 extern Motor leftChassis1;
 extern Motor leftChassis2;
-extern Motor leftChassis3;
 extern Motor rightChassis1;
 extern Motor rightChassis2;
-extern Motor rightChassis3;
 extern Motor intake;
 extern Motor shooter;
 
+extern Vision shooterEye;
+
 extern ADIAnalogIn potentiometer;
-extern ADIAnalogIn shooterEye;
 extern ADIAnalogIn ballSensor;
+
+extern ADIDigitalOut intakeLift;
+extern ADIDigitalOut intakeLift1;
+
+extern ADIDigitalOut leftChassisTrans;
+extern ADIDigitalOut rightChassisTrans;
+
+extern ADIDigital tipper;
 
 #endif
