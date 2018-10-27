@@ -11,4 +11,4 @@ Motor catapult(8, MOTOR_GEARSET_36, 0, MOTOR_ENCODER_COUNTS); //Port 8, 100 RPM,
 
 ADIAnalogIn catapultPotent(1); //potentiometer for catapult in port 1 of the legacy ports
 ADIAnalogIn ballLoaderSensor(2); //light sensor to detect a ball going into the catapult in port 2 of the legacy ports
-Vision catapultEye(9); //vision sensor for catapult in port 11
+Vision catapultEye(9, E_VISION_ZERO_CENTER); //vision sensor for catapult in port 11

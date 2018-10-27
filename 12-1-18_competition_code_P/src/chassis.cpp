@@ -116,9 +116,9 @@ void aimAtFlag(float kP_, float kD_) {
 
         vision_object_s_t currentObject = catapultEye.get_by_size(i);
 
-        if(smallestValue > abs(320 - currentObject.x_middle_coord)) {
+        if(smallestValue > abs(currentObject.x_middle_coord)) {
 
-            smallestValue = abs(320 - currentObject.x_middle_coord);
+            smallestValue = abs(currentObject.x_middle_coord);
             closestObject = currentObject;
 
         }
@@ -127,7 +127,7 @@ void aimAtFlag(float kP_, float kD_) {
 
     while((!((315 <= closestObject.x_middle_coord) && (closestObject.x_middle_coord <= 325))) && (catapultEye.get_object_count() > 0)) {
 
-        error_ = 320 - closestObject.x_middle_coord;
+        error_ = closestObject.x_middle_coord;
         derivative_ = error_ - prevError_;
         prevError_ = error_;
 
