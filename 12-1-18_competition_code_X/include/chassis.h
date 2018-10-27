@@ -17,4 +17,8 @@ void driceAbsLeft(int distance);
 void driveRelativeRight(int distance);
 void driveRelativeLeft(int distance);
 
+void pvitChassis(float angle, int maxSpeed, int timer);
+
+void aimFlag();
+
 #endif

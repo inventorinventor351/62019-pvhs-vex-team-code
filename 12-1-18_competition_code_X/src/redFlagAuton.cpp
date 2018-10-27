@@ -2,31 +2,42 @@
 
 void redFlagAuton()
 {
-    driveAbsLeft(inToRot(55));
-    driveAbsRight(inToRot(55));
+    driveAbsLeft(inToRot(45), 200);
+    driveAbsRight(inToRot(45), 200);
     delay(1000);
-    while(ballSensor.get_value()<50)
+    while(ballSensor.get_value()>50)
     {
         move.intake(120);
     }
 
-    while(leftChassis1.get_value()>0)
+    driveAbsLeft(inToRot(0), 200);
+    driveAbsRight(inToRot(0), 200);
+
+    pvitChassis(0.5 * pi, 200, 1);
+    aimFlag();
+    shooter.move(200);
+    delay(1000);
+    while(ADIAnalogOut(potentiometer) > VALUE)
     {
-    driveAbsLeft(inToRot(0));
-    driveAbsRight(inToRot(0));
+        shooter.move(200);
     }
 
-    driveAbsLeft(-14);
-    driveAbsRight(14);
+    driveRelativeLeft(inToRot(50), 200);
+    driveRelativeRight(inToRot(50), 200);
 
-    //drive forward a specific amount
-    //shoot double balls
-    //drive forward into flag
-    //drive back
-    //turn right 90 degrees
-    //drive forward a specific amount
-    //intake while driving forward (get cap)
-    //flip intake (flip cap)
-    //drive forward
+    driveRelativeLeft(inToRot(-25), 200);
+    driveRelativeLeft(inToRot(-25), 200);
+
+    pvitChassis(-0.5 * pi, 200, 1)
+
+    driveRelativeLeft(inToRot(24), 200);
+    driveRelativeRight(intToRot(24), 200);
+    intake.move(200);
+    delay(2000);
+
+    intake.move(-200);
+    delay(500);
+    driveRelativeLeft(intToRot(20), 200);
+    driveRelativeRight(inToRot(20), 200);
 
 }
