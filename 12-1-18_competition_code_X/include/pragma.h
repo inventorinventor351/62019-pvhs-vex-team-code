@@ -11,5 +11,7 @@ extern Motor intake;
 extern Motor shooter;
 
 extern ADIAnalogIn potentiometer;
+extern ADIAnalogIn shooterEye;
+extern ADIAnalogIn ballSensor;
 
 #endif

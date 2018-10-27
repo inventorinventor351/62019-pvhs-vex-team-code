@@ -23,7 +23,7 @@ void driveRight(int speed) {
 
 }
 
-void driveabsLeft(int distance) {
+void driveAbsLeft(int distance, int maxSpeed) {
 
     leftChassis1.move_absolute(distance);
     leftChassis2.move_absolute(distance);
@@ -31,7 +31,7 @@ void driveabsLeft(int distance) {
 
 }
 
-void driveabsRight(int distance) {
+void driveAbsRight(int distance, int maxSpeed) {
 
     rightChassis1.move_absolute(distance);
     rightChassis2.move_absolute(distance);
@@ -39,7 +39,7 @@ void driveabsRight(int distance) {
 
 }
 
-void driveRelativeLeft(int distance) {
+void driveRelativeLeft(int distance, int maxSpeed) {
 
     leftChassis1.move_relative(distance);
     leftChassis2.move_relative(distance);
@@ -47,7 +47,7 @@ void driveRelativeLeft(int distance) {
 
 }
 
-void driveRelativeRight(int distance) {
+void driveRelativeRight(int distance, int maxSpeed) {
 
     rightChassis1.move_relative(distance);
     rightChassis2.move_relative(distance);
@@ -84,5 +84,29 @@ void driveVoltRight(int voltage) {
     rightChassis1.move_voltage(voltage);
     rightChassis2.move_voltage(voltage);
     rightChassis3.move_voltage(voltage);
+
+}
+
+void pvitChassis(float angle, int maxSpeed, int timer) {
+
+    for(int x, x < timer, x = x + 1){
+
+        driveRelativeRight(angle * 2.34, maxSpeed);
+        driveRelativeLeft(-angle * 2.34, maxSpeed);
+
+        delay(500)
+
+    }
+
+void aimFlag(){
+
+    int comparingValue = INT_MAX;
+    int closestID;
+    
+    for(int i = 0, i < shooterEye.get_object_count, i++){
+
+        if()
+    }
+}
 
 }
