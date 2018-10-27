@@ -21,4 +21,6 @@ float getRightChassisPosition();
 
 void pivotChassis(float angle, int maxSpeed);
 
+void aimAtFlag();
+
 #endif

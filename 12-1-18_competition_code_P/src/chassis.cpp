@@ -97,10 +97,45 @@ void pivotChassis(float angle, int maxSpeed, int time) {
     move_relativeLeftChassis((angle * 2.34 * -1), maxSpeed);
     move_relativeRightChassis((angle * 2.34), maxSpeed);
 
-    for(int x = 0; x < time; x++) {
+    for(int i = 0; i < time; i++) {
 
         delay(1);
 
+    }
+
+}
+
+void aimAtFlag(float kP_, float kD_) {
+
+    int smallestValue = 321;
+    vision_object_s_t closestObject;
+
+    int error_, derivative_, prevError_; 
+
+    for(int i = 0; i < catapultEye.get_object_count(); i++) {
+
+        vision_object_s_t currentObject = catapultEye.get_by_size(i);
+
+        if(smallestValue > abs(currentObject.x_middle_coord)) {
+
+            smallestValue = abs(currentObject.x_middle_coord);
+            closestObject = currentObject;
+
+        }
+
+    }
+
+    while((!((315 <= closestObject.x_middle_coord) && (closestObject.x_middle_coord <= 325))) && (catapultEye.get_object_count() > 0)) {
+
+        error_ = -closestObject.x_middle_coord;
+        derivative_ = error_ - prevError_;
+        prevError_ = error_;
+
+        move_voltageLeftChassis(((kP_ * error_) + (kD_ * derivative_)) * -1);
+        move_voltageRightChassis((kP_ * error_) + (kD_ * derivative_));
+
+        delay(1);
+        
     }
 
 }
