@@ -1,6 +1,6 @@
 #include "main"
 
-void redFlagAuton()
+void blueFlagAuton()
 {
     driveAbsLeft(inToRot(45), 200);
     driveAbsRight(inToRot(45), 200);

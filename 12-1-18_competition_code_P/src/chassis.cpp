@@ -110,7 +110,7 @@ void aimAtFlag(float kP_, float kD_) {
     int smallestValue = 321;
     vision_object_s_t closestObject;
 
-    int error_, derivative_, prevError_; 
+    int error_, derivative_, prevError_;
 
     for(int i = 0; i < catapultEye.get_object_count(); i++) {
 
@@ -125,14 +125,14 @@ void aimAtFlag(float kP_, float kD_) {
 
     }
 
-    while((!((315 <= closestObject.x_middle_coord) && (closestObject.x_middle_coord <= 325))) && (catapultEye.get_object_count() > 0)) {
+    while((!((-5 <= closestObject.x_middle_coord) && (closestObject.x_middle_coord <= 5))) && (catapultEye.get_object_count() > 0)) {
 
-        error_ = -closestObject.x_middle_coord;
+        error_ = closestObject.x_middle_coord;
         derivative_ = error_ - prevError_;
         prevError_ = error_;
 
-        move_voltageLeftChassis(((kP_ * error_) + (kD_ * derivative_)) * -1);
-        move_voltageRightChassis((kP_ * error_) + (kD_ * derivative_));
+        move_voltageLeftChassis((kP_ * error_) + (kD_ * derivative_));
+        move_voltageRightChassis(((kP_ * error_) + (kD_ * derivative_)) * -1);
 
         delay(1);
         

@@ -21,7 +21,7 @@ Controller master(CONTROLLER_MASTER);
 
 		if(master.get.digital(E_CONTROLLER_DIGITAL_L2) && (E_CONTROLLER_DIGITAL_R2)) //If L2 and R2 on the master controller is pressed
 		{ 
-			shooter.move_relative(1);
+			shooter.move_relative(1, 200);
 		}
 		
 		if(master.get.digital(E_CONTROLLER_DIGITAL_B)) //If R1 on the master controller is pressed
