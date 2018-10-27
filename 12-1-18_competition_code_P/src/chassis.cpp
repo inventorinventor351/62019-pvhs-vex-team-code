@@ -127,7 +127,7 @@ void aimAtFlag(float kP_, float kD_) {
 
     while((!((315 <= closestObject.x_middle_coord) && (closestObject.x_middle_coord <= 325))) && (catapultEye.get_object_count() > 0)) {
 
-        error_ = closestObject.x_middle_coord;
+        error_ = -closestObject.x_middle_coord;
         derivative_ = error_ - prevError_;
         prevError_ = error_;
 
