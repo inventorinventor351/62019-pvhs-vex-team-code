@@ -11,6 +11,8 @@ void initialize() {
     rightChassis2.set_pos_pid(chassisPID);
     rightChassis3.set_pos_pid(chassisPID);
 
+    catapultEye.clear_led();
+
 }
 
 //Runs after initialize() and before autonomous. This is intended for competition-specific initialization routines, such as an autonomous selector on the LCD.

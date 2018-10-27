@@ -11,5 +11,7 @@ extern Motor intake;
 extern Motor catapult;
 
 extern ADIAnalogIn catapultPotent;
+extern ADIAnalogIn ballLoaderSensor; 
+extern Vision catapultEye;
 
 #endif
