@@ -21,7 +21,7 @@ void blueFlagAuton(){
     driveRelativeLeft(inToRot(-25), 200);
     driveRelativeLeft(inToRot(-25), 200);
 
-    pvitChassis(90, 200, 1)
+/*    pvitChassis(90, 200, 1)
 
     driveRelativeLeft(inToRot(24), 200);
     driveRelativeRight(intToRot(24), 200);
@@ -29,6 +29,6 @@ void blueFlagAuton(){
     intake.move(-127);
     delay(500);
     driveRelativeLeft(intToRot(-5), 200);
-    driveRelativeRight(inToRot(-5), 200);
+    driveRelativeRight(inToRot(-5), 200);*/
 
 }
