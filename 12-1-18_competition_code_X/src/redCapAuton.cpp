@@ -6,7 +6,7 @@ void redCapAuton()
     driveAbsLeft(inToRot(45), 200);
     driveAbsRight(inToRot(45), 200);
     delay(1000);
-    intake.move(200);
+    intake.move(127);
     delay(2000);
     intake.move(0);
 
@@ -16,7 +16,7 @@ void redCapAuton()
     pvitChassis(-7 * pi / 18, 200, 0.77777777777778);
     driveRelativeLeft(inToRot(20));
     driveRelativeRight(inToRot(20));
-    intake.move(-200);
+    intake.move(-127);
     delay(2000);
     intake.move(0);
     

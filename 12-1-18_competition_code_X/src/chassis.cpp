@@ -79,7 +79,7 @@ void pvitChassis(float angle, int maxSpeed, int timer) {
 
         delay(500)
 
-    }
+}
 
 void aimFlag(){
 
@@ -87,8 +87,7 @@ void aimFlag(){
     vision_object_s_t closestID;
     int error_, preError_, derivative_)
 
-    for(int i = 0, i < shooterEye.get_object_count, i++)
-    {
+    for(int i = 0, i < shooterEye.get_object_count, i++){
 
         vision_object_s_t suspect = shooterEye.get_by_size(1);
 
@@ -96,12 +95,12 @@ void aimFlag(){
         {
             closestObject = suspect;
             comparingValue = abs(suspect.x_middle_coord);
+
         }
 
     }
 
-    while((closestObject.x_middle_coord>-5) && (closestObject.x_middle_coord<5) && (i > 1))
-    {
+    while(!(closestObject.x_middle_coord>-5) && (closestObject.x_middle_coord<5) && (i > 1)){
 
         error_ = closestObject.x_middle_coord;
         derivative = preError - error
@@ -111,5 +110,7 @@ void aimFlag(){
         driveVoltRight(-(kP * error) + (kD * derivative));
 
     }
+
+    master.rumble("-");
 
 }

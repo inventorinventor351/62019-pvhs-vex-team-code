@@ -13,10 +13,7 @@ Vision shooterEye(7); //Port 7, vision sensor for shooter
 ADIDigitalOut intakeLift(1); //Port 1, solonoid for raising intake
 ADIDigitalOut intakeLift1(2); //Port 2, solonoid for raising intake
 
-ADIDigitalOut leftChassisTrans(3); //Port 3, solonoid for changing strenght and speed on left chassis
+ADIDigitalOut leftChassisTrans(3); //Port 3, solonoid for changing strength and speed on left chassis
 ADIDigitalOut rightChassisTrans(4); //Port 4, solonoid for changing strength and speed on right chassis
 
-ADIDigital tipper(5); //Port 5, solonoid for cap tipping
-
-ADIAnalogIn potentiometer(6); //Port 6, potentiometer for shooter
 ADIAnalogIn ballSensor(7); //Port 7, light sensor for the ball
