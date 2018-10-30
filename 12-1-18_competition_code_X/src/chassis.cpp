@@ -72,6 +72,8 @@ void driveVoltRight(int voltage) {
 
 void pvitChassis(float angle, int maxSpeed, int timer) {
 
+    angle = angle * pi / 180;
+    
     for(int x, x < timer, x = x + 1){
 
         driveRelativeRight(angle * 2.34, maxSpeed);
@@ -108,6 +110,8 @@ void aimFlag(){
 
         driveVoltLeft((kP * error) + (kD * derivative));
         driveVoltRight(-(kP * error) + (kD * derivative));
+
+        delay(1);
 
     }
 

@@ -1,11 +1,10 @@
 #include "main"
 
-void redCapAuton()
-{
+void redCapAuton(){
 
     driveAbsLeft(inToRot(45), 200);
     driveAbsRight(inToRot(45), 200);
-    delay(1000);
+    delay(500);
     intake.move(127);
     delay(2000);
     intake.move(0);

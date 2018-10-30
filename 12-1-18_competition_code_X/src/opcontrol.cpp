@@ -23,6 +23,12 @@ Controller master(CONTROLLER_MASTER);
 
 		}
 
+		if(master.get.digital(E_CONTROLLER_DIGITALL_A)){
+
+			aimFlag();
+			
+		}
+
 		if(master.get.digital(E_CONTROLLER_DIGITAL_L2) && (E_CONTROLLER_DIGITAL_R2)){ //If L2 and R2 on the master controller is pressed
 		
 			shooter.move_relative(1, 200); //Then shoot and reload
