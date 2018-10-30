@@ -11,9 +11,10 @@ Vision catapultEye(7, E_VISION_ZERO_CENTER);
 
 ADIDigitalOut intakePiston1(1);
 ADIDigitalOut intakePiston2(2);
-ADIDigitalOut leftChassisTransmissionPiston(3);
-ADIDigitalOut rightChassisTransmissionPiston(4);
-ADIDigitalOut capDescorerPiston(5);
+ADIDigitalOut chassisTransmissionPiston(3);
 
-ADIAnalogIn catapultPotent(6);
-ADIAnalogIn ballLoaderLightSensor(7);
+ADIAnalogIn catapultPotent(5);
+ADIAnalogIn ballLoaderLightSensor(6);
+
+Controller master(E_CONTROLLER_MASTER);
+Controller partner(E_CONTROLLER_PARTNER);

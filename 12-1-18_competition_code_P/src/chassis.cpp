@@ -138,4 +138,6 @@ void aimAtFlag(float kP_, float kD_) {
         
     }
 
+    master.rumble("-");
+
 }

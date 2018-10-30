@@ -12,11 +12,12 @@ extern Vision catapultEye;
 
 extern ADIDigitalOut intakePiston1;
 extern ADIDigitalOut intakePiston2;
-extern ADIDigitalOut leftChassisTransmissionPiston;
-extern ADIDigitalOut rightChassisTransmissionPiston;
-extern ADIDigitalOut capDescorerPiston;
+extern ADIDigitalOut chassisTransmissionPiston;
 
 extern ADIAnalogIn catapultPotent;
 extern ADIAnalogIn ballLoaderLightSensor;
+
+extern Controller master;
+extern Controller partner;
 
 #endif
