@@ -46,7 +46,29 @@ void opcontrol() {
 
 		}
 
-		
+		if(master.get_digital(E_CONTROLLER_DIGITAL_X)) {
+
+			catapult.move_relative(1, 200);
+
+		}
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_Y)) {
+
+			catapult.move_velocity(200);
+
+		}
+
+		else {
+
+			catapult.move_velocity(0);
+
+		}
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_UP)) {
+
+			aimAtFlag();
+
+		}
 
 		/*move_absoluteLeftChassis(setPoint, 200);
 		move_absoluteRightChassis(setPoint, 200);

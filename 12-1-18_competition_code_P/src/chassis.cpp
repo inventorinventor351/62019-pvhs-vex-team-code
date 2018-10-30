@@ -94,6 +94,8 @@ float getRightChassisPosition() {
 
 void pivotChassis(float angle, int maxSpeed, int time) {
 
+    angle *= (3.14159265358979323846 / 180);
+
     move_relativeLeftChassis((angle * 2.34 * -1), maxSpeed);
     move_relativeRightChassis((angle * 2.34), maxSpeed);
 
