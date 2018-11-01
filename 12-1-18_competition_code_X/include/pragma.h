@@ -10,15 +10,12 @@ extern Motor shooter;
 
 extern Vision shooterEye;
 
-extern ADIAnalogIn potentiometer;
-extern ADIAnalogIn ballSensor;
-
 extern ADIDigitalOut intakeLift;
 extern ADIDigitalOut intakeLift1;
 
 extern ADIDigitalOut leftChassisTrans;
 extern ADIDigitalOut rightChassisTrans;
 
-extern ADIDigital tipper;
+extern ADIAnalogIn ballSensor;
 
 #endif
