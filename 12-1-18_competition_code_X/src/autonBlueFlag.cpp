@@ -1,6 +1,6 @@
 #include "main"
 
-void redFlagAuton(){
+void autonBlueFlag(){
     
     driveAbsLeft(inToRot(45), 200);
     driveAbsRight(inToRot(45), 200);
@@ -11,7 +11,7 @@ void redFlagAuton(){
     driveAbsLeft(inToRot(0), 200);
     driveAbsRight(inToRot(0), 200);
 
-    pvitChassis(90, 200, 1);
+    pvitChassis(-90, 200, 1);
     aimFlag();
     shooter.move_relative(1, 200);
 
@@ -21,7 +21,7 @@ void redFlagAuton(){
     driveRelativeLeft(inToRot(-25), 200);
     driveRelativeLeft(inToRot(-25), 200);
 
-/*    pvitChassis(-90, 200, 1)
+/*    pvitChassis(90, 200, 1)
 
     driveRelativeLeft(inToRot(24), 200);
     driveRelativeRight(intToRot(24), 200);

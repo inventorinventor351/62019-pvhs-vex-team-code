@@ -9,7 +9,6 @@ Motor shooter(6, motor_gearset_18, 0, e_motor_encoder_rotation); //Port 6, 200 R
 
 Vision shooterEye(7); //Port 7, vision sensor for shooter
 
-
 ADIDigitalOut intakeLift(1); //Port 1, solonoid for raising intake
 ADIDigitalOut intakeLift1(2); //Port 2, solonoid for raising intake
 

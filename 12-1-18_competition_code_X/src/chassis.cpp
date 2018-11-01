@@ -93,8 +93,8 @@ void aimFlag(){
 
         vision_object_s_t suspect = shooterEye.get_by_size(1);
 
-        if(comparingValue > abs(suspect.x_middle_coord))
-        {
+        if(comparingValue > abs(suspect.x_middle_coord)){
+            
             closestObject = suspect;
             comparingValue = abs(suspect.x_middle_coord);
 

@@ -1,6 +1,6 @@
 #include "main"
 
-void redCapAuton(){
+void autonRedCapFlip(){
 
     driveAbsLeft(inToRot(45), 200);
     driveAbsRight(inToRot(45), 200);

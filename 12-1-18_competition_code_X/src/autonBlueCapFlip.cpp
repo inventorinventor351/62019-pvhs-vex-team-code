@@ -1,6 +1,6 @@
 #include "main"
 
-void blueCapAuton(){
+void autonBlueCapFlip(){
 
     driveAbsLeft(inToRot(45), 200);
     driveAbsRight(inToRot(45), 200);
