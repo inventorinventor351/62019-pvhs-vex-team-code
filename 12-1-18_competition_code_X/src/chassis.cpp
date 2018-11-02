@@ -17,29 +17,29 @@ void driveRight(int speed) {
 
 void driveAbsLeft(int distance, int maxSpeed) {
 
-    leftChassis1.move_absolute(distance);
-    leftChassis2.move_absolute(distance);
+    leftChassis1.move_absolute(distance, maxSpeed);
+    leftChassis2.move_absolute(distance, maxSpeed);
 
 }
 
 void driveAbsRight(int distance, int maxSpeed) {
 
-    rightChassis1.move_absolute(distance);
-    rightChassis2.move_absolute(distance);
+    rightChassis1.move_absolute(distance, maxSpeed);
+    rightChassis2.move_absolute(distance, maxSpeed);
 
 }
 
 void driveRelativeLeft(int distance, int maxSpeed) {
 
-    leftChassis1.move_relative(distance);
-    leftChassis2.move_relative(distance);
+    leftChassis1.move_relative(distance, maxSpeed);
+    leftChassis2.move_relative(distance, maxSpeed);
 
 }
 
 void driveRelativeRight(int distance, int maxSpeed) {
 
-    rightChassis1.move_relative(distance);
-    rightChassis2.move_relative(distance);
+    rightChassis1.move_relative(distance, maxSpeed);
+    rightChassis2.move_relative(distance, maxSpeed);
 
 }
 
@@ -72,6 +72,8 @@ void driveVoltRight(int voltage) {
 
 void pvitChassis(float angle, int maxSpeed, int timer) {
 
+    angle = angle * pi / 180;
+    
     for(int x, x < timer, x = x + 1){
 
         driveRelativeRight(angle * 2.34, maxSpeed);
@@ -91,8 +93,8 @@ void aimFlag(){
 
         vision_object_s_t suspect = shooterEye.get_by_size(1);
 
-        if(comparingValue > abs(suspect.x_middle_coord))
-        {
+        if(comparingValue > abs(suspect.x_middle_coord)){
+            
             closestObject = suspect;
             comparingValue = abs(suspect.x_middle_coord);
 
@@ -108,6 +110,8 @@ void aimFlag(){
 
         driveVoltLeft((kP * error) + (kD * derivative));
         driveVoltRight(-(kP * error) + (kD * derivative));
+
+        delay(1);
 
     }
 

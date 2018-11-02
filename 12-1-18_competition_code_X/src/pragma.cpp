@@ -1,4 +1,4 @@
-#include "main"
+#include "main.h"
 
 Motor leftChassis1(1, motor_gearset_18, 0, e_motor_encoder_rotation); //Port 1, 200 RPM gearset, not reversed, units of rotations for encoder
 Motor leftChassis2(2, motor_gearset_18, 0, e_motor_encoder_rotation); //Port 2, 200 RPM gearset, not reversed, units of rotations for encoder
@@ -8,7 +8,6 @@ Motor intake(5, motor_gearset_18, 0, e_motor_encoder_rotation); //Port 5, 200 RP
 Motor shooter(6, motor_gearset_18, 0, e_motor_encoder_rotation); //Port 6, 200 RPM gearset, not reversed, units of rotations for encoder
 
 Vision shooterEye(7); //Port 7, vision sensor for shooter
-
 
 ADIDigitalOut intakeLift(1); //Port 1, solonoid for raising intake
 ADIDigitalOut intakeLift1(2); //Port 2, solonoid for raising intake
