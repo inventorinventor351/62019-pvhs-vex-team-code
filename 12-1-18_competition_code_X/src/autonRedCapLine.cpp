@@ -4,11 +4,11 @@ void autonBlueCapLine(){
 
     shooter.move_relative(1, 200);
 
-    pvitChassis(-90, 200, 1)
+    pvitChassis(-90, 200, 1);
     driveAbsLeft(45, 200);
     driveAbsRight(45, 200);
     delay(500);
-    move.intake(127);
+    intake.move(127);
     delay(200);
 
     driveAbsLeft(30, 200);
@@ -18,7 +18,7 @@ void autonBlueCapLine(){
     driveAbsRight(48, 200);
     
     delay(500);
-    move.intake(0);
+    intake.move(0);
     intakeLift.set_value(1);
     intakeLift1.set_value(1);
 
@@ -30,16 +30,16 @@ void autonBlueCapLine(){
     delay(100);
     intakeLift.set_value(0);
     intakeLift1.set_value(0);
-    move.intake(-127);
+    intake.move(-127);
     driveRelativeLeft(-30, 200);
     driveRelativeRight(-30, 200);
 
     pvitChassis(-90, 200, 1);
     driveRelativeLeft(30, 100);
     driveRelativeRight(30, 100);
-    move.intake(-127);
+    intake.move(-127);
     delay(500);
-    move.intake(127);
+    intake.move(127);
     intakeLift.set_value(0);
     intakeLift1.set_value(0);
     delay(300);
@@ -51,7 +51,7 @@ void autonBlueCapLine(){
     driveRelativeRight(30, 200);
     intakeLift.set_value(0);
     intakeLift.set_value(0);
-    move.intake(-127);
+    intake.move(-127);
     driveRelativeLeft(-10, 200);
     driveRelativeRight(-10, 200);
 

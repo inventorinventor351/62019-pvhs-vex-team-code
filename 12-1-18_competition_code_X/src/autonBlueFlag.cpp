@@ -5,7 +5,7 @@ void autonBlueFlag(){
     driveAbsLeft(45, 200);
     driveAbsRight(45, 200);
     delay(500);
-    move.intake(127);
+    intake.move(127);
     delay(1500);
 
     driveAbsLeft(0, 200);
