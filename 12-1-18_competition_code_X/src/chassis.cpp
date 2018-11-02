@@ -17,6 +17,7 @@ void driveRight(int speed) {
 
 void driveAbsLeft(int distance, int maxSpeed) {
 
+    distance = inToRot(distance);
     leftChassis1.move_absolute(distance, maxSpeed);
     leftChassis2.move_absolute(distance, maxSpeed);
 
@@ -24,6 +25,7 @@ void driveAbsLeft(int distance, int maxSpeed) {
 
 void driveAbsRight(int distance, int maxSpeed) {
 
+    distance = inToRot(distance);
     rightChassis1.move_absolute(distance, maxSpeed);
     rightChassis2.move_absolute(distance, maxSpeed);
 
@@ -31,6 +33,7 @@ void driveAbsRight(int distance, int maxSpeed) {
 
 void driveRelativeLeft(int distance, int maxSpeed) {
 
+    distance = inToRot(distance);
     leftChassis1.move_relative(distance, maxSpeed);
     leftChassis2.move_relative(distance, maxSpeed);
 
@@ -38,6 +41,7 @@ void driveRelativeLeft(int distance, int maxSpeed) {
 
 void driveRelativeRight(int distance, int maxSpeed) {
 
+    distance = inToRot(distance);
     rightChassis1.move_relative(distance, maxSpeed);
     rightChassis2.move_relative(distance, maxSpeed);
 
