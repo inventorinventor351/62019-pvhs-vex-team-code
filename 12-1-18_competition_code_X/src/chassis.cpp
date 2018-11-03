@@ -15,29 +15,33 @@ void driveRight(int speed) {
 
 }
 
-void driveAbsLeft(int distance, int maxSpeed) {
+void driveAbsLeft(float distance, int maxSpeed) {
 
+    distance = inToRot(distance);
     leftChassis1.move_absolute(distance, maxSpeed);
     leftChassis2.move_absolute(distance, maxSpeed);
 
 }
 
-void driveAbsRight(int distance, int maxSpeed) {
+void driveAbsRight(float distance, int maxSpeed) {
 
+    distance = inToRot(distance);
     rightChassis1.move_absolute(distance, maxSpeed);
     rightChassis2.move_absolute(distance, maxSpeed);
 
 }
 
-void driveRelativeLeft(int distance, int maxSpeed) {
+void driveRelativeLeft(float distance, int maxSpeed) {
 
+    distance = inToRot(distance);
     leftChassis1.move_relative(distance, maxSpeed);
     leftChassis2.move_relative(distance, maxSpeed);
 
 }
 
-void driveRelativeRight(int distance, int maxSpeed) {
+void driveRelativeRight(float distance, int maxSpeed) {
 
+    distance = inToRot(distance);
     rightChassis1.move_relative(distance, maxSpeed);
     rightChassis2.move_relative(distance, maxSpeed);
 
@@ -72,24 +76,25 @@ void driveVoltRight(int voltage) {
 
 void pvitChassis(float angle, int maxSpeed, int timer) {
 
-    angle = angle * pi / 180;
+    angle = angle * pi * 2.34 / 180;
     
-    for(int x, x < timer, x = x + 1){
+    for(int x; x < timer; x = x + 1){
 
-        driveRelativeRight(angle * 2.34, maxSpeed);
-        driveRelativeLeft(-angle * 2.34, maxSpeed);
+        driveRelativeRight(angle, maxSpeed);
+        driveRelativeLeft(-angle, maxSpeed);
 
-        delay(500)
-
+        delay(500);
+    }
 }
 
 void aimFlag(){
 
     int comparingValue = 1000000;
-    vision_object_s_t closestID;
-    int error_, preError_, derivative_)
+    vision_object_s_t closestObject;
+    int i, error_, preError_, derivative_;
+    float error, preError, derivative, kP, kD;
 
-    for(int i = 0, i < shooterEye.get_object_count, i++){
+    for(i = 0; i < shooterEye.get_object_count(); i++){
 
         vision_object_s_t suspect = shooterEye.get_by_size(1);
 
@@ -105,8 +110,8 @@ void aimFlag(){
     while(!(closestObject.x_middle_coord>-5) && (closestObject.x_middle_coord<5) && (i > 1)){
 
         error_ = closestObject.x_middle_coord;
-        derivative = preError - error
-        preError_ = error
+        derivative = preError - error;
+        preError_ = error;
 
         driveVoltLeft((kP * error) + (kD * derivative));
         driveVoltRight(-(kP * error) + (kD * derivative));
