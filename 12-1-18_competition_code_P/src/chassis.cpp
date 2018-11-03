@@ -16,34 +16,34 @@ void moveRightChassis(int speed) {
 
 }
 
-void move_absoluteLeftChassis(int distance, int maxSpeed) {
+void move_absoluteLeftChassis(float distance, int maxSpeed) {
 
-    leftChassis1.move_absolute(distance, maxSpeed);
-    leftChassis2.move_absolute(distance, maxSpeed);
+    leftChassis1.move_absolute(distance, abs(maxSpeed));
+    leftChassis2.move_absolute(distance, abs(maxSpeed));
 
 
 }
 
-void move_absoluteRightChassis(int distance, int maxSpeed) {
+void move_absoluteRightChassis(float distance, int maxSpeed) {
 
-    rightChassis1.move_absolute(distance, maxSpeed);
-    rightChassis2.move_absolute(distance, maxSpeed);
+    rightChassis1.move_absolute(distance, abs(maxSpeed));
+    rightChassis2.move_absolute(distance, abs(maxSpeed));
   
 
 }
 
-void move_relativeLeftChassis(int distance, int maxSpeed) {
+void move_relativeLeftChassis(float distance, int maxSpeed) {
 
-    leftChassis1.move_relative(distance, maxSpeed);
-    leftChassis2.move_relative(distance, maxSpeed);
+    leftChassis1.move_relative(distance, abs(maxSpeed));
+    leftChassis2.move_relative(distance, abs(maxSpeed));
    
 
 }
 
-void move_relativeRightChassis(int distance, int maxSpeed) {
+void move_relativeRightChassis(float distance, int maxSpeed) {
 
-    rightChassis1.move_relative(distance, maxSpeed);
-    rightChassis2.move_relative(distance, maxSpeed);
+    rightChassis1.move_relative(distance, abs(maxSpeed));
+    rightChassis2.move_relative(distance, abs(maxSpeed));
   
 
 }
@@ -94,12 +94,12 @@ float getRightChassisPosition() {
 
 void pivotChassis(float angle, int maxSpeed, int time) {
 
-    angle *= (3.14159265358979323846 / 180);
+    angle *= (3.14159265358979323846 / 180.0);
 
-    move_relativeLeftChassis((angle * 2.34 * -1), maxSpeed);
-    move_relativeRightChassis((angle * 2.34), maxSpeed);
+    move_relativeLeftChassis((angle * 2.34 * -1), abs(maxSpeed));
+    move_relativeRightChassis((angle * 2.34), abs(maxSpeed));
 
-    for(int i = 0; i < time; i++) {
+    for(int i = 0; i < abs(time); i++) {
 
         delay(1);
 
@@ -142,4 +142,25 @@ void aimAtFlag(float kP_, float kD_) {
 
     master.rumble("-");
 
+}
+
+void resetLeftChassisEncoderValue() {
+
+    leftChassis1.tare_position();
+    leftChassis2.tare_position();
+
+}
+
+void resetRightChassisEncoderValue() {
+
+    rightChassis1.tare_position();
+    rightChassis2.tare_position();
+    
+}
+
+void resetChassisEncoderValue() {
+
+    resetLeftChassisEncoderValue();
+    resetRightChassisEncoderValue();
+    
 }
