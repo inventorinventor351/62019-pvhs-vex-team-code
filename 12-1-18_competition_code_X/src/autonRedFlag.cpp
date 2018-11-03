@@ -1,6 +1,6 @@
 #include "main.h"
 
-void autonBlueFlag(){
+void autonRedFlag(){
     
     driveAbsLeft(45, 200);
     driveAbsRight(45, 200);

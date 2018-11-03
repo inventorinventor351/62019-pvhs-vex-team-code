@@ -76,7 +76,7 @@ void driveVoltRight(int voltage) {
 
 void pvitChassis(float angle, int maxSpeed, int timer) {
 
-    angle = angle * pi * 2.34 / 180;
+    angle = angle * Pi * 2.34 / 180;
     
     for(int x; x < timer; x = x + 1){
 
