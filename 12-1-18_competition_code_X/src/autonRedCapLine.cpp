@@ -1,6 +1,6 @@
 #include "main.h"
 
-void autonBlueCapLine(){
+void autonRedCapLine(){
 
     shooter.move_relative(1, 200);
 
