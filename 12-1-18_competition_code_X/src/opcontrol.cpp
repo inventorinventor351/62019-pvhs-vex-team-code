@@ -11,25 +11,25 @@ Controller master(CONTROLLER_MASTER);
 		driveRight((master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y))); //Right side of the base
 		driveLeft((master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y))); //Left side of the base
 
-		if(master.get.digital(E_CONTROLLER_DIGITAL_R1)){ //If R1 on the master controller is pressed
+		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)){ //If R1 on the master controller is pressed
 
 			intake.move(127); //Then intake rolls balls and caps in
 
 		}
 		
-		if(master.get.digital(E_CONTROLLER_DIGITAL_L1)){ //If L1 on the master controller is pressed
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1)){ //If L1 on the master controller is pressed
 		
 			intake.move(-127); //Then intake lifts up
 
 		}
 
-		if(master.get.digital(E_CONTROLLER_DIGITALL_A)){
+		if(master.get_digital(E_CONTROLLER_DIGITAL_A)){
 
 			aimFlag();
 			
 		}
 
-		if(master.get.digital(E_CONTROLLER_DIGITAL_L2) && (E_CONTROLLER_DIGITAL_R2)){ //If L2 and R2 on the master controller is pressed
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L2) && (E_CONTROLLER_DIGITAL_R2)){ //If L2 and R2 on the master controller is pressed
 		
 			shooter.move_relative(1, 200); //Then shoot and reload
 

@@ -1,7 +1,9 @@
 #ifndef MAF_H
 #define MAF_H
 
-void rotToIn(float Rotations);
-void inToRot(float Inches);
+extern float Pi;
+
+float rotToIn(float Rotations);
+float inToRot(float Inches);
 
 #endif
