@@ -2,7 +2,7 @@
 
 void red_capSide_1flag_2caps_auton() {
 
-    autonShoot();//shoot ball
+    autonShoot(1.0, 0.01);//shoot ball
     pivotChassis(-90, 200, 1000);//face cap
     move_absoluteRightChassis(inToRot(42),200); // move to cap
     move_absoluteLeftChassis(inToRot(42),200); // move to cap

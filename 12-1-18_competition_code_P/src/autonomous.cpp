@@ -11,7 +11,7 @@ void autonomous() {
 
     else if(autonCount == 1) {
 
-
+        red_flagSide_1flag_2caps_auton();
 
     }
 
@@ -23,19 +23,19 @@ void autonomous() {
 
     else if(autonCount == 3) {
 
-
+        blue_flagSide_3flags_1cap_auton();
 
     }
 
     else if(autonCount == 4) {
 
-
+        blue_flagSide_3flags_1cap_auton();
 
     }
 
     else if(autonCount == 5) {
 
-
+        blue_flagSide_3flags_1cap_auton();
 
     }
     
