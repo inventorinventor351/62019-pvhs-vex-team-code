@@ -123,3 +123,93 @@ void aimFlag(){
     master.rumble("-");
 
 }
+
+void aimFlag(){
+
+    int comparingValue = 1000000;
+    vision_object_s_t closestObject;
+    int i, error_, preError_, derivative_;
+    float error, preError, derivative, kP, kD;
+
+    for(i = 0; i < shooterEye.get_object_count(); i++){
+
+        vision_object_s_t suspect = shooterEye.get_by_size(1);
+
+        if(comparingValue > abs(suspect.x_middle_coord)){
+            
+            closestObject = suspect;
+            comparingValue = abs(suspect.x_middle_coord);
+
+        }
+
+    }
+
+    while(!(closestObject.x_middle_coord>-5) && (closestObject.x_middle_coord<5) && (i > 1)){
+
+        error_ = closestObject.x_middle_coord;
+        derivative = preError - error;
+        preError_ = error;
+
+        driveVoltLeft((kP * error) + (kD * derivative));
+        driveVoltRight(-(kP * error) + (kD * derivative));
+
+        delay(1);
+
+    }
+
+    master.rumble("-");
+
+}void autonAimFlag(){
+
+    int comparingValue = 1000000;
+    vision_object_s_t closestObject;
+    int i, error_, preError_, derivative_;
+    float error, preError, derivative, kP, kD;
+
+    for(i = 0; i < shooterEye.get_object_count(); i++){
+
+        vision_object_s_t suspect = shooterEye.get_by_size(1);
+
+        if(comparingValue > abs(suspect.x_middle_coord)){
+            
+            closestObject = suspect;
+            comparingValue = abs(suspect.x_middle_coord);
+
+        }
+
+    }
+
+    int distance = closestObject.x_middle_coord;
+
+    while(!(closestObject.x_middle_coord>-5) && (closestObject.x_middle_coord<5) && (i > 1)){
+
+        error_ = closestObject.x_middle_coord;
+        derivative = preError - error;
+        preError_ = error;
+
+        driveVoltLeft((kP * error) + (kD * derivative));
+        driveVoltRight(-(kP * error) + (kD * derivative));
+
+        delay(1);
+
+    }
+
+    shooter.move_relative(1, 200);
+
+    derivative = 0;
+    preError = 0;
+    
+    while(!(closestObject.x_middle_coord>-5) && (closestObject.x_middle_coord<5) && (i > 1)){
+
+        error_ = distance - closestObject.x_middle_coord;
+        derivative = preError - error;
+        preError_ = error;
+
+        driveVoltLeft(-(kP * error) + (kD * derivative));
+        driveVoltRight((kP * error) + (kD * derivative));
+
+        delay(1);
+
+    }
+
+}

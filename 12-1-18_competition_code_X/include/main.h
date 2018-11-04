@@ -16,6 +16,7 @@ using namespace pros::literals; //Make sure to use this namespace if you defined
 #include "pragma.h"
 #include "maf.h"
 #include "chassis.h"
+#include "autons.h"
 
 //DO NOT TOUCH BELOW STUFF, THIS MAKES THE CODE RUN
 #ifdef __cplusplus

@@ -12,9 +12,7 @@ Motor shooter(6, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //Port 6, 200 
 Vision shooterEye(7); //Port 7, vision sensor for shooter
 
 ADIDigitalOut intakeLift(1); //Port 1, solonoid for raising intake
-ADIDigitalOut intakeLift1(2); //Port 2, solonoid for raising intake
+ADIDigitalOut chassisTransmission(2); //Port 2, solonoid for transmission in the chassis
+ADIDigitalOut tipper(3) //Port 3, solonoid for tipping high caps
 
-ADIDigitalOut leftChassisTrans(3); //Port 3, solonoid for changing strength and speed on left chassis
-ADIDigitalOut rightChassisTrans(4); //Port 4, solonoid for changing strength and speed on right chassis
-
-ADIAnalogIn ballSensor(7); //Port 7, light sensor for the ball
+ADIAnalogIn ballSensor(4); //Port 7, light sensor for the ball
