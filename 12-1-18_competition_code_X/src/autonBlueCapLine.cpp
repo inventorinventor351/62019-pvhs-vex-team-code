@@ -4,7 +4,7 @@ void autonBlueCapLine(){
 
     autonAimFlag();
 
-    pvitChassis(90, 200, 1);
+    pvitChassis(-90, 200, 1);
     driveAbsLeft(45, 200);
     driveAbsRight(45, 200);
     delay(500);

@@ -187,8 +187,8 @@ void aimFlag(){
         derivative = preError - error;
         preError_ = error;
 
-        driveVoltLeft((kP * error) + (kD * derivative));
-        driveVoltRight(-(kP * error) + (kD * derivative));
+        driveVoltLeft(-(kP * error) + (kD * derivative));
+        driveVoltRight((kP * error) + (kD * derivative));
 
         delay(1);
 
@@ -205,8 +205,8 @@ void aimFlag(){
         derivative = preError - error;
         preError_ = error;
 
-        driveVoltLeft(-(kP * error) + (kD * derivative));
-        driveVoltRight((kP * error) + (kD * derivative));
+        driveVoltLeft((kP * error) + (kD * derivative));
+        driveVoltRight(-(kP * error) + (kD * derivative));
 
         delay(1);
 

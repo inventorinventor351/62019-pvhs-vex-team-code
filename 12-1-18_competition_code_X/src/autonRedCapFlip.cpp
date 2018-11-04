@@ -18,10 +18,12 @@ void autonRedCapFlip(){
     intake.move(-127);
     delay(2000);
     intake.move(0);
+    driveRelativeLeft(-20, 200);
+    driveRelativeRight(-20, 200)
     
-    pvitChassis(160, 200, 1.77778);
-    driveRelativeLeft(30, 200);
-    driveRelativeRight(30, 200);
+    pvitChassis(-20, 200, 0.222222);
+    driveRelativeLeft(-30, 200);
+    driveRelativeRight(-30, 200);
 
     aimFlag();
     shooter.move_relative(1, 200);

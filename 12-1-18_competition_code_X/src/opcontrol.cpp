@@ -4,7 +4,7 @@
 void opcontrol() {
 	
 Controller master(CONTROLLER_MASTER);
-bool x = 1, y = 1, z = 1;
+bool x = 1, y = 1, z = 1, b = 1;
 
 	while(true) //Always running
 	{
@@ -36,7 +36,7 @@ bool x = 1, y = 1, z = 1;
 
 		}
 		
-		if(master.get_digital(E_CONTROLLER_DIGITAL_Y)){
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L2)){
 
 			chassisTransmission.set_value(x);
 			x != x;
@@ -45,12 +45,12 @@ bool x = 1, y = 1, z = 1;
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R2)){
 
-			chassisTransmissioin.set_value(y);
+			intakeLift.set_value(y);
 			y != y;
 
 		}
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)){ //If R1 on the master controller is pressed
+		if(master.get_digital(E_CONTROLLER_DIGITAL_Y)){ //If R1 on the master controller is pressed
 		
 			tipper.set_value(z); //Activates the tipper
 			z != z;
