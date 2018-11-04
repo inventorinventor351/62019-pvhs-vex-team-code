@@ -17,6 +17,8 @@ using namespace pros::literals; //Make sure to use this namespace if you defined
 #include "chassis.h"
 #include "autons.h"
 
+extern int autonCount;
+
 //DO NOT TOUCH BELOW STUFF, THIS MAKES THE CODE RUN
 #ifdef __cplusplus
 extern "C" {
