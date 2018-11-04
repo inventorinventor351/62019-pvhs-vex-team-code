@@ -17,7 +17,7 @@ void autonomous() {
 
     else if(autonCount == 2) {
 
-
+        red_capSide_1flag_2caps_auton();
 
     }
 
