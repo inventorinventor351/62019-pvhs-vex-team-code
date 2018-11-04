@@ -13,10 +13,8 @@ extern Motor shooter;
 extern Vision shooterEye;
 
 extern ADIDigitalOut intakeLift;
-extern ADIDigitalOut intakeLift1;
-
-extern ADIDigitalOut leftChassisTrans;
-extern ADIDigitalOut rightChassisTrans;
+extern ADIDigitalOut chassisTransmission;
+extern ADIDigitalOut tipper;
 
 extern ADIAnalogIn ballSensor;
 
