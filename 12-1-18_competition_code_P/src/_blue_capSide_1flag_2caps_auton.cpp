@@ -3,7 +3,7 @@
 void red_capSide_1flag_2caps_auton() {
 
     autonShoot();//shoot ball
-    pivotChassis(-90, 200, 1000);//face cap
+    pivotChassis(90, 200, 1000);//face cap
     move_absoluteRightChassis(IntoRot(42),200); // move to cap
     move_absoluteLeftChassis(IntoRot(42),200); // move to cap
 
@@ -38,7 +38,7 @@ void red_capSide_1flag_2caps_auton() {
     move_absoluteRightChassis(IntoRot(0),200);
     move_absoluteLeftChassis(IntoRot(0),200); // return to starting spot
 
-    pivotChassis(90, 200, 1); // turn
+    pivotChassis(-90, 200, 1); // turn
 
     move_relativeRightChassis(IntoRot(8),200); // go forward a bit
     move_relativeLeftChassis(IntoRot(8),200); 
@@ -53,7 +53,7 @@ void red_capSide_1flag_2caps_auton() {
     move_voltageLeftChassis(0);
     move_voltageRightChassis(0);
 
-    pivotChassis(-90, 200, 100);
+    pivotChassis(90, 200, 100);
 
     resetChassisEncoderValue();
 
@@ -80,7 +80,7 @@ void red_capSide_1flag_2caps_auton() {
     move_relativeRightChassis(inToRot(-38), 200);
     move_relativeLeftChassis(inToRot(-38), 200);
 
-    pivotChassis(90, 200, 200);
+    pivotChassis(-90, 200, 200);
     
     move_relativeRightChassis(inToRot(48), 200);
     move_relativeLeftChassis(inToRot(48), 200);
