@@ -162,5 +162,63 @@ void resetChassisEncoderValue() {
 
     resetLeftChassisEncoderValue();
     resetRightChassisEncoderValue();
+}
+
+
+void autonShoot(float kP_, float kD_) {
+
+    int smallestValue = 321;
+    vision_object_s_t closestObject;
+
+    int error_, derivative_, prevError_;
+
+    for(int i = 0; i < catapultEye.get_object_count(); i++) {
+
+        vision_object_s_t currentObject = catapultEye.get_by_size(i);
+
+        if(smallestValue > abs(currentObject.x_middle_coord)) {
+
+            smallestValue = abs(currentObject.x_middle_coord);
+            closestObject = currentObject;
+
+        }
+
+    }
+
+    int beforeposition = closestObject.x_middle_coord;
+
+    while((!((-5 <= closestObject.x_middle_coord) && (closestObject.x_middle_coord <= 5))) && (catapultEye.get_object_count() > 0)) {
+
+        error_ = closestObject.x_middle_coord;
+        derivative_ = error_ - prevError_;
+        prevError_ = error_;
+
+        move_voltageLeftChassis((kP_ * error_) + (kD_ * derivative_));
+        move_voltageRightChassis(((kP_ * error_) + (kD_ * derivative_)) * -1);
+
+        delay(1);
+        
+    }
+
+    intake.move_relative(1, 200);
+
+    error_ = 0;
+    derivative_ = 0;
+    prevError_ = 0;
     
+    while((!((-5 <= closestObject.x_middle_coord) && (closestObject.x_middle_coord <= 5))) && (catapultEye.get_object_count() > 0)) {
+
+        error_ = beforeposition - closestObject.x_middle_coord;
+        derivative_ = error_ - prevError_;
+        prevError_ = error_;
+
+        move_voltageRightChassis((kP_ * error_) + (kD_ * derivative_));
+        move_voltageLeftChassis(((kP_ * error_) + (kD_ * derivative_)) * -1);
+
+        delay(1);
+        
+    }
+
+
+
 }
