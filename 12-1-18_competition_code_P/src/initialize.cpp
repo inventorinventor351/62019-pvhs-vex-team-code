@@ -16,7 +16,93 @@ void initialize() {
 //Runs after initialize() and before autonomous. This is intended for competition-specific initialization routines, such as an autonomous selector on the LCD.
 void competition_initialize() {
 
+    lcd::initialize();
+    lcd::set_text(0, "what is your alliance color?");
+    lcd::set_text(7, "blue                            red");
 
+    while(lcd::read_buttons() == 0) {
+
+        if(lcd::read_buttons() == LCD_BTN_LEFT) {
+
+            lcd::set_text(0, "what side are you on?");
+            lcd::set_text(7, "flag                              cap");
+
+            while(lcd::read_buttons() == 0) {
+
+                if(lcd::read_buttons() == LCD_BTN_LEFT) {
+
+                    while(lcd::read_buttons() == 0) {
+
+                        lcd::set_text(0, "which auton do you want?");
+                        lcd::set_text(7, "3 flags-1 cap    OR    1 flag-2 caps");
+
+                        if(lcd::read_buttons() == LCD_BTN_LEFT) {
+
+                            autonCount = 0;
+
+                        }
+
+                        else if(lcd::read_buttons() == LCD_BTN_RIGHT) {
+
+                            autonCount = 1;
+
+                        }
+
+                    }
+
+                }
+
+                else if(lcd::read_buttons() == LCD_BTN_RIGHT) {
+
+                    autonCount = 2;
+
+                }
+
+            }
+
+        }
+
+        else if(lcd::read_buttons() == LCD_BTN_RIGHT) {
+
+            lcd::set_text(0, "what side are you on?");
+            lcd::set_text(7, "flag                              cap");
+
+            while(lcd::read_buttons() == 0) {
+
+                if(lcd::read_buttons() == LCD_BTN_LEFT) {
+
+                    while(lcd::read_buttons() == 0) {
+
+                        lcd::set_text(0, "which auton do you want?");
+                        lcd::set_text(7, "3 flags-1 cap    OR    1 flag-2 caps");
+
+                        if(lcd::read_buttons() == LCD_BTN_LEFT) {
+
+                            autonCount = 3;
+
+                        }
+
+                        else if(lcd::read_buttons() == LCD_BTN_RIGHT) {
+
+                            autonCount = 4;
+
+                        }
+
+                    }
+
+                }
+
+                else if(lcd::read_buttons() == LCD_BTN_RIGHT) {
+
+                    autonCount = 5;
+
+                }
+
+            }
+
+        }
+
+    }
 
 }
 

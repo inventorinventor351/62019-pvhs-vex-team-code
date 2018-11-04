@@ -3,7 +3,7 @@
 void red_capSide_1flag_2caps_auton() {
 
     autonShoot();//shoot ball
-    pivotChassis(-90, 200, 1000)//face cap
+    pivotChassis(-90, 200, 1000);//face cap
     move_absoluteRightChassis(IntoRot(42),200); // move to cap
     move_absoluteLeftChassis(IntoRot(42),200); // move to cap
 
@@ -25,7 +25,7 @@ void red_capSide_1flag_2caps_auton() {
     move_relativeRightChassis(IntoRot(8),200); // go forward a bit
     move_relativeLeftChassis(IntoRot(8),200); 
     
-    intake.move_relative(-2, 200) // drop cap
+    intake.move_relative(-2, 200); // drop cap
 
     delay(200);
 
