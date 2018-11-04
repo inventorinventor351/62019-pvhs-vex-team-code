@@ -200,6 +200,12 @@ void autonShoot(float kP_, float kD_) {
         
     }
 
+    intake.move_relative(1, 200);
+
+    error_ = 0;
+    derivative_ = 0;
+    prevError_ = 0;
+    
     while((!((-5 <= closestObject.x_middle_coord) && (closestObject.x_middle_coord <= 5))) && (catapultEye.get_object_count() > 0)) {
 
         error_ = beforeposition - closestObject.x_middle_coord;
