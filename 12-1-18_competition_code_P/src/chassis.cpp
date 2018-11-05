@@ -222,3 +222,21 @@ void autonShoot(float kP_, float kD_) {
 
 
 }
+
+void driveChassisAbs(int dist, int speed) {
+    move_absoluteRightChassis(inToRot(dist), speed);
+    move_absoluteLeftChassis(inToRot(dist), speed);
+}
+
+void driveChassisRelative(int dist , int speed){
+    move_relativeLeftChassis(inToRot(dist), speed);
+    move_relativeRightChassis(inToRot(dist), speed);
+}
+
+void driveChassisVoltage(int time, int voltage){
+    move_voltageLeftChassis(voltage);
+    move_voltageRightChassis(voltage);
+    delay(time);
+    move_velocityLeftChassis(0);
+    move_velocityRightChassis(0);
+}

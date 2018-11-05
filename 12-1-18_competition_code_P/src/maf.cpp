@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 float Pi = 3.1415926535897932384;
 
 float rotToIn(float Rotations) 
