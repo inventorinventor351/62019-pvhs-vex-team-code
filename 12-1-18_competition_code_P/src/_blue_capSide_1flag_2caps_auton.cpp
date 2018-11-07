@@ -17,8 +17,8 @@ void blue_capSide_1flag_2caps_auton() {
     delay(150);
     intake.move_velocity(0); // pick up ball
 
-    move_absoluteRightChassis(IntoRot(40), 200); //move back a tad
-    move_absoluteLefttChassis(IntoRot(40), 200);
+    move_absoluteRightChassis(inToRot(40), 200); //move back a tad
+    move_absoluteLeftChassis(inToRot(40), 200);
 
     intakePiston1.set_value(1);// load ball
     intakePiston2.set_value(1);//load ball
@@ -28,8 +28,8 @@ void blue_capSide_1flag_2caps_auton() {
     intakePiston1.set_value(0);// reset
     intakePiston2.set_value(0);// reset
 
-    move_absoluteRightChassis(IntoRot(42), 200);//move forward a tad
-    move_absoluteLefttChassis(IntoRot(42), 200);
+    move_absoluteRightChassis(inToRot(42), 200);//move forward a tad
+    move_absoluteLeftChassis(inToRot(42), 200);
 
     intake.move_velocity(200);
     delay(200);
@@ -60,7 +60,7 @@ void blue_capSide_1flag_2caps_auton() {
     move_relativeLeftChassis(42, 200);
     move_relativeRightChassis(42, 200);
 
-     while(leftChassis1.get_position() < IntoRot(42) && rightChassis1.get_position() < IntoRot(42)) //move intake until u get to the cap
+     while(leftChassis1.get_position() < inToRot(42) && rightChassis1.get_position() < inToRot(42)) //move intake until u get to the cap
     {
         
         intake.move_velocity(-200);
