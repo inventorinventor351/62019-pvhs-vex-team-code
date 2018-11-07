@@ -1,7 +1,5 @@
 #include "main.h" //DO NOT TOUCH
 
-int autonCount = 0;
-
 //Runs initialization code. This occurs as soon as the program is started. It is recommended to keep execution time for this mode under a few seconds.
 void initialize() {
 	

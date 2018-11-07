@@ -19,7 +19,7 @@ void autonRedCapFlip(){
     delay(2000);
     intake.move(0);
     driveRelativeLeft(-20, 200);
-    driveRelativeRight(-20, 200)
+    driveRelativeRight(-20, 200);
     
     pvitChassis(-20, 200, 0.222222);
     driveRelativeLeft(-30, 200);

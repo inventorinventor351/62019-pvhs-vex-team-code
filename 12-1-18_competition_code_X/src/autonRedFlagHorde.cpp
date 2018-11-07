@@ -46,7 +46,7 @@ void autonRedFlagHorde(){
     pvitChassis(-90, 200, 1);
     driveRelativeLeft(6, 200);
     driveRelativeRight(-6, 200);
-    intakeLeft.set_value(0);
+    intakeLift.set_value(0);
     delay(100);
     intake.move(-127);
     driveRelativeLeft(-5, 200);
