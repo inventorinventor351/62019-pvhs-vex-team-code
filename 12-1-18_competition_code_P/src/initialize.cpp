@@ -20,6 +20,8 @@ void initialize() {
 
 }
 
+int autonCount = 0;
+
 void lcdScroll() {
 
     if(autonCount < 0) {

@@ -11,6 +11,8 @@
 using namespace pros; //Instead of typing pros::Motor() all the time, if you use this namepsace you can just do Motor()
 using namespace pros::literals; //Make sure to use this namespace if you defined PROS_USE_SIMPLE_NAMES
 
+extern int autonCount;
+
 //You should include more files right under here
 //ex: #include "file.h"
 #include "pragma.h"
