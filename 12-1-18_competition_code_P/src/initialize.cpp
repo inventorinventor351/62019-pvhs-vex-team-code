@@ -13,6 +13,13 @@ void initialize() {
 
     catapultEye.clear_led();
 
+    leftChassis1.set_brake_mode(MOTOR_BRAKE_HOLD);
+    leftChassis2.set_brake_mode(MOTOR_BRAKE_HOLD);
+    rightChassis1.set_brake_mode(MOTOR_BRAKE_HOLD);
+    rightChassis2.set_brake_mode(MOTOR_BRAKE_HOLD);
+    catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
+    intake.set_brake_mode(MOTOR_BRAKE_HOLD);
+
 }
 
 void lcdScroll() {
