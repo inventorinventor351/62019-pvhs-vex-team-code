@@ -45,7 +45,7 @@ void competition_initialize(){
 
                         if(lcd::read_buttons() == LCD_BTN_LEFT){
 
-                            autonCount = 0;
+                            autonCount= 0;
 
                         }
 
