@@ -28,4 +28,8 @@ void resetLeftChassisEncoderValue();
 void resetRightChassisEncoderValue();
 void resetChassisEncoderValue();
 
+void driveChassisRelative(int dist, int speed);
+void driveChassisAbs(int dist, int speed);
+void driveChassisVoltage(int time, int voltage);
+
 #endif

@@ -30,7 +30,7 @@ bool x = 1, y = 1, z = 1, b = 1;
 			
 		}
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_UP){ //If L2 and R2 on the master controller is pressed
+		if(master.get_digital(E_CONTROLLER_DIGITAL_UP)){ //If L2 and R2 on the master controller is pressed
 		
 			shooter.move_relative(1, 200); //Then shoot and reload
 
