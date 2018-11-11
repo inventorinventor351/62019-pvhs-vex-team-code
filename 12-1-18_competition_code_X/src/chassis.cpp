@@ -39,6 +39,31 @@ void driveRelativeLeft(float distance, int maxSpeed) {
 
 }
 
+void drivePD(float goal, int time){
+
+    float distError, distDerivative, distPreError, distSpeed, kPDist, kDDist;
+    float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff, kDDiff;
+
+    for(int i = 0; i < time; i++){
+
+        distError = goal - ((leftChassis1.get_position() +leftChassis2.get_position() + rightChassis1.get_position() + rightChassis2.get_position()) / 4);
+        distDerivative = distError - distPreError;
+        distPreError = distError;
+        distSpeed = (distError * kPDist) + (distDerivative * kDDist);
+
+        diffError = (leftChassis1.get_position() + leftChassis2.get_position() - rightChassis1.get_position() - rightChassis2.get_position()) / 4;
+        diffDerivative = diffError - diffPreError;
+        diffPreError = diffError;
+        diffSpeed = (diffError * kPDiff) + (diffDerivative * kDDiff);
+
+        move_voltageLeftChassis(distSpeed - diffSpeed);
+        move_voltageRightChassis(distSpeed + diffSpeed);
+
+        delay(1);
+        
+    }
+}
+
 void driveRelativeRight(float distance, int maxSpeed) {
 
     distance = inToRot(distance);
