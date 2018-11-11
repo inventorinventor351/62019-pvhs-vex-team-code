@@ -21,7 +21,7 @@ void initialize(){
 }
 
 //Runs after initialize() and before autonomous. This is intended for competition-specific initialization routines, such as an autonomous selector on the LCD.
-void competition_initialize(){
+/*void competition_initialize(){
 
     lcd::initialize();
     lcd::set_text(0, "What is your alliance color?");
@@ -147,7 +147,7 @@ void competition_initialize(){
 
 }
 
-
+*/
 //Runs while the robot is in the disabled state of Field Management System or the VEX Competition Switch
 void disabled() {
 
