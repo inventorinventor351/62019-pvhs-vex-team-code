@@ -1,4 +1,4 @@
-/*#include "main.h" //DO NOT TOUCH
+#include "main.h" //DO NOT TOUCH
 
 //Runs during the 15 second autonomous period
 void autonomous() {
@@ -35,4 +35,4 @@ void autonomous() {
         autonRedCapFlip();
     }
     
-}*/
+}

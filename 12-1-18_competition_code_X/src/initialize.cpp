@@ -20,134 +20,110 @@ void initialize(){
 
 }
 
-//Runs after initialize() and before autonomous. This is intended for competition-specific initialization routines, such as an autonomous selector on the LCD.
-/*void competition_initialize(){
+int autonCount = 0;
 
-    lcd::initialize();
-    lcd::set_text(0, "What is your alliance color?");
-    lcd::set_text(7, "Blue                            Red");
+void lcdScroll() {
 
-    while(lcd::read_buttons() == 0){
+    if(autonCount < 0) {
 
-        if(lcd::read_buttons() == LCD_BTN_LEFT){
-
-            lcd::set_text(0, "What side are you on?");
-            lcd::set_text(7, "Flag                              Cap");
-
-            while(lcd::read_buttons() == 0){
-
-                if(lcd::read_buttons() == LCD_BTN_LEFT){
-
-                    while(lcd::read_buttons() == 0){
-
-                        lcd::set_text(0, "Which auton do you want?");
-                        lcd::set_text(7, "3 flags-1 cap    OR    1 flag-2 cap horde");
-
-                        if(lcd::read_buttons() == LCD_BTN_LEFT){
-
-                            autonCount= 0;
-
-                        }
-
-                        else if(lcd::read_buttons() == LCD_BTN_RIGHT){
-
-                            autonCount = 1;
-
-                        }
-
-                    }
-
-                }
-
-                else if(lcd::read_buttons() == LCD_BTN_RIGHT){
-
-                    while(lcd::read_buttons() == 0){
-
-                        lcd::set_text(0, "Which auton do you want?");
-                        lcd::set_text(7, "2 cap line    OR    2 cap-parking");
-
-                        if(lcd::read_buttons() == LCD_BTN_LEFT){
-
-                            autonCount = 2;
-
-                        }
-
-                        else if(lcd::read_buttons() == LCD_BTN_RIGHT){
-
-                            autonCount = 3;
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-        }
-
-        else if(lcd::read_buttons() == LCD_BTN_RIGHT){
-
-            lcd::set_text(0, "What side are you on?");
-            lcd::set_text(7, "Flag                              Cap");
-
-            while(lcd::read_buttons() == 0){
-
-                if(lcd::read_buttons() == LCD_BTN_LEFT){
-
-                    while(lcd::read_buttons() == 0){
-
-                        lcd::set_text(0, "Which auton do you want?");
-                        lcd::set_text(7, "3 flags-1 cap    OR    1 flag-2 cap horde");
-
-                        if(lcd::read_buttons() == LCD_BTN_LEFT){
-
-                            autonCount = 4;
-
-                        }
-
-                        else if(lcd::read_buttons() == LCD_BTN_RIGHT){
-
-                            autonCount = 5;
-
-                        }
-
-                    }
-
-                }
-
-                else if(lcd::read_buttons() == LCD_BTN_RIGHT){
-
-                    while(lcd::read_buttons() == 0){
-
-                        lcd::set_text(0, "Which auton do you want?");
-                        lcd::set_text(7, "2 cap line    OR    2 cap-parking");
-
-                        if(lcd::read_buttons() == LCD_BTN_LEFT){
-
-                            autonCount = 6;
-
-                        }
-
-                        else if(lcd::read_buttons() == LCD_BTN_RIGHT){
-
-                            autonCount = 7;
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-        }
+        autonCount = 5;
 
     }
 
+    else if(autonCount > 7) {
+
+        autonCount = 0;
+
+    }
+
+    switch(autonCount) {
+
+            case 0:
+                lcd::set_text(1, "RED flag side");
+                lcd::set_text(2, "3 flags");
+                lcd::set_text(3, "1 cap");
+                break;
+
+            case 1:
+                lcd::set_text(1, "RED flag side");
+                lcd::set_text(2, "1 flags");
+                lcd::set_text(3, "2 caps");
+                break;
+
+            case 2:
+                lcd::set_text(1, "RED cap side");
+                lcd::set_text(2, "1 flags");
+                lcd::set_text(3, "2 cap");
+                break;
+
+            case 3:
+                lcd::set_text(1, "RED cap side");
+                lcd::set_text(2, "1 flags");
+                lcd::set_text(3, "2 cap line");
+                break;
+
+            case 4:
+                lcd::set_text(1, "BLUE flag side");
+                lcd::set_text(2, "3 flags");
+                lcd::set_text(3, "1 cap");
+                break;
+
+            case 5:
+                lcd::set_text(1, "BLUE flag side");
+                lcd::set_text(2, "1 flag");
+                lcd::set_text(3, "2 caps");
+                break;
+
+            case 6:
+                lcd::set_text(1, "BLUE cap side");
+                lcd::set_text(2, "1 flags");
+                lcd::set_text(3, "2 cap");
+                break;
+
+            case 7:
+                lcd::set_text(1, "BLUE cap side");
+                lcd::set_text(2, "1 flags");
+                lcd::set_text(3, "2 cap line");
+                break;
+
+        }
+
 }
 
-*/
+void on_left_pressed() {
+
+    autonCount--;
+    lcdScroll();
+
+}
+
+void on_center_pressed() {
+
+    autonCount = autonCount;
+    lcd::shutdown();
+
+}
+
+void on_right_pressed() {
+
+    autonCount++;
+    lcdScroll();
+
+}
+
+//Runs after initialize() and before autonomous. This is intended for competition-specific initialization routines, such as an autonomous selector on the LCD.
+void competition_initialize() {
+
+    lcd::initialize();
+    lcd::set_text(0, "choose auton");
+    lcdScroll();
+    lcd::register_btn0_cb(on_left_pressed);
+    lcd::register_btn1_cb(on_center_pressed);
+    lcd::register_btn2_cb(on_right_pressed);
+
+}
+
+
 //Runs while the robot is in the disabled state of Field Management System or the VEX Competition Switch
 void disabled() {
 

@@ -1,7 +1,7 @@
-/*#ifndef AUTONS_H
+#ifndef AUTONS_H
 #define AUTONS_H
 
-int autonCount;
+extern int autonCount;
 
 void autonBlueCapFlip();
 void autonBlueCapLine();
@@ -13,4 +13,4 @@ void autonRedCapLine();
 void autonRedFlag();
 void autonRedFlagHorde();
 
-#endif*/
+#endif
