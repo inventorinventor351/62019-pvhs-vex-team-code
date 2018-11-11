@@ -2,7 +2,7 @@
 
 //Runs during the 15 second autonomous period
 void autonomous() {
-    /*
+    
     if(autonCount == 0) { 
 
         red_flagSide_3flags_1cap_auton();
@@ -38,7 +38,6 @@ void autonomous() {
 
         blue_flagSide_3flags_1cap_auton();
 
-    }*/
-    red_capSide_1flag_2caps_auton();
+    }
     
 }
