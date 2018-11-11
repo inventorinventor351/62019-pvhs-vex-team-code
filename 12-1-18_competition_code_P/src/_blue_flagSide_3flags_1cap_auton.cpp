@@ -32,7 +32,7 @@ void blue_flagSide_3flags_1cap_auton() {
 
     }
 
-    pivotChassis(-90, 200, 1000);
+    pivotChassisBAD(-90, 200, 1000);
 
     resetChassisEncoderValue();
 

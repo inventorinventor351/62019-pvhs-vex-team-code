@@ -19,7 +19,7 @@ void move_voltageRightChassis(int voltage);
 float getLeftChassisPosition();
 float getRightChassisPosition();
 
-void pivotChassis(float angle, int maxSpeed, int time);
+void pivotChassisBAD(float angle, int maxSpeed, int time);
 
 void aimAtFlag(float kP_, float kD_);
 void autonShoot(float kP_, float kD_);
@@ -31,5 +31,8 @@ void resetChassisEncoderValue();
 void driveChassisRelative(int dist, int speed);
 void driveChassisAbs(int dist, int speed);
 void driveChassisVoltage(int time, int voltage);
+
+void driveStraight(float setPoint, int time);
+void pivotChassis(int angle, int time);
 
 #endif

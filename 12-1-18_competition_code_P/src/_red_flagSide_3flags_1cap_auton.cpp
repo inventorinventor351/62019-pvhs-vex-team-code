@@ -20,6 +20,6 @@ void red_flagSide_3flags_1cap_auton() {
 
     }
 
-    pivotChassis(90 * 3, 200, 1250);
+    pivotChassisBAD(90 * 3, 200, 1250);
 
 }

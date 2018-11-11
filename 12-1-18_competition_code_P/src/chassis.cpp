@@ -92,7 +92,7 @@ float getRightChassisPosition() {
     
 }
 
-void pivotChassis(float angle, int maxSpeed, int time) {
+void pivotChassisBAD(float angle, int maxSpeed, int time) {
 
     angle *= (3.14159265358979323846 / 180.0);
 
@@ -262,6 +262,37 @@ void driveStraight(float setPoint, int time) {
 
         move_voltageLeftChassis(distSpeed - diffSpeed);
         move_voltageRightChassis(distSpeed + diffSpeed);
+
+        delay(1);
+
+    }
+
+    move_voltageLeftChassis(0);
+    move_voltageRightChassis(0);
+
+}
+
+void pivotChassis(int angle, int time) {
+
+    float setPoint = angle * 0.011;
+
+    float distError, distDerivative, distPrevError, distSpeed, kDistP = 1.0, kDistD = 0.1;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 1.0, kDiffD = 0.1;
+
+    for(int i = 0; i < abs(time); i++) {
+
+        distError = setPoint - abs((getLeftChassisPosition() - getRightChassisPosition()) / 2.0);
+        distDerivative = distError - distPrevError;
+        distPrevError = distError;
+        distSpeed = (kDistP * distError) + (kDistD * distDerivative);
+
+        diffError = (getLeftChassisPosition() + getRightChassisPosition()) / 2.0;
+        diffDerivative = diffError - diffPrevError;
+        diffPrevError = diffError;
+        diffSpeed = (kDiffP * diffError) + (kDiffD * diffDerivative);
+
+        move_voltageLeftChassis((-distSpeed) + diffSpeed);
+        move_voltageRightChassis(distSpeed - diffSpeed);
 
         delay(1);
 
