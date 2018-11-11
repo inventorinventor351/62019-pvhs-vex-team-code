@@ -6,7 +6,7 @@ void blue_flagSide_1flag_2caps_auton() {
 
     autonShoot(1.0, 0.01); // shoot
     
-    pivotChassis(-90, 200, 1000); // turn 90
+    pivotChassisBAD(-90, 200, 1000); // turn 90
 
     driveChassisRelative(40, 200);// drive to cap
     
@@ -42,11 +42,11 @@ void blue_flagSide_1flag_2caps_auton() {
 
     intake.move_velocity(0);
 
-    pivotChassis(90, 200, 1000);
+    pivotChassisBAD(90, 200, 1000);
 
     driveChassisRelative(40, 200);
 
-    pivotChassis(155, 200, 1000);
+    pivotChassisBAD(155, 200, 1000);
 
     driveChassisRelative(26, 200);
 
