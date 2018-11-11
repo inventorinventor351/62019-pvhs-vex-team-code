@@ -96,8 +96,8 @@ void pivotChassis(float angle, int maxSpeed, int time) {
 
     angle *= (3.14159265358979323846 / 180.0);
 
-    move_relativeLeftChassis((angle * 2.34 * -1), abs(maxSpeed));
-    move_relativeRightChassis((angle * 2.34), abs(maxSpeed));
+    move_relativeLeftChassis((angle * 0.64 * -1), abs(maxSpeed));
+    move_relativeRightChassis((angle * 0.64), abs(maxSpeed));
 
     for(int i = 0; i < abs(time); i++) {
 
@@ -239,4 +239,35 @@ void driveChassisVoltage(int time, int voltage){
     delay(time);
     move_velocityLeftChassis(0);
     move_velocityRightChassis(0);
+}
+
+void driveStraight(float setPoint, int time) {
+
+    float distError, distDerivative, distPrevError, distSpeed, kDistP = 1.0, kDistD = 0.1;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 1.0, kDiffD = 0.1;
+
+    resetChassisEncoderValue();
+
+    for(int i = 0; i < abs(time); i++) {
+
+        distError = setPoint - ((getLeftChassisPosition() + getRightChassisPosition()) / 2.0);
+        distDerivative = distError - distPrevError;
+        distPrevError = distError;
+        distSpeed = (kDistP * distError) + (kDistD * distDerivative);
+
+        diffError = (getLeftChassisPosition() - getRightChassisPosition()) / 2.0;
+        diffDerivative = diffError - diffPrevError;
+        diffPrevError = diffError;
+        diffSpeed = (kDiffP * diffError) + (kDiffD * diffDerivative);
+
+        move_voltageLeftChassis(distSpeed - diffSpeed);
+        move_voltageRightChassis(distSpeed + diffSpeed);
+
+        delay(1);
+
+    }
+
+    move_voltageLeftChassis(0);
+    move_voltageRightChassis(0);
+
 }
