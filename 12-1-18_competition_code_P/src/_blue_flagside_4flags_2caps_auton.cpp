@@ -1,4 +1,4 @@
-#include"main.h"
+#include "main.h"
 
 void blue_flagside_4flags_2caps_auton() {
 
@@ -15,7 +15,7 @@ void blue_flagside_4flags_2caps_auton() {
 
     driveChassisAbs(0, 200);
 
-    pivotChassis(90, 200, 1250);
+    pivotChassis(-90, 200, 1250);
 
     autonShoot(1.00, 0.01);
 
@@ -23,7 +23,7 @@ void blue_flagside_4flags_2caps_auton() {
 
     driveChassisRelative(-24, 200);
 
-    pivotChassis(-90, 200, 1250);
+    pivotChassis(90, 200, 1250);
 
     driveChassisRelative(30, 200);
 
@@ -39,11 +39,11 @@ void blue_flagside_4flags_2caps_auton() {
     runintake(200, 500);
     intake.move_velocity(0);
 
-    pivotChassis(-90, 200, 1250);
+    pivotChassis(90, 200, 1250);
 
     driveChassisRelative(-12, 200);
 
-    pivotChassis(-90, 200, 1250);
+    pivotChassis(90, 200, 1250);
 
     runintake(-200, 500);
 
