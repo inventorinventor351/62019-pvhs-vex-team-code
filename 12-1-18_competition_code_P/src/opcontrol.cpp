@@ -70,12 +70,6 @@ void opcontrol() {
 
 		}
 
-		/*move_absoluteLeftChassis(setPoint, 200);
-		move_absoluteRightChassis(setPoint, 200);
-
-		std::cout << "Left Error: " << (setPoint - getLeftChassisPosition());
-		std::cout << "Right Error: " << (setPoint - getRightChassisPosition());*/
-
 		delay(1);
 		
 	}
