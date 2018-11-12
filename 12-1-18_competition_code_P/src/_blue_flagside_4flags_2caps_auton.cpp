@@ -4,9 +4,9 @@ void blue_flagside_4flags_2caps_auton() {
 
     driveChassisAbs(40, 200);
 
-    while (getLeftChassisPosition() < inToRot(39) || (getLeftChassisPosition() < inToRot(39)) {
+    while (getLeftChassisPosition() < inToRot(39) || getLeftChassisPosition() < inToRot(39)) {
 
-        intake.move_velocity(200)
+        intake.move_velocity(200);
 
     }
 
@@ -15,7 +15,7 @@ void blue_flagside_4flags_2caps_auton() {
 
     driveChassisAbs(0, 200);
 
-    pivotChassis(-90, 200, 1250);
+    pivotChassisBAD(-90, 200, 1250);
 
     autonShoot(1.00, 0.01);
 
@@ -23,13 +23,13 @@ void blue_flagside_4flags_2caps_auton() {
 
     driveChassisRelative(-24, 200);
 
-    pivotChassis(90, 200, 1250);
+    pivotChassisBAD(90, 200, 1250);
 
     driveChassisRelative(30, 200);
 
     resetChassisEncoderValue();
 
-    while (getLeftChassisPosition() < inToRot(29) || (getLeftChassisPosition() < inToRot(29)) {
+    while (getLeftChassisPosition() < inToRot(29) || getLeftChassisPosition() < inToRot(29)) {
 
         intake.move_velocity(-200);
 
@@ -39,11 +39,11 @@ void blue_flagside_4flags_2caps_auton() {
     runintake(200, 500);
     intake.move_velocity(0);
 
-    pivotChassis(90, 200, 1250);
+    pivotChassisBAD(90, 200, 1250);
 
     driveChassisRelative(-12, 200);
 
-    pivotChassis(90, 200, 1250);
+    pivotChassisBAD(90, 200, 1250);
 
     runintake(-200, 500);
 
