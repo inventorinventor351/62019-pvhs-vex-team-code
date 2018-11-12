@@ -41,8 +41,8 @@ void driveRelativeLeft(float distance, int maxSpeed) {
 
 void drivePD(float goal, int time){
 
-    float distError, distDerivative, distPreError, distSpeed, kPDist, kDDist;
-    float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff, kDDiff;
+    float distError, distDerivative, distPreError, distSpeed, kPDist = 1.0, kDDist = 0.1;
+    float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff = 1.0, kDDiff = 0.1;
 
     for(int i = 0; i < time; i++){
 
@@ -56,11 +56,11 @@ void drivePD(float goal, int time){
         diffPreError = diffError;
         diffSpeed = (diffError * kPDiff) + (diffDerivative * kDDiff);
 
-        move_voltageLeftChassis(distSpeed - diffSpeed);
-        move_voltageRightChassis(distSpeed + diffSpeed);
+        driveVoltLeft(distSpeed - diffSpeed);
+        driveVoltRight(distSpeed + diffSpeed);
 
         delay(1);
-        
+
     }
 }
 
@@ -103,13 +103,40 @@ void pvitChassis(float angle, int maxSpeed, int timer) {
 
     angle = angle * Pi * 2.34 / 180;
     
-    for(int x; x < timer; x = x + 1){
+    for(int x; x < timer; x++){
 
         driveRelativeRight(angle, maxSpeed);
         driveRelativeLeft(-angle, maxSpeed);
 
-        delay(500);
+        delay(1);
     }
+}
+
+void pvitPD(int angle, int time){
+
+    float setPoint = angle * 0.011;
+    float distError, distDerivative, distPreError, distSpeed, kPDist = 1.0, kDDist = 0.1;
+    float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff = 1.0, kDDiff = 0.1;
+
+    for(int i = 0; i < time; i++){
+
+        distError = setPoint - abs((leftChassis1.get_position() + leftChassis2.get_position() - rightChassis1.get_position() - rightChassis2.get_position())/4);
+        distDerivative = distError - distPreError;
+        distPreError = distError;
+        distSpeed = (distError * kPDist) + (distDerivative * kDDist);
+
+        diffError = (leftChassis1.get_position() + leftChassis2.get_position() + rightChassis1.get_position() + rightChassis2.get_position()) / 4;
+        diffDerivative = diffError - diffPreError;
+        diffPreError = diffError;
+        diffSpeed = (diffError * kPDiff) + (diffDerivative * kDDiff);
+
+        driveVoltLeft(distSpeed - diffSpeed);
+        driveVoltRight(distSpeed + diffSpeed);
+
+        delay(1);
+
+    }
+
 }
 
 void aimFlag(){
