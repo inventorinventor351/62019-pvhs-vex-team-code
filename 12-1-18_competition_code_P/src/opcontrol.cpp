@@ -6,6 +6,7 @@ void opcontrol() {
 	bool transmissionState;
 	bool intakeState;
 
+	lcd::initialize();
 	//int setPoint = 3;
 	
 	while(true) {
@@ -17,28 +18,28 @@ void opcontrol() {
 
 			intake.move(127);
 
-		}
-
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) {
+		} 
+		
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) {
 
 			intake.move(-127);
 
-		}
-
-		else {
+		} 
+		
+		else if(!master.get_digital(E_CONTROLLER_DIGITAL_R1) && !master.get_digital(E_CONTROLLER_DIGITAL_L1)) {
 
 			intake.move(0);
 
 		}
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) {
+		if(master.get_digital(E_CONTROLLER_DIGITAL_R2)) {
 
 			transmissionState != transmissionState;
 			chassisTransmissionPiston.set_value(transmissionState);
-
+	
 		}
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_R2)) {
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) {
 
 			intakeState != intakeState;
 			intakePiston1.set_value(intakeState);
@@ -71,6 +72,7 @@ void opcontrol() {
 		}
 
 		delay(1);
+		
 		
 	}
 

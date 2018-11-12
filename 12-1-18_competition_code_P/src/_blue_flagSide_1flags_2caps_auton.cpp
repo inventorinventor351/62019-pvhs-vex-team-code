@@ -1,6 +1,6 @@
 #include "main.h"
 
-void blue_flagSide_1flag_2caps_auton() {
+void blue_flagSide_1flags_2caps_auton() {
 
     resetChassisEncoderValue();
 

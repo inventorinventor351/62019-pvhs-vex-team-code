@@ -2,11 +2,11 @@
 
 void red_flagside_4flags_2caps_auton() {
 
-    /*driveChassisAbs(40, 200);
+    driveChassisAbs(40, 200);
 
-    while (getLeftChassisPosition() < inToRot(39) || (getLeftChassisPosition() < inToRot(39)) {
+    while (getLeftChassisPosition() < inToRot(39) || getLeftChassisPosition() < inToRot(39)) {
 
-        intake.move_velocity(200)
+        intake.move_velocity(200);
 
     }
 
@@ -29,7 +29,7 @@ void red_flagside_4flags_2caps_auton() {
 
     resetChassisEncoderValue();
 
-    while (getLeftChassisPosition() < inToRot(29) || (getLeftChassisPosition() < inToRot(29)) {
+    while (getLeftChassisPosition() < inToRot(29) || getLeftChassisPosition() < inToRot(29)) {
 
         intake.move_velocity(-200);
 
@@ -45,6 +45,6 @@ void red_flagside_4flags_2caps_auton() {
 
     pivotChassisBAD(-90, 200, 1250);
 
-    runintake(-200, 500);*/
+    runintake(-200, 500);
 
 }

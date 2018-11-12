@@ -11,13 +11,13 @@ void autonomous() {
 
     else if(autonCount == 1) {
 
-        red_flagSide_1flag_2caps_auton();
+        red_flagSide_1flags_2caps_auton();
 
     }
 
     else if(autonCount == 2) {
 
-        red_capSide_1flag_2caps_auton();
+        red_capSide_1flags_2caps_auton();
 
     }
 

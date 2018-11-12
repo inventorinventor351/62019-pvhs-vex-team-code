@@ -19,6 +19,7 @@ extern int autonCount;
 #include "maf.h"
 #include "chassis.h"
 #include "autons.h"
+#include "intake.h"
 
 //DO NOT TOUCH BELOW STUFF, THIS MAKES THE CODE RUN
 #ifdef __cplusplus
