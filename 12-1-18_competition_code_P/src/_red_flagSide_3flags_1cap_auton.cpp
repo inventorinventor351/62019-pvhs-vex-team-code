@@ -4,22 +4,22 @@ void red_flagSide_3flags_1cap_auton() {
 
     resetChassisEncoderValue();
 
-    move_absoluteLeftChassis(3.5 * 3, 200);
-    move_absoluteRightChassis(3.5 * 3, 200);
+    move_absoluteLeftChassis(3.5, 200);
+    move_absoluteRightChassis(3.5, 200);
 
-    while(getLeftChassisPosition() < 3.5 * 3 || getRightChassisPosition() < 3.5 * 3) {
-
-
-    }
-
-    move_absoluteLeftChassis(3, 200);
-    move_absoluteRightChassis(3, 200);
-
-    while(getLeftChassisPosition() > 3 || getRightChassisPosition() > 3) {
+    while(getLeftChassisPosition() < 3.5 || getRightChassisPosition() < 3.5) {
 
 
     }
 
-    pivotChassisBAD(90 * 3, 200, 1250);
+    move_absoluteLeftChassis(1, 200);
+    move_absoluteRightChassis(1, 200);
+
+    while(getLeftChassisPosition() > 1 || getRightChassisPosition() > 1) {
+
+
+    }
+
+    pivotChassisBAD(90, 200, 1250);
 
 }

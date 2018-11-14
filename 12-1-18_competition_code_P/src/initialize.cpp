@@ -19,9 +19,9 @@ void initialize() {
     intake.set_brake_mode(MOTOR_BRAKE_HOLD);
 }
 
-int autonCount = 0;
+int autonCount = 2;
 
-void lcdScroll() {
+/*void lcdScroll() {
 
     if(autonCount < 0) {
 
@@ -115,4 +115,4 @@ void disabled() {
 
 
 
-}
+} */
