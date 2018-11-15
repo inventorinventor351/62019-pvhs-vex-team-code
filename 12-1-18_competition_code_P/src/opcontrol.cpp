@@ -2,11 +2,6 @@
 
 //Runs during the 1 minute and 45 second period of driver control or immediately after initialize() if no competition control is connected
 void opcontrol() {
-
-	bool transmissionState;
-	bool intakeState;
-
-	//int setPoint = 3;
 	
 	while(true) {
 
@@ -28,45 +23,6 @@ void opcontrol() {
 		else {
 
 			intake.move(0);
-
-		}
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) {
-
-			transmissionState != transmissionState;
-			chassisTransmissionPiston.set_value(transmissionState);
-
-		}
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_R2)) {
-
-			intakeState != intakeState;
-			intakePiston1.set_value(intakeState);
-			intakePiston2.set_value(intakeState);
-
-		}
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_X)) {
-
-			catapult.move_relative(1, 200);
-
-		}
-
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_Y)) {
-
-			catapult.move_velocity(200);
-
-		}
-
-		else {
-
-			catapult.move_velocity(0);
-
-		}
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_UP)) {
-
-			aimAtFlag(1.0, 0.1);
 
 		}
 
