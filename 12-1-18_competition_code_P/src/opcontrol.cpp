@@ -26,6 +26,9 @@ void opcontrol() {
 
 		}
 
+
+		
+
 		delay(1);
 		
 		
