@@ -243,8 +243,10 @@ void driveChassisVoltage(int time, int voltage){
 
 void driveStraight(float setPoint, int time) {
 
-    float distError, distDerivative, distPrevError, distSpeed, kDistP = 1.0, kDistD = 0.1;
-    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 1.0, kDiffD = 0.1;
+    setPoint = -setPoint;
+
+    float distError, distDerivative, distPrevError, distSpeed, kDistP =9000, kDistD = 0;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 9000, kDiffD = 0;
 
     resetChassisEncoderValue();
 
@@ -276,8 +278,8 @@ void pivotChassis(int angle, int time) {
 
     float setPoint = angle * 0.011;
 
-    float distError, distDerivative, distPrevError, distSpeed, kDistP = 1.0, kDistD = 0.1;
-    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 1.0, kDiffD = 0.1;
+    float distError, distDerivative, distPrevError, distSpeed, kDistP = 100, kDistD = 1;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 100, kDiffD = 1;
 
     for(int i = 0; i < abs(time); i++) {
 
