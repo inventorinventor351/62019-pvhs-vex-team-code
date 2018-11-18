@@ -7,9 +7,6 @@
                           //For instance, you can do `4_mtr = 50` to set motor 4's target velocity to 50
 
 #include "api.h" //Includes all of the functions, variables, etc. of the PROS 3 language
-#include <iostream>
-#include <vector>
-#include <fstream>
 
 using namespace pros; //Instead of typing pros::Motor() all the time, if you use this namepsace you can just do Motor()
 //using namespace pros::literals; //Make sure to use this namespace if you defined PROS_USE_SIMPLE_NAMES
@@ -34,7 +31,9 @@ void opcontrol(void);
 
 #ifdef __cplusplus //DO NOT TOUCH
 //You can add C++ only headers in here
-
+#include <iostream>
+#include <vector>
+#include <fstream>
 #endif //DO NOT TOUCH
 
 #endif //DO NOT TOUCH

@@ -1,6 +1,8 @@
 #ifndef AUTON_H
 #define AUTON_H
 
+#include <vector>
+
 struct wayPoint {
 
     double leftChassis_Vel,
@@ -8,6 +10,6 @@ struct wayPoint {
 
 };
 
-std::vector<wayPoint> red_flagSide_4flags_2caps;
+extern std::vector<wayPoint> red_flagSide_4flags_2caps;
 
 #endif

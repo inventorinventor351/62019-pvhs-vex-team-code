@@ -7,8 +7,6 @@ struct wayPoint {
 
 };
 
-std::vector<wayPoint> red_flagSide_4flags_2caps;
-
 wayPoint initWayPoint(double leftChassis_Vel, double rightChassis_Vel) {
 
     return {leftChassis_Vel, rightChassis_Vel};
