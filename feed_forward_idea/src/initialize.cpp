@@ -1,4 +1,5 @@
 #include "main.h" //DO NOT TOUCH
+#include <vector>
 
 struct wayPoint {
 
@@ -6,6 +7,8 @@ struct wayPoint {
     rightChassis_Vel;
 
 };
+
+std::vector<wayPoint> red_flagSide_4flags_2caps;
 
 wayPoint initWayPoint(double leftChassis_Vel, double rightChassis_Vel) {
 
