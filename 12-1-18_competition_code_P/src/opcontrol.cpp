@@ -26,8 +26,18 @@ void opcontrol() {
 
 		}
 
+		if (master.get_digital(E_CONTROLLER_R2)) {
 
+			intakePiston1.set_value(1);
+			intakePiston2.set_value(1);
+
+		}
 		
+		if (master.get_digital(E_CONTROLLER_L2)) {
+
+			intakePiston1.set_value(0);
+			intakePiston2.set_value(0);
+		}
 
 		delay(1);
 		
