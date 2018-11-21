@@ -21,8 +21,8 @@ float getRightChassisPosition();
 
 void pivotChassisBAD(float angle, int maxSpeed, int time);
 
-void aimAtFlag(float kP_, float kD_);
-void autonShoot(float kP_, float kD_);
+void aimAtFlag();
+void autonShoot();
 
 void resetLeftChassisEncoderValue();
 void resetRightChassisEncoderValue();

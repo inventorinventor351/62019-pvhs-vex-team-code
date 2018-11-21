@@ -31,9 +31,6 @@ void opcontrol(void);
 
 #ifdef __cplusplus //DO NOT TOUCH
 //You can add C++ only headers in here
-#include <iostream>
-#include <vector>
-#include <fstream>
 #endif //DO NOT TOUCH
 
 #endif //DO NOT TOUCH
