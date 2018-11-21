@@ -1,6 +1,7 @@
 #include "main.h" //DO NOT TOUCH
 
 //Runs initialization code. This occurs as soon as the program is started. It is recommended to keep execution time for this mode under a few seconds.
+
 void initialize(){
 
 	rightChassis1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
@@ -10,13 +11,7 @@ void initialize(){
     intake.set_brake_mode(E_MOTOR_BRAKE_HOLD);
     shooter.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 
-    motor_pid_s_t chassisPID = Motor::convert_pid(0, 1.0, 0.001, 0.1); //PID constants for chassis
-    leftChassis1.set_pos_pid(chassisPID);
-    leftChassis2.set_pos_pid(chassisPID);
-    rightChassis1.set_pos_pid(chassisPID);
-    rightChassis2.set_pos_pid(chassisPID);
-
-    shooterEye.clear_led();
+    shooterEye.set_zero_point(E_VISION_ZERO_CENTER);
 
 }
 
@@ -114,12 +109,12 @@ void on_right_pressed() {
 //Runs after initialize() and before autonomous. This is intended for competition-specific initialization routines, such as an autonomous selector on the LCD.
 void competition_initialize() {
 
-    lcd::initialize();
+    /*lcd::initialize();
     lcd::set_text(0, "choose auton");
     lcdScroll();
     lcd::register_btn0_cb(on_left_pressed);
     lcd::register_btn1_cb(on_center_pressed);
-    lcd::register_btn2_cb(on_right_pressed);
+    lcd::register_btn2_cb(on_right_pressed);*/
 
 }
 
