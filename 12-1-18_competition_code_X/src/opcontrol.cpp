@@ -5,7 +5,7 @@ void opcontrol() {
 
 Controller master(CONTROLLER_MASTER);
 
-bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckL2, atckR2, atckY, atckA;
+bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckL2, atckR2, atckY, atckA, atckUp = 1, finished = 1;
 	vision_signature_s_t GREENFLAG;
     GREENFLAG.id = 1;
     GREENFLAG.range = 2.8;
@@ -55,7 +55,7 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckL2, atckR2, atckY, atc
 				finished = 0;
 			}
 
-			else if(master.get_digital(E_CONTROLLER_DIGITAL_Y))
+			else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
 				shooter.move(-127);
 
 			else

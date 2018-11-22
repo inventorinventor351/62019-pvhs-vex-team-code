@@ -25,4 +25,6 @@ void pvitPD(int angle, int time);
 void aimFlag();
 void autonAimFlag();
 
+void resetChassisEncoderValueX();
+
 #endif
