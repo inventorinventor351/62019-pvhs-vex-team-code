@@ -3,25 +3,13 @@
 //Runs initialization code. This occurs as soon as the program is started. It is recommended to keep execution time for this mode under a few seconds.
 void initialize() {
 	
-    motor_pid_s_t chassisPID = Motor::convert_pid(0, 1.0, 0.001, 0.1); //PID constants for chassis
-    leftChassis1.set_pos_pid(chassisPID);
-    leftChassis2.set_pos_pid(chassisPID);
-    rightChassis1.set_pos_pid(chassisPID);
-    rightChassis2.set_pos_pid(chassisPID);
+    catapultEye.set_zero_point(E_VISION_ZERO_CENTER);
 
-    catapultEye.clear_led();
-
-    leftChassis1.set_brake_mode(MOTOR_BRAKE_COAST);
-    leftChassis2.set_brake_mode(MOTOR_BRAKE_COAST);
-    rightChassis1.set_brake_mode(MOTOR_BRAKE_COAST);
-    rightChassis2.set_brake_mode(MOTOR_BRAKE_COAST);
-    catapult.set_brake_mode(MOTOR_BRAKE_HOLD);
-    intake.set_brake_mode(MOTOR_BRAKE_HOLD);
 }
 
-int autonCount = 2;
+int autonCount = 0;
 
-/*void lcdScroll() {
+void lcdScroll() {
 
     if(autonCount < 0) {
 
@@ -115,4 +103,4 @@ void disabled() {
 
 
 
-} */
+}
