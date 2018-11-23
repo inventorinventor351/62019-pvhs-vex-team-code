@@ -82,13 +82,15 @@ void move_voltageRightChassis(int voltage) {
 
 float getLeftChassisPosition() {
 
-    return (leftChassis1.get_position() + leftChassis2.get_position())/2;
+    //return (leftChassis1.get_position() + leftChassis2.get_position())/2;
+    return leftChassis1.get_position();
 
 }
 
 float getRightChassisPosition() {
 
-    return (rightChassis1.get_position() + rightChassis2.get_position())/2;
+    //return (rightChassis1.get_position() + rightChassis2.get_position())/2;
+    return leftChassis1.get_position();
     
 }
 
@@ -147,10 +149,9 @@ void driveChassisVoltage(int time, int voltage){
 
 void driveStraight(float setPoint, int time) {
 
-    setPoint = -setPoint;
-
-    float distError, distDerivative, distPrevError, distSpeed, kDistP = 9000, kDistD = 0;
-    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 9000, kDiffD = 0;
+    float distError, distDerivative, distPrevError, distSpeed, leftSpeed, kDistP = 9000, kDistD = 0;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, rightSpeed, kDiffP = 13000, kDiffD = 11000;
+    float maxSpeed = 12001;
 
     resetChassisEncoderValue();
 
@@ -166,8 +167,11 @@ void driveStraight(float setPoint, int time) {
         diffPrevError = diffError;
         diffSpeed = (kDiffP * diffError) + (kDiffD * diffDerivative);
 
-        move_voltageLeftChassis(distSpeed - diffSpeed);
-        move_voltageRightChassis(distSpeed + diffSpeed);
+        leftSpeed = distSpeed - diffSpeed;
+        rightSpeed = distSpeed + diffSpeed;
+
+        move_voltageLeftChassis(leftSpeed > maxSpeed ? maxSpeed : leftSpeed);
+        move_voltageRightChassis(rightSpeed > maxSpeed ? maxSpeed : rightSpeed);
 
         delay(1);
 

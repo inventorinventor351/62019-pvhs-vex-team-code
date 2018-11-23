@@ -7,6 +7,8 @@ void initialize() {
 
 }
 
+int autonCount = 0;
+
 //Runs after initialize() and before autonomous. This is intended for competition-specific initialization routines, such as an autonomous selector on the LCD.
 void competition_initialize() {
 
