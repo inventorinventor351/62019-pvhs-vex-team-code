@@ -88,31 +88,48 @@ void pvitChassis(float angle, int maxSpeed, int timer) {
     }
 }
 
-void drivePD(float goal, int time){
+float getLeftChassisPosition() {
 
-    resetChassisEncoderValueX();
+    return (leftChassis1.get_position() + leftChassis2.get_position())/2;
 
-    float distError, distDerivative, distPreError, distSpeed, kPDist = 10, kDDist = 0;
-    float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff = 10, kDDiff = 0;
+}
 
-    for(int i = 0; i < time; i++){
+float getRightChassisPosition() {
 
-        distError = goal - ((leftChassis1.get_position() + leftChassis2.get_position() + rightChassis1.get_position() + rightChassis2.get_position()) / 2);
-        distDerivative = distError - distPreError;
-        distPreError = distError;
-        distSpeed = (distError * kPDist) + (distDerivative * kDDist);
+    return (rightChassis1.get_position() + rightChassis2.get_position())/2;
+    
+}
 
-        diffError = (leftChassis1.get_position() + leftChassis2.get_position() - rightChassis1.get_position() - rightChassis2.get_position()) / 2;
-        diffDerivative = diffError - diffPreError;
-        diffPreError = diffError;
-        diffSpeed = (diffError * kPDiff) + (diffDerivative * kDDiff);
+void drivePD(float setPoint, int time) {
 
-        driveVoltLeft(-distSpeed + diffSpeed);
-        driveVoltRight(-distSpeed - diffSpeed);
+    setPoint = -setPoint;
+
+    float distError, distDerivative, distPrevError, distSpeed, kDistP = 9000, kDistD = 0;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 9000, kDiffD = 0;
+
+    resetChassisEncoderValue();
+
+    for(int i = 0; i < abs(time); i++) {
+
+        distError = setPoint - ((getLeftChassisPosition() + getRightChassisPosition()) / 2.0);
+        distDerivative = distError - distPrevError;
+        distPrevError = distError;
+        distSpeed = (kDistP * distError) + (kDistD * distDerivative);
+
+        diffError = (getLeftChassisPosition() - getRightChassisPosition()) / 2.0;
+        diffDerivative = diffError - diffPrevError;
+        diffPrevError = diffError;
+        diffSpeed = (kDiffP * diffError) + (kDiffD * diffDerivative);
+
+        driveVoltLeft(distSpeed - diffSpeed);
+        driveVoltRight(distSpeed + diffSpeed);
 
         delay(1);
 
     }
+
+    driveVoltLeft(0);
+    driveVoltRight(0);
 
 }
 
@@ -225,7 +242,7 @@ void autonAimFlag(){
 
 }
 
-void resetChassisEncoderValueX() {
+void resetChassisEncoderValue() {
 
     leftChassis1.tare_position();
     leftChassis2.tare_position();

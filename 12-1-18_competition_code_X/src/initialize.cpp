@@ -4,10 +4,10 @@
 
 void initialize(){
 
-	rightChassis1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-    rightChassis2.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-    leftChassis1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-    leftChassis2.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+	rightChassis1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+    rightChassis2.set_brake_mode(E_MOTOR_BRAKE_COAST);
+    leftChassis1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+    leftChassis2.set_brake_mode(E_MOTOR_BRAKE_COAST);
     intake.set_brake_mode(E_MOTOR_BRAKE_HOLD);
     shooter.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 
