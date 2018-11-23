@@ -1,6 +1,6 @@
 #include "main.h"
 
-void red_flagSide_3flags_1cap_auton() {
+void blue_flagSide_3flags_1cap_auton() {
 
     resetChassisEncoderValue();
 
@@ -32,8 +32,10 @@ void red_flagSide_3flags_1cap_auton() {
 
     }
 
-    pivotChassis(90, 200, 1000);
+    pivotChassis(-90, 200, 1000);
 
     resetChassisEncoderValue();
+
+}
 
 }

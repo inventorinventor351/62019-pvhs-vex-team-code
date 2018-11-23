@@ -11,14 +11,15 @@ void driverpmLeft(int rpm);
 void driveVoltRight(int voltage);
 void driveVoltLeft(int voltage);
 
-void driveAbsRight(int distance);
-void driceAbsLeft(int distance);
+void driveAbsRight(float distance, int maxSpeed);
+void driveAbsLeft(float distance, int maxSpeed);
 
-void driveRelativeRight(int distance);
-void driveRelativeLeft(int distance);
+void driveRelativeRight(float distance, int maxSpeed);
+void driveRelativeLeft(float distance, int maxSpeed);
 
 void pvitChassis(float angle, int maxSpeed, int timer);
 
 void aimFlag();
+void autonAimFlag();
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef PRAGMA_H
 #define PRAGMA_H
 
+extern Controller master;
+
 extern Motor leftChassis1;
 extern Motor leftChassis2;
 extern Motor rightChassis1;
@@ -10,15 +12,10 @@ extern Motor shooter;
 
 extern Vision shooterEye;
 
-extern ADIAnalogIn potentiometer;
-extern ADIAnalogIn ballSensor;
-
 extern ADIDigitalOut intakeLift;
-extern ADIDigitalOut intakeLift1;
+extern ADIDigitalOut chassisTransmission;
+extern ADIDigitalOut tipper;
 
-extern ADIDigitalOut leftChassisTrans;
-extern ADIDigitalOut rightChassisTrans;
-
-extern ADIDigital tipper;
+extern ADIAnalogIn ballSensor;
 
 #endif
