@@ -28,7 +28,7 @@ void opcontrol() {
 		move_velocityLeftChassis(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)/127.0) * 200); 
 		move_velocityRightChassis(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)/127.0) * 200);
 
-		if(master.get_digital())
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_B))
 			aimAtFlagToggle = false;
 
 		else if(!aimAtFlagToggle) {
@@ -40,7 +40,7 @@ void opcontrol() {
 
 		if(finished) {
 
-			if(master.get_digital())
+			if(!master.get_digital(E_CONTROLLER_DIGITAL_Y))
 				catapultLaunchToggle = false;
 
 			else if(!catapultLaunchToggle) {
@@ -51,7 +51,7 @@ void opcontrol() {
 
 			}
 
-			else if(master.get_digital())
+			else if(master.get_digital(E_CONTROLLER_DIGITAL_RIGHT))
 				catapult.move(-127);
 
 			else
@@ -62,7 +62,7 @@ void opcontrol() {
 		if(catapult.get_position() >= catapult.get_target_position())
 			finished = 1;
 
-		if(master.get_digital())
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_L2))
 			chassisTransmissionToggle = false;
 
 		else if(!chassisTransmissionToggle) {
@@ -73,7 +73,7 @@ void opcontrol() {
 
 		}
 
-		if(master.get_digital())
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			intakePistonsToggle = false;
 
 		else if(!chassisTransmissionToggle) {
@@ -85,10 +85,10 @@ void opcontrol() {
 
 		}
 
-		if(master.get_digital())
+		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
 			intake.move(127);
 
-		else if(master.get_digital())
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
 			intake.move(-127);
 
 		else
