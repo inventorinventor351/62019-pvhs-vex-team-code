@@ -15,12 +15,12 @@ void opcontrol() {
   	GREENFLAG.type = 0;
   	catapultEye.set_signature(1, &GREENFLAG);
 
-	bool aimAtFlagToggle = true;
+	bool aimAtFlagToggle;
 	bool finished = true;
-	bool catapultLaunchToggle = true;
-	bool intakePistonsToggle = true;
+	bool catapultLaunchToggle;
+	bool intakePistonsToggle;
 	bool intakePistonsState;
-	bool chassisTransmissionToggle = true;
+	bool chassisTransmissionToggle;
 	bool chassisTransmissionState;
 	
 	while(true) {
@@ -28,7 +28,7 @@ void opcontrol() {
 		move_velocityLeftChassis(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)/127.0) * 200); 
 		move_velocityRightChassis(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)/127.0) * 200);
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_B))
 			aimAtFlagToggle = false;
 
 		else if(!aimAtFlagToggle) {
@@ -40,7 +40,7 @@ void opcontrol() {
 
 		if(finished) {
 
-			if(master.get_digital(E_CONTROLLER_DIGITAL_B))
+			if(!master.get_digital(E_CONTROLLER_DIGITAL_Y))
 				catapultLaunchToggle = false;
 
 			else if(!catapultLaunchToggle) {
@@ -51,7 +51,7 @@ void opcontrol() {
 
 			}
 
-			else if(master.get_digital(E_CONTROLLER_DIGITAL_X))
+			else if(master.get_digital(E_CONTROLLER_DIGITAL_RIGHT))
 				catapult.move(-127);
 
 			else
@@ -59,30 +59,21 @@ void opcontrol() {
 
 		}
 
-<<<<<<< HEAD
-		if (master.get_digital(E_CONTROLLER_DIGITAL_R2)) {
-=======
 		if(catapult.get_position() >= catapult.get_target_position())
 			finished = 1;
->>>>>>> 5a9bb4983a956d08527487a82fa0aaef83f1d36c
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_L2))
 			chassisTransmissionToggle = false;
 
 		else if(!chassisTransmissionToggle) {
 
 			chassisTransmissionToggle = true;
 			chassisTransmissionPiston.set_value(chassisTransmissionState);
-			chassisTransmissionState != chassisTransmissionState;
+			chassisTransmissionState = !chassisTransmissionState;
 
 		}
-<<<<<<< HEAD
-		
-		if (master.get_digital(E_CONTROLLER_DIGITAL_L2)) {
-=======
->>>>>>> 5a9bb4983a956d08527487a82fa0aaef83f1d36c
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			intakePistonsToggle = false;
 
 		else if(!chassisTransmissionToggle) {
@@ -90,14 +81,28 @@ void opcontrol() {
 			intakePistonsToggle = true;
 			intakePiston1.set_value(intakePistonsState);
 			intakePiston2.set_value(intakePistonsState);
-			intakePistonsState != intakePistonsState;
+			intakePistonsState = !intakePistonsState;
 
 		}
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+		/*if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) {
+
+			intakePiston1.set_value(1);
+			intakePiston2.set_value(1);
+
+		}
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) {
+
+			intakePiston1.set_value(0);
+			intakePiston2.set_value(0);
+
+		}*/
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
 			intake.move(127);
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
 			intake.move(-127);
 
 		else
