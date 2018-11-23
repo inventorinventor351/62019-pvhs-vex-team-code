@@ -88,22 +88,38 @@ void pvitChassis(float angle, int maxSpeed, int timer) {
     }
 }
 
-void drivePD(float goal, int time){
+float getLeftChassisPosition() {
 
-    float distError, distDerivative, distPreError, distSpeed, kPDist = 1.0, kDDist = 0.1;
-    float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff = 1.0, kDDiff = 0.1;
+    return (leftChassis1.get_position() + leftChassis2.get_position())/2;
 
-    for(int i = 0; i < time; i++){
+}
 
-        distError = goal - ((leftChassis1.get_position() +leftChassis2.get_position() + rightChassis1.get_position() + rightChassis2.get_position()) / 4);
-        distDerivative = distError - distPreError;
-        distPreError = distError;
-        distSpeed = (distError * kPDist) + (distDerivative * kDDist);
+float getRightChassisPosition() {
 
-        diffError = (leftChassis1.get_position() + leftChassis2.get_position() - rightChassis1.get_position() - rightChassis2.get_position()) / 4;
-        diffDerivative = diffError - diffPreError;
-        diffPreError = diffError;
-        diffSpeed = (diffError * kPDist) + (diffDerivative * kDDist);
+    return (rightChassis1.get_position() + rightChassis2.get_position())/2;
+    
+}
+
+void drivePD(float setPoint, int time) {
+
+    setPoint = -setPoint;
+
+    float distError, distDerivative, distPrevError, distSpeed, kDistP = 9000, kDistD = 0;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 9000, kDiffD = 0;
+
+    resetChassisEncoderValue();
+
+    for(int i = 0; i < abs(time); i++) {
+
+        distError = setPoint - ((getLeftChassisPosition() + getRightChassisPosition()) / 2.0);
+        distDerivative = distError - distPrevError;
+        distPrevError = distError;
+        distSpeed = (kDistP * distError) + (kDistD * distDerivative);
+
+        diffError = (getLeftChassisPosition() - getRightChassisPosition()) / 2.0;
+        diffDerivative = diffError - diffPrevError;
+        diffPrevError = diffError;
+        diffSpeed = (kDiffP * diffError) + (kDiffD * diffDerivative);
 
         driveVoltLeft(distSpeed - diffSpeed);
         driveVoltRight(distSpeed + diffSpeed);
@@ -111,13 +127,17 @@ void drivePD(float goal, int time){
         delay(1);
 
     }
+
+    driveVoltLeft(0);
+    driveVoltRight(0);
+
 }
 
 void pvitPD(int angle, int time){
 
     float setPoint = angle * 0.011;
-    float distError, distDerivative, distPreError, distSpeed, kPDist = 1.0, kDDist = 0.1;
-    float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff = 1.0, kDDiff = 0.1;
+    float distError, distDerivative, distPreError, distSpeed, kPDist = 0, kDDist = 0;
+    float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff = 0, kDDiff = 0;
 
     for(int i = 0; i < time; i++){
 
@@ -219,5 +239,14 @@ void autonAimFlag(){
         delay(1);
 
     }
+
+}
+
+void resetChassisEncoderValue() {
+
+    leftChassis1.tare_position();
+    leftChassis2.tare_position();
+    rightChassis1.tare_position();
+    rightChassis2.tare_position();
 
 }

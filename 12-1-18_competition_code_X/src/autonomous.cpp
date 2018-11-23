@@ -3,7 +3,7 @@
 //Runs during the 15 second autonomous period
 void autonomous() {
 
-	vision_signature_s_t GREENFLAG;
+/*	vision_signature_s_t GREENFLAG;
     GREENFLAG.id = 1;
     GREENFLAG.range = 2.8;
     GREENFLAG.u_min = -3383;
@@ -38,5 +38,8 @@ void autonomous() {
         autonRedCapLine();
 
     if(autonCount == 7)
-        autonRedCapFlip();
+        autonRedCapFlip();*/
+
+drivePD(2, 10000);
+
 }

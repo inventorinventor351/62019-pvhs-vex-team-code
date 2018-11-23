@@ -19,10 +19,15 @@ void driveVoltLeft(int voltage);
 
 void pvitChassis(float angle, int maxSpeed, int timer);
 
-void drivePD(float goal, int time);
+float getLeftChassisPosition();
+float getRightChassisPosition();
+
+void drivePD(float setPoint, int time);
 void pvitPD(int angle, int time);
 
 void aimFlag();
 void autonAimFlag();
+
+void resetChassisEncoderValue();
 
 #endif

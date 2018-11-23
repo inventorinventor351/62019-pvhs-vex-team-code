@@ -62,7 +62,7 @@ void opcontrol() {
 		if(catapult.get_position() >= catapult.get_target_position())
 			finished = 1;
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_L2))
 			chassisTransmissionToggle = false;
 
 		else if(!chassisTransmissionToggle) {
@@ -73,7 +73,7 @@ void opcontrol() {
 
 		}
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			intakePistonsToggle = false;
 
 		else if(!chassisTransmissionToggle) {
