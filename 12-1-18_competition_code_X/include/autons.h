@@ -1,7 +1,7 @@
 #ifndef AUTONS_H
 #define AUTONS_H
 
-int autonCount = 0;
+extern int autonCount;
 
 void autonBlueCapFlip();
 void autonBlueCapLine();

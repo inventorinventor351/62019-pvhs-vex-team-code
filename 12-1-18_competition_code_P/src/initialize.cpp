@@ -3,15 +3,11 @@
 //Runs initialization code. This occurs as soon as the program is started. It is recommended to keep execution time for this mode under a few seconds.
 void initialize() {
 	
-    motor_pid_s_t chassisPID = Motor::convert_pid(0, 1.0, 0.001, 0.1); //PID constants for chassis
-    leftChassis1.set_pos_pid(chassisPID);
-    leftChassis2.set_pos_pid(chassisPID);
-    rightChassis1.set_pos_pid(chassisPID);
-    rightChassis2.set_pos_pid(chassisPID);
-
-    catapultEye.clear_led();
+    catapultEye.set_zero_point(E_VISION_ZERO_CENTER);
 
 }
+
+int autonCount = 0;
 
 void lcdScroll() {
 

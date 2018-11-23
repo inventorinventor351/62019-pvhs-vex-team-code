@@ -13,8 +13,5 @@ ADIDigitalOut intakePiston1(1);
 ADIDigitalOut intakePiston2(2);
 ADIDigitalOut chassisTransmissionPiston(3);
 
-ADIAnalogIn catapultPotent(5);
-ADIAnalogIn ballLoaderLightSensor(6);
-
 Controller master(E_CONTROLLER_MASTER);
 Controller partner(E_CONTROLLER_PARTNER);
