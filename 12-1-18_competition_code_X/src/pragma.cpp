@@ -12,6 +12,7 @@ Motor shooter(6, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //Port 6, 200 
 Vision shooterEye(7); //Port 7, vision sensor for shooter
 
 ADIDigitalOut intakeLift(1); //Port 1, solonoid for raising intake
-ADIDigitalOut chassisTransmission(2); //Port 2, solonoid for transmission in the chassis
+ADIDigitalOut intakeLiftCap(2); //Port 2, supports first intakeLift when lifting caps
+ADIDigitalOut chassisTransmission(3); //Port 3, solonoid for transmission in the chassis
 
-ADIAnalogIn ballSensor(4); //Port 7, light sensor for the ball
+ADIDigitalIn capSensor(4); //Port 4, limit switch that determines 1 or 2 pistons for the intake lift
