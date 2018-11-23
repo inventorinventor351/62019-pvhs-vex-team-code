@@ -5,13 +5,26 @@ void opcontrol() {
 
 Controller master(CONTROLLER_MASTER);
 
-bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckL2, atckR2, atckY;
+bool transmissionVar = 0, liftVar = 1, tipperVar = 0, atckL2, atckR2, atckY, atckA, atckUp = 1, finished = 1;
+	vision_signature_s_t GREENFLAG;
+    GREENFLAG.id = 1;
+    GREENFLAG.range = 2.8;
+    GREENFLAG.u_min = -3383;
+    GREENFLAG.u_max = -2431;
+    GREENFLAG.u_mean = -2907;
+    GREENFLAG.v_min = -4711;
+    GREENFLAG.u_max = -2891;
+    GREENFLAG.v_mean = -3801;
+    GREENFLAG.type = 0;
+    shooterEye.set_signature(1, &GREENFLAG);
+	intakeLift.set_value(1);
 
 	while(true) //Always running
 	{
         
-		driveRight((master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y))); //Right side of the base
-		driveLeft((master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y))); //Left side of the base
+		driveVelocityRight((master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) * 200 / 127); //Right side of the base
+		driveVelocityLeft((master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)) * 200 / 127); //Left side of the base
+
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) //If R1 on the master controller is pressed
 			intake.move(127); //Then intake rolls balls and caps in
@@ -23,48 +36,63 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckL2, atckR2, atckY;
 			intake.move(0);
 
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_A))
-			aimFlag();
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_A))
+			atckA = false;
+		
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_A)){
+			atckA = true;
+			aimFlag;
+		}
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_UP)) //If L2 and R2 on the master controller is pressed
-			shooter.move(127); //Then shoot and reload
 
-		else if(!master.get_digital(E_CONTROLLER_DIGITAL_UP))
-			shooter.move(0);
+		/*if(finished){
+
+			if(master.get_digital(E_CONTROLLER_DIGITAL_UP))
+				atckUp = 0;
+
+			else if(!atckUp){
+				atckUp = 1;
+				shooter.move_relative(3, 127);
+				finished = 0;
+			}
+
+			else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
+				shooter.move(-127);
+
+			else
+				shooter.move(0);
+
+		}
+
+		if(shooter.get_position() >= shooter.get_target_position())
+			finished = 1;*/
 
 
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_L2))			
         	atckL2 = false;
 
         else if(!atckL2){
-
             atckL2 = true;
             chassisTransmission.set_value(transmissionVar);
             transmissionVar = !transmissionVar;
-
 		}
+
 
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))			
         	atckR2 = false;
 
         else if(!atckR2){
-
             atckR2 = true;
             intakeLift.set_value(liftVar);
             liftVar = !liftVar;
-
 		}
+		
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_UP))			
+        	atckUp = false;
 
-
-		if(!master.get_digital(E_CONTROLLER_DIGITAL_Y))			
-        	atckY = false;
-
-        else if(!atckY){
-
-            atckY = true;
-            tipper.set_value(tipperVar);
-            tipperVar = !tipperVar;
-			
+        else if(!atckUp){
+            atckUp = true;
+            shooter.move_relative(3.1, 127);
 		}
 
 		delay(1);
