@@ -32,7 +32,7 @@ void opcontrol() {
 
 		}
 
-		if(catabut.get_value()) {
+		/*if(catabut.get_value()) {
 
 			if(!master.get_digital(E_CONTROLLER_DIGITAL_Y))
 				catapultLaunchToggle = 0;
@@ -54,7 +54,29 @@ void opcontrol() {
 		}
 
 		else
-			catapult.move(127);
+			catapult.move(0);*/
+
+		if(catabut.get_value()) {
+
+			catapult.move_velocity(0);
+
+			if(master.get_digital(E_CONTROLLER_DIGITAL_Y)) {
+
+			catapult.move_velocity(127);
+			delay(500);
+				
+
+			}
+
+		}
+		else if(!catabut.get_value()) {
+
+			catapult.move_velocity(127);
+			
+
+		}
+	
+
 
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			intakePistonsToggle = 0;

@@ -215,7 +215,7 @@ void pivotChassis(int angle, int time) {
 
 void aimAtFlag() {
 
-    int range = 5, kP = 55, range = 5;
+    int range = 5, kP = 55;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -244,7 +244,7 @@ void aimAtFlag() {
 
 void autonShoot() {
 
-    int range = 5, error, kP = 55, range = 5, beforePosition;
+    int range = 5, error, kP = 55, beforePosition;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 

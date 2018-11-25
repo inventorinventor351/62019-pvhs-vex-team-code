@@ -1,6 +1,6 @@
 #include "main.h"
 
-void red_flagSide_3flags_1cap_auton() {
+void red_flagSide_3flags_1caps_auton() {
 
     driveStraight(2.85, 1500);
     intake.move(127);
