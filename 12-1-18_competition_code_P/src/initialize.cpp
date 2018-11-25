@@ -5,11 +5,6 @@ void initialize() {
 	
     catapultEye.set_zero_point(E_VISION_ZERO_CENTER);
 
-    leftChassis1.set_brake_mode(E_MOTOR_BRAKE_COAST);
-    leftChassis2.set_brake_mode(E_MOTOR_BRAKE_COAST);
-    rightChassis1.set_brake_mode(E_MOTOR_BRAKE_COAST);
-    rightChassis2.set_brake_mode(E_MOTOR_BRAKE_COAST);
-
 }
 
 int autonCount = 0;

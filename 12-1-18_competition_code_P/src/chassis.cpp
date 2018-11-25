@@ -215,34 +215,28 @@ void pivotChassis(int angle, int time) {
 
 void aimAtFlag() {
 
-    vision_object_s_t target;
-    int lowestScore = 321, range = 5;
-    int error = 0, kP = 100;
+    int range = 5, kP = 55, range = 5;
 
-    for(int i = 0; i < catapultEye.get_object_count(); i++) {
+    if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
-        vision_object_s_t suspect = catapultEye.get_by_size(i);
+        move_voltageLeftChassis(0);
+        move_voltageRightChassis(0);
 
-        if(abs(suspect.x_middle_coord) < lowestScore) {
+    }
 
-            lowestScore = abs(suspect.x_middle_coord);
-            target = suspect;
+    else {
+
+        while((abs(catapultEye.get_by_size(0).x_middle_coord) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
+
+            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord));
+            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord) * -1);
 
         }
 
-    }
-
-    while(abs(target.x_middle_coord) > range) {
-
-        error = target.x_middle_coord;
-
-        move_voltageLeftChassis(kP * error);
-        move_voltageRightChassis(kP * error * -1);
+        move_voltageLeftChassis(0);
+        move_voltageRightChassis(0);
 
     }
-
-    move_voltageLeftChassis(0);
-    move_voltageRightChassis(0);
 
     master.rumble("-");
 
@@ -250,51 +244,48 @@ void aimAtFlag() {
 
 void autonShoot() {
 
-    vision_object_s_t target;
-    int lowestScore = 321, range = 5;
-    int error = 0, kP = 100;
+    int range = 5, error, kP = 55, range = 5, beforePosition;
 
-    for(int i = 0; i < catapultEye.get_object_count(); i++) {
+    if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
-        vision_object_s_t suspect = catapultEye.get_by_size(i);
+        move_voltageLeftChassis(0);
+        move_voltageRightChassis(0);
 
-        if(abs(suspect.x_middle_coord) < lowestScore) {
+    }
 
-            lowestScore = abs(suspect.x_middle_coord);
-            target = suspect;
+    else {
+
+        beforePosition = catapultEye.get_by_size(0).x_middle_coord;
+
+        while((abs(catapultEye.get_by_size(0).x_middle_coord) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
+
+            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord));
+            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord) * -1);
 
         }
 
-    }
+        move_voltageLeftChassis(0);
+        move_voltageRightChassis(0);
 
-    int beforePosition = target.x_middle_coord;
+        catapult.move(127);
+        delay(100);
 
-    while(abs(target.x_middle_coord) > range) {
+        while(!catabut.get_value()) {}
+        
+        catapult.move(0);
 
-        error = target.x_middle_coord;
+        while((abs(beforePosition - catapultEye.get_by_size(0).x_middle_coord) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
-        move_voltageLeftChassis(kP * error);
-        move_voltageRightChassis(kP * error * -1);
+            error = catapultEye.get_by_size(0).x_middle_coord - beforePosition;
 
-    }
+            move_voltageLeftChassis(kP * (error));
+            move_voltageRightChassis(kP * (error) * -1);
 
-    move_voltageLeftChassis(0);
-    move_voltageRightChassis(0);
+        }
 
-    catapult.move_relative(3, 200);
-    delay(100);
-    error = 0;
-
-    while(abs(beforePosition - target.x_middle_coord) > range) {
-
-        error = target.x_middle_coord - beforePosition;
-
-        move_voltageLeftChassis(kP * error);
-        move_voltageRightChassis(kP * error * -1);
+        move_voltageLeftChassis(0);
+        move_voltageRightChassis(0);
 
     }
-
-    move_voltageLeftChassis(0);
-    move_voltageRightChassis(0);
 
 }

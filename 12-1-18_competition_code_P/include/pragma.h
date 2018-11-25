@@ -13,6 +13,8 @@ extern Vision catapultEye;
 extern ADIDigitalOut intakePiston1;
 extern ADIDigitalOut intakePiston2;
 extern ADIDigitalOut chassisTransmissionPiston;
+extern ADIDigitalIn is_cap;
+extern ADIDigitalIn catabut;
 
 extern Controller master;
 extern Controller partner;
