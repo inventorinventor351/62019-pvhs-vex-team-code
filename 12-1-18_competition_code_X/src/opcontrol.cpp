@@ -5,7 +5,7 @@ void opcontrol() {
 
 Controller master(CONTROLLER_MASTER);
 
-bool transmissionVar = 0, liftVar = 1, tipperVar = 0, atckL2, atckR2, atckY, atckA, atckUp = 1, finished = 1;
+bool transmissionVar = 0, liftVar = 1, tipperVar = 0, atckL2, atckY, atckA, atckUp = 1, finished = 1;
 	vision_signature_s_t GREENFLAG;
     GREENFLAG.id = 1;
     GREENFLAG.range = 2.8;
@@ -68,11 +68,11 @@ bool transmissionVar = 0, liftVar = 1, tipperVar = 0, atckL2, atckR2, atckY, atc
 			finished = 1;*/
 
 
-		if(!master.get_digital(E_CONTROLLER_DIGITAL_L2))			
-        	atckL2 = false;
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_Y))			
+        	atckY = false;
 
-        else if(!atckL2){
-            atckL2 = true;
+        else if(!atckY){
+            atckY = true;
             chassisTransmission.set_value(transmissionVar);
             transmissionVar = !transmissionVar;
 		}
@@ -83,7 +83,8 @@ bool transmissionVar = 0, liftVar = 1, tipperVar = 0, atckL2, atckR2, atckY, atc
 
         else if(!atckR2){
             atckR2 = true;
-            intakeLift.set_value(liftVar);
+			intakeLift.set_value(liftVar);
+			intakeLiftCap.set_value(liftVar && capSensor.get_value());
             liftVar = !liftVar;
 		}
 		
