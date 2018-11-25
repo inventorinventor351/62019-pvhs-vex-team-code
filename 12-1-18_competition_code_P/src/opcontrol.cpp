@@ -15,7 +15,7 @@ void opcontrol() {
   	GREENFLAG.type = 0;
   	catapultEye.set_signature(1, &GREENFLAG);
 
-	bool aimAtFlagToggle, catapultLaunchToggle, intakePistonsToggle, intakePistonsState = 0, chassisTransmissionToggle, chassisTransmissionState = 0;
+	bool aimAtFlagToggle, catapultLaunchToggle, intakePistonsToggle, intakePistonsState = 1, chassisTransmissionToggle, chassisTransmissionState = 0, finished = 1;
 	
 	while(true) {
 
@@ -32,7 +32,7 @@ void opcontrol() {
 
 		}
 
-		/*if(catabut.get_value()) {
+		if(finished) {
 
 			if(!master.get_digital(E_CONTROLLER_DIGITAL_Y))
 				catapultLaunchToggle = 0;
@@ -42,6 +42,7 @@ void opcontrol() {
 				catapultLaunchToggle = 1;
 				catapult.move(127);
 				delay(100);
+				finished = 0;
  
 			}
 
@@ -53,30 +54,16 @@ void opcontrol() {
 
 		}
 
-		else
-			catapult.move(0);*/
+		else {
 
-		if(catabut.get_value()) {
+			if(catabut.get_value()) {
 
-			catapult.move_velocity(0);
-
-			if(master.get_digital(E_CONTROLLER_DIGITAL_Y)) {
-
-			catapult.move_velocity(127);
-			delay(500);
-				
+				catapult.move(0);
+				finished = 1;
 
 			}
-
-		}
-		else if(!catabut.get_value()) {
-
-			catapult.move_velocity(127);
-			
-
-		}
-	
-
+		
+		}		
 
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			intakePistonsToggle = 0;
@@ -102,10 +89,10 @@ void opcontrol() {
 		}
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
-			intake.move(127);
+			intake.move(64);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			intake.move(-127);
+			intake.move(-64);
 
 		else
 			intake.move(0);
