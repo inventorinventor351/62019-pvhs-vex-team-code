@@ -3,7 +3,7 @@
 //Runs during the 15 second autonomous period
 void autonomous() {
 
-/*	vision_signature_s_t GREENFLAG;
+	vision_signature_s_t GREENFLAG;
     GREENFLAG.id = 1;
     GREENFLAG.range = 2.8;
     GREENFLAG.u_min = -3383;
@@ -13,10 +13,9 @@ void autonomous() {
     GREENFLAG.u_max = -2891;
     GREENFLAG.v_mean = -3801;
     GREENFLAG.type = 0;
-
     shooterEye.set_signature(1, &GREENFLAG);
 
-    if(autonCount == 0)
+    /*if(autonCount == 0)
         autonBlueFlag();
 
     if(autonCount == 1)
@@ -39,7 +38,45 @@ void autonomous() {
 
     if(autonCount == 7)
         autonRedCapFlip();*/
+    
+    vision_object_s_t closestObject;
 
-drivePD(2, 10000);
+    int comparingValue = 1000000;
+
+    for(int i = 0; i < shooterEye.get_object_count(); i++){
+
+        vision_object_s_t suspect = shooterEye.get_by_size(i);
+
+        if(comparingValue > abs(suspect.x_middle_coord)){
+            
+            closestObject = suspect;
+            comparingValue = abs(closestObject.x_middle_coord);
+
+        }
+
+    }
+
+    while(true){
+
+        comparingValue = 1000000;
+
+        for(int i = 0; i < shooterEye.get_object_count(); i++){
+
+            vision_object_s_t suspect = shooterEye.get_by_size(i);
+
+            if(comparingValue > abs(suspect.x_middle_coord)){
+            
+                closestObject = suspect;
+                comparingValue = abs(closestObject.x_middle_coord);
+
+            }
+
+        }
+
+        std::cout << closestObject.x_middle_coord << ":" << shooterEye.get_object_count() << "\n";
+
+        delay(1);
+
+    }
 
 }

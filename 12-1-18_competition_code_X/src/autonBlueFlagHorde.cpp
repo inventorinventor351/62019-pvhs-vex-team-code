@@ -15,11 +15,13 @@ void autonBlueFlagHorde(){
     delay(300);
     intake.move(0);
     intakeLift.set_value(1);
+    intakeLiftCap.set_value(1);
 
     pvitChassis(-90, 200, 1); //Check to see if this flips the lower flag in the middle?
     drivePD(30, 500);
     delay(300);
     intakeLift.set_value(0);
+    intakeLiftCap.set_value(0);
     delay(100);
     intake.move(-127);
 
@@ -33,11 +35,13 @@ void autonBlueFlagHorde(){
     delay(300);
     intake.move(0);
     intakeLift.set_value(1);
+    intakeLiftCap.set_value(1);
     
     drivePD(-5, 100);
     pvitChassis(90, 200, 1);
     drivePD(6, 100);
     intakeLift.set_value(0);
+    intakeLiftCap.set_value(0);
     delay(100);
     intake.move(-127);
     drivePD(-5, 100);
@@ -49,9 +53,11 @@ void autonBlueFlagHorde(){
     pvitChassis(20, 200, 0.22222);
     drivePD(-35, 1000);
     intakeLift.set_value(1);
+    intakeLiftCap.set_value(1);
     intake.move(0);
     pvitChassis(140, 200, 1.55556);
     intakeLift.set_value(0);
+    intakeLiftCap.set_value(0);
     delay(100);
     intake.move(-127);
     drivePD(-5, 100);

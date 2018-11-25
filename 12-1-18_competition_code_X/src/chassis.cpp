@@ -162,7 +162,7 @@ void pvitPD(int angle, int time){
 
 void aimFlag(){
 
-    int comparingValue = 1000000, error, kP;
+    int comparingValue = 1000000, error, kP = 0;
     vision_object_s_t closestObject;
 
     for(int i = 0; i < shooterEye.get_object_count(); i++){
@@ -179,6 +179,21 @@ void aimFlag(){
     }
 
     while(abs(closestObject.x_middle_coord) > 5){
+
+        for(int i = 0; i < shooterEye.get_object_count(); i++){
+
+            vision_object_s_t suspect = shooterEye.get_by_size(i);
+
+            if(comparingValue > abs(suspect.x_middle_coord)){
+            
+                closestObject = suspect;
+                comparingValue = abs(closestObject.x_middle_coord);
+
+            }
+
+        }
+
+        std::cout << closestObject.x_middle_coord << ":" << shooterEye.get_object_count(); "\n";
 
         error = closestObject.x_middle_coord;
 

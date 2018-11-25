@@ -16,3 +16,4 @@ ADIDigitalOut intakeLiftCap(2); //Port 2, supports first intakeLift when lifting
 ADIDigitalOut chassisTransmission(3); //Port 3, solonoid for transmission in the chassis
 
 ADIDigitalIn capSensor(4); //Port 4, limit switch that determines 1 or 2 pistons for the intake lift
+ADIDigitalIn shooterBtn(5); //Port 5, button for stopping the shooter motor
