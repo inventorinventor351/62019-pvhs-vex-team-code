@@ -27,10 +27,10 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) //If R1 on the master controller is pressed
-			intake.move(127); //Then intake rolls balls and caps in
+			intake.move(64); //Then intake rolls balls and caps in
 		
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) //If L1 on the master controller is pressed
-			intake.move(-127); //Then intake flips caps
+			intake.move(-64); //Then intake flips caps
 
 		else
 			intake.move(0);

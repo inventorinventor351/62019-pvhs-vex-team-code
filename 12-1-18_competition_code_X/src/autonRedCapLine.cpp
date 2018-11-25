@@ -32,10 +32,10 @@ void autonRedCapLine(){
 
     pvitChassis(90, 200, 1);
     drivePD(-20, 500);
-    intake.move(-127);
+    intake.move(-64);
     delay(500);
     drivePD(-10, 300);
-    intake.move(127);
+    intake.move(64);
     delay(500);
     intakeLift.set_value(1);
     intakeLiftCap.set_value(1);
@@ -48,7 +48,7 @@ void autonRedCapLine(){
     intakeLift.set_value(0);
     intakeLiftCap.set_value(0);
     delay(200);
-    intake.move(-127);
+    intake.move(-64);
     drivePD(5, 200);
 
 }

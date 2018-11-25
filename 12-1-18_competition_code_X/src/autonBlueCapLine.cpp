@@ -7,7 +7,7 @@ void autonBlueCapLine(){
     pvitChassis(-90, 200, 1);
     drivePD(45, 1000);
     delay(500);
-    intake.move(127);
+    intake.move(64);
 
     drivePD(-15, 500);
     intakeLift.set_value(1);
@@ -27,15 +27,15 @@ void autonBlueCapLine(){
     delay(100);
     intakeLift.set_value(0);
     intakeLiftCap.set_value(0);
-    intake.move(-127);
+    intake.move(-64);
     drivePD(-34, 1000);
 
     pvitChassis(90, 200, 1);
     drivePD(20, 500);
-    intake.move(-127);
+    intake.move(-64);
     delay(500);
     drivePD(10, 300);
-    intake.move(127);
+    intake.move(64);
     delay(500);
     intakeLift.set_value(1);
     intakeLiftCap.set_value(1);
@@ -48,7 +48,7 @@ void autonBlueCapLine(){
     intakeLift.set_value(0);
     intakeLiftCap.set_value(0);
     delay(200);
-    intake.move(-127);
+    intake.move(-64);
     drivePD(-5, 200);
 
 }

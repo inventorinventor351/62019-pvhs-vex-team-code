@@ -4,7 +4,7 @@ void autonRedFlag(){
     
     drivePD(45, 1000);
     delay(500);
-    intake.move(127);
+    intake.move(64);
 
     drivePD(-45, 1000);
 
@@ -19,7 +19,7 @@ void autonRedFlag(){
 
     drivePD(24, 500);
 
-    intake.move(-127);
+    intake.move(-64);
     delay(500);
     intake.move(0);
     drivePD(-5, 100);*/
