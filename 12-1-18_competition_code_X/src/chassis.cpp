@@ -75,17 +75,19 @@ void driveVoltRight(int voltage) {
 
 }
 
-void pvitChassis(float angle, int maxSpeed, int timer) {
+void pvitChassis(int angle, int maxSpeed, int timer) {
 
-    angle = angle * Pi * 2.34 / 180;
+    float distance = angle * Pi * 2.34 / 180;
     
     for(int x; x < timer; x++){
 
-        driveRelativeRight(angle, maxSpeed);
-        driveRelativeLeft(-angle, maxSpeed);
+        driveRelativeRight(distance, maxSpeed);
+        driveRelativeLeft(-distance, maxSpeed);
 
         delay(1);
+
     }
+    
 }
 
 float getLeftChassisPosition() {
@@ -177,6 +179,8 @@ void aimFlag() {
 
             driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord));
             driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord) * -1);
+
+            std::cout << shooterEye.get_by_size(0).x_middle_coord << "\n";
 
         }
 
