@@ -4,7 +4,7 @@ void autonBlueCapFlip(){
 
     drivePD(45, 1000);
     delay(500);
-    intake.move(127);
+    intake.move(64);
     delay(2000);
     intake.move(0);
 
@@ -12,7 +12,7 @@ void autonBlueCapFlip(){
 
     pvitChassis(70, 200, 0.77778);
     drivePD(20, 500);
-    intake.move(-127);
+    intake.move(-64);
     delay(2000);
     intake.move(0);
     drivePD(-20, 500);

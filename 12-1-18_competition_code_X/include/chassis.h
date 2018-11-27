@@ -17,7 +17,7 @@ void driveRelativeLeft(float distance, int maxSpeed);
 void driveVoltRight(int voltage);
 void driveVoltLeft(int voltage);
 
-void pvitChassis(float angle, int maxSpeed, int timer);
+void pvitChassis(int angle, int maxSpeed, int timer);
 
 float getLeftChassisPosition();
 float getRightChassisPosition();

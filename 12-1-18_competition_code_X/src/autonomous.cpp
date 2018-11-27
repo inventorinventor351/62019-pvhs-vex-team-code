@@ -39,44 +39,6 @@ void autonomous() {
     if(autonCount == 7)
         autonRedCapFlip();*/
     
-    vision_object_s_t closestObject;
-
-    int comparingValue = 1000000;
-
-    for(int i = 0; i < shooterEye.get_object_count(); i++){
-
-        vision_object_s_t suspect = shooterEye.get_by_size(i);
-
-        if(comparingValue > abs(suspect.x_middle_coord)){
-            
-            closestObject = suspect;
-            comparingValue = abs(closestObject.x_middle_coord);
-
-        }
-
-    }
-
-    while(true){
-
-        comparingValue = 1000000;
-
-        for(int i = 0; i < shooterEye.get_object_count(); i++){
-
-            vision_object_s_t suspect = shooterEye.get_by_size(i);
-
-            if(comparingValue > abs(suspect.x_middle_coord)){
-            
-                closestObject = suspect;
-                comparingValue = abs(closestObject.x_middle_coord);
-
-            }
-
-        }
-
-        std::cout << closestObject.x_middle_coord << ":" << shooterEye.get_object_count() << "\n";
-
-        delay(1);
-
-    }
+    pvitChassis(90, 200, 1);
 
 }

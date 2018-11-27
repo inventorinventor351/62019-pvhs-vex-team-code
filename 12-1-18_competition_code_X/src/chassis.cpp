@@ -75,17 +75,19 @@ void driveVoltRight(int voltage) {
 
 }
 
-void pvitChassis(float angle, int maxSpeed, int timer) {
+void pvitChassis(int angle, int maxSpeed, int timer) {
 
-    angle = angle * Pi * 2.34 / 180;
+    float distance = angle * Pi * 2.34 / 180;
     
     for(int x; x < timer; x++){
 
-        driveRelativeRight(angle, maxSpeed);
-        driveRelativeLeft(-angle, maxSpeed);
+        driveRelativeRight(distance, maxSpeed);
+        driveRelativeLeft(-distance, maxSpeed);
 
         delay(1);
+
     }
+    
 }
 
 float getLeftChassisPosition() {
@@ -160,47 +162,30 @@ void pvitPD(int angle, int time){
 
 }
 
-void aimFlag(){
+void aimFlag() {
 
-    int comparingValue = 1000000, error, kP = 0;
-    vision_object_s_t closestObject;
+    int kP = 55;
 
-    for(int i = 0; i < shooterEye.get_object_count(); i++){
+    if(abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
 
-        vision_object_s_t suspect = shooterEye.get_by_size(i);
-
-        if(comparingValue > abs(suspect.x_middle_coord)){
-            
-            closestObject = suspect;
-            comparingValue = abs(closestObject.x_middle_coord);
-
-        }
+        driveVoltLeft(0);
+        driveVoltRight(0);
 
     }
 
-    while(abs(closestObject.x_middle_coord) > 5){
+    else {
 
-        for(int i = 0; i < shooterEye.get_object_count(); i++){
+        while((abs(shooterEye.get_by_size(0).x_middle_coord) >= 5) && abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
 
-            vision_object_s_t suspect = shooterEye.get_by_size(i);
+            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord));
+            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord) * -1);
 
-            if(comparingValue > abs(suspect.x_middle_coord)){
-            
-                closestObject = suspect;
-                comparingValue = abs(closestObject.x_middle_coord);
-
-            }
+            std::cout << shooterEye.get_by_size(0).x_middle_coord << "\n";
 
         }
 
-        std::cout << closestObject.x_middle_coord << ":" << shooterEye.get_object_count(); "\n";
-
-        error = closestObject.x_middle_coord;
-
-        driveVoltLeft(kP * error);
-        driveVoltRight(-(kP * error));
-
-        delay(1);
+        driveVoltLeft(0);
+        driveVoltRight(0);
 
     }
 
@@ -208,50 +193,48 @@ void aimFlag(){
 
 }
 
-void autonAimFlag(){
+void AutonAimFlag() {
 
-    int comparingValue = 1000000, error, kP;
-    vision_object_s_t closestObject;
+    int error, kP = 55, beforePosition;
 
-    for(int i = 0; i < shooterEye.get_object_count(); i++){
+    if(abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
 
-        vision_object_s_t suspect = shooterEye.get_by_size(i);
+        driveVoltLeft(0);
+        driveVoltRight(0);
 
-        if(comparingValue > abs(suspect.x_middle_coord)){
-            
-            closestObject = suspect;
-            comparingValue = abs(closestObject.x_middle_coord);
+    }
+
+    else {
+
+        beforePosition = shooterEye.get_by_size(0).x_middle_coord;
+
+        while((abs(shooterEye.get_by_size(0).x_middle_coord) >= 5) && abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
+
+            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord));
+            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord) * -1);
 
         }
 
-    }
+        driveVoltLeft(0);
+        driveVoltRight(0);
+        shooter.move(127);
+        delay(200);
 
-    int distance = closestObject.x_middle_coord;
+        while(!shooterBtn.get_value()){}
+        
+        shooter.move(0);
 
-    while(abs(closestObject.x_middle_coord) > 5){
+        while((abs(beforePosition - shooterEye.get_by_size(0).x_middle_coord) >= 5) && abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
 
-        error = closestObject.x_middle_coord;
+            error = shooterEye.get_by_size(0).x_middle_coord - beforePosition;
 
-        driveVoltLeft(kP * error);
-        driveVoltRight(-kP * error);
+            driveVoltLeft(kP * (error));
+            driveVoltRight(kP * (error) * -1);
 
-        delay(1);
+        }
 
-    }
-
-    delay(100);
-    shooter.move_relative(3, 200);
-    delay(100);
-    error = 0;
-    
-    while(abs(closestObject.x_middle_coord) > 5){
-
-        error = closestObject.x_middle_coord - distance;
-
-        driveVoltLeft(kP * error);
-        driveVoltRight(-kP * error);
-
-        delay(1);
+        driveVoltLeft(0);
+        driveVoltRight(0);
 
     }
 
