@@ -75,18 +75,12 @@ void driveVoltRight(int voltage) {
 
 }
 
-void pvitChassis(int angle, int maxSpeed, int timer) {
+void pvitChassis(int angle, int maxSpeed) {
 
-    float distance = angle * Pi * 2.34 / 180;
-    
-    for(int x; x < timer; x++){
+    float distance = angle * Pi * 12.5 / 180;
 
-        driveRelativeRight(distance, maxSpeed);
-        driveRelativeLeft(-distance, maxSpeed);
-
-        delay(1);
-
-    }
+    driveRelativeRight(distance, maxSpeed);
+    driveRelativeLeft(-distance, maxSpeed);
     
 }
 
@@ -107,7 +101,7 @@ void drivePD(float setPoint, int time) {
     setPoint = -setPoint;
 
     float distError, distDerivative, distPrevError, distSpeed, kDistP = 9000, kDistD = 0;
-    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 9000, kDiffD = 0;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 13000, kDiffD = 11000;
 
     resetChassisEncoderValue();
 
@@ -123,8 +117,11 @@ void drivePD(float setPoint, int time) {
         diffPrevError = diffError;
         diffSpeed = (kDiffP * diffError) + (kDiffD * diffDerivative);
 
-        driveVoltLeft(distSpeed - diffSpeed);
-        driveVoltRight(distSpeed + diffSpeed);
+        int leftSpeed = - distSpeed + diffSpeed;
+        int rightSpeed = - distSpeed - diffSpeed;
+
+        driveVoltLeft(leftSpeed > 12001 ? 12001 : leftSpeed);
+        driveVoltRight(rightSpeed > 12001 ? 12001 : rightSpeed);
 
         delay(1);
 

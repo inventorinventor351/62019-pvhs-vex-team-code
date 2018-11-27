@@ -39,6 +39,6 @@ void autonomous() {
     if(autonCount == 7)
         autonRedCapFlip();*/
     
-    pvitChassis(90, 200, 1);
+    drivePD(2, 1000);
 
 }
