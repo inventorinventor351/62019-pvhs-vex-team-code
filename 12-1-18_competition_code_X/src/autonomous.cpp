@@ -78,5 +78,6 @@ void autonomous() {
         delay(1);
 
     }
+    autonRedCapFlip();
 
 }

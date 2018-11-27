@@ -1,6 +1,6 @@
 #include "main.h"
 
-void redAutonHordCaps
+void redAutonHordCaps()
 {   
      driveAbsLeft(inToRot(45), 200);
      driveAbsRight(inToRot(45), 200);

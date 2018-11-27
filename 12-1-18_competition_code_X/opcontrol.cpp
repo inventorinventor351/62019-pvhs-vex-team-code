@@ -5,7 +5,7 @@ void opcontrol() {
 
 Controller master(CONTROLLER_MASTER);
 
-bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atckUp = 1, finished = 1;
+bool transmissionVar = 0, liftVar = 1, tipperVar = 0, atckL2, atckY, atckA, atckUp = 1, finished = 1;
 	vision_signature_s_t GREENFLAG;
     GREENFLAG.id = 1;
     GREENFLAG.range = 2.8;
@@ -45,15 +45,14 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 		}
 
 
-		if(finished){
+		/*if(finished){
 
 			if(master.get_digital(E_CONTROLLER_DIGITAL_UP))
 				atckUp = 0;
 
 			else if(!atckUp){
 				atckUp = 1;
-				shooter.move(127);
-				delay(100);
+				shooter.move_relative(3, 127);
 				finished = 0;
 			}
 
@@ -65,19 +64,8 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 
 		}
 
-		if(finished == 0){
-
-			if(!shooterBtn.get_value())
-				shooter.move(127);
-
-			else{
-
-				shooter.move(0);
-				finished = 1;
-
-			}
-
-		}
+		if(shooter.get_position() >= shooter.get_target_position())
+			finished = 1;*/
 
 
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_Y))			
@@ -99,16 +87,16 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 			intakeLiftCap.set_value(liftVar && capSensor.get_value());
             liftVar = !liftVar;
 		}
+		
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_UP))			
+        	atckUp = false;
 
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_UP))
-			shooter.move(127);
-
-		else
-			shooter.move(0);
+        else if(!atckUp){
+            atckUp = true;
+            shooter.move_relative(3.1, 127);
+		}
 
 		delay(1);
-
 
 	}
 
