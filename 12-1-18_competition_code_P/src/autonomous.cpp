@@ -15,15 +15,15 @@ void autonomous() {
     GREENFLAG.type = 0;
     catapultEye.set_signature(1, &GREENFLAG);
     
-   if(autonCount == 0) { 
+   /*if(autonCount == 0) { 
 
-        red_flagSide_3flags_1cap_auton();
+        red_flagSide_3flags_1caps_auton();
 
     }
 
     else if(autonCount == 1) {
 
-        red_flagSide_1flags_2caps_auton();
+        red_flagSide_4flags_2caps_auton();
 
     }
 
@@ -36,20 +36,20 @@ void autonomous() {
 
     else if(autonCount == 3) {
 
-        blue_flagSide_3flags_1cap_auton();
+        blue_flagSide_3flags_1caps_auton();
 
     }
 
     else if(autonCount == 4) {
 
-        blue_flagSide_3flags_1cap_auton();
+        blue_flagSide_4flags_2caps_auton();
 
     }
 
     else if(autonCount == 5) {
 
-        blue_flagSide_3flags_1cap_auton();
+        blue_capSide_1flags_2caps_auton();
 
-    }
-
+    }*/
+    red_flagSide_3flags_1caps_auton();
 }

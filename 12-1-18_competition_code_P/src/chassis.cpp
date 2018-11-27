@@ -96,10 +96,11 @@ float getRightChassisPosition() {
 
 void pivotChassisBAD(float angle, int maxSpeed, int time) {
 
+
     angle *= (3.14159265358979323846 / 180.0);
 
-    move_relativeLeftChassis((angle * 0.64 * -1), abs(maxSpeed));
-    move_relativeRightChassis((angle * 0.64), abs(maxSpeed));
+    move_relativeLeftChassis((angle * 0.385 * -1), abs(maxSpeed));
+    move_relativeRightChassis((angle * 0.385), abs(maxSpeed));
 
     for(int i = 0; i < abs(time); i++) {
 
@@ -186,8 +187,8 @@ void pivotChassis(int angle, int time) {
 
     float setPoint = angle * 0.011;
 
-    float distError, distDerivative, distPrevError, distSpeed, kDistP = 100, kDistD = 1;
-    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 100, kDiffD = 1;
+    float distError, distDerivative, distPrevError, distSpeed, kDistP = 1000, kDistD = 0;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 1, kDiffD = 1;
 
     for(int i = 0; i < abs(time); i++) {
 
@@ -215,7 +216,7 @@ void pivotChassis(int angle, int time) {
 
 void aimAtFlag() {
 
-    int range = 5, kP = 55, range = 5;
+    int range = 5, kP = 55;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -244,7 +245,7 @@ void aimAtFlag() {
 
 void autonShoot() {
 
-    int range = 5, error, kP = 55, range = 5, beforePosition;
+    int range = 5, error, kP = 55, beforePosition;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 

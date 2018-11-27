@@ -15,7 +15,7 @@ void opcontrol() {
   	GREENFLAG.type = 0;
   	catapultEye.set_signature(1, &GREENFLAG);
 
-	bool aimAtFlagToggle, catapultLaunchToggle, intakePistonsToggle, intakePistonsState = 0, chassisTransmissionToggle, chassisTransmissionState = 0;
+	bool aimAtFlagToggle, catapultLaunchToggle, intakePistonsToggle, intakePistonsState = 1, chassisTransmissionToggle, chassisTransmissionState = 0, finished = 1;
 	
 	while(true) {
 
@@ -32,7 +32,7 @@ void opcontrol() {
 
 		}
 
-		if(catabut.get_value()) {
+		if(finished) {
 
 			if(!master.get_digital(E_CONTROLLER_DIGITAL_Y))
 				catapultLaunchToggle = 0;
@@ -41,7 +41,8 @@ void opcontrol() {
 
 				catapultLaunchToggle = 1;
 				catapult.move(127);
-				delay(100);
+				delay(200);
+				finished = 0;
  
 			}
 
@@ -53,8 +54,16 @@ void opcontrol() {
 
 		}
 
-		else
-			catapult.move(127);
+		else {
+
+			if(catabut.get_value()) {
+
+				catapult.move(0);
+				finished = 1;
+
+			}
+		
+		}		
 
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			intakePistonsToggle = 0;

@@ -17,7 +17,6 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
     GREENFLAG.v_mean = -3801;
     GREENFLAG.type = 0;
     shooterEye.set_signature(1, &GREENFLAG);
-	intakeLift.set_value(1);
 
 	while(true) //Always running
 	{
@@ -27,10 +26,10 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) //If R1 on the master controller is pressed
-			intake.move(127); //Then intake rolls balls and caps in
+			intake.move(90); //Then intake rolls balls and caps in
 		
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) //If L1 on the master controller is pressed
-			intake.move(-127); //Then intake flips caps
+			intake.move(-90); //Then intake flips caps
 
 		else
 			intake.move(0);
@@ -41,7 +40,7 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 		
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_A)){
 			atckA = true;
-			aimFlag;
+			aimFlag();
 		}
 
 
@@ -53,7 +52,7 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 			else if(!atckUp){
 				atckUp = 1;
 				shooter.move(127);
-				delay(100);
+				delay(300);
 				finished = 0;
 			}
 
@@ -65,7 +64,7 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 
 		}
 
-		if(finished == 0){
+		else{
 
 			if(!shooterBtn.get_value())
 				shooter.move(127);
@@ -96,20 +95,12 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
         else if(!atckR2){
             atckR2 = true;
 			intakeLift.set_value(liftVar);
-			intakeLiftCap.set_value(liftVar && capSensor.get_value());
+			intakeLiftCap.set_value(liftVar /*&& capSensor.get_value()*/);
             liftVar = !liftVar;
 		}
 
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_UP))
-			shooter.move(127);
-
-		else
-			shooter.move(0);
-
 		delay(1);
-
-
+	
 	}
 
 }
