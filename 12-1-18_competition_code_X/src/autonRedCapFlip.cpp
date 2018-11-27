@@ -2,25 +2,23 @@
 
 void autonRedCapFlip(){
 
-    drivePD(45, 1000);
-    delay(500);
-    intake.move(64);
-    delay(2000);
-    intake.move(0);
+    intake.move(90);
+    drivePD(40, 2000);
+    intakeLift.set_value(1);
+    drivePD(-5, 2000);
+    intakeLift.set_value(0);/*
 
-    drivePD(-5, 100);
-
-    pvitChassis(-70, 200, 0.77778);
-    drivePD(20, 500);
+    pvitChassis(-70, 200);
+    drivePD(20, 2000);
     intake.move(-64);
     delay(2000);
     intake.move(0);
-    drivePD(-20, 500);
+    drivePD(-20, 2000);
     
-    pvitChassis(-20, 200, 0.222222);
-    drivePD(-30, 600);
+    pvitChassis(-20, 200);
+    drivePD(-30, 2000);
 
     aimFlag();
-    shooter.move_relative(1, 200);
+    shooter.move_relative(1);*/
 
 }

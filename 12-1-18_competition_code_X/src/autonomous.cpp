@@ -38,7 +38,9 @@ void autonomous() {
 
     if(autonCount == 7)
         autonRedCapFlip();*/
-    
-    drivePD(2, 1000);
+
+    intakeLift.set_value(1);
+    delay(1000);
+    intakeLift.set_value(0);
 
 }

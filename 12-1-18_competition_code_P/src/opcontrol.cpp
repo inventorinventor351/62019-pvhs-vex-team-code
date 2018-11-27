@@ -41,7 +41,7 @@ void opcontrol() {
 
 				catapultLaunchToggle = 1;
 				catapult.move(127);
-				delay(100);
+				delay(200);
 				finished = 0;
  
 			}
@@ -89,10 +89,10 @@ void opcontrol() {
 		}
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
-			intake.move(64);
+			intake.move(127);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			intake.move(-64);
+			intake.move(-127);
 
 		else
 			intake.move(0);

@@ -15,7 +15,7 @@ void autonomous() {
     GREENFLAG.type = 0;
     catapultEye.set_signature(1, &GREENFLAG);
     
-   if(autonCount == 0) { 
+   /*if(autonCount == 0) { 
 
         red_flagSide_3flags_1caps_auton();
 
@@ -50,6 +50,6 @@ void autonomous() {
 
         blue_capSide_1flags_2caps_auton();
 
-    }
-
+    }*/
+    red_flagSide_3flags_1caps_auton();
 }

@@ -98,12 +98,11 @@ float getRightChassisPosition() {
 
 void drivePD(float setPoint, int time) {
 
-    setPoint = -setPoint;
-
-    float distError, distDerivative, distPrevError, distSpeed, kDistP = 9000, kDistD = 0;
+    float distError, distDerivative, distPrevError, distSpeed, kDistP = 11700, kDistD = 0;
     float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 13000, kDiffD = 11000;
 
     resetChassisEncoderValue();
+    setPoint = inToRot(setPoint);
 
     for(int i = 0; i < abs(time); i++) {
 
@@ -117,8 +116,8 @@ void drivePD(float setPoint, int time) {
         diffPrevError = diffError;
         diffSpeed = (kDiffP * diffError) + (kDiffD * diffDerivative);
 
-        int leftSpeed = - distSpeed + diffSpeed;
-        int rightSpeed = - distSpeed - diffSpeed;
+        float leftSpeed = distSpeed - diffSpeed;
+        float rightSpeed = distSpeed + diffSpeed;
 
         driveVoltLeft(leftSpeed > 12001 ? 12001 : leftSpeed);
         driveVoltRight(rightSpeed > 12001 ? 12001 : rightSpeed);
