@@ -17,7 +17,7 @@ void redAutonHordCaps()
      driveAbsLeft(inToRot(30), 200);
      driveAbsRight(inToRot(30), 200);
 
-     pvitChassis(90, 200, 1);
+     pvitChassis(90, 200);
      driveRelativeLeft(inToRot(40), 200);
      driveRelativeRight(inToRot(40), 200);
 
@@ -25,7 +25,7 @@ void redAutonHordCaps()
 
      driveRelativeLeft(inToRot(-24), 200);
      driveRelativeRight(inToRot(-24), 200);
-     pvitChassis(-90, 200, 1);
+     pvitChassis(-90, 200);
 
      intake.move(-127);
 
@@ -38,7 +38,7 @@ void redAutonHordCaps()
      driveRelativeLeft(inToRot(5), 200);
      driveRelativeRight(inToRot(5), 200);
 
-     pvitChassis(90, 200, 1);
+     pvitChassis(90, 200);
      driveRelativeLeft(inToRot(20), 200);
      driveRelativeRight(inToRot(20), 200);
 }
