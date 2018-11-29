@@ -2,7 +2,7 @@
 
 void autonBlueFlagHorde(){
 
-    autonAimFlag();
+    /*autonAimFlag();
     pvitChassis(-90, 200);
 
     drivePD(45);
@@ -44,7 +44,7 @@ void autonBlueFlagHorde(){
     intakeLiftCap.set_value(0);
     delay(100);
     intake.move(-64);
-    drivePD(-5);
+    drivePD(-5);*/
 
     /*
     pvitChassis(-160, 200);

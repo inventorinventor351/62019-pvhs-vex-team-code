@@ -51,8 +51,8 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 
 			else if(!atckUp){
 				atckUp = 1;
-				shooter.move(127);
-				delay(300);
+				shooter.move(75);
+				delay(400);
 				finished = 0;
 			}
 
@@ -64,10 +64,10 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 
 		}
 
-		else{
+		else if(!finished){
 
 			if(!shooterBtn.get_value())
-				shooter.move(127);
+				shooter.move(75);
 
 			else{
 

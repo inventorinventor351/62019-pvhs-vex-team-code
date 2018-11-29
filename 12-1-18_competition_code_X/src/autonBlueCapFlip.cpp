@@ -2,7 +2,7 @@
 
 void autonBlueCapFlip(){
 
-    drivePD(35, 2000);
+/*    drivePD(35, 2000);
     delay(500);
     intake.move(90);
     delay(2000);
@@ -21,6 +21,6 @@ void autonBlueCapFlip(){
     drivePD(-30, 2000);
 
     aimFlag();
-    shooter.move_relative(1, 200);
+    shooter.move_relative(1, 200);*/
 
 }

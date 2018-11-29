@@ -22,8 +22,8 @@ void pvitChassis(int angle, int maxSpeed);
 float getLeftChassisPosition();
 float getRightChassisPosition();
 
-void drivePD(float setPoint, int time);
-void pvitPD(int angle, int time);
+void drivePD(float setPoint);
+void pvitPD(int angle);
 
 void aimFlag();
 void autonAimFlag();

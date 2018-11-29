@@ -2,7 +2,7 @@
 
 void autonBlueFlag(){
     
-    drivePD(45, 2000);
+    /*drivePD(45, 2000);
     delay(500);
     intake.move(64);
 
@@ -14,7 +14,7 @@ void autonBlueFlag(){
     drivePD(-50, 2000);
     drivePD(25, 2000);
 
-/*    pvitChassis(-90, 200)
+    pvitChassis(-90, 200)
 
     drivePD(24);
 

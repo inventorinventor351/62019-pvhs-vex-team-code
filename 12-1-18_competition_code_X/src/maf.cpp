@@ -11,3 +11,8 @@ float inToRot(float Inches)
 {
     return (Inches / 2.475 / Pi);
 }
+
+float inToRotHS(float Inches)
+{
+    return (Inches / 5.775 / Pi);
+}

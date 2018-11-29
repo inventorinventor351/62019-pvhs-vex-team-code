@@ -77,7 +77,7 @@ void driveVoltRight(int voltage) {
 
 void pvitChassis(int angle, int maxSpeed) {
 
-    float distance = angle * Pi * 12.5 / 180;
+    float distance = angle * Pi / 50;
 
     driveRelativeRight(distance, maxSpeed);
     driveRelativeLeft(-distance, maxSpeed);
@@ -96,15 +96,16 @@ float getRightChassisPosition() {
     
 }
 
-void drivePD(float setPoint, int time) {
+void drivePD(float setPoint) {
 
     float distError, distDerivative, distPrevError, distSpeed, kDistP = 11700, kDistD = 0;
-    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 13000, kDiffD = 11000;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 317500, kDiffD = 11000;
+    float leftSpeed = 1000, rightSpeed = 1000;
 
     resetChassisEncoderValue();
-    setPoint = inToRot(setPoint);
+    setPoint = inToRotHS(setPoint);
 
-    for(int i = 0; i < abs(time); i++) {
+    while(abs(leftSpeed) > 200) {
 
         distError = setPoint - ((getLeftChassisPosition() + getRightChassisPosition()) / 2.0);
         distDerivative = distError - distPrevError;
@@ -116,11 +117,11 @@ void drivePD(float setPoint, int time) {
         diffPrevError = diffError;
         diffSpeed = (kDiffP * diffError) + (kDiffD * diffDerivative);
 
-        float leftSpeed = distSpeed - diffSpeed;
-        float rightSpeed = distSpeed + diffSpeed;
+        leftSpeed = distSpeed - diffSpeed;
+        rightSpeed = distSpeed + diffSpeed;
 
-        driveVoltLeft(leftSpeed > 12001 ? 12001 : leftSpeed);
-        driveVoltRight(rightSpeed > 12001 ? 12001 : rightSpeed);
+        driveVoltRight(rightSpeed > 12000 ? 12000 : rightSpeed);
+        driveVoltLeft(leftSpeed > 12000 ? 12000 : leftSpeed);
 
         delay(1);
 
@@ -131,36 +132,46 @@ void drivePD(float setPoint, int time) {
 
 }
 
-void pvitPD(int angle, int time){
+void pvitPD(int angle){
 
-    float setPoint = angle * 0.011;
-    float distError, distDerivative, distPreError, distSpeed, kPDist = 0, kDDist = 0;
+    float setPoint = inToRotHS(angle) / 500;
+    float distError, distDerivative, distPreError, distSpeed, kPDist = 5000, kDDist = 0;
     float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff = 0, kDDiff = 0;
+    float leftSpeed = 1000, rightSpeed = 1000;
 
-    for(int i = 0; i < time; i++){
+    resetChassisEncoderValue();
 
-        distError = setPoint - abs((leftChassis1.get_position() + leftChassis2.get_position() - rightChassis1.get_position() - rightChassis2.get_position())/4);
+    while(abs(leftSpeed) > 200){
+
+        distError = setPoint - (abs(getLeftChassisPosition()) - abs(getRightChassisPosition()) / 2);
         distDerivative = distError - distPreError;
         distPreError = distError;
         distSpeed = (distError * kPDist) + (distDerivative * kDDist);
 
-        diffError = (leftChassis1.get_position() + leftChassis2.get_position() + rightChassis1.get_position() + rightChassis2.get_position()) / 4;
+        diffError = abs(getLeftChassisPosition() - getRightChassisPosition()) / 4;
         diffDerivative = diffError - diffPreError;
         diffPreError = diffError;
         diffSpeed = (diffError * kPDiff) + (diffDerivative * kDDiff);
 
-        driveVoltLeft(distSpeed - diffSpeed);
-        driveVoltRight(distSpeed + diffSpeed);
+        leftSpeed = distSpeed - diffSpeed;
+        rightSpeed = distSpeed + diffSpeed;
+
+        driveVoltLeft(leftSpeed);
+        driveVoltRight(-rightSpeed);
 
         delay(1);
 
     }
 
+    driveVoltLeft(0);
+    driveVoltRight(0);
+    std::cout << "done!\n";
+
 }
 
 void aimFlag() {
 
-    int kP = 55;
+    int kP = 80;
 
     if(abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -169,27 +180,40 @@ void aimFlag() {
 
     }
 
-    else {
+    else if(autonCount < 4){
 
-        while((abs(shooterEye.get_by_size(0).x_middle_coord) >= 5) && abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
+        while(abs(shooterEye.get_by_size(0).x_middle_coord + 35) > 1){
 
-            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord));
-            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord) * -1);
+            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord + 35));
+            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord + 35) * -1);
+
+            std::cout << shooterEye.get_by_size(0).x_middle_coord << "\n";
+
+        }
+    
+    }
+
+    else{
+
+        while(abs(shooterEye.get_by_size(0).x_middle_coord - 35) > 0){
+
+            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord - 35));
+            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord - 35) * -1);
 
             std::cout << shooterEye.get_by_size(0).x_middle_coord << "\n";
 
         }
 
-        driveVoltLeft(0);
-        driveVoltRight(0);
-
     }
 
+    driveVoltLeft(0);
+    driveVoltRight(0);
+    std::cout << shooterEye.get_by_size(0).x_middle_coord << "\n";
     master.rumble("-");
 
 }
 
-void AutonAimFlag() {
+void autonAimFlag() {
 
     int error, kP = 55, beforePosition;
 
@@ -213,6 +237,10 @@ void AutonAimFlag() {
 
         driveVoltLeft(0);
         driveVoltRight(0);
+
+        shooter.move(127);
+        delay(300);
+        while(!shooterBtn.get_value())
         shooter.move(127);
         delay(200);
 

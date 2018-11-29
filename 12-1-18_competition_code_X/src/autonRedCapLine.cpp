@@ -2,7 +2,7 @@
 
 void autonRedCapLine(){
 
-    autonAimFlag();
+    /*autonAimFlag();
 
     pvitChassis(90, 200);
     drivePD(45, 2000);
@@ -49,6 +49,6 @@ void autonRedCapLine(){
     intakeLiftCap.set_value(0);
     delay(200);
     intake.move(-64);
-    drivePD(5, 2000);
+    drivePD(5, 2000);*/
 
 }
