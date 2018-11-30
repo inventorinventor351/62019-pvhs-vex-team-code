@@ -264,7 +264,6 @@ void resetChassisEncoderValue() {
     leftChassis2.tare_position();
     rightChassis1.tare_position();
     rightChassis2.tare_position();
-    //i
     
 
 }
