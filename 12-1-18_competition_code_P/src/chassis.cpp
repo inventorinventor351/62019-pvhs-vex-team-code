@@ -216,12 +216,14 @@ void pivotChassis(int angle, int time) {
 
 void aimAtFlag() {
 
-    int kP = 70, i = 0, boi;
+    int kP = 55, i = 0, boi;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
         move_voltageLeftChassis(0);
         move_voltageRightChassis(0);
+        std::cout << "DID NOT FIND ANYTHING\n";
+        std::cout << "DID NOT FIND ANYTHING\n";
 
     }
 
@@ -232,11 +234,11 @@ void aimAtFlag() {
         else
         boi = -10;
 
-        while((abs(catapultEye.get_by_size(0).x_middle_coord + boi) > 1) && (i < 2500)){
+        while((abs(catapultEye.get_by_size(0).x_middle_coord - boi) > 1) && (i < 2500)){
 
-            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi));
-            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi));
-
+            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord - boi));
+            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord - boi) * -1);
+            std::cout << catapultEye.get_by_size(0).x_middle_coord - boi << "\n";
             i++;
             delay(1);
 
@@ -252,12 +254,7 @@ void aimAtFlag() {
 
 void autonShoot() {
 
-    int range = 1, error, kP = 85, boi;
-
-    if(autonCount < 4)
-        boi = 0;
-    else
-        boi = -0;
+    int kP = 55, i = 0, boi;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -268,13 +265,20 @@ void autonShoot() {
 
     }
 
-    else {
+    else{
+        
+        if(autonCount < 4)
+            boi = 20;
+        else
+            boi = -20;
 
-        while((abs(catapultEye.get_by_size(0).x_middle_coord + boi) >= range) && (abs(catapultEye.get_by_size(0).x_middle_coord) > 320)) {
+        while((abs(catapultEye.get_by_size(0).x_middle_coord - boi) > 1) && (i < 2500)){
 
-            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi));
-            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi) * -1);
-            std::cout << catapultEye.get_by_size(0).x_middle_coord + boi << "\n";
+            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord - boi));
+            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord - boi) * -1);
+            std::cout << catapultEye.get_by_size(0).x_middle_coord - boi << "\n";
+            i++;
+            delay(1);
 
         }
 
