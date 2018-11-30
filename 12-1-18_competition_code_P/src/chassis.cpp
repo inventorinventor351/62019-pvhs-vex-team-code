@@ -216,12 +216,7 @@ void pivotChassis(int angle, int time) {
 
 void aimAtFlag() {
 
-    int range = 5, kP = 55, i, boi;
-
-    if(autonCount < 4)
-        boi = 35;
-    else
-        boi = -35;
+    int kP = 70, i = 0, boi;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -230,36 +225,40 @@ void aimAtFlag() {
 
     }
 
-    else {
+    else{
+        
+        if(autonCount < 4)
+        boi = 10;
+        else
+        boi = -10;
 
-        while((abs(catapultEye.get_by_size(0).x_middle_coord + boi) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320 && i < 2500) {
+        while((abs(catapultEye.get_by_size(0).x_middle_coord + boi) > 1) && (i < 2500)){
 
-            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord));
-            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord) * -1);
+            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi));
+            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi));
 
             i++;
-
             delay(1);
 
         }
-
-        move_voltageLeftChassis(0);
-        move_voltageRightChassis(0);
-
+    
     }
 
+    move_voltageLeftChassis(0);
+    move_voltageRightChassis(0);
+    std::cout << catapultEye.get_by_size(0).x_middle_coord << "\n";
     master.rumble("-");
 
 }
 
 void autonShoot() {
 
-    int range = 5, error, kP = 55, beforePosition, i, boi;
+    int range = 1, error, kP = 70, beforePosition, i = 0, boi;
 
     if(autonCount < 4)
-        boi = 35;
+        boi = 10;
     else
-        boi = -35;
+        boi = -10;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -286,10 +285,11 @@ void autonShoot() {
         move_voltageLeftChassis(0);
         move_voltageRightChassis(0);
 
-        catapult.move(65);
-        delay(100);
+        catapult.move(127);
+        delay(350);
 
-        while(!catabut.get_value()) {}
+        while(!catabut.get_value())
+            catapult.move(90);
         
         catapult.move(0);
 
