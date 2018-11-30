@@ -2,20 +2,19 @@
 
 void red_flagSide_3flags_1caps_auton() {
 
-    intake.move(400);
-    driveStraight(2.35, 1500);
+    
+    driveStraight(2.32, 1500);
+    driveStraight(-1, 500);
+    intake.move_velocity(500);
+    driveStraight(1.05, 500);
     delay(100);
 
-    driveStraight(-2.1, 1500);
+    driveStraight(-1.95, 1500);
     loadBall(1500);
     intake.move_velocity(0);
     delay(500);
     pivotChassisBAD(-80, 200, 1000);
-    catapult.move_velocity(127);
-    delay(300);
-    catapult.move_velocity(0);
-    delay(200);
+    autonShoot();
     driveStraight(-3, 1500);
-
 
 }
