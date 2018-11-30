@@ -302,3 +302,15 @@ void autonShoot() {
     std::cout << "SIMPLY DONE\n";
 
 }
+
+void autonGetBall(int dist) {
+
+    driveStraight(1.8, 1200);
+    intake.move_velocity(500);
+    driveStraight(0.59, 800);
+    delay(375);
+    driveStraight(dist, 1000);
+    loadBall(800);
+    intake.move_velocity(0);
+
+}

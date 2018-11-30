@@ -23,6 +23,7 @@ void pivotChassisBAD(float angle, int maxSpeed, int time);
 
 void aimAtFlag();
 void autonShoot();
+void autonGetBall(int dist);
 
 void resetLeftChassisEncoderValue();
 void resetRightChassisEncoderValue();
