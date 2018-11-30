@@ -159,6 +159,7 @@ void pvitPD(int angle){
         driveVoltLeft(leftSpeed);
         driveVoltRight(-rightSpeed);
 
+        std::cout << getLeftChassisPosition() << ":" << leftSpeed << "\n";
         delay(1);
 
     }
@@ -171,7 +172,7 @@ void pvitPD(int angle){
 
 void aimFlag() {
 
-    int kP = 80;
+    int kP = 70, i = 0, shift;
 
     if(abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -180,30 +181,23 @@ void aimFlag() {
 
     }
 
-    else if(autonCount < 4){
+    else{
+        
+        if(autonCount < 4)
+        shift = 10;
+        else
+        shift = -10;
 
-        while(abs(shooterEye.get_by_size(0).x_middle_coord + 35) > 1){
+        while((abs(shooterEye.get_by_size(0).x_middle_coord + shift) > 1) && (i < 2500)){
 
-            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord + 35));
-            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord + 35) * -1);
+            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord + shift));
+            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord + shift));
 
-            std::cout << shooterEye.get_by_size(0).x_middle_coord << "\n";
+            i++;
+            delay(1);
 
         }
     
-    }
-
-    else{
-
-        while(abs(shooterEye.get_by_size(0).x_middle_coord - 35) > 0){
-
-            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord - 35));
-            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord - 35) * -1);
-
-            std::cout << shooterEye.get_by_size(0).x_middle_coord << "\n";
-
-        }
-
     }
 
     driveVoltLeft(0);

@@ -11,14 +11,14 @@ void autonRedFlag(){
     drivePD(-35);
     delay(1000);
     intake.move(0);
-    intakeLift.set_value(0);/*
+    intakeLift.set_value(0);
 
     pvitChassis(-90, 200);
     autonAimFlag();
 
-    drivePD(-50, 2000);
+    drivePD(-50);
 
-    drivePD(25, 2000);*/
+    drivePD(25);
 
 /*    pvitChassis(90, 200);
 

@@ -9,7 +9,7 @@ Motor rightChassis2(4, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //Port 4
 Motor shooter(5, MOTOR_GEARSET_36, 0, E_MOTOR_ENCODER_ROTATIONS); //Port 5, 100 RPM gearset, not reversed, units of rotations for encoder
 Motor intake(6, MOTOR_GEARSET_6, 0, E_MOTOR_ENCODER_ROTATIONS); //Port 6, 600 RPM gearset, not reversed, units of rotations for encoder
 
-Vision shooterEye(19); //Port 7, vision sensor for shooter
+Vision shooterEye(20); //Port 7, vision sensor for shooter
 
 ADIDigitalOut intakeLift(2); //Port 2, solonoid for raising intake
 ADIDigitalOut intakeLiftCap(3); //Port 3, supports first intakeLift when lifting caps

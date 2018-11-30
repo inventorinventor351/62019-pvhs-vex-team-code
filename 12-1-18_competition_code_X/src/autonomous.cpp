@@ -39,6 +39,5 @@ void autonomous() {
     if(autonCount == 7)
         autonRedCapFlip();*/
 
-    autonRedFlag();
 
 }
