@@ -17,5 +17,4 @@ void red_flagSide_3flags_1caps_auton() {
     delay(200);
     driveStraight(-3, 1500);
 
-
 }
