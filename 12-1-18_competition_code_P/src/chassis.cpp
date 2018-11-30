@@ -255,14 +255,16 @@ void autonShoot() {
     int range = 1, error, kP = 85, boi;
 
     if(autonCount < 4)
-        boi = 35;
+        boi = 0;
     else
-        boi = -35;
+        boi = -0;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
         move_voltageLeftChassis(0);
         move_voltageRightChassis(0);
+        std::cout << "DID NOT FIND ANYTHING\n";
+        std::cout << "DID NOT FIND ANYTHING\n";
 
     }
 
@@ -272,22 +274,27 @@ void autonShoot() {
 
             move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi));
             move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi) * -1);
-
-            delay(1);
+            std::cout << catapultEye.get_by_size(0).x_middle_coord + boi << "\n";
 
         }
 
         move_voltageLeftChassis(0);
         move_voltageRightChassis(0);
 
-        catapult.move(127);
+        /*catapult.move(127);
         delay(350);
 
         while(!catabut.get_value())
             catapult.move(90);
         
-        catapult.move(0);
+        catapult.move(0);*/
+
+        std::cout << "DONE AIMING\n";
+        std::cout << "DONE AIMING\n";
 
     }
+
+    std::cout << "SIMPLY DONE\n";
+    std::cout << "SIMPLY DONE\n";
 
 }

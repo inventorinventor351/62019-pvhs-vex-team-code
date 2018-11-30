@@ -55,4 +55,7 @@ void autonomous() {
     //red_flagSide_3flags_1caps_auton();
     autonShoot();
 
+    std::cout << "AUTON DONE\n";
+    std::cout << "AUTON DONE\n";
+
 }
