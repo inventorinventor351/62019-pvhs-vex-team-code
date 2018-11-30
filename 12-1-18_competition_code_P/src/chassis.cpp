@@ -216,7 +216,12 @@ void pivotChassis(int angle, int time) {
 
 void aimAtFlag() {
 
-    int range = 5, kP = 55;
+    int range = 5, kP = 55, i, boi;
+
+    if(autonCount < 4)
+        boi = 35;
+    else
+        boi = -35;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -227,10 +232,14 @@ void aimAtFlag() {
 
     else {
 
-        while((abs(catapultEye.get_by_size(0).x_middle_coord) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
+        while((abs(catapultEye.get_by_size(0).x_middle_coord + boi) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320 && i < 2500) {
 
             move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord));
             move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord) * -1);
+
+            i++;
+
+            delay(1);
 
         }
 
@@ -245,7 +254,12 @@ void aimAtFlag() {
 
 void autonShoot() {
 
-    int range = 5, error, kP = 55, beforePosition;
+    int range = 5, error, kP = 55, beforePosition, i, boi;
+
+    if(autonCount < 4)
+        boi = 35;
+    else
+        boi = -35;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -258,29 +272,37 @@ void autonShoot() {
 
         beforePosition = catapultEye.get_by_size(0).x_middle_coord;
 
-        while((abs(catapultEye.get_by_size(0).x_middle_coord) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
+        while((abs(catapultEye.get_by_size(0).x_middle_coord + boi) >= range) && (abs(catapultEye.get_by_size(0).x_middle_coord) > 320) && (i < 2500)) {
 
             move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord));
             move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord) * -1);
+
+            i++;
+
+            delay(1);
 
         }
 
         move_voltageLeftChassis(0);
         move_voltageRightChassis(0);
 
-        catapult.move(127);
+        catapult.move(65);
         delay(100);
 
         while(!catabut.get_value()) {}
         
         catapult.move(0);
 
-        while((abs(beforePosition - catapultEye.get_by_size(0).x_middle_coord) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
+        while((abs(beforePosition - catapultEye.get_by_size(0).x_middle_coord + boi) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320 && i < 2500) {
 
             error = catapultEye.get_by_size(0).x_middle_coord - beforePosition;
 
             move_voltageLeftChassis(kP * (error));
             move_voltageRightChassis(kP * (error) * -1);
+
+            i++;
+
+            delay(1);
 
         }
 

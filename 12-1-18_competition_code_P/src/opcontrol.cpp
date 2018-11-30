@@ -40,7 +40,7 @@ void opcontrol() {
 			else if(!catapultLaunchToggle) {
 
 				catapultLaunchToggle = 1;
-				catapult.move(127);
+				catapult.move(65);
 				delay(200);
 				finished = 0;
  
