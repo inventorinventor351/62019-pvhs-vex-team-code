@@ -40,8 +40,8 @@ void opcontrol() {
 			else if(!catapultLaunchToggle) {
 
 				catapultLaunchToggle = 1;
-				catapult.move(65);
-				delay(200);
+				catapult.move(127);
+				delay(350);
 				finished = 0;
  
 			}
@@ -55,6 +55,8 @@ void opcontrol() {
 		}
 
 		else {
+
+			catapult.move(100);
 
 			if(catabut.get_value()) {
 

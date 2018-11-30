@@ -150,8 +150,8 @@ void driveChassisVoltage(int time, int voltage){
 
 void driveStraight(float setPoint, int time) {
 
-    float distError, distDerivative, distPrevError, distSpeed, leftSpeed, kDistP = 9000, kDistD = 0;
-    float diffError, diffDerivative, diffPrevError, diffSpeed, rightSpeed, kDiffP = 13000, kDiffD = 11000;
+    float distError, distDerivative, distPrevError, distSpeed, leftSpeed, kDistP = 11700, kDistD = 0;
+    float diffError, diffDerivative, diffPrevError, diffSpeed, rightSpeed, kDiffP = 317500, kDiffD = 11000;
     float maxSpeed = 12001;
 
     resetChassisEncoderValue();
@@ -246,19 +246,18 @@ void aimAtFlag() {
 
     move_voltageLeftChassis(0);
     move_voltageRightChassis(0);
-    std::cout << catapultEye.get_by_size(0).x_middle_coord << "\n";
     master.rumble("-");
 
 }
 
 void autonShoot() {
 
-    int range = 1, error, kP = 70, beforePosition, i = 0, boi;
+    int range = 1, error, kP = 85, boi;
 
     if(autonCount < 4)
-        boi = 10;
+        boi = 35;
     else
-        boi = -10;
+        boi = -35;
 
     if(abs(catapultEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -269,14 +268,10 @@ void autonShoot() {
 
     else {
 
-        beforePosition = catapultEye.get_by_size(0).x_middle_coord;
+        while((abs(catapultEye.get_by_size(0).x_middle_coord + boi) >= range) && (abs(catapultEye.get_by_size(0).x_middle_coord) > 320)) {
 
-        while((abs(catapultEye.get_by_size(0).x_middle_coord + boi) >= range) && (abs(catapultEye.get_by_size(0).x_middle_coord) > 320) && (i < 2500)) {
-
-            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord));
-            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord) * -1);
-
-            i++;
+            move_voltageLeftChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi));
+            move_voltageRightChassis(kP * (catapultEye.get_by_size(0).x_middle_coord + boi) * -1);
 
             delay(1);
 
@@ -292,22 +287,6 @@ void autonShoot() {
             catapult.move(90);
         
         catapult.move(0);
-
-        while((abs(beforePosition - catapultEye.get_by_size(0).x_middle_coord + boi) >= range) && abs(catapultEye.get_by_size(0).x_middle_coord) > 320 && i < 2500) {
-
-            error = catapultEye.get_by_size(0).x_middle_coord - beforePosition;
-
-            move_voltageLeftChassis(kP * (error));
-            move_voltageRightChassis(kP * (error) * -1);
-
-            i++;
-
-            delay(1);
-
-        }
-
-        move_voltageLeftChassis(0);
-        move_voltageRightChassis(0);
 
     }
 
