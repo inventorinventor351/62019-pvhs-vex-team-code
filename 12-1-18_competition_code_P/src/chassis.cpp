@@ -100,7 +100,7 @@ void pivotChassisBAD(float angle, int maxSpeed, int time) {
     angle *= (3.14159265358979323846 / 180.0);
 
     move_relativeLeftChassis((angle * 0.385 * -1), abs(maxSpeed));
-    move_relativeRightChassis((angle * 0.385), abs(maxSpeed));
+    move_relativeRightChassis((angle * 0.375), abs(maxSpeed));
 
     for(int i = 0; i < abs(time); i++) {
 
