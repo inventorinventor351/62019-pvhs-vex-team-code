@@ -2,25 +2,25 @@
 
 void autonBlueCapFlip(){
 
-/*    drivePD(35, 2000);
-    delay(500);
     intake.move(90);
-    delay(2000);
-    intake.move(0);
-
-    drivePD(-5, 2000);
-
-    pvitChassis(70, 200);
-    drivePD(20, 2000);
+    drivePD(2.39);
+    delay(375);
+    drivePD(-1);
+    intakeLift.set_value(1);
+    delay(1200);
+    intakeLift.set_value(0);
+    delay(400);
+    pvitChassis(45, 100);
+    delay(600);
     intake.move(-90);
-    delay(2000);
-    intake.move(0);
-    drivePD(-20, 2000);
-    
-    pvitChassis(20, 200);
-    drivePD(-30, 2000);
+    delay(1000);
 
-    aimFlag();
-    shooter.move_relative(1, 200);*/
+    drivePD(-0.6);
+    drivePD(1.6);
+    drivePD(-0.5);
+    pvitChassis(-130, 150);
+    delay(1500);
+    drivePD(1.8);
+    intake.move(0);
 
 }

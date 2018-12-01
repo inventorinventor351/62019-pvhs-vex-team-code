@@ -2,25 +2,19 @@
 
 void autonBlueFlag(){
     
-    /*drivePD(45, 2000);
-    delay(500);
-    intake.move(64);
-
-    drivePD(-45, 2000);
-
-    pvitChassis(90, 200);
-    autonAimFlag();
-
-    drivePD(-50, 2000);
-    drivePD(25, 2000);
-
-    pvitChassis(-90, 200)
-
-    drivePD(24);
-
-    intake.move(-64);
-    delay(500);
+    drivePD(1.8);
+    intake.move(90);
+    drivePD(0.59);
+    delay(375);
+    drivePD(-1.78);
+    intakeLift.set_value(1);
+    delay(1200);
+    intakeLift.set_value(0);
     intake.move(0);
-    drivePD(-5);*/
+    delay(500);
+    pvitChassis(90, 150);
+    delay(2000);
+    autonAimFlag();
+    delay(150);
 
 }

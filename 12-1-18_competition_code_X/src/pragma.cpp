@@ -7,7 +7,7 @@ Motor leftChassis2(2, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS); //Port 2,
 Motor rightChassis1(3, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //Port 3, 200 RPM gearset, not reversed, units of rotations for encoder
 Motor rightChassis2(4, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS); //Port 4, 200 RPM gearset, reversed, units of rotations for encoder
 Motor shooter(5, MOTOR_GEARSET_36, 0, E_MOTOR_ENCODER_ROTATIONS); //Port 5, 100 RPM gearset, not reversed, units of rotations for encoder
-Motor intake(20, MOTOR_GEARSET_6, 0, E_MOTOR_ENCODER_ROTATIONS); //Port 6, 600 RPM gearset, not reversed, units of rotations for encoder
+Motor intake(6, MOTOR_GEARSET_6, 0, E_MOTOR_ENCODER_ROTATIONS); //Port 6, 600 RPM gearset, not reversed, units of rotations for encoder
 
 Vision shooterEye(20); //Port 7, vision sensor for shooter
 
