@@ -127,6 +127,7 @@ void competition_initialize() {
     chassisTransmission.set_value(0);
 
     lcd::set_text(0, "Merry Chrismas and a Happy New Year");
+    
 
 }
 
