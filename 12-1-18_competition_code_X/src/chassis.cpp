@@ -47,7 +47,6 @@ void driveAbsRight(float distance, int maxSpeed) {
 
 void driveRelativeLeft(float distance, int maxSpeed) {
 
-    distance = inToRot(distance);
     leftChassis1.move_relative(distance, maxSpeed);
     leftChassis2.move_relative(distance, maxSpeed);
 
@@ -55,7 +54,6 @@ void driveRelativeLeft(float distance, int maxSpeed) {
 
 void driveRelativeRight(float distance, int maxSpeed) {
 
-    distance = inToRot(distance);
     rightChassis1.move_relative(distance, maxSpeed);
     rightChassis2.move_relative(distance, maxSpeed);
 
@@ -77,7 +75,7 @@ void driveVoltRight(int voltage) {
 
 void pvitChassis(int angle, int maxSpeed) {
 
-    float distance = angle * Pi / 50;
+    float distance = angle * Pi / 440;
 
     driveRelativeRight(distance, maxSpeed);
     driveRelativeLeft(-distance, maxSpeed);
@@ -208,7 +206,7 @@ void aimFlag() {
 
 void autonAimFlag() {
 
-    int error, kP = 55, beforePosition;
+    int kP = 70, i = 0, shift;
 
     if(abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -217,43 +215,33 @@ void autonAimFlag() {
 
     }
 
-    else {
-
-        beforePosition = shooterEye.get_by_size(0).x_middle_coord;
-
-        while((abs(shooterEye.get_by_size(0).x_middle_coord) >= 5) && abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
-
-            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord));
-            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord) * -1);
-
-        }
-
-        driveVoltLeft(0);
-        driveVoltRight(0);
-
-        shooter.move(127);
-        delay(300);
-        while(!shooterBtn.get_value())
-        shooter.move(127);
-        delay(200);
-
-        while(!shooterBtn.get_value()){}
+    else{
         
-        shooter.move(0);
+        if(autonCount < 4)
+        shift = 10;
+        else
+        shift = -10;
 
-        while((abs(beforePosition - shooterEye.get_by_size(0).x_middle_coord) >= 5) && abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
+        while((abs(shooterEye.get_by_size(0).x_middle_coord - shift) > 1) && (i < 2500)){
 
-            error = shooterEye.get_by_size(0).x_middle_coord - beforePosition;
+            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord - shift));
+            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord - shift) * -1);
 
-            driveVoltLeft(kP * (error));
-            driveVoltRight(kP * (error) * -1);
+            i++;
+            delay(1);
 
         }
-
-        driveVoltLeft(0);
-        driveVoltRight(0);
-
+    
     }
+
+    driveVoltLeft(0);
+    driveVoltRight(0);
+    shooter.move(127);
+    delay(300);
+    while(!shooterBtn.get_value())
+    shooter.move(90);
+
+    shooter.move(0);
 
 }
 

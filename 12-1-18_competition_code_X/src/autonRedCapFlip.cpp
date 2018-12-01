@@ -2,7 +2,7 @@
 
 void autonRedCapFlip(){
 
-    drivePD(1.8);
+   /* drivePD(1.8);
     intake.move_velocity(500);
     drivePD(0.59);
     delay(375);
@@ -10,14 +10,14 @@ void autonRedCapFlip(){
     intakeLiftCap.set_value(1);
     delay(1200);
     intakeLiftCap.set_value(0);
+    
+    intake.move_velocity(0);*/
 
-    // loadBall(800);
-    intake.move_velocity(0);
 
-   // delay(500);
-    pvitChassis(-60, 200);
-    autonAimFlag();
-    delay(150);
+
+    pvitChassis(-60, 150);
+   /* autonAimFlag();
+    delay(150);*/
  
  
  
@@ -25,7 +25,7 @@ void autonRedCapFlip(){
  
  
  
-   /*intake.move(90);
+    /*intake.move(90);
     drivePD(40);
     intakeLift.set_value(1);
     drivePD(-5);
