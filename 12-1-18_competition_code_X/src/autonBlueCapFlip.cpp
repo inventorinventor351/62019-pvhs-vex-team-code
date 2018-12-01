@@ -15,8 +15,9 @@ void autonBlueCapFlip(){
     intake.move(-90);
     delay(1000);
 
-    drivePD(1);
-    drivePD(-0.5);
+    drivePD(-0.6)
+    drivePD(1.8);
+    drivePD(-0.7);
     pvitChassis(-130, 150);
     delay(1500);
     chassisTransmission.set_value(1);

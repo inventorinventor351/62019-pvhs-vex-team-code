@@ -20,9 +20,14 @@ void autonRedCapFlip(){
     drivePD(-0.7);
     pvitChassis(130, 150);
     delay(1500);
+<<<<<<< HEAD
     chassisTransmission.set_value(1);
     intake.move(0);
     driveRelativeLeft(3, 200);
     driveRelativeRight(3, 200);
+=======
+    drivePD(1.8);
+    intake.move(0);*/
+>>>>>>> 6fe301e85b36d675a757a45d537865480611f916
 
 }
