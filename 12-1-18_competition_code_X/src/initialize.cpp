@@ -119,6 +119,8 @@ void competition_initialize() {
     lcd::register_btn1_cb(on_center_pressed);
     lcd::register_btn2_cb(on_right_pressed);*/
 
+    lcd::set_text(0, "Merry Chrismas and a Happy New Year");
+
 }
 
 
