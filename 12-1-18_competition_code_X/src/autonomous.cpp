@@ -15,6 +15,10 @@ void autonomous() {
     GREENFLAG.type = 0;
     shooterEye.set_signature(1, &GREENFLAG);
 
+    chassisTransmission.set_value(1);
+    delay(200);
+    chassisTransmission.set_value(0);
+
 
     /*if(autonCount == 0)
         autonBlueFlag();
@@ -43,7 +47,7 @@ void autonomous() {
   //  autonRedCapFlip();
 
 
-    //pvitChassis(90, 150);
+    
 
 
 }
