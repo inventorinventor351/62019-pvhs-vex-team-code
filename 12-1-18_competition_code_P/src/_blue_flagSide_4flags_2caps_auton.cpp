@@ -2,7 +2,7 @@
 
 void blue_flagSide_4flags_2caps_auton() {
 
-    /*autonGetBall(-1.78);
+    autonGetBall(-1.78);
     pivotChassisBAD(-90, 150, 1000);
     autonShoot();
 
@@ -15,6 +15,6 @@ void blue_flagSide_4flags_2caps_auton() {
     intake.move_velocity(0);
     
     pivotChassisBAD(-90, 150, 750);
-    driveStraight(0.8, 1000);*/
+    driveStraight(0.8, 1000);
 
 }
