@@ -8,7 +8,7 @@ void autonRedCapFlip(){
     delay(375);
     drivePD(-1.78);
     intakeLiftCap.set_value(1);
-    delay(1200);
+    delay(1201);
     intakeLiftCap.set_value(0);
     
     intake.move_velocity(0);
