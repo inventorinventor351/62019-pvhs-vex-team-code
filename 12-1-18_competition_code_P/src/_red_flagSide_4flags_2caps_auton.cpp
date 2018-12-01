@@ -3,7 +3,7 @@
 void red_flagSide_4flags_2caps_auton() {
 
     autonGetBall(-1.78);
-    pivotChassis(90, 150, 1000);
+    pivotChassisBAD(90, 150, 1000);
     autonShoot();
 
     driveStraight(2.5, 1300);

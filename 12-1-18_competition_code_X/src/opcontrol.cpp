@@ -21,7 +21,7 @@ bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atck
 	while(true) //Always running
 	{
         
-		driveVelocityRight((master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) * 200 / 127); //Right side of the base
+		driveVelocityRight((master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) * 200 / -127); //Right side of the base
 		driveVelocityLeft((master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)) * 200 / 127); //Left side of the base
 
 
