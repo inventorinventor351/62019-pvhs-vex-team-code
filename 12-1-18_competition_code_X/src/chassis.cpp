@@ -103,7 +103,6 @@ void drivePD(float setPoint) {
     float leftSpeed = 1000, rightSpeed = 1000;
 
     resetChassisEncoderValue();
-    setPoint = inToRotHS(setPoint);
 
     while(abs(leftSpeed) > 200) {
 
