@@ -16,11 +16,11 @@ void autonRedFlag(){
     pvitChassis(-90, 200);
     autonAimFlag();
 
-    drivePD(-50);
+    /*drivePD(-50);
 
     drivePD(25);
 
-/*    pvitChassis(90, 200);
+    pvitChassis(90, 200);
 
     drivePD(24, 2000);
 

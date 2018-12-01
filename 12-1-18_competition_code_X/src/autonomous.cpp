@@ -39,7 +39,10 @@ void autonomous() {
     if(autonCount == 7)
         autonRedCapFlip();*/
         
-        autonRedCapFlip();
+  //  autonRedCapFlip();
+
+
+    pvitChassis(90, 150);
 
 
 }

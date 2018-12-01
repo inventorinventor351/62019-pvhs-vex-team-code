@@ -13,6 +13,9 @@ void initialize(){
 
     shooterEye.set_zero_point(E_VISION_ZERO_CENTER);
 
+    intakeLift.set_value(0);
+    intakeLiftCap.set_value(0);
+    
 }
 
 int autonCount = 0;
