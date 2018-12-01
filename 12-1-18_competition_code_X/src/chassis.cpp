@@ -102,7 +102,7 @@ void drivePD(float setPoint) {
 
     resetChassisEncoderValue();
 
-    while(abs(leftSpeed) > 800) {
+    while(abs(leftSpeed) > 600) {
 
         distError = setPoint - ((getLeftChassisPosition() + getRightChassisPosition()) / 2.0);
         distDerivative = distError - distPrevError;
