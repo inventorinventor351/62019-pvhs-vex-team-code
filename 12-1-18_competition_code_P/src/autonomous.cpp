@@ -52,9 +52,6 @@ void autonomous() {
 
     }*/
 
-    red_flagSide_3flags_1caps_auton();
-
-    std::cout << "AUTON DONE\n";
-    std::cout << "AUTON DONE\n";
+    red_capSide_1flags_2caps_auton();
 
 }
