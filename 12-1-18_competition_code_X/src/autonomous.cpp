@@ -15,18 +15,9 @@ void autonomous() {
     GREENFLAG.type = 0;
     shooterEye.set_signature(1, &GREENFLAG);
 
-<<<<<<< HEAD
     chassisTransmission.set_value(0);
-
-    if(autonCount == 0)
-=======
-    chassisTransmission.set_value(1);
-    delay(200);
-    chassisTransmission.set_value(0);
-
 
     /*if(autonCount == 0)
->>>>>>> b14acb4ccd2e441d78c01ce62136f9493d793cd4
         autonBlueFlag();
 
     if(autonCount == 1)
@@ -34,27 +25,8 @@ void autonomous() {
     
     if(autonCount == 2)
         autonRedFlag();
-<<<<<<< HEAD
 
     if(autonCount == 3)
-        autonRedCapFlip();
-=======
-    
-    if(autonCount == 5)
-        autonRedFlagHorde();
-
-    if(autonCount == 6)
-        autonRedCapLine();
-
-    if(autonCount == 7)
         autonRedCapFlip();*/
-        
-  //  autonRedCapFlip();
-
-
-    
-    autonBlueFlag();
-    
->>>>>>> b14acb4ccd2e441d78c01ce62136f9493d793cd4
 
 }
