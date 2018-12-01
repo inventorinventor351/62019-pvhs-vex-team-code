@@ -119,6 +119,13 @@ void competition_initialize() {
     lcd::register_btn1_cb(on_center_pressed);
     lcd::register_btn2_cb(on_right_pressed);*/
 
+    drivePD(0.3);
+    drivePD(-0.3);
+
+    chassisTransmission.set_value(1);
+    delay(50);
+    chassisTransmission.set_value(0);
+
     lcd::set_text(0, "Merry Chrismas and a Happy New Year");
 
 }
