@@ -15,29 +15,18 @@ void autonomous() {
     GREENFLAG.type = 0;
     shooterEye.set_signature(1, &GREENFLAG);
 
+    chassisTransmission.set_value(0);
+
     /*if(autonCount == 0)
         autonBlueFlag();
 
     if(autonCount == 1)
-        autonBlueFlagHorde();
-
-    if(autonCount == 2)
-        autonBlueCapLine();
-
-    if(autonCount == 3)
         autonBlueCapFlip();
     
-    if(autonCount == 4)
+    if(autonCount == 2)
         autonRedFlag();
-    
-    if(autonCount == 5)
-        autonRedFlagHorde();
 
-    if(autonCount == 6)
-        autonRedCapLine();
-
-    if(autonCount == 7)
+    if(autonCount == 3)
         autonRedCapFlip();*/
-
 
 }

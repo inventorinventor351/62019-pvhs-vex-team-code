@@ -51,5 +51,7 @@ void autonomous() {
         blue_capSide_1flags_2caps_auton();
 
     }*/
-    red_flagSide_3flags_1caps_auton();
+
+    red_capSide_1flags_2caps_auton();
+
 }

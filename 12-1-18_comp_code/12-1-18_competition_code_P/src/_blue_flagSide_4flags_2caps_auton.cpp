@@ -2,29 +2,19 @@
 
 void blue_flagSide_4flags_2caps_auton() {
 
-    intake.move_velocity(127);
-    driveStraight(2.85, 1500);
-    delay(100);
-    intake.move_velocity(0);
-    driveStraight(-2.85, 1500);
-
-    loadBall(750);
-    pivotChassis(-90, 1000);
+    autonGetBall(1.8, -1.78);
+    pivotChassisBAD(-90, 150, 1000);
     autonShoot();
 
-    driveStraight(2.5, 1500);
-    driveStraight(-1, 1500);
+    driveStraight(2.5, 1300);
+    driveStraight(-1, 800);
 
-    pivotChassis(90, 500);
-    intake.move_velocity(-63.5);
-    driveStraight(3, 2000);
-    intake.move_velocity(127);
-    driveStraight(0.75, 500);
+    pivotChassisBAD(90, 150, 500);
+    intake.move_velocity(-380);
+    driveStraight(2.5, 2000);
     intake.move_velocity(0);
     
-    pivotChassis(-125, 750);
-    driveStraight(1.5, 1000);
-    runintake(-127, 400);
-
+    pivotChassisBAD(-90, 150, 750);
+    driveStraight(0.8, 1000);
 
 }

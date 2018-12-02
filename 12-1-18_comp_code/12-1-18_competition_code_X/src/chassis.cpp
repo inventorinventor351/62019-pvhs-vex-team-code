@@ -47,7 +47,6 @@ void driveAbsRight(float distance, int maxSpeed) {
 
 void driveRelativeLeft(float distance, int maxSpeed) {
 
-    distance = inToRot(distance);
     leftChassis1.move_relative(distance, maxSpeed);
     leftChassis2.move_relative(distance, maxSpeed);
 
@@ -55,7 +54,6 @@ void driveRelativeLeft(float distance, int maxSpeed) {
 
 void driveRelativeRight(float distance, int maxSpeed) {
 
-    distance = inToRot(distance);
     rightChassis1.move_relative(distance, maxSpeed);
     rightChassis2.move_relative(distance, maxSpeed);
 
@@ -77,7 +75,7 @@ void driveVoltRight(int voltage) {
 
 void pvitChassis(int angle, int maxSpeed) {
 
-    float distance = angle * Pi / 50;
+    float distance = angle * Pi / 440;
 
     driveRelativeRight(distance, maxSpeed);
     driveRelativeLeft(-distance, maxSpeed);
@@ -103,9 +101,8 @@ void drivePD(float setPoint) {
     float leftSpeed = 1000, rightSpeed = 1000;
 
     resetChassisEncoderValue();
-    setPoint = inToRotHS(setPoint);
 
-    while(abs(leftSpeed) > 200) {
+    while(abs(leftSpeed) > 600) {
 
         distError = setPoint - ((getLeftChassisPosition() + getRightChassisPosition()) / 2.0);
         distDerivative = distError - distPrevError;
@@ -132,47 +129,9 @@ void drivePD(float setPoint) {
 
 }
 
-void pvitPD(int angle){
-
-    float setPoint = inToRotHS(angle) / 500;
-    float distError, distDerivative, distPreError, distSpeed, kPDist = 5000, kDDist = 0;
-    float diffError, diffDerivative, diffPreError, diffSpeed, kPDiff = 0, kDDiff = 0;
-    float leftSpeed = 1000, rightSpeed = 1000;
-
-    resetChassisEncoderValue();
-
-    while(abs(leftSpeed) > 200){
-
-        distError = setPoint - (abs(getLeftChassisPosition()) - abs(getRightChassisPosition()) / 2);
-        distDerivative = distError - distPreError;
-        distPreError = distError;
-        distSpeed = (distError * kPDist) + (distDerivative * kDDist);
-
-        diffError = abs(getLeftChassisPosition() - getRightChassisPosition()) / 4;
-        diffDerivative = diffError - diffPreError;
-        diffPreError = diffError;
-        diffSpeed = (diffError * kPDiff) + (diffDerivative * kDDiff);
-
-        leftSpeed = distSpeed - diffSpeed;
-        rightSpeed = distSpeed + diffSpeed;
-
-        driveVoltLeft(leftSpeed);
-        driveVoltRight(-rightSpeed);
-
-        std::cout << getLeftChassisPosition() << ":" << leftSpeed << "\n";
-        delay(1);
-
-    }
-
-    driveVoltLeft(0);
-    driveVoltRight(0);
-    std::cout << "done!\n";
-
-}
-
 void aimFlag() {
 
-    int kP = 70, i = 0, shift;
+    int kP = 70, kPClose = 120, i = 0, shift;
 
     if(abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -183,15 +142,22 @@ void aimFlag() {
 
     else{
         
-        if(autonCount < 4)
-        shift = 10;
-        else
+        if(autonCount < 2)
         shift = -10;
+        else
+        shift = 10;
 
-        while((abs(shooterEye.get_by_size(0).x_middle_coord + shift) > 1) && (i < 2500)){
-
+        while((abs(shooterEye.get_by_size(0).x_middle_coord + shift) > 1) && (i < 2000)){
+            
+            if(abs(shooterEye.get_by_size(0).x_middle_coord) + shift > 40){
             driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord + shift));
-            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord + shift));
+            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord + shift) * -1);
+            }
+
+            if(abs(shooterEye.get_by_size(0).x_middle_coord) + shift < 40){
+            driveVoltLeft(kPClose * (shooterEye.get_by_size(0).x_middle_coord + shift));
+            driveVoltRight(kPClose * (shooterEye.get_by_size(0).x_middle_coord + shift) * -1);
+            }
 
             i++;
             delay(1);
@@ -209,7 +175,7 @@ void aimFlag() {
 
 void autonAimFlag() {
 
-    int error, kP = 55, beforePosition;
+    int kP = 70, kPClose = 120, i = 0, shift;
 
     if(abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
 
@@ -218,43 +184,41 @@ void autonAimFlag() {
 
     }
 
-    else {
-
-        beforePosition = shooterEye.get_by_size(0).x_middle_coord;
-
-        while((abs(shooterEye.get_by_size(0).x_middle_coord) >= 5) && abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
-
-            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord));
-            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord) * -1);
-
-        }
-
-        driveVoltLeft(0);
-        driveVoltRight(0);
-
-        shooter.move(127);
-        delay(300);
-        while(!shooterBtn.get_value())
-        shooter.move(127);
-        delay(200);
-
-        while(!shooterBtn.get_value()){}
+    else{
         
-        shooter.move(0);
+        if(autonCount < 4)
+        shift = 10;
+        else
+        shift = -10;
 
-        while((abs(beforePosition - shooterEye.get_by_size(0).x_middle_coord) >= 5) && abs(shooterEye.get_by_size(0).x_middle_coord) > 320) {
+        while((abs(shooterEye.get_by_size(0).x_middle_coord + shift) > 1) && (i < 2000)){
+            
+            if(abs(shooterEye.get_by_size(0).x_middle_coord) + shift > 40){
+            driveVoltLeft(kP * (shooterEye.get_by_size(0).x_middle_coord + shift));
+            driveVoltRight(kP * (shooterEye.get_by_size(0).x_middle_coord + shift) * -1);
+            }
 
-            error = shooterEye.get_by_size(0).x_middle_coord - beforePosition;
+            if(abs(shooterEye.get_by_size(0).x_middle_coord) + shift < 40){
+            driveVoltLeft(kPClose * (shooterEye.get_by_size(0).x_middle_coord + shift));
+            driveVoltRight(kPClose * (shooterEye.get_by_size(0).x_middle_coord + shift) * -1);
+            }
 
-            driveVoltLeft(kP * (error));
-            driveVoltRight(kP * (error) * -1);
+            i++;
+            delay(1);
 
         }
-
-        driveVoltLeft(0);
-        driveVoltRight(0);
-
+    
     }
+
+    driveVoltLeft(0);
+    driveVoltRight(0);
+    shooter.move(127);
+    delay(300);
+
+    while(!shooterBtn.get_value())
+    shooter.move(90);
+
+    shooter.move(0);
 
 }
 
@@ -264,5 +228,6 @@ void resetChassisEncoderValue() {
     leftChassis2.tare_position();
     rightChassis1.tare_position();
     rightChassis2.tare_position();
+    
 
 }
