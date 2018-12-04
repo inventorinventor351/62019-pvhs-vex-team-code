@@ -98,11 +98,11 @@ void drivePD(float setPoint) {
 
     float distError, distDerivative, distPrevError, distSpeed, kDistP = 11700, kDistD = 0;
     float diffError, diffDerivative, diffPrevError, diffSpeed, kDiffP = 317500, kDiffD = 11000;
-    float leftSpeed = 1000, rightSpeed = 1000;
+    float leftSpeed = 1200, rightSpeed = 1200;
 
     resetChassisEncoderValue();
 
-    while(abs(leftSpeed) > 600) {
+    while(abs(leftSpeed) > 1000) {
 
         distError = setPoint - ((getLeftChassisPosition() + getRightChassisPosition()) / 2.0);
         distDerivative = distError - distPrevError;
@@ -213,7 +213,7 @@ void autonAimFlag() {
     driveVoltLeft(0);
     driveVoltRight(0);
     shooter.move(127);
-    delay(300);
+    delay(500);
 
     while(!shooterBtn.get_value())
     shooter.move(90);
