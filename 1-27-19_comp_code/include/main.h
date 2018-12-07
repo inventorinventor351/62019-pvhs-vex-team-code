@@ -12,8 +12,11 @@ using namespace pros; //Instead of typing pros::Motor() all the time, if you use
 #endif //DO NOT TOUCH
 
 //You should include more files right under here
-#include "1-18-19_comp_code\include\math.h"
+#include "misc.h"
 #include "pragma.h"
+#include "./subsystems/base.h"
+#include "./subsystems/intake.h"
+#include "./subsystems/catapult.h"
 
 //DO NOT TOUCH BELOW STUFF, THIS MAKES THE CODE RUN
 #ifdef __cplusplus
