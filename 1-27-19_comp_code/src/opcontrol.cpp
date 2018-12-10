@@ -9,7 +9,7 @@ void opcontrol() {
 
 
 
-		delay_until(&now, 1); //loop driver control 1000 times per second
+		Task::delay_until(&now, 1); //loop driver control 1000 times per second
 		
 	}
 
