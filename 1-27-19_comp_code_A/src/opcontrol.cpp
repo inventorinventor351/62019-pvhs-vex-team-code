@@ -5,7 +5,7 @@ void opcontrol() {
 	
 	while(true) {
 		get_analog(E_CONTROLLER_ANALOG_LEFT_Y)
-	controller_get_analog
+		controller_get_analog
 		
 	}
 
