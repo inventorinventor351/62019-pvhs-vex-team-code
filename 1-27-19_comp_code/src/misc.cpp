@@ -8,11 +8,7 @@ int sgn(double x) { //inputs a double and outputs its sign (+ or -) as an int
 
 PID initPID(bool useP, bool useI, bool useD, double kP, double kI, double kD) { //gives a created PID struct its values
 
-    return {
-
-        0, 0, 0, 0, kP, kI, kD, useP, useI, useD;
-
-    };
+    return { 0, 0, 0, 0, kP, kI, kD, useP, useI, useD };
 
 }
 

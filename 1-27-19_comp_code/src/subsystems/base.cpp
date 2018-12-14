@@ -11,5 +11,4 @@ void runRightBase(float voltPerc) {
 
     rightBase1.move_voltage((voltPerc / 100) * 12000);
     rightBase2.move_voltage((voltPerc / 100) * 12000);
-
 }
