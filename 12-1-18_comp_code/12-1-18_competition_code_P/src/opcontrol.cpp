@@ -74,7 +74,7 @@ void opcontrol() {
 
 			intakePistonsToggle = 1;
 			intakePiston1.set_value(intakePistonsState);
-			intakePiston2.set_value(intakePistonsState && is_cap.get_value());
+			intakePiston2.set_value(intakePistonsState);
 			intakePistonsState = !intakePistonsState;
 
 		}
