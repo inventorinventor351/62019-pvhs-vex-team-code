@@ -6,6 +6,6 @@ void runRightBase(float voltPerc); //runs the right base at a percentage of max 
 
 extern int leftTarget; //target voltage for slew rate
 extern int rightTarget; //target voltage for slew rate
-void baseSR(); //base's slew rate, runs evert 1 ms, controls accel of base
+void baseSR(void* param); //base's slew rate, runs evert 1 ms, controls accel of base
 
 #endif
