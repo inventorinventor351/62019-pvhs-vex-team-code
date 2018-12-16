@@ -24,7 +24,8 @@ void opcontrol() {
 			arm.move(-70); //Then the cap descorer retractes
 
 		else
-			arm.move(0); //if not pressed then 
+			arm.move(0); //if not pressed then nothing happens
+
 	}
 
 }
