@@ -7,7 +7,7 @@ void opcontrol() {
 	
 	while(true) {
 
-
+		runLeftBase((E_CONTROLLER_ANALOG_LEFT_Y.get_analog() / 127 * 100);
 
 		Task::delay_until(&now, 50); //loop driver control 20 times per second
 		
