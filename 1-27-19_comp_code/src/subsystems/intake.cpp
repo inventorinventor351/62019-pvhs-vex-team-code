@@ -8,7 +8,7 @@ void runIntake(float voltPerc) {
 
 void runIntakeTime(float voltPerc, int time) {
 
-    intk.move_voltage((voltPerc / 100) * 12000)
+    intk.move_voltage((voltPerc / 100) * 12000);
     delay(time);
     intk.move_voltage(0);
 

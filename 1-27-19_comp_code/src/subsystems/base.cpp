@@ -16,7 +16,7 @@ void runRightBase(float voltPerc) {
 int leftTarget = 0;
 int rightTarget = 0;
 
-void baseSR() {
+void baseSR(void* param) {
 
     std::uint_least32_t now = millis();
 
