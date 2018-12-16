@@ -7,7 +7,24 @@ void opcontrol() {
 	
 	while(true) {
 
-		runLeftBase((E_CONTROLLER_ANALOG_LEFT_Y.get_analog() / 127 * 100);
+		leftBase1.move_velocity(E_CONTROLLER_ANALOG_LEFT_Y.get_analog() / 127 * 200);
+		leftBase2.move_velocity(E_CONTROLLER_ANALOG_LEFT_Y.get_analog() / 127 * 200);
+		rightBase1.move_velocity(E_CONTROLLER_ANALOG_RIGHT_Y.get_analog() / 127 * 200);
+		rightBase2.move_velocity(E_CONTROLLER_ANALOG_RIGHT_Y.get_analog() / 127 * 200);
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) {
+
+			runIntake(80);
+
+		} else if(master.get_digital(E_CONTROLLER_DIGITAL_R2)) {
+
+			runIntake(-80);
+
+		} else {
+
+			runintake(0);
+
+		}
 
 		Task::delay_until(&now, 50); //loop driver control 20 times per second
 		
