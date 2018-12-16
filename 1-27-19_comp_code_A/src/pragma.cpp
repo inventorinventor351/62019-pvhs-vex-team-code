@@ -9,4 +9,6 @@ Motor rightBase3 (5, MOTOR_GEARSET_18, 1); //normal motor plugged into port 5 an
 
 Motor capFlip (6, MOTOR_GEARSET_18, 0); //normal motor plugged into port 5 and not reversed
 
+Motor arm (7, MOTOR_GEARSET_18, 0); //normal motor pluged into port 5 and not reversed
+
 ADIEncoder distEnc (5, 6, 0); //encoder plugged into legacy ports 5 and 6 and not reversed

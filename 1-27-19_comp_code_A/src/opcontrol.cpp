@@ -1,6 +1,5 @@
 #include "main.h" //DO NOT TOUCH
 
-//Runs during the 1 minute and 45 second period of driver control or immediately after initialize() if no competition control is connected
 void opcontrol() {
 	
 	while(true) {
@@ -11,12 +10,21 @@ void opcontrol() {
 		runRightBase((master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) * 200 / 127); //Right side of base
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) //If R1 on the master controller is pressed
-			capFlip.move(90); //Then the ball fliper moves
+			capFlip.move(90); //Then the cap fliper moves
 		
 
 		else
 			capFlip.move(0); //if not pressed then nothing happens
+
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) //If L on the master controller is pressed
+			arm.move(70); //Then the cap descorer extends
 		
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) //If L2 on the master controller is pressed
+			arm.move(-70); //Then the cap descorer retractes
+
+		else
+			arm.move(0); //if not pressed then 
 	}
 
 }
