@@ -18,4 +18,6 @@ extern ADIAnalogIn cpltPot; //potentiometer that measures the angle of the catap
 extern ADIEncoder distEnc; //encoder on a tracking wheel that is parallel to the base wheels
 extern ADIEncoder yawEnc; //encoder on a tracking wheel that is perpendicular to the base wheels
 
+extern Controller master;
+
 #endif

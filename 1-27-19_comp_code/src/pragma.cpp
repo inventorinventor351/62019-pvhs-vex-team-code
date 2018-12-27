@@ -16,3 +16,5 @@ ADIAnalogIn cpltPot (3); //potentiometer plugged into port 3
 
 ADIEncoder distEnc (5, 6, 0); //encoder plugged into legacy ports 5 and 6 and not reversed
 ADIEncoder yawEnc (7, 8, 0); //encoder plugged into legacy ports 7 and 8 and not reversed
+
+Controller master (CONTROLLER_MASTER);
