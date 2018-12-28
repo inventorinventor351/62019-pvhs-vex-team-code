@@ -6,10 +6,10 @@ void opcontrol() {
 	
 	while(true) {
 
-		leftBase1.move_velocity((master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127) * 200);
-		leftBase1.move_velocity((master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127) * 200);
-		rightBase2.move_velocity((master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127) * 200);
-		rightBase2.move_velocity((master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127) * 200);
+		leftBase1.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 200);
+		leftBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 200);
+		rightBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
+		rightBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) {
 

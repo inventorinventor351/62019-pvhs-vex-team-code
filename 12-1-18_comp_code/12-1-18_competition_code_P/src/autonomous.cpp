@@ -57,6 +57,6 @@ void autonomous() {
 
     }*/
 
-   blue_flagSide_3flags_1caps_auton();
+   aimAtFlag();
 
 }
