@@ -15,6 +15,11 @@ void autonomous() {
     GREENFLAG.type = 0;
     catapultEye.set_signature(1, &GREENFLAG);
     
+    delay(100);
+    chassisTransmissionPiston.set_value(0);
+    intakePiston1.set_value(0);
+    intakePiston2.set_value(0);
+
    /*if(autonCount == 0) { 
 
         red_flagSide_3flags_1caps_auton();
@@ -52,6 +57,6 @@ void autonomous() {
 
     }*/
 
-    red_capSide_1flags_2caps_auton();
+   aimAtFlag();
 
 }

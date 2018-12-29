@@ -7,7 +7,7 @@ Motor rightChassis2(4, MOTOR_GEARSET_18, 1, MOTOR_ENCODER_ROTATIONS);
 Motor catapult(5, MOTOR_GEARSET_36, 0, MOTOR_ENCODER_ROTATIONS);
 Motor intake(20, MOTOR_GEARSET_6, 0, MOTOR_ENCODER_ROTATIONS);
 
-Vision catapultEye(19, E_VISION_ZERO_CENTER);
+Vision catapultEye(20, E_VISION_ZERO_CENTER);
 
 ADIDigitalOut intakePiston1(3);
 ADIDigitalOut intakePiston2(2);
