@@ -10,21 +10,24 @@ void opcontrol() {
 		runRightBase((master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) * 200 / 127); //Right side of base
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) //If R1 on the master controller is pressed
-			capFlip.move(90); //Then the cap fliper moves
+			intake.move(90); //Then the intake moves fwd
+
+		else if(master.get_digital((E_CONTROLLER_DIGITAL_R2)))	//if R2 on master controller is pressed
+			intake.move(-90); //Then the intake move backwards
 		
 
 		else
-			capFlip.move(0); //if not pressed then nothing happens
+	    	intake.move(0); //if not pressed then nothing happens
 
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) //If L1 on the master controller is pressed
-			arm.move(70); //Then the cap descorer extends
+			lift.move(70); //Then the lift moves up
 		
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) //If L2 on the master controller is pressed
-			arm.move(-70); //Then the cap descorer retractes
+        	lift.move(-70); //Then the lift moves down
 
 		else
-			arm.move(0); //if not pressed then nothing happens
+			lift.move(0); //if not pressed then nothing happens
 
 	}
 

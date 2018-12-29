@@ -18,7 +18,7 @@ using namespace pros; //Instead of typing pros::Motor() all the time, if you use
 #include "autons.h"
 #include "./subsystems/base.h"
 #include "./subsystems/intake.h"
-#include "./subsystems/arm.h"
+#include "./subsystems/lift.h"
 #include "PIDstuff.h"
 
 //DO NOT TOUCH BELOW STUFF, THIS MAKES THE CODE RUN
