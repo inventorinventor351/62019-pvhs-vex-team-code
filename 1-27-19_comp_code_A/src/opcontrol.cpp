@@ -17,7 +17,7 @@ void opcontrol() {
 			capFlip.move(0); //if not pressed then nothing happens
 
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) //If L on the master controller is pressed
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) //If L1 on the master controller is pressed
 			arm.move(70); //Then the cap descorer extends
 		
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) //If L2 on the master controller is pressed
