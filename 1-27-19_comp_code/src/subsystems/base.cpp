@@ -13,6 +13,18 @@ void runRightBase(float voltPerc) {
     rightBase2.move_voltage((voltPerc / 100) * 12000);
 }
 
+double getDist() {
+
+    return (double)distEnc.get_value();
+
+}
+
+double getYaw() {
+
+    return (double)yawEnc.get_value();
+
+}
+
 int leftTarget = 0;
 int rightTarget = 0;
 
@@ -71,7 +83,7 @@ void baseSR(void* param) {
 
 }
 
-void moveStrtBase(int setPoint, int direction, int time) {
+void moveStrtBase(double setPoint, int direction, int time) {
 
     double distVal, diffVal;
 
@@ -85,14 +97,48 @@ void moveStrtBase(int setPoint, int direction, int time) {
 
     for(int i = 0; i < time; i++) {
 
-        dist.error = setPoint - distEnc.get_value();
-        diff.error = 0 - yawEnc.get_value();
+        dist.error = setPoint - getDist();
+        diff.error = 0 - getYaw();
 
         distVal = runPID(&dist);
         diffVal = runPID(&diff);
 
+        leftTarget = distVal - diffVal;
+        rightTarget = distVal + diffVal;
+
         delay(1);
 
     }
+
+    leftTarget = 0;
+    rightTarget = 0;
+
+}
+
+void pvtBase(int angle, int time) {
+
+    double setPoint = (double)angle * 0.66, distVal, dispVal;
+
+    PID dist = initPID(0, 0, 0, 0, 0, 0);
+    PID disp = initPID(0, 0, 0, 0, 0, 0);
+
+    distEnc.reset();
+    yawEnc.reset();
+
+    for(int i = 0; i < time; i++) {
+
+        dist.error = setPoint - getYaw();
+
+        distVal = runPID(&dist);
+
+        leftTarget = distVal;
+        rightTarget = -distVal;
+
+        delay(1);
+
+    }
+
+    leftTarget = 0;
+    rightTarget = 0;
 
 }
