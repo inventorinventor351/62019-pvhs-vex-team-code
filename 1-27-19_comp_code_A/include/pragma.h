@@ -12,6 +12,8 @@ extern Motor arm; //motor that de- scores caps
 
 extern ADIEncoder distEnc; //encoder on a tracking wheel that is parallel to the base wheels
 
+extern Controller master;
+
 #endif
 
 
