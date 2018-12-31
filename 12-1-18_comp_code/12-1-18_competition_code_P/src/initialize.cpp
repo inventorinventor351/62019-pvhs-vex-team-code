@@ -96,6 +96,7 @@ void competition_initialize() {
     lcd::register_btn1_cb(on_center_pressed);
     lcd::register_btn2_cb(on_right_pressed);
 
+
 }
 
 //Runs while the robot is in the disabled state of Field Management System or the VEX Competition Switch

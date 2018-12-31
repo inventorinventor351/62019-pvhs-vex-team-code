@@ -285,13 +285,13 @@ void autonShoot() {
         move_voltageLeftChassis(0);
         move_voltageRightChassis(0);
 
-        /*catapult.move(127);
+        catapult.move(127);
         delay(350);
 
         while(!catabut.get_value())
             catapult.move(90);
         
-        catapult.move(0);*/
+        catapult.move(0);
 
         std::cout << "DONE AIMING\n";
         std::cout << "DONE AIMING\n";
@@ -305,12 +305,12 @@ void autonShoot() {
 
 void autonGetBall(int distGo, int distReturn) {
 
-    driveStraight(distGo, 1200);
+    driveStraight(distGo, 2000);
     intake.move_velocity(500);
     driveStraight(0.59, 800);
     delay(375);
     driveStraight(distReturn, 1000);
-    loadBall(800);
+    loadBall(2000);
     intake.move_velocity(0);
 
 }
