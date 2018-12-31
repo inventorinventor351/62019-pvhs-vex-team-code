@@ -25,7 +25,7 @@ void opcontrol() {
 
 		}
 
-		Task::delay_until(&now, 50); //loop driver control 20 times per second
+		Task::delay_until(&now, 1); //loop driver control 500 times per second
 		
 	}
 
