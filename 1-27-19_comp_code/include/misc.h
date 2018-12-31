@@ -5,7 +5,8 @@ int sgn(double x); //inputs a double and outputs its sign (+ or -) as an int
 
 struct PID { //a holder for multiple values used in PID
 
-    double error,
+    double
+    error,
     integral,
     derivative,
     prevError,
