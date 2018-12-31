@@ -12,6 +12,8 @@ extern Motor deSr;
 
 extern ADIEncoder distEnc; //encoder on a tracking wheel that is parallel to the base wheels
 
+extern Vision visn;
+
 extern Controller master;
 
 #endif
