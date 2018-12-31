@@ -13,15 +13,25 @@ void opcontrol() {
 			runIntake(80);
 		}
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2)) 
-		{
-			runIntake(-80);
-
-		}
 		 else 
 		{
 			runIntake(0);
 
+		}
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+		{
+			runBro(60);
+		}
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
+		{
+			runBro(-60);
+		}
+
+		else
+		{
+			runBro(0);
 		}
 
 	}
