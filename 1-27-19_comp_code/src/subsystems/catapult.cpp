@@ -29,9 +29,6 @@ void cpltShoot() {
 
 void flagAim() {
 
-    if(competition::is_autonomous())
-        baseSR.suspend();
-
     if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
 
         runLeftBase(0);
@@ -42,6 +39,7 @@ void flagAim() {
     else{
 
         PID aim = initPID(0, 0, 0, 0, 0, 0);
+        float aimVal;
 
         for(int i = 0; i < 2000; i++) {
 
@@ -60,8 +58,21 @@ void flagAim() {
         runRightBase(0);
 
     }
-    
-    if(competition::is_autonomous())
-        baseSR.resume();
+
+}
+
+void initCpltVis() {
+
+    vision_signature_s_t GREENFLAG;
+    GREENFLAG.id = 1;
+    GREENFLAG.range = 2.8;
+    GREENFLAG.u_min = -3383;
+    GREENFLAG.u_max = -2431;
+    GREENFLAG.u_mean = -2907;
+    GREENFLAG.v_min = -4711;
+    GREENFLAG.u_max = -2891;
+    GREENFLAG.v_mean = -3801;
+    GREENFLAG.type = 0;
+    shooterEye.set_signature(1, &GREENFLAG);
 
 }
