@@ -14,6 +14,19 @@ void runIntakeTime(float voltPerc, int time) {
 
 }
 
+bool isBall() {
+
+    int i;
+    
+    if(ballSensor.get_value < 14) 
+        i = 1;
+    else
+        i = 0;
+
+    return i;
+    
+}
+
 void getBall() {
 
     if(abs(intkVis.get_by_size(0).x_middle_coord) > 320) {
@@ -30,7 +43,7 @@ void getBall() {
         int lowestY = 1000, ObjX;
         runIntake(80);
 
-        for(int i = 0; i < 3000 && isBall() = 0; i++) {
+        for(int i = 0; i < 3000 && isBall() = false; i++) {
 
             for(int n = 1; n <= intkVis.get_object_count(); n++) {
 
@@ -57,16 +70,4 @@ void getBall() {
 
     runIntake(0);
 
-}
-
-bool isBall() {
-
-    int i;
-    
-    if(ballSensor.get_value < 14) 
-        i = 1;
-    else
-        i = 0;
-
-    return i;
 }
