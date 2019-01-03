@@ -24,12 +24,37 @@ void getBall() {
     }
 
     else {
+        
+        PID aim = initPID(0, 0, 0, 0, 0, 0);
+        PID dist = initPID(0, 0, 0, 0, 0, 0);
+        int lowestY = 1000, ObjX;
+        runIntake(80);
 
-        for(int i = 0; i < 3000; i++) {
+        for(int i = 0; i < 3000 && isBall() = 0; i++) {
 
+            for(int n = 1; n <= intkVis.get_object_count(); n++) {
 
+                if(intkVis.get_by_size(n).y_middle_coord < lowestY){
+                    lowestY = intkVis.get_by_size(n).y_middle_coord;
+                    ObjX = intkVis.get_by_size(n).x_middle_coord;
+                }
+
+            }
+
+            aim.error = -ObjX;
+            dist.error = -200 - lowestY;
+            aimVal = runPID(&aim);
+            distVal = runPID(&dist);
+
+            runLeftBase(distVal - aimVal);
+            runRightBase(distVal + aimVal);
+
+            delay(1);
             
         }
 
     }
+
+    runIntake(0);
+
 }
