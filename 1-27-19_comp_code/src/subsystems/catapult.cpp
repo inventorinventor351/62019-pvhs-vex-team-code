@@ -10,7 +10,7 @@ void cpltShoot() {
 
     int number; 
     int setpoint;
-    PID cpltShoot = initPID(0, 0, 0, 0, 0, 0);
+    PID cpltShoot = initPID(0, 0, 0, 132, 132, 132);
 
     while(cpltPot.get_value() > number) {
 
@@ -29,7 +29,7 @@ void cpltShoot() {
 
 void flagAim() {
 
-    if(is_autonomous())
+    if(competition::is_autonomous())
         baseSR.suspend();
 
     if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
@@ -61,7 +61,7 @@ void flagAim() {
 
     }
     
-    if(is_autonomous())
+    if(competition::is_autonomous())
         baseSR.resume();
 
 }
