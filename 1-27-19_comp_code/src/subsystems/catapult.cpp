@@ -10,7 +10,7 @@ void cpltShoot() {
 
     int number; 
     int setpoint;
-    PID cpltShoot = initPID(0, 0, 0, 132, 132, 132);
+    PID cpltShoot = initPID(1, 1, 0, 132, 132, 132);
 
     while(cpltPot.get_value() > number) {
 
@@ -32,7 +32,6 @@ void flagAim() {
     if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
 
         runLeftBase(0);
-        runRightBase(0);
 
     }
 
