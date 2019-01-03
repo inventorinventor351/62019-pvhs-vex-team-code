@@ -36,12 +36,5 @@ void getBall() {
 
 bool isBall() {
 
-    int i;
-    
-    if(ballSensor.get_value < 14) 
-        i = 1;
-    else
-        i = 0;
-
-    return i;
+    return (ballSensor.get_value < 14);
 }
