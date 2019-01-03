@@ -26,3 +26,42 @@ void cpltShoot() {
     }
 
 }
+
+void flagAim() {
+
+    if(is_autonomous())
+        baseSR.suspend();
+
+    if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
+
+        runLeftBase(0);
+        runRightBase(0);
+
+    }
+
+    else{
+
+        PID aim = initPID(0, 0, 0, 0, 0, 0);
+
+        for(int i = 0; i < 2000; i++) {
+
+            aim.error = -cpltVis.get_by_size(0).x_middle_coord;
+
+            aimVal = runPID(&aim);
+
+            runLeftBase(-aimVal);
+            runRightBase(aimVal);
+        
+            delay(1);
+
+        }
+
+        runLeftBase(0);
+        runRightBase(0);
+
+    }
+    
+    if(is_autonomous())
+        baseSR.resume();
+
+}
