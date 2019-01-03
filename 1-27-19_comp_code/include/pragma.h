@@ -13,6 +13,7 @@ extern Vision cpltVis; //vision sensor that helps the catapult aim for flags
 
 extern ADIDigitalOut transPstn; //piston that controls the transmission
 
+extern ADIAnalogIn ballSensor; //light sensor that senses when a ball passes through intake
 extern ADIAnalogIn cpltPot; //potentiometer that measures the angle of the catapult arm
 
 extern ADIEncoder distEnc; //encoder on a tracking wheel that is parallel to the base wheels

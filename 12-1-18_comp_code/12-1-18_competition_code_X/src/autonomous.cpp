@@ -17,7 +17,7 @@ void autonomous() {
 
     chassisTransmission.set_value(0);
 
-    /*if(autonCount == 0)
+    if(autonCount == 0)
         autonBlueFlag();
 
     if(autonCount == 1)
@@ -27,6 +27,6 @@ void autonomous() {
         autonRedFlag();
 
     if(autonCount == 3)
-        autonRedCapFlip();*/
+        autonRedCapFlip();
 
 }
