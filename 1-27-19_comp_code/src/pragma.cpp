@@ -12,5 +12,7 @@ Vision cpltVis (8, VISION_ZERO_CENTER); //vision sensor plugged into port 8 and 
 
 ADIDigitalOut transPstn (2); //piston plugged into port 2
 
+ADIAnalogIn ballSensor (3); //light sensor plugged into legacy port 3
+
 ADIEncoder distEnc (5, 6, 0); //encoder plugged into legacy ports 5 and 6 and not reversed
 ADIEncoder yawEnc (7, 8, 0); //encoder plugged into legacy ports 7 and 8 and not reversed

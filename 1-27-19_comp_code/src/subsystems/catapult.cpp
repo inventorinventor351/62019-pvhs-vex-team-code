@@ -35,7 +35,6 @@ void flagAim() {
     if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
 
         runLeftBase(0);
-        runRightBase(0);
 
     }
 
