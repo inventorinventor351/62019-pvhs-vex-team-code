@@ -15,7 +15,7 @@ void autonomous()
     REDCAP.type = 0;
     visn.set_signature(1, &REDCAP);
 
-	bool transmissionVar = 0, liftVar = 0, tipperVar = 0, atckR2, atckY, atckA, atckUp = 1, finished = 1;
+	
 	vision_signature_s_t BLUECAP;
     BLUECAP.id = 1;
     BLUECAP.range = 2.8;
