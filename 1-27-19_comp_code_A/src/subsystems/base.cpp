@@ -17,7 +17,6 @@ void runRightBase(float voltPerc) {
 }
 
 
-
 void driveLeft(int speed) {
 
     leftBase1.move(speed);

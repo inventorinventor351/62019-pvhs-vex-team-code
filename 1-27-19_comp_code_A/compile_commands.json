@@ -76,38 +76,6 @@
             "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include-fixed",
             "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include",
             "-iquote./include",
-            "-iquote./include/autons/",
-            "-mcpu=cortex-a9",
-            "-mfpu=neon-fp16",
-            "-mfloat-abi=softfp",
-            "-D_POSIX_THREADS",
-            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
-            "-Os",
-            "-funwind-tables",
-            "-ffunction-sections",
-            "-fdata-sections",
-            "-fdiagnostics-color",
-            "--std=gnu++17",
-            "-o",
-            "bin/autons/blueFlagSide.cpp.o",
-            "src/autons/blueFlagSide.cpp"
-        ],
-        "directory": "/Users/chrissalas/Desktop/firmware/62019-pvhs-vex-team-code/1-27-19_comp_code_A",
-        "file": "src/autons/blueFlagSide.cpp"
-    },
-    {
-        "arguments": [
-            "clang++",
-            "-c",
-            "-target",
-            "armv7ar-none-none-eabi",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/arm-none-eabi/thumb/v7-ar/fpv3/softfp",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/backward",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include-fixed",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include",
-            "-iquote./include",
             "-iquote./include/subsystems/",
             "-mcpu=cortex-a9",
             "-mfpu=neon-fp16",
@@ -158,38 +126,6 @@
         ],
         "directory": "/Users/chrissalas/Desktop/firmware/62019-pvhs-vex-team-code/1-27-19_comp_code_A",
         "file": "src/subsystems/intake.cpp"
-    },
-    {
-        "arguments": [
-            "clang++",
-            "-c",
-            "-target",
-            "armv7ar-none-none-eabi",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/arm-none-eabi/thumb/v7-ar/fpv3/softfp",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/backward",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include-fixed",
-            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include",
-            "-iquote./include",
-            "-iquote./include/autons/",
-            "-mcpu=cortex-a9",
-            "-mfpu=neon-fp16",
-            "-mfloat-abi=softfp",
-            "-D_POSIX_THREADS",
-            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
-            "-Os",
-            "-funwind-tables",
-            "-ffunction-sections",
-            "-fdata-sections",
-            "-fdiagnostics-color",
-            "--std=gnu++17",
-            "-o",
-            "bin/autons/redCapSide.cpp.o",
-            "src/autons/redCapSide.cpp"
-        ],
-        "directory": "/Users/chrissalas/Desktop/firmware/62019-pvhs-vex-team-code/1-27-19_comp_code_A",
-        "file": "src/autons/redCapSide.cpp"
     },
     {
         "arguments": [
@@ -268,6 +204,38 @@
             "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include-fixed",
             "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include",
             "-iquote./include",
+            "-iquote./include/./",
+            "-mcpu=cortex-a9",
+            "-mfpu=neon-fp16",
+            "-mfloat-abi=softfp",
+            "-D_POSIX_THREADS",
+            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
+            "-Os",
+            "-funwind-tables",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-fdiagnostics-color",
+            "--std=gnu++17",
+            "-o",
+            "bin/pragma.cpp.o",
+            "src/pragma.cpp"
+        ],
+        "directory": "/Users/chrissalas/Desktop/firmware/62019-pvhs-vex-team-code/1-27-19_comp_code_A",
+        "file": "src/pragma.cpp"
+    },
+    {
+        "arguments": [
+            "clang++",
+            "-c",
+            "-target",
+            "armv7ar-none-none-eabi",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/arm-none-eabi/thumb/v7-ar/fpv3/softfp",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/backward",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include-fixed",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include",
+            "-iquote./include",
             "-iquote./include/autons/",
             "-mcpu=cortex-a9",
             "-mfpu=neon-fp16",
@@ -313,11 +281,11 @@
             "-fdiagnostics-color",
             "--std=gnu++17",
             "-o",
-            "bin/pragma.cpp.o",
-            "src/pragma.cpp"
+            "bin/autonomous.cpp.o",
+            "src/autonomous.cpp"
         ],
         "directory": "/Users/chrissalas/Desktop/firmware/62019-pvhs-vex-team-code/1-27-19_comp_code_A",
-        "file": "src/pragma.cpp"
+        "file": "src/autonomous.cpp"
     },
     {
         "arguments": [
@@ -332,7 +300,7 @@
             "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include-fixed",
             "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include",
             "-iquote./include",
-            "-iquote./include/./",
+            "-iquote./include/autons/",
             "-mcpu=cortex-a9",
             "-mfpu=neon-fp16",
             "-mfloat-abi=softfp",
@@ -345,10 +313,42 @@
             "-fdiagnostics-color",
             "--std=gnu++17",
             "-o",
-            "bin/autonomous.cpp.o",
-            "src/autonomous.cpp"
+            "bin/autons/redCapSide.cpp.o",
+            "src/autons/redCapSide.cpp"
         ],
         "directory": "/Users/chrissalas/Desktop/firmware/62019-pvhs-vex-team-code/1-27-19_comp_code_A",
-        "file": "src/autonomous.cpp"
+        "file": "src/autons/redCapSide.cpp"
+    },
+    {
+        "arguments": [
+            "clang++",
+            "-c",
+            "-target",
+            "armv7ar-none-none-eabi",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/arm-none-eabi/thumb/v7-ar/fpv3/softfp",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include/c++/6.3.1/backward",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/include-fixed",
+            "-isystem/usr/local/lib/pros-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/include",
+            "-iquote./include",
+            "-iquote./include/autons/",
+            "-mcpu=cortex-a9",
+            "-mfpu=neon-fp16",
+            "-mfloat-abi=softfp",
+            "-D_POSIX_THREADS",
+            "-D_UNIX98_THREAD_MUTEX_ATTRIBUTES",
+            "-Os",
+            "-funwind-tables",
+            "-ffunction-sections",
+            "-fdata-sections",
+            "-fdiagnostics-color",
+            "--std=gnu++17",
+            "-o",
+            "bin/autons/blueFlagSide.cpp.o",
+            "src/autons/blueFlagSide.cpp"
+        ],
+        "directory": "/Users/chrissalas/Desktop/firmware/62019-pvhs-vex-team-code/1-27-19_comp_code_A",
+        "file": "src/autons/blueFlagSide.cpp"
     }
 ]
