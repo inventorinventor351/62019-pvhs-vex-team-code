@@ -1,5 +1,5 @@
-#ifndef PIDSTUFF_H
-#define PIDSTUFF_H
+#ifndef MAF_H
+#define MAF_H
 
 extern float Pi;
 

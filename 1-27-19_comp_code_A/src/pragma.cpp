@@ -5,7 +5,7 @@ Motor leftBase2 (19, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //normal m
 Motor leftBase3 (20, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS);
 Motor rightBase1 (7, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 3 and reversed
 Motor rightBase2 (8, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 4 and reversed
-Motor rightBase3 (9, MOTOR_GEARSET_18, 1), E_MOTOR_ENCODER_ROTATIONS;
+Motor rightBase3 (9, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS);
 
 Motor intake (10, MOTOR_GEARSET_18, 0); //normal motor plugged into port 5 and not reversed
 
