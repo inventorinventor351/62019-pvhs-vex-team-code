@@ -64,7 +64,7 @@ void driveAbsRight(float distance, int maxSpeed) {
     distance = inToRot(distance);
     rightBase1.move_absolute(distance, maxSpeed);
     rightBase2.move_absolute(distance, maxSpeed);
-    rightBase3.move_absolute)distance, maxSpeed);
+    rightBase3.move_absolute(distance, maxSpeed);
 
 }
 
@@ -87,7 +87,7 @@ void driveRelativeRight(float distance, int maxSpeed) {
 
 void pvitChassis(int angle, int maxSpeed) {
 
-    float distance = angle * Pi / 440;
+    float distance = angle * 3.1415926535897932384 / 440;
 
     driveRelativeRight(distance, maxSpeed);
     driveRelativeLeft(-distance, maxSpeed);
