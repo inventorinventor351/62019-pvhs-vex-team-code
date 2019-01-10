@@ -74,6 +74,6 @@ void initCpltVis() {
     GREENFLAG.u_max = -2891;
     GREENFLAG.v_mean = -3801;
     GREENFLAG.type = 0;
-    shooterEye.set_signature(1, &GREENFLAG);
+    cpltVis.set_signature(1, &GREENFLAG);
 
 }
