@@ -3,7 +3,10 @@
 void opcontrol() {
 
 	std::uint_least32_t now = millis();
-	
+	bool atckL2 = false, transPstnVar = 1, atckA = false;
+	//initCpltVis();
+	initIntkVis();
+
 	while(true) {
 
 		leftBase1.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 200);
@@ -24,6 +27,25 @@ void opcontrol() {
 			runIntake(0);
 
 		}
+
+		/*if(!master.get_digital(E_CONTROLLER_DIGITAL_L2))			
+        	atckL2 = false;
+
+        else if(!atckL2){
+            atckL2 = true;
+            transPstn.set_value(transPstnVar);
+            transPstnVar = !transPstnVar;
+		}*/
+
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_A))			
+        	atckA = false;
+
+        else if(!atckA){
+            atckA = true;
+            getBall();
+		}
+
+		std::cout << cpltVis.get_by_size(0).x_middle_coord << " | " << intkVis.get_by_size(0).x_middle_coord << "\n";
 
 		Task::delay_until(&now, 1); //loop driver control 500 times per second
 		

@@ -29,39 +29,51 @@ bool isBall() {
 
 void getBall() {
 
-    if(abs(intkVis.get_by_size(0).x_middle_coord) > 320) {
+    if(intkVis.get_object_count() == 0) {
 
         runLeftBase(0);
         runRightBase(0);
+
+        master.print(0, 0, "Did not find");
 
     }
 
     else {
         
-        PID aim = initPID(0, 0, 0, 0, 0, 0);
-        PID dist = initPID(0, 0, 0, 0, 0, 0);
-        int lowestY = 1000, ObjX;
+        PID aim = initPID(1, 0, 0, 0.3, 0, 0);
+        PID dist = initPID(1, 0, 0, 0.5, 0, 0);
+        int lowestY = 1000, objX;
         float aimVal, distVal;
-        runIntake(80);
+        runIntake(-80);
 
-        for(int i = 0; i < 3000 && isBall() == 0; i++) {
+        for(int i = 0; i < 2000 /*&& isBall() == 0*/; i++) {
 
-            for(int n = 1; n <= intkVis.get_object_count(); n++) {
+            if(intkVis.get_object_count() == 0 || master.get) {
+                runLeftBase(0);
+                runRightBase(0);
+                master.print(0, 0, "Lost Ball");
+                break;
+            }
+
+            for(int n = 0; n < intkVis.get_object_count(); n++) {
 
                 if(intkVis.get_by_size(n).y_middle_coord < lowestY){
                     lowestY = intkVis.get_by_size(n).y_middle_coord;
-                    ObjX = intkVis.get_by_size(n).x_middle_coord;
+                    objX = intkVis.get_by_size(n).x_middle_coord;
                 }
 
             }
 
-            aim.error = -ObjX;
+            std::cout << "Y: " << lowestY << " | " << "X: " << objX << "\n";
+
+            aim.error = -objX;
             dist.error = -200 - lowestY;
             aimVal = runPID(&aim);
             distVal = runPID(&dist);
+            lowestY = 0;
 
-            runLeftBase(distVal - aimVal);
-            runRightBase(distVal + aimVal);
+            runLeftBase(-distVal - aimVal);
+            runRightBase(-distVal + aimVal);
 
             delay(1);
             
@@ -69,6 +81,7 @@ void getBall() {
 
     }
 
+    delay(200);
     runIntake(0);
 
 }
@@ -77,14 +90,14 @@ void initIntkVis() {
 
     vision_signature_s_t BALL;
     BALL.id = 1;
-    BALL.range = 2.4;
-    BALL.u_min = 1063;
-    BALL.u_max = 2177;
-    BALL.u_mean = 1620;
-    BALL.v_min = -5013;
-    BALL.u_max = -4037;
-    BALL.v_mean = -4525;
+    BALL.range = 2.3;
+    BALL.u_min = 51;
+    BALL.u_max = 1795;
+    BALL.u_mean = 923;
+    BALL.v_min = -5355;
+    BALL.v_max = -4649;
+    BALL.v_mean = -5002;
     BALL.type = 0;
-    shooterEye.set_signature(1, &BALL);
+    intkVis.set_signature(1, &BALL);
     
 }
