@@ -29,6 +29,8 @@ void cpltShoot() {
 
 void flagAim() {
 
+    double aimVal;
+
     if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
 
         runLeftBase(0);

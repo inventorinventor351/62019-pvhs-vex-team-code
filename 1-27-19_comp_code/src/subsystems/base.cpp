@@ -83,13 +83,13 @@ void baseSR(void* param) {
 
 }
 
-void moveStrtBase(double setPoint, int direction, int time) {
+void moveStraight(int setPoint, int direction, int time) {
 
     double distVal, diffVal;
 
     direction = (int)sgn((double)direction);
 
-    PID dist = initPID(0, 0, 0, 0, 0, 0);
+    PID dist = initPID(1, 0, 0, 1, 0, 0);
     PID diff = initPID(0, 0, 0, 0, 0, 0);
 
     distEnc.reset();
@@ -97,8 +97,8 @@ void moveStrtBase(double setPoint, int direction, int time) {
 
     for(int i = 0; i < time; i++) {
 
-        dist.error = setPoint - getDist();
-        diff.error = 0 - getYaw();
+        dist.error = setPoint - distEnc.get_value();
+        diff.error = 0 - yawEnc.get_value();
 
         distVal = runPID(&dist);
         diffVal = runPID(&diff);
@@ -135,6 +135,9 @@ void pvtBase(int angle, int time) {
         rightTarget = -distVal;
 
         delay(1);
+
+        lcd::print(0, "%d", distEnc.get_value());
+        lcd::print(1, "%d", yawEnc.get_value());
 
     }
 
