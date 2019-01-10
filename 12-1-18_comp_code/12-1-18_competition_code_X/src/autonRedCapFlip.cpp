@@ -22,14 +22,7 @@ void autonRedCapFlip(){
     pvitChassis(-130, 150);*/
     pvitChassis(85, 150);
     delay(1500);
-<<<<<<< HEAD:12-1-18_competition_code_X/src/autonRedCapFlip.cpp
-    chassisTransmission.set_value(1);
-    intake.move(0);
-    driveRelativeLeft(3.1, 200);
-    driveRelativeRight(3.1, 200);
-=======
     drivePD(1.8);
     intake.move(0);
->>>>>>> 7b7fd5a6b9335147aaedd49cdb732272fbc60005:12-1-18_comp_code/12-1-18_competition_code_X/src/autonRedCapFlip.cpp
 
 }
