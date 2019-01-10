@@ -16,7 +16,7 @@ void runIntakeTime(float voltPerc, int time) {
 
 void getBall() {
 
-    if(abs(intkVis.get_by_size(0).x_middle_coord) > 320); {
+    if(abs(intkVis.get_by_size(0).x_middle_coord) > 320) {
 
         runLeftBase(0);
         runRightBase(0);

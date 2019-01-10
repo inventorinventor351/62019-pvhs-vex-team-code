@@ -13,11 +13,11 @@ void opcontrol() {
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) {
 
-			runIntake(102);
+			runIntake(80);
 
 		} else if(master.get_digital(E_CONTROLLER_DIGITAL_R2)) {
 
-			runIntake(-102);
+			runIntake(-80);
 
 		} else {
 

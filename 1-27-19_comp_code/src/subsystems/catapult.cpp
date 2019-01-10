@@ -29,8 +29,7 @@ void cpltShoot() {
 
 void flagAim() {
 
-    if(is_autonomous())
-        baseSR.suspend();
+    double aimVal;
 
     if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
 
@@ -60,8 +59,5 @@ void flagAim() {
         runRightBase(0);
 
     }
-    
-    if(is_autonomous())
-        baseSR.resume();
 
 }

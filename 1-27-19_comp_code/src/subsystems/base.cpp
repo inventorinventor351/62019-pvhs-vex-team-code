@@ -90,7 +90,7 @@ void moveStraight(int setPoint, int direction, int time) {
     direction = (int)sgn((double)direction);
 
     PID dist = initPID(1, 0, 0, 1, 0, 0);
-    PID diff = initPID(1, 0, 0, 1, 0, 0);
+    PID diff = initPID(0, 0, 0, 0, 0, 0);
 
     distEnc.reset();
     yawEnc.reset();
@@ -103,11 +103,8 @@ void moveStraight(int setPoint, int direction, int time) {
         distVal = runPID(&dist);
         diffVal = runPID(&diff);
 
-        //leftTarget = distVal - diffVal;
-        //rightTarget = distVal + diffVal;
-
-        runLeftBase(distVal - diffVal);
-        runRightBase(distVal + diffVal);
+        leftTarget = distVal - diffVal;
+        rightTarget = distVal + diffVal;
 
         delay(1);
 
@@ -138,6 +135,9 @@ void pvtBase(int angle, int time) {
         rightTarget = -distVal;
 
         delay(1);
+
+        lcd::print(0, "%d", distEnc.get_value());
+        lcd::print(1, "%d", yawEnc.get_value());
 
     }
 
