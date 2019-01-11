@@ -34,7 +34,7 @@ void baseSR(void* param) {
 
     float leftCurrent = 0; //variable for the current voltage
     float rightCurrent = 0; //variable for the current voltage
-    float accel = 1; //variable for the accel
+    float accel = 100; //variable for the accel
 	
 	while(true) {
 
@@ -50,7 +50,7 @@ void baseSR(void* param) {
 
         }
 
-        else if(abs(rightTarget - rightCurrent) < accel) {
+        else if(abs(leftTarget - leftCurrent) < accel) {
 
             leftCurrent = leftTarget;
 
@@ -62,7 +62,7 @@ void baseSR(void* param) {
 
         }
 
-        else if(rightCurrent < rightTarget) {
+        else if(rightTarget < rightCurrent) {
 
             rightCurrent -= accel;
 
@@ -89,8 +89,8 @@ void moveStraight(int setPoint, int direction, int time) {
 
     direction = (int)sgn((double)direction);
 
-    PID dist = initPID(1, 0, 0, 1, 0, 0);
-    PID diff = initPID(0, 0, 0, 0, 0, 0);
+    PID dist = initPID(1, 0, 0, 0.13, 0, 0.15);
+    PID diff = initPID(1, 0, 0, 2, 0, 0);
 
     distEnc.reset();
     yawEnc.reset();
@@ -103,15 +103,23 @@ void moveStraight(int setPoint, int direction, int time) {
         distVal = runPID(&dist);
         diffVal = runPID(&diff);
 
-        leftTarget = distVal - diffVal;
-        rightTarget = distVal + diffVal;
+        //leftTarget = distVal - diffVal;
+        //rightTarget = distVal + diffVal;
+
+        runLeftBase(distVal - diffVal);
+        runRightBase(distVal + diffVal);
+
+        master.print(0, 0, "%d", yawEnc.get_value());
 
         delay(1);
 
     }
 
-    leftTarget = 0;
-    rightTarget = 0;
+    //leftTarget = 0;
+    //rightTarget = 0;
+
+    runLeftBase(0);
+    runRightBase(0);
 
 }
 
@@ -131,17 +139,20 @@ void pvtBase(int angle, int time) {
 
         distVal = runPID(&dist);
 
-        leftTarget = distVal;
-        rightTarget = -distVal;
+        //leftTarget = distVal;
+        //rightTarget = -distVal;
+
+        runLeftBase(distVal);
+        runRightBase(-distVal);
 
         delay(1);
 
-        lcd::print(0, "%d", distEnc.get_value());
-        lcd::print(1, "%d", yawEnc.get_value());
-
     }
 
-    leftTarget = 0;
-    rightTarget = 0;
+    //leftTarget = 0;
+    //rightTarget = 0;
+
+    runLeftBase(0);
+    runRightBase(0);
 
 }
