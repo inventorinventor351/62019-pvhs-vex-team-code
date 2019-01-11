@@ -46,9 +46,9 @@ void getBall() {
         float aimVal, distVal;
         runIntake(-80);
 
-        for(int i = 0; i < 2000 /*&& isBall() == 0*/; i++) {
+        for(int i = 0; i < 2000; i++) {
 
-            if(intkVis.get_object_count() == 0 || master.get) {
+            if(intkVis.get_object_count() == 0) {
                 runLeftBase(0);
                 runRightBase(0);
                 master.print(0, 0, "Lost Ball");
