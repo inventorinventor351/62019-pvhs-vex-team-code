@@ -1,8 +1,8 @@
 #include "main.h"
 
-void 2cap3flag(){/*
+void red_2cap3flag(){
     
-    runIntake(80);
+    /*runIntake(80);
     moveStraight();
     moveStraight();
     runIntake(0);
@@ -17,5 +17,4 @@ void 2cap3flag(){/*
     moveStraight();
     runIntake(0);
     moveStraight();*/
-
 }
