@@ -8,15 +8,8 @@ void runCplt(float voltPerc) {
 
 void cpltShoot() {
 
-    int number; 
     int setpoint;
-    PID cpltShoot = initPID(1, 1, 0, 132, 132, 132);
-
-    while(cpltPot.get_value() > number) {
-
-        cplt.move_voltage(12000);
-
-    }
+    PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
 
     while(cpltPot.get_value() > setpoint) {
         
