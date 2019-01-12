@@ -45,9 +45,7 @@ void opcontrol() {
             getBall();
 		}
 
-		std::cout << cpltVis.get_by_size(0).x_middle_coord << " | " << intkVis.get_by_size(0).x_middle_coord << "\n";
-
-		Task::delay_until(&now, 1); //loop driver control 500 times per second
+		Task::delay_until(&now, 1);
 		
 	}
 
