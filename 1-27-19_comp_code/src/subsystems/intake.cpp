@@ -70,7 +70,7 @@ void getBall() {
             dist.error = -200 - lowestY;
             aimVal = runPID(&aim);
             distVal = runPID(&dist);
-            lowestY = 0;
+            lowestY = 1000;
 
             runLeftBase(-distVal - aimVal);
             runRightBase(-distVal + aimVal);
