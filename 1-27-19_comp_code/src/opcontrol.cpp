@@ -58,7 +58,9 @@ void opcontrol() {
 
         else if(!atckA){
             atckA = true;
-            getBall();
+            getBall(2000);
+			delay(200);
+			runIntake(0);
 		}
 
 		std::cout << cpltVis.get_by_size(0).x_middle_coord << " | " << intkVis.get_by_size(0).x_middle_coord << "\n";
