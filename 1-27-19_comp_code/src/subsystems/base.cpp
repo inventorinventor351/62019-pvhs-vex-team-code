@@ -49,14 +49,10 @@ void moveStraight(double setPoint, double direction, int time) {
 
 void pvtBase(int angle, int time) {
 
-    int count = 0;
+    double setPoint = -round(angle * 15 / 2.8), distVal, dispVal;
 
-    double setPoint = round(angle * 15 / 2.8), distVal, dispVal;
-
-    master.print(2, 0, "%f", setPoint);
-
-    PID dist = initPID(1, 0, 0, 0.12, 0, 0);
-    PID disp = initPID(1, 0, 0, 1, 0, 0);
+    PID dist = initPID(1, 0, 0, 0.25, 0, 7.5);
+    PID disp = initPID(0, 1, 1, 0, 0.005, 2);
 
     distEnc.reset();
     yawEnc.reset();
@@ -64,26 +60,16 @@ void pvtBase(int angle, int time) {
     for(int i = 0; i < time; i++) {
 
         dist.error = setPoint - yawEnc.get_value();
-        disp.error = distEnc.get_value();
+        disp.error = (0 - distEnc.get_value()) * sgn(angle);
 
         distVal = runPID(&dist);
-        distVal = (abs(distVal) > 80) ? (80 * sgn(distVal)) : (distVal);
         dispVal = runPID(&disp);
-        dispVal = (abs(dispVal) > 20) ? (20 * sgn(dispVal)) : (dispVal);
 
-        runLeftBase(distVal + dispVal);
+        if(!(i % 10))
+            std::cout << "yawEnc: " << yawEnc.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "turnErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "distVal: " << distVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
+
+        runLeftBase(distVal - dispVal);
         runRightBase(-distVal - dispVal);
-
-        if(!(count % 50)) {
-
-            master.print(0, 0, "%d", distEnc.get_value());
-            delay(50);
-            master.print(1, 0, "%d", yawEnc.get_value());
-            delay(50);
-
-        }
-
-        count++;
 
         delay(1);
 
@@ -91,14 +77,5 @@ void pvtBase(int angle, int time) {
 
     runLeftBase(0);
     runRightBase(0);
-
-    while(true) {
-
-        master.print(0, 0, "%d", distEnc.get_value());
-        delay(50);
-        master.print(1, 0, "%d", yawEnc.get_value());
-        delay(50);
-
-    }
 
 }

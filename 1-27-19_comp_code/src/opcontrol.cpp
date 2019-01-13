@@ -22,7 +22,7 @@ void opcontrol() {
 			delay(200);
 			cplt.move_voltage(0);
 			delay(200);
-			cpltshoot = initPID(stuff);
+			//cpltshoot = initPID(stuff);
 
 		}
 
