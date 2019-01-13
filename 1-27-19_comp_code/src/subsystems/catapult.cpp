@@ -1,5 +1,7 @@
 #include "main.h"
 
+bool shoot = false;
+
 void runCplt(float voltPerc) {
 
     cplt.move_voltage((voltPerc / 100) * 12000);
@@ -18,6 +20,28 @@ void cpltShoot() {
 
     }
 
+}
+
+void cpltReturn() {
+
+    PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
+    int setpoint = 0001;
+    while(true) {
+
+        cpltShoot.error = setpoint - cpltPot.get_value();
+        cplt.move_voltage(runPID(&cpltShoot));
+        
+        if(shoot) {
+
+            cplt.move_voltage(12000);
+			delay(200);
+			cplt.move_voltage(0);
+			delay(200);
+			cpltShoot = initPID(1, 1, 0, 132, 132, 0);
+            shoot = false;
+        }
+
+    
 }
 
 void flagAim() {

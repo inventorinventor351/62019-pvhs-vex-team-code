@@ -2,19 +2,19 @@
 
 void red_2cap3flag(){
     
-    /*runIntake(80);
-    moveStraight();
-    moveStraight();
+    cpltReturn();
+    runIntake(80);
+    moveStraight(720, 1, 1500);
+    moveStraight(720,  -1, 1500);
     runIntake(0);
-    pvtBase();
+    pvtBase(90, 1000);
     flagAim();
-    moveStraight();
-    cpltShoot();
-    moveStraight();
-    moveStraight();
-    pvtBase();
+    moveStraight(300, 1, 1500);
+    shoot = true;
+    moveStraight(420, 1, 1000);
+    moveStraight(420, -1, 1000);
+    pvtBase(-90, 800);
     runIntake(-80);
-    moveStraight();
+    moveStraight(720, 1, 1500);
     runIntake(0);
-    moveStraight();*/
 }
