@@ -13,105 +13,51 @@ void runRightBase(float voltPerc) {
     rightBase2.move_voltage((voltPerc / 100) * 12000);
 }
 
-double getDist() {
+void moveStraight(int setPoint, int direction, int time) {
 
-    return (double)distEnc.get_value();
-
-}
-
-double getYaw() {
-
-    return (double)yawEnc.get_value();
-
-}
-
-int leftTarget = 0;
-int rightTarget = 0;
-
-void baseSR(void* param) {
-
-    std::uint_least32_t now = millis();
-
-    float leftCurrent = 0; //variable for the current voltage
-    float rightCurrent = 0; //variable for the current voltage
-    float accel = 1; //variable for the accel
-	
-	while(true) {
-
-        if(leftTarget > leftCurrent) {
-
-            leftCurrent += accel;
-
-        }
-
-        else if(leftTarget < leftCurrent) {
-
-            leftCurrent -= accel;
-
-        }
-
-        else if(abs(rightTarget - rightCurrent) < accel) {
-
-            leftCurrent = leftTarget;
-
-        }
-
-        if(rightTarget > rightCurrent) {
-
-            rightCurrent += accel;
-
-        }
-
-        else if(rightCurrent < rightTarget) {
-
-            rightCurrent -= accel;
-
-        }
-
-        else if(abs(rightTarget - rightCurrent) < accel) {
-
-            rightCurrent = rightTarget;
-
-        }
-
-        runLeftBase(leftCurrent);
-        runRightBase(rightCurrent);
-
-		Task::delay_until(&now, 1); //loop slew rate 1000 times per second
-		
-	}
-
-}
-
-void moveStrtBase(double setPoint, int direction, int time) {
+    int count = 0;
 
     double distVal, diffVal;
 
     direction = (int)sgn((double)direction);
 
-    PID dist = initPID(0, 0, 0, 0, 0, 0);
-    PID diff = initPID(0, 0, 0, 0, 0, 0);
+    PID dist = initPID(1, 0, 0, 0.13, 0, 0.15);
+    PID diff = initPID(1, 0, 0, 0.1, 0, 0);
 
     distEnc.reset();
     yawEnc.reset();
 
     for(int i = 0; i < time; i++) {
 
-        dist.error = setPoint - getDist();
-        diff.error = 0 - getYaw();
+        dist.error = setPoint - distEnc.get_value();
+        diff.error = 0 - yawEnc.get_value();
 
         distVal = runPID(&dist);
+        distVal = (abs(distVal) > 9000) ? (9000 * sgn(distVal)) : (distVal);
         diffVal = runPID(&diff);
+        diffVal = (abs(diffVal) > 3000) ? (3000 * sgn(diffVal)) : (diffVal);
 
-        leftTarget = distVal - diffVal;
-        rightTarget = distVal + diffVal;
+        runLeftBase(distVal - diffVal);
+        runRightBase(distVal + diffVal);
+
+        if(!(count % 50)) {
+
+            master.print(0, 0, "%d", distEnc.get_value());
+            delay(50);
+            master.print(1, 0, "%d", yawEnc.get_value());
+            delay(50);
+            master.print(2, 0, "%f", diffVal);
+
+        }
+
+        count++;
 
         delay(1);
 
     }
 
-    leftTarget = 0;
-    rightTarget = 0;
+    runLeftBase(0);
+    runRightBase(0);
 
 }
 
@@ -127,18 +73,18 @@ void pvtBase(int angle, int time) {
 
     for(int i = 0; i < time; i++) {
 
-        dist.error = setPoint - getYaw();
+        dist.error = setPoint - yawEnc.get_value();;
 
         distVal = runPID(&dist);
 
-        leftTarget = distVal;
-        rightTarget = -distVal;
+        runLeftBase(distVal);
+        runRightBase(-distVal);
 
         delay(1);
 
     }
 
-    leftTarget = 0;
-    rightTarget = 0;
+    runLeftBase(0);
+    runRightBase(0);
 
 }

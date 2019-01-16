@@ -1,5 +1,7 @@
 #include "main.h"
 
+bool shoot = false;
+
 void runCplt(float voltPerc) {
 
     cplt.move_voltage((voltPerc / 100) * 12000);
@@ -8,15 +10,8 @@ void runCplt(float voltPerc) {
 
 void cpltShoot() {
 
-    int number; 
     int setpoint;
-    PID cpltShoot = initPID(1, 1, 0, 132, 132, 132);
-
-    while(cpltPot.get_value() > number) {
-
-        cplt.move_voltage(12000);
-
-    }
+    PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
 
     while(cpltPot.get_value() > setpoint) {
         
@@ -27,7 +22,31 @@ void cpltShoot() {
 
 }
 
+void cpltReturn() {
+
+    PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
+    int setpoint = 0001;
+    while(true) {
+
+        cpltShoot.error = setpoint - cpltPot.get_value();
+        cplt.move_voltage(runPID(&cpltShoot));
+        
+        if(shoot) {
+
+            cplt.move_voltage(12000);
+			delay(200);
+			cplt.move_voltage(0);
+			delay(200);
+			cpltShoot = initPID(1, 1, 0, 132, 132, 0);
+            shoot = false;
+        }
+
+    
+}
+
 void flagAim() {
+
+    double aimVal;
 
     if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
 
@@ -69,9 +88,9 @@ void initCpltVis() {
     GREENFLAG.u_max = -2431;
     GREENFLAG.u_mean = -2907;
     GREENFLAG.v_min = -4711;
-    GREENFLAG.u_max = -2891;
+    GREENFLAG.v_max = -2891;
     GREENFLAG.v_mean = -3801;
     GREENFLAG.type = 0;
-    shooterEye.set_signature(1, &GREENFLAG);
+    cpltVis.set_signature(1, &GREENFLAG);
 
 }

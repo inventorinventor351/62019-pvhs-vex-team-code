@@ -28,7 +28,7 @@ float rotToIn(float Rotations);
 float inToRot(float Inches);
 float inToRotHS(float Inches);
 
-void drivePD(float setPoint);
+void moveStraight(float setPoint);
 
 void resetBaseEncoderValue();
 
