@@ -28,4 +28,7 @@ void autonomous()
     BLUECAP.type = 0;
     visn.set_signature(1, &BLUECAP);
 
+    void redFlagSide();
+
+
 }

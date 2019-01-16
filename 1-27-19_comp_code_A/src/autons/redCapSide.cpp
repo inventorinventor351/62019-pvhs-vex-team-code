@@ -2,7 +2,7 @@
 
 void redCapSide()
 {
-   /* drivePD(1.8);
+    drivePD(1.8);
     runIntake(90);
     delay(300);
     drivePD(0.3);
@@ -17,12 +17,7 @@ void redCapSide()
     delay(700);
     drivePD(1);
     delay(0.1);
-<<<<<<< HEAD
-    pvtBase(40, 40);
-    drivePD(0.6);*/
-=======
     pvitBase(40, 40);
     drivePD(0.6);
->>>>>>> 82c71a59752364a9444246c5169ca585ad027ba7
 
 }

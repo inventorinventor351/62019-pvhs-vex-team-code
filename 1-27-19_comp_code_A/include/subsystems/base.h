@@ -19,6 +19,8 @@ void driveRelativeLeft(float distance, int maxSpeed);
 
 void pvitBase(int angle, int maxSpeed);
 
+void drivePD(float setPoint);
+
 float getLeftChassisPosition();
 float getRightChassisPosition();
 
