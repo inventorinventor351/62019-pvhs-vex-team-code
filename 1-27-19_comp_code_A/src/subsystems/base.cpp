@@ -84,7 +84,7 @@ void driveRelativeRight(float distance, int maxSpeed) {
 }
 
 
-void pvitChassis(int angle, int maxSpeed) {
+void pvitBase(int angle, int maxSpeed) {
 
     float distance = angle * Pi / 440;
 
