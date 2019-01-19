@@ -14,7 +14,7 @@ void opcontrol() {
 		rightBase1.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
 		rightBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
 
-		cpltShoot();
+		//cpltShoot();
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_Y)) {
 

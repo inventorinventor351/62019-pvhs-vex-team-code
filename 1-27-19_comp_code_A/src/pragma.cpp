@@ -1,8 +1,8 @@
 #include "main.h"
 
-Motor leftBase1 (18, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 18 and reversed
-Motor leftBase2 (19, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 19 and not reversed
-Motor leftBase3 (20, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 20 and reversed
+Motor leftBase1 (18, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 18 and reversed
+Motor leftBase2 (19, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 19 and not reversed
+Motor leftBase3 (20, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 20 and reversed
 Motor rightBase1 (7, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 7 and reversed
 Motor rightBase2 (8, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 8 and not reversed
 Motor rightBase3 (9, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS); //normal motor plugged into port 9 and reversed
