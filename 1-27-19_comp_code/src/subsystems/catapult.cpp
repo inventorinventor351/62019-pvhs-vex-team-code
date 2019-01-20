@@ -39,8 +39,10 @@ void cpltReturn() {
 			delay(200);
 			cpltShoot = initPID(1, 1, 0, 132, 132, 0);
             shoot = false;
+
         }
 
+    }
     
 }
 
@@ -82,7 +84,7 @@ void flagAim() {
 void initCpltVis() {
 
     vision_signature_s_t GREENFLAG;
-    GREENFLAG.id = 1;
+    GREENFLAG.id = 2;
     GREENFLAG.range = 2.8;
     GREENFLAG.u_min = -3383;
     GREENFLAG.u_max = -2431;

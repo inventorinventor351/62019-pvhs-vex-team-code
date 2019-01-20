@@ -5,7 +5,7 @@ void opcontrol() {
 	std::uint_least32_t now = millis();
 	bool atckL2 = false, transPstnVar = 1, atckA = false, is_finished = 1;
 	int setpoint = 0001;
-	//initCpltVis();
+	initCpltVis();
 	initIntkVis();
 	PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
 
@@ -16,7 +16,7 @@ void opcontrol() {
 		rightBase1.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
 		rightBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
         
-        cpltShoot.error = setpoint - cpltPot.get_value();
+        //cpltShoot.error = setpoint - cpltPot.get_value();
         runCplt(runPID(&cpltShoot));
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_Y) && is_finished) {
