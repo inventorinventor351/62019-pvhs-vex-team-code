@@ -28,7 +28,17 @@ void autonomous()
     BLUECAP.type = 0;
     visn.set_signature(1, &BLUECAP);
 
-    void redFlagSide();
+    if(autonCount == 0)
+        blueCapSide();
+
+    if(autonCount == 1)
+        blueFlagSide();
+    
+    if(autonCount == 2)
+        redCapSide();
+
+    if(autonCount == 3)
+        redFlagSide();
 
 
 }
