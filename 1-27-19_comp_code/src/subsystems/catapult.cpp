@@ -25,7 +25,8 @@ void cpltShoot() {
 void cpltReturn() {
 
     PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
-    int setpoint = 0001;
+    int setpoint = 1;
+
     while(true) {
 
         cpltShoot.error = setpoint - cpltPot.get_value();
@@ -33,14 +34,16 @@ void cpltReturn() {
         
         if(shoot) {
 
-            cplt.move_voltage(12000);
+            runCplt(100);
 			delay(200);
-			cplt.move_voltage(0);
+			runCplt(0);
 			delay(200);
 			cpltShoot = initPID(1, 1, 0, 132, 132, 0);
-            shoot = false;
+            shoot = 0;
+            
         }
 
+    }
     
 }
 
