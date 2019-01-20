@@ -31,9 +31,7 @@ void moveStraight(double setPoint, double direction, int time) {
         diff.error = yawEnc.get_value();
 
         distVal = runPID(&dist);
-        distVal = (abs(distVal) > 80) ? (80 * sgn(distVal)) : (distVal);
         diffVal = runPID(&diff);
-        diffVal = (abs(diffVal) > 20) ? (20 * sgn(diffVal)) : (diffVal);
 
         runLeftBase(distVal - diffVal);
         runRightBase(distVal + diffVal);

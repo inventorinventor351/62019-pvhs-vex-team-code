@@ -14,19 +14,6 @@ void runIntakeTime(float voltPerc, int time) {
 
 }
 
-bool isBall() {
-
-    int i;
-    
-    if(ballSensor.get_value() < 14) 
-        i = 1;
-    else
-        i = 0;
-
-    return i;
-    
-}
-
 void getBall(int time) {
 
     if(intkVis.get_object_count() == 0) {

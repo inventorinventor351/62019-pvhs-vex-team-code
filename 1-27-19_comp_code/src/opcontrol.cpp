@@ -3,6 +3,10 @@
 void opcontrol() {
 
 	std::uint_least32_t now = millis();
+	bool basePistonAck = 1, basePistonState, cpltAck = 1;
+	transPstn.set_value(1);
+	initCpltVis();
+	initIntkVis();
 
 	while(true) {
 
@@ -10,6 +14,42 @@ void opcontrol() {
 		leftBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 200);
 		rightBase1.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
 		rightBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+			runIntake(100);
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
+			runIntake(-100);
+
+		else
+			runIntake(0);
+
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))
+			basePistonAck = 0;
+
+		else if(!basePistonAck) {
+
+			basePistonAck = 1;
+			transPstn.set_value(basePistonState);
+			basePistonState = !basePistonState;
+
+		}
+
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_L2) && !shoot)
+			cpltAck = 0;
+
+		else if(!cpltAck) {
+
+			cpltAck = 1;
+			shoot = true;
+
+		}
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_Y))
+			flagAim();
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_RIGHT))
+			getBall(2000);
 
 		Task::delay_until(&now, 1);
 		
