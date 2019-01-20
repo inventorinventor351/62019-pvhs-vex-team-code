@@ -1,6 +1,6 @@
 #include "main.h"
 
-void bluecap) {
+void blueCap() {
 
     cpltReturn();
     runIntake(80);

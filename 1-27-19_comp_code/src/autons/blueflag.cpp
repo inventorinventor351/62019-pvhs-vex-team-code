@@ -1,6 +1,6 @@
 #include "main.h"
 
-void redflag(){
+void blueFlag(){
     
     /*runIntake(80);
     moveStraight(2);
@@ -10,17 +10,28 @@ void redflag(){
     pvtBase(-70, 2000);
     runIntake(80);
     moveStraight(1.5);
-    delay(500);
     runIntake(0);
 
-    pvtBase(-20, 1000);
+    pvtBase(-110, 1000);
     flagAim();
     shoot = true;
-    getBall(3000);
+    pvtBase(-140);
+    moveStraight(1);
     moveStraight(-1);
-    pvtBase(90, 1000);
+    pvtBase(30);
+    getBall(1000);
+    moveStraight(-1);
+    getBall(1000);
+    runLeftBase(100);
+    runRightBase(100);
+    delay(200);
+    runLeftBase(0);
+    runRightBase(0);
+    
+    moveStraight(-1);
+    pvtBase(-90, 1000);
 
-    moveStraight(2.5);
+    moveStraight(-2.5);
     pvtBase(-90, 1000);
     flagAim();
     shoot = true;

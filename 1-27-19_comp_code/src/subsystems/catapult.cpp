@@ -49,27 +49,29 @@ void cpltReturn() {
 
 void flagAim() {
 
-    double aimVal;
-
-    if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
+    if(cpltVis.get_object_count() == 0) {
 
         runLeftBase(0);
+        runRightBase(0);
 
     }
 
     else{
 
         PID aim = initPID(0, 0, 0, 0, 0, 0);
-        float aimVal;
+        PID dist = initPID(0, 0, 0, 0, 0, 0);
+        double aimVal, distVal, distSetPoint;
 
         for(int i = 0; i < 2000; i++) {
 
             aim.error = -cpltVis.get_by_size(0).x_middle_coord;
+            dist.error = (cpltVis.get_by_size(0).y_middle_coord + cpltVis.get_by_size(1).y_middle_coord) / 2 - distSetPoint;
 
             aimVal = runPID(&aim);
+            distVal = runPID(&dist);
 
-            runLeftBase(-aimVal);
-            runRightBase(aimVal);
+            runLeftBase(distVal - aimVal);
+            runRightBase(distVal + aimVal);
         
             delay(1);
 

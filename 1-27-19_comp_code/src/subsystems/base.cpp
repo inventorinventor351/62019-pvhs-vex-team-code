@@ -31,9 +31,7 @@ void moveStraight(double setPoint, double direction, int time) {
         diff.error = yawEnc.get_value();
 
         distVal = runPID(&dist);
-        distVal = (abs(distVal) > 80) ? (80 * sgn(distVal)) : (distVal);
         diffVal = runPID(&diff);
-        diffVal = (abs(diffVal) > 20) ? (20 * sgn(diffVal)) : (diffVal);
 
         runLeftBase(distVal - diffVal);
         runRightBase(distVal + diffVal);
@@ -47,12 +45,13 @@ void moveStraight(double setPoint, double direction, int time) {
 
 }
 
-void pvtBase(int angle, int time) {
+void pvtBase(int setPoint, int time) {
 
-    double setPoint = -round(angle * 15 / 2.8), distVal, dispVal;
+    double distVal, dispVal;
+    setPoint *= -2.32;
 
-    PID dist = initPID(1, 0, 0, 0.25, 0, 7.5);
-    PID disp = initPID(0, 0, 0, 0.5, 0, 2);
+    PID dist = initPID(1, 0, 0, 0.5, 0, 7.5);
+    PID disp = initPID(1, 0, 0, 0.45, 0, 2);
 
     distEnc.reset();
     yawEnc.reset();
@@ -60,13 +59,13 @@ void pvtBase(int angle, int time) {
     for(int i = 0; i < time; i++) {
 
         dist.error = setPoint - yawEnc.get_value();
-        disp.error = (distEnc.get_value()) * sgn(angle);
+        disp.error = (distEnc.get_value());
 
         distVal = runPID(&dist);
         dispVal = runPID(&disp);
 
         if(!(i % 10))
-            std::cout << "yawEnc: " << yawEnc.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "turnErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "distVal: " << distVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
+        std::cout << "yawEnc: " << yawEnc.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "turnErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "distVal: " << distVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
 
         runLeftBase(distVal - dispVal);
         runRightBase(-distVal - dispVal);
@@ -77,5 +76,5 @@ void pvtBase(int angle, int time) {
 
     runLeftBase(0);
     runRightBase(0);
-
+        
 }

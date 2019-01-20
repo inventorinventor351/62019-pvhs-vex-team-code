@@ -3,6 +3,6 @@
 //Runs during the 15 second autonomous period
 void autonomous() {
 
-    pvtBase(180, 5000);
-    
+    pvtBase(90, 2500);  
+
 }
