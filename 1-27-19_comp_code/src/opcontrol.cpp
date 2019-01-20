@@ -19,15 +19,15 @@ void opcontrol() {
         //cpltShoot.error = setpoint - cpltPot.get_value();
         runCplt(runPID(&cpltShoot));
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_Y) && is_finished) {
+		if(master.get_digital(E_CONTROLLER_DIGITAL_Y)) {
 
 			is_finished = 0;
 			cplt.move_voltage(12000);
 			delay(200);
 			cplt.move_voltage(0);
 			delay(200);
-			cpltShoot = initPID(1, 1, 0, 132, 132, 0);
-			is_finished = 1;
+			//cpltshoot = initPID(stuff);
+
 		}
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1)) {
@@ -63,9 +63,7 @@ void opcontrol() {
 			runIntake(0);
 		}
 
-		std::cout << cpltVis.get_by_size(0).x_middle_coord << " | " << intkVis.get_by_size(0).x_middle_coord << "\n";
-
-		Task::delay_until(&now, 1); //loop driver control 500 times per second
+		Task::delay_until(&now, 1);
 		
 	}
 
