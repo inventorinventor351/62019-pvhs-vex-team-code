@@ -13,16 +13,14 @@ void runRightBase(float voltPerc) {
     rightBase2.move_voltage((voltPerc / 100) * 12000);
 }
 
-void moveStraight(int setPoint, int direction, int time) {
-
-    int count = 0;
+void moveStraight(double setPoint, double direction, int time) {
 
     double distVal, diffVal;
+ 
+    setPoint = abs(setPoint) * sgn(direction);
 
-    direction = (int)sgn((double)direction);
-
-    PID dist = initPID(1, 0, 0, 0.13, 0, 0.15);
-    PID diff = initPID(1, 0, 0, 0.1, 0, 0);
+    PID dist = initPID(1, 0, 1, 0.1, 0, 0.275);
+    PID diff = initPID(1, 0, 0, 0.625, 0, 0);
 
     distEnc.reset();
     yawEnc.reset();
@@ -30,27 +28,13 @@ void moveStraight(int setPoint, int direction, int time) {
     for(int i = 0; i < time; i++) {
 
         dist.error = setPoint - distEnc.get_value();
-        diff.error = 0 - yawEnc.get_value();
+        diff.error = yawEnc.get_value();
 
         distVal = runPID(&dist);
-        distVal = (abs(distVal) > 9000) ? (9000 * sgn(distVal)) : (distVal);
         diffVal = runPID(&diff);
-        diffVal = (abs(diffVal) > 3000) ? (3000 * sgn(diffVal)) : (diffVal);
 
         runLeftBase(distVal - diffVal);
         runRightBase(distVal + diffVal);
-
-        if(!(count % 50)) {
-
-            master.print(0, 0, "%d", distEnc.get_value());
-            delay(50);
-            master.print(1, 0, "%d", yawEnc.get_value());
-            delay(50);
-            master.print(2, 0, "%f", diffVal);
-
-        }
-
-        count++;
 
         delay(1);
 
@@ -61,24 +45,30 @@ void moveStraight(int setPoint, int direction, int time) {
 
 }
 
-void pvtBase(int angle, int time) {
+void pvtBase(int setPoint, int time) {
 
-    double setPoint = (double)angle * 0.66, distVal, dispVal;
+    double distVal, dispVal;
+    setPoint *= -2.32;
 
-    PID dist = initPID(0, 0, 0, 0, 0, 0);
-    PID disp = initPID(0, 0, 0, 0, 0, 0);
+    PID dist = initPID(1, 0, 0, 0.5, 0, 7.5);
+    PID disp = initPID(1, 0, 0, 0.45, 0, 2);
 
     distEnc.reset();
     yawEnc.reset();
 
     for(int i = 0; i < time; i++) {
 
-        dist.error = setPoint - yawEnc.get_value();;
+        dist.error = setPoint - yawEnc.get_value();
+        disp.error = (distEnc.get_value());
 
         distVal = runPID(&dist);
+        dispVal = runPID(&disp);
 
-        runLeftBase(distVal);
-        runRightBase(-distVal);
+        if(!(i % 10))
+        std::cout << "yawEnc: " << yawEnc.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "turnErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "distVal: " << distVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
+
+        runLeftBase(distVal - dispVal);
+        runRightBase(-distVal - dispVal);
 
         delay(1);
 
@@ -86,5 +76,5 @@ void pvtBase(int angle, int time) {
 
     runLeftBase(0);
     runRightBase(0);
-
+        
 }

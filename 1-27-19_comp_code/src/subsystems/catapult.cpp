@@ -25,7 +25,8 @@ void cpltShoot() {
 void cpltReturn() {
 
     PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
-    int setpoint = 0001;
+    int setpoint = 1;
+
     while(true) {
 
         cpltShoot.error = setpoint - cpltPot.get_value();
@@ -33,40 +34,44 @@ void cpltReturn() {
         
         if(shoot) {
 
-            cplt.move_voltage(12000);
+            runCplt(100);
 			delay(200);
-			cplt.move_voltage(0);
+			runCplt(0);
 			delay(200);
 			cpltShoot = initPID(1, 1, 0, 132, 132, 0);
-            shoot = false;
+            shoot = 0;
+            
         }
 
+    }
     
 }
 
 void flagAim() {
 
-    double aimVal;
-
-    if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
+    if(cpltVis.get_object_count() == 0) {
 
         runLeftBase(0);
+        runRightBase(0);
 
     }
 
     else{
 
         PID aim = initPID(0, 0, 0, 0, 0, 0);
-        float aimVal;
+        PID dist = initPID(0, 0, 0, 0, 0, 0);
+        double aimVal, distVal, distSetPoint;
 
         for(int i = 0; i < 2000; i++) {
 
             aim.error = -cpltVis.get_by_size(0).x_middle_coord;
+            dist.error = (cpltVis.get_by_size(0).y_middle_coord + cpltVis.get_by_size(1).y_middle_coord) / 2 - distSetPoint;
 
             aimVal = runPID(&aim);
+            distVal = runPID(&dist);
 
-            runLeftBase(-aimVal);
-            runRightBase(aimVal);
+            runLeftBase(distVal - aimVal);
+            runRightBase(distVal + aimVal);
         
             delay(1);
 
@@ -82,7 +87,7 @@ void flagAim() {
 void initCpltVis() {
 
     vision_signature_s_t GREENFLAG;
-    GREENFLAG.id = 1;
+    GREENFLAG.id = 2;
     GREENFLAG.range = 2.8;
     GREENFLAG.u_min = -3383;
     GREENFLAG.u_max = -2431;

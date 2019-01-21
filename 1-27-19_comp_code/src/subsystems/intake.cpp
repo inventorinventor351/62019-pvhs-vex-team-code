@@ -2,7 +2,7 @@
 
 void runIntake(float voltPerc) {
 
-    intk.move_voltage((voltPerc / 100) * 12000);
+    intk.move_voltage((-voltPerc / 100) * 12000);
 
 }
 
@@ -29,7 +29,7 @@ bool isBall() {
 
 void getBall(int time) {
 
-    if(abs(intkVis.get_by_sig(0, 1)) > 320) {
+    if(intkVis.get_object_count() == 0) {
 
         runLeftBase(0);
         runRightBase(0);
@@ -40,13 +40,13 @@ void getBall(int time) {
         
         PID aim = initPID(1, 0, 0, 0.3, 0, 0);
         PID dist = initPID(1, 0, 0, 0.5, 0, 0);
-        int lowestY = 1000, objX;
+        int lowestY = 1000, objX, prevY = 1000, deltaY;
         float aimVal, distVal;
         runIntake(-80);
 
         for(int i = 0; i < time; i++) {
 
-            if(abs(intkVis.get_by_sig(0, 1)) > 320) {
+            if(intkVis.get_object_count() == 0 || deltaY > 20 || prevY < -190) {
                 runLeftBase(0);
                 runRightBase(0);
                 break;
@@ -55,8 +55,8 @@ void getBall(int time) {
             for(int n = 0; n < intkVis.get_object_count(); n++) {
 
                 if(intkVis.get_by_sig(n, 1).y_middle_coord < lowestY){
-                    lowestY = intkVis.get_by_sig(n, 1).y_middle_coord;
-                    objX = intkVis.get_by_sig(n, 1).x_middle_coord;
+                    lowestY = intkVis.get_by_size(n).y_middle_coord;
+                    objX = intkVis.get_by_size(n).x_middle_coord;
                 }
 
             }
@@ -65,7 +65,11 @@ void getBall(int time) {
             dist.error = -200 - lowestY;
             aimVal = runPID(&aim);
             distVal = runPID(&dist);
+
+            deltaY = lowestY - prevY;
+            prevY = lowestY;
             lowestY = 1000;
+
 
             runLeftBase(-distVal - aimVal);
             runRightBase(-distVal + aimVal);
@@ -93,63 +97,3 @@ void initIntkVis() {
     intkVis.set_signature(1, &BALL);
     
 }
-
-/*void flipCap() {
-
-    bool color;
-    if(autonCount = 0)
-        color = 0;
-    else
-        color = 1;
-
-    if(abs(intkVis.get_by_sig(0, color)) > 320) {
-
-        runLeftBase(0);
-        runRightBase(0);
-
-    }
-
-    else {
-        
-        PID aim = initPID(1, 0, 0, 0.3, 0, 0);
-        PID dist = initPID(1, 0, 0, 0.5, 0, 0);
-        int lowestY = 1000, objX;
-        float aimVal, distVal;
-        runIntake(50);
-
-        for(int i = 0; i < 3000; i++) {
-
-            if(abs(intkVis.get_by_sig(0, color)) > 320) {
-                runLeftBase(0);
-                runRightBase(0);
-                break;
-            }
-
-            for(int n = 0; n < intkVis.get_object_count(); n++) {
-
-                if(intkVis.get_by_sig(n, color).y_middle_coord < lowestY){
-                    lowestY = intkVis.get_by_sig(n, color).y_middle_coord;
-                    objX = intkVis.get_by_sig(n, color).x_middle_coord;
-                }
-
-            }
-
-            aim.error = -objX;
-            dist.error = -200 - lowestY;
-            aimVal = runPID(&aim);
-            distVal = runPID(&dist);
-            lowestY = 1000;
-
-            runLeftBase(-distVal - aimVal);
-            runRightBase(-distVal + aimVal);
-
-            delay(1);
-            
-        }
-
-    }
-
-    delay(200);
-    runIntake(0);
-
-}*/

@@ -17,6 +17,6 @@ double runPID(PID *pid) {
     pid->integral += pid->error; //increment integral by current error
     pid->derivative = pid->error - pid->prevError; //set derivative to the delta error
     pid->prevError = pid->error; //set prevError to current error to be used for next iteration
-    return (pid->error * pid->kP * pid->useP) + (pid->integral * pid->kI * pid->useI) + (pid->derivative * pid->kD * pid->useD); //calculate final value
+    return (pid->error * pid->kP * (double)pid->useP) + (pid->integral * pid->kI * (double)pid->useI) + (pid->derivative * pid->kD * (double)pid->useD); //calculate final value
 
 }
