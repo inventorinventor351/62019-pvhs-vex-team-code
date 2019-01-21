@@ -25,7 +25,7 @@ void cpltShoot() {
 void cpltReturn() {
 
     PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
-    int setpoint = 1;
+    int setpoint = 1690;
 
     while(true) {
 
