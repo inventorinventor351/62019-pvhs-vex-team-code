@@ -7,5 +7,7 @@ void flagAim(); //aims at the flag
 void initCpltVis(); //gives the cpltVis camera the signature for the flag
 void cpltReturn(); // for autons, returns catapult to setpoint
 extern bool shoot;
+void flagAimTop(); //aims at the top flag
+void flagAimLow(); //aims at the bottom flag
 
 #endif
