@@ -7,10 +7,8 @@ void opcontrol() {
 
 	while(true) {
 
-		leftBase1.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 200);
-		leftBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 200);
-		rightBase1.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
-		rightBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
+		runLeftBase(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 100);
+		runRightBase(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100);
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_UP))
 			flagAimTop();
@@ -18,7 +16,21 @@ void opcontrol() {
 		if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
 			flagAimLow();
 
+		if(master.get_digital(E_CONTROLLER_DIGITAL_A)) {
+			shoot = true;
+			PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
+		}
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
+			runIntake(100);
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+			runIntake(-100);
+
+		else
+			runIntake(0);
 		Task::delay_until(&now, 1);
+
 		
 	}
 

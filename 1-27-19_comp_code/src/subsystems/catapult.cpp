@@ -8,40 +8,30 @@ void runCplt(float voltPerc) {
 
 }
 
-void cpltShoot() {
+void cpltReturn(void* param) {
 
-    int setpoint;
-    PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
-
-    while(cpltPot.get_value() > setpoint) {
-        
-        cpltShoot.error = setpoint - cpltPot.get_value();
-        cplt.move_voltage(runPID(&cpltShoot));
-
-    }
-
-}
-
-void cpltReturn() {
-
-    PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
-    int setpoint = 1690;
+    PID cpltShoot = initPID(1, 0, 0, 1.63, 0, 0);
+    int setpoint = 1750;
 
     while(true) {
 
         cpltShoot.error = setpoint - cpltPot.get_value();
-        cplt.move_voltage(runPID(&cpltShoot));
+        runCplt(runPID(&cpltShoot));
         
+        std::cout << "Error:" << cpltShoot.error << "| Potentiometer:" << cpltPot.get_value() << "| PID:" << runPID(&cpltShoot) << "\n";
+
         if(shoot) {
 
-            runCplt(100);
+            runCplt(-100);
 			delay(200);
 			runCplt(0);
 			delay(200);
-			cpltShoot = initPID(1, 1, 0, 132, 132, 0);
+			cpltShoot = initPID(1, 0, 0, 1, 0, 0);
             shoot = 0;
             
         }
+
+        delay(1);
 
     }
     
