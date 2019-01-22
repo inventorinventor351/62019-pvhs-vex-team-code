@@ -3,68 +3,45 @@
 void opcontrol() {
 
 	std::uint_least32_t now = millis();
-	bool basePistonAck = 1, basePistonState, cpltAck = 1;
-	transPstn.set_value(1);
 	initCpltVis();
-	initIntkVis();
+	gyro.reset();
+	bool atckR2 = 1, descorerVal = 1;
 
 	while(true) {
 
-		leftBase1.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 200);
-		leftBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 200);
-		rightBase1.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
-		rightBase2.move_velocity(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200);
+		runLeftBase(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 100);
+		runRightBase(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100);
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+		if(master.get_digital(E_CONTROLLER_DIGITAL_UP))
+			flagAimTop();
+		if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
+			flagAimLow();
+
+		if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))
+			atckR2 = 0;
+		else if(atckR2 == 0) {
+			atckR2 = 1;
+			descorer.set_value(1);
+			delay(300);
+			descorer.set_value(0);
+		}
+
+		std::cout << gyro.get_value() << "\n";
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_A)) {
+			shoot = true;
+		}
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
 			runIntake(100);
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			runIntake(-100);
 
 		else
 			runIntake(0);
-
-		/*if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			basePistonAck = 0;
-
-		else if(!basePistonAck) {
-
-			basePistonAck = 1;
-			transPstn.set_value(basePistonState);
-			basePistonState = !basePistonState;
-
-		}
-
-		if(!master.get_digital(E_CONTROLLER_DIGITAL_L2) && !shoot)
-			cpltAck = 0;
-
-		else if(!cpltAck) {
-
-			cpltAck = 1;
-			shoot = true;
-
-		}
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_Y))
-			flagAim();
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_RIGHT))
-			getBall(2000);*/
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_Y)) {
-
-			while(cpltPot.get_value() > 400) {
-
-				runCplt(100);
-
-			}
-
-			delay(500);
-			runCplt(0);
-
-		}
-
 		Task::delay_until(&now, 1);
+
 		
 	}
 
