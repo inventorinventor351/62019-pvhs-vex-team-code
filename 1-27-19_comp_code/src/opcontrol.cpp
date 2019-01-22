@@ -24,7 +24,7 @@ void opcontrol() {
 		else
 			runIntake(0);
 
-		if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))
+		/*if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))
 			basePistonAck = 0;
 
 		else if(!basePistonAck) {
@@ -49,7 +49,20 @@ void opcontrol() {
 			flagAim();
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_RIGHT))
-			getBall(2000);
+			getBall(2000);*/
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_Y)) {
+
+			while(cpltPot.get_value() > 400) {
+
+				runCplt(100);
+
+			}
+
+			delay(500);
+			runCplt(0);
+
+		}
 
 		Task::delay_until(&now, 1);
 		

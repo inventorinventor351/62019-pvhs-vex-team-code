@@ -49,8 +49,8 @@ void pvtBase(int angle, int time) {
 
     double setPoint = -round(angle * 15 / 2.8), distVal, dispVal;
 
-    PID dist = initPID(1, 0, 0, 0.25, 0, 7.5);
-    PID disp = initPID(0, 0, 0, 0.5, 0, 2);
+    PID dist = initPID(1, 0, 1, 0.25, 0, 7.5);
+    PID disp = initPID(1, 0, 0, 0.5, 0, 2);
 
     distEnc.reset();
     yawEnc.reset();
