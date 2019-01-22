@@ -48,27 +48,27 @@ void moveStraight(double setPoint, double direction, int time) {
 void pvtBase(int setPoint, int time) {
 
     double distVal, dispVal;
-    setPoint *= -2.32;
+    setPoint *= 10;
 
-    PID dist = initPID(1, 0, 0, 0.5, 0, 7.5);
-    PID disp = initPID(1, 0, 0, 0.45, 0, 2);
+    PID dist = initPID(1, 0, 0, 0.081, 0, 0);
+    PID disp = initPID(0, 0, 0, 0, 0, 0);
 
     distEnc.reset();
-    yawEnc.reset();
+    gyro.reset();
 
     for(int i = 0; i < time; i++) {
 
-        dist.error = setPoint - yawEnc.get_value();
+        dist.error = (gyro.get_value() * 0.94) + setPoint;
         disp.error = (distEnc.get_value());
 
         distVal = runPID(&dist);
         dispVal = runPID(&disp);
 
         if(!(i % 10))
-        std::cout << "yawEnc: " << yawEnc.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "turnErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "distVal: " << distVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
+        std::cout << "gyro: " << gyro.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "turnErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "distVal: " << distVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
 
-        runLeftBase(distVal - dispVal);
-        runRightBase(-distVal - dispVal);
+        runLeftBase(-distVal - dispVal);
+        runRightBase(distVal - dispVal);
 
         delay(1);
 
@@ -76,5 +76,5 @@ void pvtBase(int setPoint, int time) {
 
     runLeftBase(0);
     runRightBase(0);
-        
+
 }
