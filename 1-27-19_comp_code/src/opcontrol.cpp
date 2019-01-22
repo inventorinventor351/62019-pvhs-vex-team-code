@@ -17,7 +17,6 @@ void opcontrol() {
 		if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
 			flagAimLow();
 
-<<<<<<< HEAD
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))
 			atckR2 = 0;
 		else if(atckR2 == 0) {
@@ -29,10 +28,8 @@ void opcontrol() {
 
 		std::cout << gyro.get_value() << "\n";
 
-=======
 		if(master.get_digital(E_CONTROLLER_DIGITAL_A)) {
 			shoot = true;
-			PID cpltShoot = initPID(1, 1, 0, 132, 132, 0);
 		}
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
@@ -43,7 +40,6 @@ void opcontrol() {
 
 		else
 			runIntake(0);
->>>>>>> b7e50ec51624b8225170287e537a7d80098d073d
 		Task::delay_until(&now, 1);
 
 		
