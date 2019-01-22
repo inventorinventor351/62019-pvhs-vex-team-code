@@ -20,15 +20,15 @@ void moveStraight(double setPoint, double direction, int time) {
     setPoint = abs(setPoint) * sgn(direction);
 
     PID dist = initPID(1, 0, 1, 0.1, 0, 0.275);
-    PID diff = initPID(1, 0, 0, 0.625, 0, 0);
+    PID diff = initPID(0, 0, 0, 0, 0, 0);
 
     distEnc.reset();
-    yawEnc.reset();
+    gyro.reset();
 
     for(int i = 0; i < time; i++) {
 
         dist.error = setPoint - distEnc.get_value();
-        diff.error = yawEnc.get_value();
+        diff.error = gryo.get_value();
 
         distVal = runPID(&dist);
         diffVal = runPID(&diff);
