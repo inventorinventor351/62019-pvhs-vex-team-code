@@ -2,7 +2,7 @@
 
 void blueCap() {
 
-    cpltReturn();
+ 
     runIntake(80);
     moveStraight(2, 1, 1000);
     delay(200);
