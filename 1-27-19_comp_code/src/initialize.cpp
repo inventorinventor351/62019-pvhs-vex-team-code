@@ -3,7 +3,7 @@
 //Runs initialization code. This occurs as soon as the program is started. It is recommended to keep execution time for this mode under a few seconds.
 void initialize() {
 
-    Task cpltGo (cpltReturn, (void*)"PROS", TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "cpltGo");  
+    //Task cpltGo (cpltReturn, (void*)"PROS", TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "cpltGo");  
 
 }
 
