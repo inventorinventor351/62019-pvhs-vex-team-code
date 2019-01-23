@@ -50,6 +50,9 @@ void opcontrol() {
 
 		}
 
+		if(master.get_digital(E_CONTROLLER_DIGITAL_RIGHT))
+			getBall(1500);
+
 		Task::delay_until(&now, 1);
 
 		
