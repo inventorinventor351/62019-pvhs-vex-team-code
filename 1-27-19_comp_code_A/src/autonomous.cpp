@@ -15,5 +15,8 @@ void autonomous()
     if(autonCount == 3)
         redFlagSide();
 
+        //jggf
+        
+
 
 }
