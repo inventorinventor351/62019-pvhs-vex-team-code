@@ -4,10 +4,10 @@ void opcontrol() {
 
 	std::uint_least32_t now = millis();
 	initCpltVis();
+	initIntkVis();
 	gyro.reset();
 	descorer.set_value(1);
 	bool transPstnAck = 1, transPstnState = 1;
-
 	transPstn.set_value(transPstnState);
 
 	while(true) {
@@ -21,18 +21,7 @@ void opcontrol() {
 		if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
 			flagAimLow();
 
-		if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			atckR2 = 0;
-		else if(atckR2 == 0) {
-			atckR2 = 1;
-			descorer.set_value(1);
-			delay(300);
-			descorer.set_value(0);
-		}
-
-		std::cout << cpltVis.get_by_size(0).y_middle_coord << " | " << cpltVis.get_by_size(1).y_middle_coord << "\n";
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_A)) {
+		if(master.get_digital(E_CONTROLLER_DIGITAL_A))
 			shoot = true;
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
@@ -66,9 +55,6 @@ void opcontrol() {
 
 		Task::delay_until(&now, 1);
 
-		
 	}
 
-
 }
-

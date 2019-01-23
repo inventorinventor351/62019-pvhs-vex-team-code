@@ -141,6 +141,8 @@ void flagAimTop() {
     runLeftBase(0);
     runRightBase(0);
 
+    master.rumble("-");
+
 }
 
 void flagAimLow() {
@@ -190,5 +192,7 @@ void flagAimLow() {
 
     runLeftBase(0);
     runRightBase(0);
+
+    master.rumble("-");
 
 }
