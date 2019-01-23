@@ -33,11 +33,8 @@ void getBall(int time) {
 
         for(int i = 0; i < time; i++) {
 
-            if(intkVis.get_object_count() == 0 || deltaY > 20 || prevY < -190) {
-                runLeftBase(0);
-                runRightBase(0);
+            if(intkVis.get_object_count() == 0 || deltaY > 20 || prevY < -190) 
                 break;
-            }
 
             for(int n = 0; n < intkVis.get_object_count(); n++) {
 
@@ -64,6 +61,11 @@ void getBall(int time) {
             delay(1);
             
         }
+
+    runLeftBase(0);
+    runRightBase(0);
+    delay(300);
+    runIntake(0);
 
     }
 

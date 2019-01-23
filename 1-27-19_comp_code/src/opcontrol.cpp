@@ -6,7 +6,7 @@ void opcontrol() {
 	initCpltVis();
 	gyro.reset();
 	descorer.set_value(1);
-	bool transPstnAck = 1, transPstnState = 1;
+	bool transPstnAck = 1, transPstnState = 1, atckR2 = 1;
 
 	transPstn.set_value(transPstnState);
 
@@ -32,7 +32,7 @@ void opcontrol() {
 
 		std::cout << cpltVis.get_by_size(0).y_middle_coord << " | " << cpltVis.get_by_size(1).y_middle_coord << "\n";
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_A)) {
+		if(master.get_digital(E_CONTROLLER_DIGITAL_A))
 			shoot = true;
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
