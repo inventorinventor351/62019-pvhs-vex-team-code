@@ -74,6 +74,7 @@ void opcontrol() {
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
 		{
 			flipCap(2, 50);
+			
 		}
 
 	}
