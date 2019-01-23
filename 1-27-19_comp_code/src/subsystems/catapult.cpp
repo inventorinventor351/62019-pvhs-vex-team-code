@@ -50,7 +50,7 @@ void flagAim() {
     
         PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
         PID dist = initPID(1, 0, 1, 2, 0, 1);
-        double aimVal, distVal, distSetPoint = -25;
+        double aimVal, distVal, distSetPoint = -47;
 
         for(int i = 0; i < 1500; i++) {
 
@@ -108,7 +108,7 @@ void flagAimTop() {
     
         PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
         PID dist = initPID(1, 0, 1, 2, 0, 1);
-        double aimVal, distVal, distSetPoint = 10, topY = -1000;
+        double aimVal, distVal, distSetPoint = -10, topY = -1000;
 
         for(int i = 0; i < 1500; i++) {
 
@@ -158,7 +158,7 @@ void flagAimLow() {
     
         PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
         PID dist = initPID(1, 0, 1, 2, 0, 1);
-        double aimVal, distVal, distSetPoint = -61, lowY = 1000;
+        double aimVal, distVal, distSetPoint = -84, lowY = 1000;
 
         for(int i = 0; i < 1500; i++) {
 
