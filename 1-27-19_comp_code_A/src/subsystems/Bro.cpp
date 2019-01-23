@@ -6,8 +6,8 @@ void runBro(float voltPerc) {
 
 }
 
-void flipCap((float distance, int maxSpeed)
+void flipCap(float distance, int maxSpeed)
 {
     distance = inToRot(distance);
-    deScr.move_absolute(distance, maxSpeed);
+    deSr.move_absolute(distance, maxSpeed);
 }
