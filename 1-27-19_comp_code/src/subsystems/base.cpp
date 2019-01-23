@@ -20,7 +20,7 @@ void moveStraight(double setPoint, double direction, int time) {
     setPoint = abs(setPoint) * sgn(direction);
 
     PID dist = initPID(1, 0, 1, 0.1, 0, 0.275);
-    PID diff = initPID(1, 0, 0, 1, 0, 0);
+    PID diff = initPID(0, 0, 0, 0, 0, 0);
 
     distEnc.reset();
     gyro.reset();
@@ -35,6 +35,8 @@ void moveStraight(double setPoint, double direction, int time) {
 
         runLeftBase(distVal - diffVal);
         runRightBase(distVal + diffVal);
+
+        std::cout << "gyro: " << gyro.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "distErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "diffErr: " << diff.error << "  |  " << "distVal: " << distVal << "  |  " << "diffVal: " << diffVal << "  |  " << "ms: " << i << "\n";
 
         delay(1);
 

@@ -26,7 +26,7 @@ void opcontrol() {
 			descorer.set_value(0);
 		}
 
-		std::cout << gyro.get_value() << "\n";
+		std::cout << cpltVis.get_by_size(0).y_middle_coord << " | " << cpltVis.get_by_size(1).y_middle_coord << "\n";
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_A)) {
 			shoot = true;
