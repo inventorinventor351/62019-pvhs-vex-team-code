@@ -2,8 +2,7 @@
 
 void redCapSide()
 {
-
-drivePD(2.8);
-runIntake(70);
+    runIntake(70);
+    drivePD(3);
 
 }

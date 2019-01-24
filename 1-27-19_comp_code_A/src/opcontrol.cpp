@@ -56,12 +56,12 @@ void opcontrol() {
 
 		}
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_A))
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
 		{
 			runBro(60);
 		}
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_LEFT))
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
 		{
 			runBro(-60);
 		}
@@ -71,11 +71,6 @@ void opcontrol() {
 			runBro(0);
 		}
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
-		{
-			flipCap(2, 50);
-			
-		}
 
 	}
 
