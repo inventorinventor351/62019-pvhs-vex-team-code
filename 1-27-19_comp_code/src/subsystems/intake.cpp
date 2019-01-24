@@ -29,20 +29,22 @@ void getBall(int time) {
         PID dist = initPID(1, 0, 0, 0.5, 0, 0);
         int lowestY = 1000, objX, prevY = 1000, deltaY;
         float aimVal, distVal;
-        runIntake(-80);
+        runIntake(80);
 
         for(int i = 0; i < time; i++) {
 
-            if(intkVis.get_object_count() == 0 || deltaY > 20 || prevY < -190) 
-                break;
-
             for(int n = 0; n < intkVis.get_object_count(); n++) {
 
-                if(intkVis.get_by_sig(n, 1).y_middle_coord < lowestY){
+                if(intkVis.get_by_size(n).y_middle_coord < lowestY){
                     lowestY = intkVis.get_by_size(n).y_middle_coord;
                     objX = intkVis.get_by_size(n).x_middle_coord;
                 }
 
+            }
+
+            if(lowestY < -80 || intkVis.get_object_count() == 0) {
+                delay(200);
+                break;
             }
 
             aim.error = -objX;
@@ -50,10 +52,9 @@ void getBall(int time) {
             aimVal = runPID(&aim);
             distVal = runPID(&dist);
 
-            deltaY = lowestY - prevY;
-            prevY = lowestY;
-            lowestY = 1000;
+            std::cout << lowestY << "\n";
 
+            lowestY = 1000;
 
             runLeftBase(-distVal - aimVal);
             runRightBase(-distVal + aimVal);
@@ -64,7 +65,7 @@ void getBall(int time) {
 
     runLeftBase(0);
     runRightBase(0);
-    delay(300);
+    delay(600);
     runIntake(0);
 
     }

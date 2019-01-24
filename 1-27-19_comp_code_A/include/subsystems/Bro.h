@@ -3,4 +3,7 @@
 
 void runBro(float voltPerc);
 
+void flipCap(float distance, int maxSpeed);
+
+
 #endif

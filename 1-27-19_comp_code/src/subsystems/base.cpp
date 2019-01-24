@@ -20,7 +20,7 @@ void moveStraight(double setPoint, double direction, int time) {
     setPoint = abs(setPoint) * sgn(direction);
 
     PID dist = initPID(1, 0, 1, 0.1, 0, 0.275);
-    PID diff = initPID(0, 0, 0, 0, 0, 0);
+    PID diff = initPID(1, 0, 0, 0.75, 0, 0);
 
     distEnc.reset();
     gyro.reset();
@@ -28,15 +28,17 @@ void moveStraight(double setPoint, double direction, int time) {
     for(int i = 0; i < time; i++) {
 
         dist.error = setPoint - distEnc.get_value();
-        diff.error = 0 - (gyro.get_value() * 0.94);
+        diff.error = (gyro.get_value() * 0.94);
 
         distVal = runPID(&dist);
+        distVal = (abs(distVal) > 90) ? (90 * sgn(distVal)) : distVal;
         diffVal = runPID(&diff);
 
         runLeftBase(distVal - diffVal);
         runRightBase(distVal + diffVal);
 
-        std::cout << "gyro: " << gyro.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "distErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "diffErr: " << diff.error << "  |  " << "distVal: " << distVal << "  |  " << "diffVal: " << diffVal << "  |  " << "ms: " << i << "\n";
+        if(!(i % 10))
+            std::cout << "gyro: " << gyro.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "distErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "diffErr: " << diff.error << "  |  " << "distVal: " << distVal << "  |  " << "diffVal: " << diffVal << "  |  " << "ms: " << i << "\n";
 
         delay(1);
 
