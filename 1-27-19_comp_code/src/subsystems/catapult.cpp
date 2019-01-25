@@ -11,7 +11,7 @@ void runCplt(float voltPerc) {
 void cpltReturn(void* param) {
 
     PID cpltShoot = initPID(1, 0, 0, 1.63, 0, 0);
-    int setpoint = 1720;
+    int setpoint = 2490;
 
     while(true) {
 
