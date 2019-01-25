@@ -34,10 +34,10 @@ void opcontrol() {
 			runIntake(0);
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			descorer.set_value(1);
+			descorer.set_value(0);
 
 		else
-			descorer.set_value(0);
+			descorer.set_value(1);
 
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))
 			transPstnAck = 0;
