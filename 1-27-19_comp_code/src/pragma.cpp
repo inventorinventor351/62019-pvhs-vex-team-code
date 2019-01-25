@@ -10,13 +10,13 @@ Motor cplt (6, MOTOR_GEARSET_18, 0); //normal motor plugged into port 6 and not 
 Vision intkVis (7, VISION_ZERO_CENTER); //vision sensor plugged into port 7 and (0,0) is at the center of the screen
 Vision cpltVis (8, VISION_ZERO_CENTER); //vision sensor plugged into port 8 and (0,0) is at the center of the screen
 
-ADIDigitalOut descorer (1); //pistons y-cabled in port 1 to descore high caps
+ADIDigitalOut descorer (7); //pistons y-cabled in port 1 to descore high caps
 ADIDigitalOut transPstn (2); //piston plugged into port 2
 
 ADIGyro gyro(3); //gryo used for turning in autonomous in port 3
 ADIAnalogIn cpltPot(4); //potentiometer plugged into legacy port 4
 
 ADIEncoder distEnc (5, 6, 0); //encoder plugged into legacy ports 5 and 6 and not reversed
-ADIEncoder yawEnc (7, 8, 0); //encoder plugged into legacy ports 7 and 8 and not reversed
+//ADIEncoder yawEnc (7, 8, 0); //encoder plugged into legacy ports 7 and 8 and not reversed
 
 Controller master (CONTROLLER_MASTER); //master controller
