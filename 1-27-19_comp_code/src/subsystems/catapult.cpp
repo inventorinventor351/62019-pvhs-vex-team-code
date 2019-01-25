@@ -10,13 +10,13 @@ void runCplt(float voltPerc) {
 
 void cpltReturn(void* param) {
 
-    PID cpltShoot = initPID(1, 0, 0, 1.75, 0, 0);
-    int setpoint = 2490;
+    PID cpltShoot = initPID(1, 0, 1, 1.63, 0, 5);
+    int setpoint = 2830;
     int cpltVal;
 
     while(true) {
 
-        cpltShoot.error = setpoint - cpltPot.get_value(); //(((int)cpltPot.get_value()) / 10) * 10);
+        cpltShoot.error = setpoint - cpltPot.get_value();
         cpltVal = runPID(&cpltShoot);
         runCplt(cpltVal);
         

@@ -7,8 +7,9 @@ void opcontrol() {
 	initIntkVis();
 	gyro.reset();
 	descorer.set_value(1);
-	bool transPstnAck = 1, transPstnState = 1;
+	bool transPstnAck = 1, transPstnState = 1, desPstnAck = 1, desPstnState = 0;
 	transPstn.set_value(transPstnState);
+	descorer.set_value(desPstnState);
 
 	while(true) {
 
@@ -33,11 +34,22 @@ void opcontrol() {
 		else
 			runIntake(0);
 
+		/*if(!master.get_digital(E_CONTROLLER_DIGITAL_L2))
+			desPstnAck = 0;
+
+		else if(!desPstnAck) {
+
+			desPstnAck = 1;
+			desPstnState = !desPstnState;
+			descorer.set_value(desPstnState);
+
+		}*/
+
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			descorer.set_value(0);
+			descorer.set_value(1);
 
 		else
-			descorer.set_value(1);
+			descorer.set_value(0);
 
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_R2))
 			transPstnAck = 0;
