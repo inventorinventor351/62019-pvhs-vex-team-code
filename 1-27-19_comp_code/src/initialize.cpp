@@ -27,7 +27,7 @@ void lcdScroll() {
 
         case 0:
             lcd::set_text(1, "RED   FLAG    SIDE");
-            lcd::set_text(2, "6 flags");
+            lcd::set_text(2, "3 flags");
             lcd::set_text(3, "2 caps");
             lcd::set_text(4, "no parking");
             break;
@@ -41,7 +41,7 @@ void lcdScroll() {
 
         case 2:
             lcd::set_text(1, "BLUE   FLAG    SIDE");
-            lcd::set_text(2, "6 flags");
+            lcd::set_text(2, "3 flags");
             lcd::set_text(3, "2 caps");
             lcd::set_text(4, "no parking");
             break;
@@ -54,10 +54,10 @@ void lcdScroll() {
             break;
 
         default:
-            lcd::set_text(1, "HOW DID YOU MESS UP");
-            lcd::set_text(2, "HOW DID YOU MESS UP");
-            lcd::set_text(3, "HOW DID YOU MESS UP");
-            lcd::set_text(4, "HOW DID YOU MESS UP");
+            lcd::set_text(1, "HOW DID YOU MESS UP KARL");
+            lcd::set_text(2, "HOW DID YOU MESS UP KARL");
+            lcd::set_text(3, "HOW DID YOU MESS UP KARL");
+            lcd::set_text(4, "HOW DID YOU MESS UP KARL");
             break;
 
     }
