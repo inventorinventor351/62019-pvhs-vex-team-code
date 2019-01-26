@@ -10,25 +10,16 @@ void runCplt(float voltPerc) {
 
 void cpltReturn(void* param) {
 
-<<<<<<< HEAD
-    PID cpltShoot = initPID(1, 0, 0, 1.63, 0, 0);
-    int setpoint = 2490;
-
-    while(true) {
-
-        cpltShoot.error = setpoint - (((int)cpltPot.get_value() / 10) * 10);
-        runCplt(runPID(&cpltShoot) * 1);
-=======
     PID cpltShoot = initPID(1, 0, 1, 1.63, 0, 5);
     int setpoint = 2830;
     int cpltVal;
+    std::cout << cpltVal << "\n";
 
     while(true) {
 
         cpltShoot.error = setpoint - cpltPot.get_value();
         cpltVal = runPID(&cpltShoot);
         runCplt(cpltVal);
->>>>>>> de0dda90fa61cb63298702cf16d3a65e8889c876
         
         if(shoot) {
 
