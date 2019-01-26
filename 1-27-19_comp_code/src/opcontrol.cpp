@@ -80,8 +80,6 @@ void opcontrol() {
 		
 		count++;*/
 
-		std::cout << cpltVis.get_by_sig(0, 3).y_middle_coord << "	|	" << cpltVis.get_by_sig(1, 3).y_middle_coord << "	|	" << cpltVis.get_object_count() << "\n";
-
 		Task::delay_until(&now, 1);
 
 	}
