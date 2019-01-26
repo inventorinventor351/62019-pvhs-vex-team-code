@@ -11,14 +11,14 @@ extern Motor cplt; //motor that runs the catapult
 extern Vision intkVis; //vision sensor that helps the intake aim for balls
 extern Vision cpltVis; //vision sensor that helps the catapult aim for flags
 
-extern ADIDigitalOut descorer; //piston for descoring high flags
 extern ADIDigitalOut transPstn; //piston that controls the transmission
+extern ADIDigitalOut descorer; //piston for descoring high flags
+extern ADIDigitalIn PorX; //jumper that determines which robot is being used
 
 extern ADIGyro gyro; //gyro used for turning in autonomous
 extern ADIAnalogIn cpltPot; //potentiometer that measures the angle of the catapult arm
 
 extern ADIEncoder distEnc; //encoder on a tracking wheel that is parallel to the base wheels
-//extern ADIEncoder yawEnc; //encoder on a tracking wheel that is perpendicular to the base wheels
 
 extern Controller master;
 
