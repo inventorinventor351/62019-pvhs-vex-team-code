@@ -9,11 +9,8 @@ void opcontrol() {
 	descorer.set_value(1);
 	bool transPstnAck = 1, transPstnState = 1, desPstnAck = 1, desPstnState = 0;
 	transPstn.set_value(transPstnState);
-<<<<<<< HEAD
 	//int count = 0, topY = -1000, lowY = 1000;
-=======
 	descorer.set_value(desPstnState);
->>>>>>> de0dda90fa61cb63298702cf16d3a65e8889c876
 
 	while(true) {
 
@@ -57,23 +54,7 @@ void opcontrol() {
 		}
 
 
-<<<<<<< HEAD
 		if(PorX.get_value() == 0) {
-=======
-		/*if(!master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			desPstnAck = 0;
-
-		else if(!desPstnAck) {
-
-			desPstnAck = 1;
-			desPstnState = !desPstnState;
-			descorer.set_value(desPstnState);
-
-		}*/
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			descorer.set_value(1);
->>>>>>> de0dda90fa61cb63298702cf16d3a65e8889c876
 
 			if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
 				runIntake(100);
