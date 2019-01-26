@@ -10,7 +10,8 @@ void runCplt(float voltPerc) {
 
 void cpltReturn(void* param) {
 
-    PID cpltShoot = initPID(1, 0, 1, 1.63, 0, 5);
+    PID frame = !PorX.get_value() ? initPID(1, 0, 1, 1.63, 0, 5) : initPID(1, 0, 1, 1.63, 0, 5);
+    PID cpltShoot = frame;
     int setpoint = 2830;
     int cpltVal;
 
@@ -26,7 +27,7 @@ void cpltReturn(void* param) {
 			delay(200);
 			runCplt(0);
 			delay(200);
-			cpltShoot = initPID(1, 0, 1, 1.63, 0, 5);
+			cpltShoot = frame;
             shoot = 0;
             
         }
@@ -179,24 +180,24 @@ void flagAimTop() {
 
     PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
     PID dist = initPID(1, 0, 1, 2, 0, 1);
-    double aimVal, distVal, distSetPoint = 41;
+    double aimVal, distVal, distSetPoint = 41, highY = -201;
 
     for(int i = 0; i < 1500; i++) {
 
         if(cpltVis.get_object_count() == 0)
             break;
 
-        if(cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).y_middle_coord > cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).y_middle_coord) {
+        for(int j = 0; j < cpltVis.get_object_count(); j++) {
 
-            dist.error = cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).y_middle_coord - distSetPoint;
-            aim.error = -cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).x_middle_coord;
+            if(cpltVis.get_by_sig(j, (autonCount <= 1) ? 3 : 4).y_middle_coord > highY) {
 
-        }
+                aim.error = -cpltVis.get_by_sig(j, (autonCount <= 1) ? 3 : 4).x_middle_coord;
+                dist.error = cpltVis.get_by_sig(j, (autonCount <= 1) ? 3 : 4).y_middle_coord - distSetPoint;
 
-        else {
+            }
 
-            dist.error = cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).y_middle_coord - distSetPoint;
-            aim.error = -cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).x_middle_coord;
+            if(j == 1)
+                break;
 
         }
 
@@ -275,24 +276,24 @@ void flagAimLow() {
 
     PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
     PID dist = initPID(1, 0, 1, 2, 0, 1);
-    double aimVal, distVal, distSetPoint = -26;
+    double aimVal, distVal, distSetPoint = -26, lowY = 201;
 
     for(int i = 0; i < 1500; i++) {
 
         if(cpltVis.get_object_count() == 0)
             break;
 
-        if(!(cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).y_middle_coord > cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).y_middle_coord)) {
+        for(int j = 0; j < cpltVis.get_object_count(); j++) {
 
-            dist.error = cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).y_middle_coord - distSetPoint;
-            aim.error = -cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).x_middle_coord;
+            if(cpltVis.get_by_sig(j, (autonCount <= 1) ? 3 : 4).y_middle_coord < lowY) {
 
-        }
+                aim.error = -cpltVis.get_by_sig(j, (autonCount <= 1) ? 3 : 4).x_middle_coord;
+                dist.error = cpltVis.get_by_sig(j, (autonCount <= 1) ? 3 : 4).y_middle_coord - distSetPoint;
 
-        else {
+            }
 
-            dist.error = cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).y_middle_coord - distSetPoint;
-            aim.error = -cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).x_middle_coord;
+            if(j == 1)
+                break;
 
         }
 

@@ -55,7 +55,7 @@ void opcontrol() {
 		if(!PorX.get_value() ? 0 : master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			master.rumble(".");
 
-		if(!(count % 50)) {
+		/*if(!(count % 50)) {
 
 			for(int n = 0; n < cpltVis.get_object_count(); n++) {
 
@@ -77,9 +77,10 @@ void opcontrol() {
 			lowY = 1000;
 
 		}
-
 		
-		count ++;
+		count++;*/
+
+		std::cout << cpltVis.get_by_sig(0, 3).y_middle_coord << "	|	" << cpltVis.get_by_sig(1, 3).y_middle_coord << "	|	" << cpltVis.get_object_count() << "\n";
 
 		Task::delay_until(&now, 1);
 
