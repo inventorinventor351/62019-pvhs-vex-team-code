@@ -3,6 +3,9 @@
 //Runs during the 15 second autonomous period
 void autonomous() {
 
+    transPstn.set_value(1);
+    descorer.set_value(0);
+
     redFlag();
 /*
     if(autonCount == 0)
