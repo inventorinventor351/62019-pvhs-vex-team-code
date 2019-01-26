@@ -97,7 +97,7 @@ void initCpltVis() {
 
 }
 
-void flagAimTop() {
+/*void flagAimTop() {
 
     delay(10);
 
@@ -147,9 +147,53 @@ void flagAimTop() {
 
     master.rumble("-");
 
+}*/
+
+void flagAimTop() {
+
+    delay(10);
+
+    PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
+    PID dist = initPID(1, 0, 1, 2, 0, 1);
+    double aimVal, distVal, distSetPoint = 41;
+
+    for(int i = 0; i < 1500; i++) {
+
+        if(cpltVis.get_object_count() == 0)
+            break;
+
+        if(cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).y_middle_coord > cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).y_middle_coord) {
+
+            dist.error = cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).y_middle_coord - distSetPoint;
+            aim.error = -cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).x_middle_coord;
+
+        }
+
+        else {
+
+            dist.error = cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).y_middle_coord - distSetPoint;
+            aim.error = -cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).x_middle_coord;
+
+        }
+
+        aimVal = runPID(&aim);
+        distVal = runPID(&dist);
+
+        runLeftBase(distVal - aimVal);
+        runRightBase(distVal + aimVal);
+
+        delay(1);
+
+    }
+
+    runLeftBase(0);
+    runRightBase(0);
+
+    master.rumble("-");
+
 }
 
-void flagAimLow() {
+/*void flagAimLow() {
 
     delay(10);
 
@@ -191,6 +235,50 @@ void flagAimLow() {
             delay(1);
 
         }
+
+    }
+
+    runLeftBase(0);
+    runRightBase(0);
+
+    master.rumble("-");
+
+}*/
+
+void flagAimLow() {
+
+    delay(10);
+
+    PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
+    PID dist = initPID(1, 0, 1, 2, 0, 1);
+    double aimVal, distVal, distSetPoint = 41;
+
+    for(int i = 0; i < 1500; i++) {
+
+        if(cpltVis.get_object_count() == 0)
+            break;
+
+        if(!(cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).y_middle_coord > cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).y_middle_coord)) {
+
+            dist.error = cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).y_middle_coord - distSetPoint;
+            aim.error = -cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).x_middle_coord;
+
+        }
+
+        else {
+
+            dist.error = cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).y_middle_coord - distSetPoint;
+            aim.error = -cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).x_middle_coord;
+
+        }
+
+        aimVal = runPID(&aim);
+        distVal = runPID(&dist);
+
+        runLeftBase(distVal - aimVal);
+        runRightBase(distVal + aimVal);
+
+        delay(1);
 
     }
 

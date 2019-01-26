@@ -12,6 +12,7 @@ using namespace pros; //Instead of typing pros::Motor() all the time, if you use
 #endif //DO NOT TOUCH
 
 //You should include more files right under here
+extern int autonCount;
 #include "misc.h"
 #include "pragma.h"
 #include "./subsystems/base.h"

@@ -11,8 +11,8 @@ Vision intkVis (7, VISION_ZERO_CENTER); //vision sensor plugged into port 7 and 
 Vision cpltVis (8, VISION_ZERO_CENTER); //vision sensor plugged into port 8 and (0,0) is at the center of the screen
 
 ADIDigitalOut transPstn (2); //piston plugged into port 2
-ADIDigitalOut descorer (7); //pistons y-cabled in port 7 to descore high caps
-ADIDigitalIn PorX (8); //jumper used to detemine which robot is being used, in port 8
+ADIDigitalOut descorer (8); //pistons y-cabled in port 8 to descore high caps
+ADIDigitalIn PorX (1); //jumper used to detemine which robot is being used, in port 1
 
 ADIGyro gyro (3); //gryo used for turning in autonomous in port 3
 ADIAnalogIn cpltPot (4); //potentiometer plugged into legacy port 4
