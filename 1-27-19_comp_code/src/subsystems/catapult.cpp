@@ -13,7 +13,6 @@ void cpltReturn(void* param) {
     PID cpltShoot = initPID(1, 0, 1, 1.63, 0, 5);
     int setpoint = 2830;
     int cpltVal;
-    std::cout << cpltVal << "\n";
 
     while(true) {
 
@@ -27,12 +26,12 @@ void cpltReturn(void* param) {
 			delay(200);
 			runCplt(0);
 			delay(200);
-			cpltShoot = initPID(1, 0, 0, 1.63, 0, 0);
+			cpltShoot = initPID(1, 0, 1, 1.63, 0, 5);
             shoot = 0;
             
         }
 
-        std::cout << "Error:" << cpltShoot.error << "| PID:" << cpltVal << "\n";
+        //std::cout << "Error:" << cpltShoot.error << "| PID:" << cpltVal << "\n";
 
         delay(1);
 
@@ -113,7 +112,7 @@ void flagAimTop() {
     
         PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
         PID dist = initPID(1, 0, 1, 2, 0, 1);
-        double aimVal, distVal, distSetPoint = -10, topY = -1000;
+        double aimVal, distVal, distSetPoint = 41, topY = -1000;
 
         for(int i = 0; i < 1500; i++) {
 
@@ -124,10 +123,10 @@ void flagAimTop() {
 
                 if(cpltVis.get_by_size(n).y_middle_coord > topY)
                     topY = cpltVis.get_by_size(n).y_middle_coord;
+                    aim.error = -cpltVis.get_by_size(n).x_middle_coord;
 
             }
 
-            aim.error = -cpltVis.get_by_size(0).x_middle_coord;
             dist.error = topY - distSetPoint;
 
             aimVal = runPID(&aim);
@@ -165,21 +164,21 @@ void flagAimLow() {
     
         PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
         PID dist = initPID(1, 0, 1, 2, 0, 1);
-        double aimVal, distVal, distSetPoint = -84, lowY = 1000;
+        double aimVal, distVal, distSetPoint = -26, lowY = 1000;
 
         for(int i = 0; i < 1500; i++) {
 
             if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320)
                 break;
 
-            for(int n = 0; n < cpltVis.get_object_count(); n++) {
+            for(int n = 0; n < 2; n++) {
 
                 if(cpltVis.get_by_size(n).y_middle_coord < lowY)
                     lowY = cpltVis.get_by_size(n).y_middle_coord;
+                    aim.error = -cpltVis.get_by_size(n).x_middle_coord;
 
             }
 
-            aim.error = -cpltVis.get_by_size(0).x_middle_coord;
             dist.error = lowY - distSetPoint;
 
             aimVal = runPID(&aim);
