@@ -95,6 +95,30 @@ void initCpltVis() {
     GREENFLAG.type = 0;
     cpltVis.set_signature(1, &GREENFLAG);
 
+    vision_signature_s_t BLUEFLAG;
+    BLUEFLAG.id = 3;
+    BLUEFLAG.range = 1.4;
+    BLUEFLAG.u_min = -2935;
+    BLUEFLAG.u_max = -885;
+    BLUEFLAG.u_mean = -1910;
+    BLUEFLAG.v_min = 3409;
+    BLUEFLAG.v_max = 10485;
+    BLUEFLAG.v_mean = 6947;
+    BLUEFLAG.type = 0;
+    cpltVis.set_signature(3, &BLUEFLAG);
+
+    vision_signature_s_t REDFLAG;
+    REDFLAG.id = 4;
+    REDFLAG.range = 2.8;
+    REDFLAG.u_min = 5065;
+    REDFLAG.u_max = 7193;
+    REDFLAG.u_mean = 6129;
+    REDFLAG.v_min = -323;
+    REDFLAG.v_max = 379;
+    REDFLAG.v_mean = 28;
+    REDFLAG.type = 0;
+    cpltVis.set_signature(4, &REDFLAG);
+
 }
 
 /*void flagAimTop() {
@@ -162,17 +186,17 @@ void flagAimTop() {
         if(cpltVis.get_object_count() == 0)
             break;
 
-        if(cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).y_middle_coord > cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).y_middle_coord) {
+        if(cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).y_middle_coord > cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).y_middle_coord) {
 
-            dist.error = cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).y_middle_coord - distSetPoint;
-            aim.error = -cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).x_middle_coord;
+            dist.error = cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).y_middle_coord - distSetPoint;
+            aim.error = -cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).x_middle_coord;
 
         }
 
         else {
 
-            dist.error = cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).y_middle_coord - distSetPoint;
-            aim.error = -cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).x_middle_coord;
+            dist.error = cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).y_middle_coord - distSetPoint;
+            aim.error = -cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).x_middle_coord;
 
         }
 
@@ -251,7 +275,7 @@ void flagAimLow() {
 
     PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
     PID dist = initPID(1, 0, 1, 2, 0, 1);
-    double aimVal, distVal, distSetPoint = 41;
+    double aimVal, distVal, distSetPoint = -26;
 
     for(int i = 0; i < 1500; i++) {
 
@@ -260,15 +284,15 @@ void flagAimLow() {
 
         if(!(cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).y_middle_coord > cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).y_middle_coord)) {
 
-            dist.error = cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).y_middle_coord - distSetPoint;
-            aim.error = -cpltVis.get_by_sig(0, (autonCount <= 1) ? 2 : 3).x_middle_coord;
+            dist.error = cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).y_middle_coord - distSetPoint;
+            aim.error = -cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).x_middle_coord;
 
         }
 
         else {
 
-            dist.error = cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).y_middle_coord - distSetPoint;
-            aim.error = -cpltVis.get_by_sig(1, (autonCount > 1) ? 3 : 2).x_middle_coord;
+            dist.error = cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).y_middle_coord - distSetPoint;
+            aim.error = -cpltVis.get_by_sig(1, (autonCount > 1) ? 4 : 3).x_middle_coord;
 
         }
 
