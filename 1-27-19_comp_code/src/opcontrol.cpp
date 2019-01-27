@@ -55,34 +55,6 @@ void opcontrol() {
 		if(!PorX.get_value() ? 0 : master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			master.rumble(".");
 
-		/*if(!(count % 50)) {
-
-			for(int n = 0; n < cpltVis.get_object_count(); n++) {
-
-                if(cpltVis.get_by_size(n).y_middle_coord > topY)
-                    topY = cpltVis.get_by_size(n).y_middle_coord;
-
-            }
-
-			for(int n = 0; n < 2; n++) {
-
-                if(cpltVis.get_by_size(n).y_middle_coord < lowY)
-                    lowY = cpltVis.get_by_size(n).y_middle_coord;
-
-            }
-
-			std::cout << "1 : " << cpltVis.get_by_size(0).y_middle_coord << " | " << "2 : " << cpltVis.get_by_size(1).y_middle_coord << " | " << "3 : " << cpltVis.get_by_size(2).y_middle_coord << "\n";
-
-			topY = -1000;
-			lowY = 1000;
-
-		}*/
-		
-		count++;
-
-		if(!(count % 1000))
-			std::cout << cpltVis.get_object_count() << "   |   " << cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).x_middle_coord << "   |   " << cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).y_middle_coord << "   |   " << cpltVis.get_by_sig(1, (autonCount <= 1) ? 3 : 4).x_middle_coord << "   |   " << cpltVis.get_by_sig(1, (autonCount <= 1) ? 3 : 4).y_middle_coord << "\n";
-
 		Task::delay_until(&now, 1);
 
 	}
