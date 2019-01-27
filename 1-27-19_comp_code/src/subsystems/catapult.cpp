@@ -85,7 +85,7 @@ void flagAim() {
 void initCpltVis() {
 
     vision_signature_s_t GREENFLAG;
-    GREENFLAG.id = 2;
+    GREENFLAG.id = 1;
     GREENFLAG.range = 2.8;
     GREENFLAG.u_min = -3383;
     GREENFLAG.u_max = -2431;
@@ -98,25 +98,25 @@ void initCpltVis() {
 
     vision_signature_s_t BLUEFLAG;
     BLUEFLAG.id = 3;
-    BLUEFLAG.range = 1.4;
-    BLUEFLAG.u_min = -2935;
-    BLUEFLAG.u_max = -885;
-    BLUEFLAG.u_mean = -1910;
-    BLUEFLAG.v_min = 3409;
-    BLUEFLAG.v_max = 10485;
-    BLUEFLAG.v_mean = 6947;
+    BLUEFLAG.range = 2;
+    BLUEFLAG.u_min = -3305;
+    BLUEFLAG.u_max = -1295;
+    BLUEFLAG.u_mean = -2300;
+    BLUEFLAG.v_min = 4707;
+    BLUEFLAG.v_max = 11331;
+    BLUEFLAG.v_mean = 8019;
     BLUEFLAG.type = 0;
     cpltVis.set_signature(3, &BLUEFLAG);
 
     vision_signature_s_t REDFLAG;
     REDFLAG.id = 4;
-    REDFLAG.range = 2.8;
-    REDFLAG.u_min = 5065;
-    REDFLAG.u_max = 7193;
-    REDFLAG.u_mean = 6129;
-    REDFLAG.v_min = -323;
-    REDFLAG.v_max = 379;
-    REDFLAG.v_mean = 28;
+    REDFLAG.range = 3.3;
+    REDFLAG.u_min = 5997;
+    REDFLAG.u_max = 8549;
+    REDFLAG.u_mean = 7273;
+    REDFLAG.v_min = -685;
+    REDFLAG.v_max = -107;
+    REDFLAG.v_mean = -396;
     REDFLAG.type = 0;
     cpltVis.set_signature(4, &REDFLAG);
 

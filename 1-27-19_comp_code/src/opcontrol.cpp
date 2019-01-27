@@ -4,7 +4,7 @@ void opcontrol() {
 
 	std::uint_least32_t now = millis();
 	initCpltVis();
-	initIntkVis();
+	//initIntkVis();
 	gyro.reset();
 	descorer.set_value(1);
 	bool transPstnAck = 1, transPstnState = 1, desPstnAck = 1, desPstnState = 0;
@@ -76,9 +76,12 @@ void opcontrol() {
 			topY = -1000;
 			lowY = 1000;
 
-		}
+		}*/
 		
-		count++;*/
+		count++;
+
+		if(!(count % 1000))
+			std::cout << cpltVis.get_object_count() << "   |   " << cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).x_middle_coord << "   |   " << cpltVis.get_by_sig(0, (autonCount <= 1) ? 3 : 4).y_middle_coord << "   |   " << cpltVis.get_by_sig(1, (autonCount <= 1) ? 3 : 4).x_middle_coord << "   |   " << cpltVis.get_by_sig(1, (autonCount <= 1) ? 3 : 4).y_middle_coord << "\n";
 
 		Task::delay_until(&now, 1);
 
