@@ -6,7 +6,7 @@ void autonomous() {
     transPstn.set_value(1);
     descorer.set_value(0);
 
-    redFlag();
+    blueFlag();
 /*
     if(autonCount == 0)
         redFlag();
