@@ -217,8 +217,6 @@ void flagAimTop() {
 
         delay(1);
 
-        std::cout << dist.error << "   |   " << aim.error << "\n";
-
     }
 
     runLeftBase(0);
