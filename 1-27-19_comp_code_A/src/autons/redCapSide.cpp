@@ -1,8 +1,12 @@
 #include "main.h"
 
-void redCapSide()
-{
+void redCapSide(){
+    
     runIntake(70);
-    drivePD(3);
+    drivePD(2.9);
+    delay(1000);
+    drivePD(-2.4);
+    runIntake(0);
+    delay(1000);
 
 }
