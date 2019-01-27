@@ -10,10 +10,10 @@ void autonomous()
         blueFlagSide();
     
     if(autonCount == 2)
-        redCapSide();
+        redFlagSide();
 
     if(autonCount == 3)
-        redFlagSide();
+        redCapSide();
 
         
         

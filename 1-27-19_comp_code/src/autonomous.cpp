@@ -5,8 +5,8 @@ void autonomous() {
 
     transPstn.set_value(1);
     descorer.set_value(0);
-
-    redFlag();
+    delay (100);
+    redCap();
 /*
     if(autonCount == 0)
         redFlag();
