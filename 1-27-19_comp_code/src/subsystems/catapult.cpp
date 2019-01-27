@@ -96,7 +96,7 @@ void initCpltVis() {
     GREENFLAG.type = 0;
     cpltVis.set_signature(1, &GREENFLAG);
 
-    /*vision_signature_s_t BLUEFLAG;
+    vision_signature_s_t BLUEFLAG;
     BLUEFLAG.id = 3;
     BLUEFLAG.range = 2;
     BLUEFLAG.u_min = -3305;
@@ -118,11 +118,11 @@ void initCpltVis() {
     REDFLAG.v_max = -107;
     REDFLAG.v_mean = -396;
     REDFLAG.type = 0;
-    cpltVis.set_signature(4, &REDFLAG);*/
+    cpltVis.set_signature(4, &REDFLAG);
 
 }
 
-void flagAimTop() {
+/*void flagAimTop() {
 
     delay(10);
 
@@ -180,9 +180,9 @@ void flagAimTop() {
 
     master.rumble("-");
 
-}
+}*/
 
-/*void flagAimTop() {
+void flagAimTop() {
 
     delay(10);
 
@@ -226,9 +226,9 @@ void flagAimTop() {
 
     master.rumble("-");
 
-}*/
+}
 
-void flagAimLow() {
+/*void flagAimLow() {
 
     delay(10);
 
@@ -286,9 +286,9 @@ void flagAimLow() {
 
     master.rumble("-");
 
-}
+}*/
 
-/*void flagAimLow() {
+void flagAimLow() {
 
     delay(10);
 
@@ -330,4 +330,4 @@ void flagAimLow() {
 
     master.rumble("-");
 
-}*/
+}
