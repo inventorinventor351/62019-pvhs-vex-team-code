@@ -40,7 +40,7 @@ void cpltReturn(void* param) {
     
 }
 
-void flagAim() {
+/*void flagAim() {
 
     delay(10);
 
@@ -80,7 +80,7 @@ void flagAim() {
     runLeftBase(0);
     runRightBase(0);
 
-}
+}*/
 
 void initCpltVis() {
 
@@ -284,7 +284,7 @@ void flagAimTop() {
 
     master.rumble("-");
 
-}*/
+}
 
 void flagAimLow() {
 
@@ -309,6 +309,50 @@ void flagAimLow() {
             }
 
             if(j == 1)
+                break;
+
+        }
+
+        aimVal = runPID(&aim);
+        distVal = runPID(&dist);
+
+        runLeftBase(distVal - aimVal);
+        runRightBase(distVal + aimVal);
+
+        delay(1);
+
+    }
+
+    runLeftBase(0);
+    runRightBase(0);
+
+    master.rumble("-");
+
+}*/
+
+void flagAim(bool height) {
+
+    delay(10);
+
+    PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
+    PID dist = initPID(0, 0, 0, 0, 0, 0);
+    double aimVal, distVal, lowestScore = 1, distSetPoint1 = 41, distSetPoint2 = 26;
+
+    for(int i = 0; i < cpltVis.get_object_count(); i++) {
+
+        if(cpltVis.get_object_count() == 0)
+            break;
+
+        for(int j = 0; j < cpltVis.get_object_count(); j++) {
+
+            if(lowestScore > (abs(cpltVis.get_by_size(j).x_middle_coord) * ((height ? -1 : 1) * cpltVis.get_by_size(j).y_middle_coord + 200) / 320 / 400)) {
+
+                aim.error = 0 - cpltVis.get_by_size(j).x_middle_coord;
+                dist.error = cpltVis.get_by_size(j).x_middle_coord - (height ? distSetPoint1 : distSetPoint2);
+
+            }
+
+            if(j)
                 break;
 
         }
