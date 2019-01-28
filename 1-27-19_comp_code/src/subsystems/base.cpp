@@ -52,7 +52,7 @@ void moveStraight(double setPoint, double direction, int time) {
 void pvtBase(int setPoint, int time) {
 
     double distVal, dispVal;
-    setPoint *= 10;
+    setPoint *= 12.5;
 
     PID dist = initPID(1, 0, 0, 0.081, 0, 0);
     PID disp = initPID(0, 0, 0, 0, 0, 0);

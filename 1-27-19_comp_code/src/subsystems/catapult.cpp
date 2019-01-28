@@ -12,8 +12,8 @@ void cpltReturn(void* param) {
 
     PID frame = !PorX.get_value() ? initPID(1, 0, 1, 1.63, 0, 5) : initPID(1, 0, 1, 1.63, 0, 5);
     PID cpltShoot = frame;
-    int setpoint = 2830;
-    int cpltVal;
+    int setpoint = 2810;
+    double cpltVal;
 
     while(true) {
 
@@ -126,7 +126,7 @@ void flagAimTop() {
 
     delay(10);
 
-    if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
+    if(abs(cpltVis.get_by_sig(0, 1).x_middle_coord) > 320) {
 
         runLeftBase(0);
         runRightBase(0);
@@ -137,16 +137,16 @@ void flagAimTop() {
     
         PID aim = initPID(1, 1, 0, 0.75, 0.001, 1);
         PID dist = initPID(1, 0, 1, 2, 0, 1);
-        double aimVal, distVal, distSetPoint = 35, topY = -1000, closestX = 1000, offset = 0;
+        double aimVal, distVal, distSetPoint = 15, topY = -1000, closestX = 1000, offset = 3;
 
-        for(int i = 0; i < 1500; i++) {
+        for(int i = 0; i < 2000; i++) {
 
             if(abs(cpltVis.get_by_sig(0, 1).x_middle_coord) > 320)
                 break;
 
             for(int n = 0; n < 2; n++) {
 
-                if(cpltVis.get_by_sig(n, 1).y_middle_coord > topY)
+                if(cpltVis.get_by_sig(n, 1).y_middle_coord > topY && cpltVis.get_by_sig(n, 1).y_middle_coord < 220)
                     topY = cpltVis.get_by_sig(n, 1).y_middle_coord;
 
             }

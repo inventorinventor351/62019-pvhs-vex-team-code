@@ -2,19 +2,24 @@
 
 void redCap() {
 
-    transPstn.set_value(1);
-    runIntake(80);
+    runIntake(100);
     moveStraight(1800, 1, 2000);
-    moveStraight(800, -1, 1000);
-    pvtBase(-90, 2000);
+    moveStraight(650, -1, 1000);
+    pvtBase(-90, 1500);
+    transPstn.set_value(1);
+    delay(450);
     moveStraight(600, 1, 800);
-    pvtBase(75, 1200);
-    transPstn.set_value(0);
+    pvtBase(67, 1200);
     runIntake(-100);
-    moveStraight(970, 1, 1000);
-    moveStraight(400, -1, 800);
-    pvtBase(100, 2000);
+    moveStraight(1040, 1, 1000);
+    delay(400);
+    moveStraight(760, -1, 800);
     runIntake(0);
-    moveStraight(1200, 1, 1000);
+    /*pvtBase(103, 2100);
+    runRightBase(100);
+    runLeftBase(100);
+    delay(2350);
+    runRightBase(0);
+    runLeftBase(0);*/
 
 }

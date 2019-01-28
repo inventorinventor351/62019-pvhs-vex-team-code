@@ -3,12 +3,12 @@
 //Runs during the 15 second autonomous period
 void autonomous() {
 
-    transPstn.set_value(1);
+    transPstn.set_value(0);
     descorer.set_value(0);
+    initCpltVis();
+    initIntkVis();
     delay(1000);
 
-    blueFlag();
-/*
     if(autonCount == 0)
         redFlag();
 
@@ -21,11 +21,11 @@ void autonomous() {
     else if(autonCount == 3)
         blueCap();
     
-    else
-        while(true) {
-            
-            std::cout << "KARL" << "\n\n";
+    else {
 
-        }*/
+        runLeftBase(0);
+        runRightBase(0);
+
+    }
 
 }

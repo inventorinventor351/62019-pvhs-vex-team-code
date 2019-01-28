@@ -19,8 +19,8 @@ void opcontrol() {
 
 		if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_UP : E_CONTROLLER_DIGITAL_UP))
 			flagAimTop();
-		if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_DOWN : E_CONTROLLER_DIGITAL_DOWN))
-			flagAimLow();
+		/*if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_DOWN : E_CONTROLLER_DIGITAL_DOWN))
+			flagAimLow();*/
 
 		if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_A : E_CONTROLLER_DIGITAL_A))
 			shoot = true;
@@ -55,7 +55,7 @@ void opcontrol() {
 		if(!PorX.get_value() ? 0 : master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			master.rumble(".");
 
-		std::cout << cpltVis.get_object_count() << "   |   " << cpltVis.get_by_sig(0, 1).y_middle_coord << "   |   " << cpltVis.get_by_sig(1, 1).y_middle_coord << "\n";
+		std::cout << cpltVis.get_by_sig(0, 1).y_middle_coord << " | " << cpltVis.get_by_sig(1, 1).y_middle_coord << "\n";
 
 		Task::delay_until(&now, 1);
 
