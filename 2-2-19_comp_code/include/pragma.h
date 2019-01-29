@@ -18,7 +18,7 @@ extern ADIDigitalIn PorX; //jumper that allows code to distinguish between P tea
 extern ADIAnalogIn cpltPot; //potentiometer that measures the angle of the catapult arm
 extern ADIGyro gyro; //gyro used for turning in autonomous
 extern ADIEncoder distEnc; //encoder on a tracking wheel that is parallel to the base wheels
-extern ADIDigitalOut descorer; //piston for descoring high flags
-extern ADIDigitalOut transPstn; //piston that controls the transmission
+extern ADIDigitalOut descorer; //piston for descoring high flags and only P team has it
+extern ADIDigitalOut transPstn; //piston that controls the transmission and only P team has it
 
 #endif
