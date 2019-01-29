@@ -1,11 +1,11 @@
 #ifndef MISC_H
 #define MISC_H
 
-int sgn(double x); //inputs a double and outputs its sign (+ or -) as an int
+int sgn(float x); //inputs a double and outputs its sign (+ or -) as an int
 
 struct PID { //a holder for multiple values used in PID
 
-    double
+    float
     error,
     integral,
     derivative,
@@ -15,8 +15,8 @@ struct PID { //a holder for multiple values used in PID
 
 };
 
-PID initPID(bool useP, bool useI, bool useD, double kP, double kI, double kD); //gives a created PID struct its values
+PID initPID(bool useP, bool useI, bool useD, float kP, float kI, float kD); //gives a created PID struct its values
 
-double runPID(PID *pid); //inputs a PID struct, does the actual PID math, then outputs a double
+float runPID(PID *pid); //inputs a PID struct, does the actual PID math, then outputs a double
 
 #endif

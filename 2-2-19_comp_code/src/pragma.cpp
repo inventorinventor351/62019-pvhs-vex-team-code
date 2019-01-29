@@ -16,7 +16,7 @@ Motor leftBase3 (8, MOTOR_GEARSET_18, 0); //normal motor plugged into port 8 and
 Motor rightBase3 (9, MOTOR_GEARSET_18, 1); //normal motor plugged into port 9 and not reversed and only X team has it
 
 //Legacy Components
-ADIDigitalIn PorX (1); //jumper plugged into legacy port 1
+ADIDigitalIn whichTeam (1); //jumper plugged into legacy port 1
 ADIAnalogIn cpltPot (2); //potentiometer plugged into legacy port 2
 ADIGyro gyro (3); //gryo plugged into legacy port 3
 ADIEncoder distEnc (5, 4, 0); //encoder plugged into legacy ports 4 and 5 and not reversed

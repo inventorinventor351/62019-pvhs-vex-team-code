@@ -1,6 +1,16 @@
 #include "main.h"
 
 void opcontrol() {
+
+	std::uint_least32_t now = millis();
+	initCpltVis();
+	bool transPstnAck = 1, transPstnState = 1, desPstnAck = 1, desPstnState = 0;
+	if(!whichTeam.get_value()) {
+
+		transPstn.set_value(transPstnState);
+		descorer.set_value(desPstnState);
+
+	}
 	
 	initCpltVis();
 	int count = 0;
@@ -18,6 +28,9 @@ void opcontrol() {
 
 		else
 			runIntake(0);
+		
+
+		Task::delay_until(&now, 10);
 		
 	}
 
