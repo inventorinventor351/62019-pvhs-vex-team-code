@@ -18,15 +18,9 @@ void opcontrol() {
 		runRightBase(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100);
 
 		if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_UP : E_CONTROLLER_DIGITAL_UP))
-<<<<<<< HEAD
-			flagAim(1);
-		if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_DOWN : E_CONTROLLER_DIGITAL_DOWN))
-			flagAim(0);
-=======
 			flagAimTop();
 		/*if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_DOWN : E_CONTROLLER_DIGITAL_DOWN))
 			flagAimLow();*/
->>>>>>> 2f18915fc48a804686598049fd4d3e0a9f1f0dc3
 
 		if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_A : E_CONTROLLER_DIGITAL_A))
 			shoot = true;

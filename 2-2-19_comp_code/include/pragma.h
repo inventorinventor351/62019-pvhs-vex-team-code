@@ -1,6 +1,8 @@
 #ifndef PRAGMA_H
 #define PRAGMA_H
 
+extern Controller master; //master controller
+
 //V5 Components
 extern Motor leftBase1; //first motor on the left side of the base
 extern Motor leftBase2; //second motor on the left side of the base
