@@ -12,8 +12,8 @@ void cpltReturn(void* param) {
 
     PID frame = !PorX.get_value() ? initPID(1, 0, 1, 1.63, 0, 5) : initPID(1, 0, 1, 1.63, 0, 5);
     PID cpltShoot = frame;
-    int setpoint = 2830;
-    int cpltVal;
+    int setpoint = 2810;
+    double cpltVal;
 
     while(true) {
 
@@ -96,7 +96,7 @@ void initCpltVis() {
     GREENFLAG.type = 0;
     cpltVis.set_signature(1, &GREENFLAG);
 
-    vision_signature_s_t BLUEFLAG;
+    /*vision_signature_s_t BLUEFLAG;
     BLUEFLAG.id = 3;
     BLUEFLAG.range = 2;
     BLUEFLAG.u_min = -3305;
@@ -118,15 +118,15 @@ void initCpltVis() {
     REDFLAG.v_max = -107;
     REDFLAG.v_mean = -396;
     REDFLAG.type = 0;
-    cpltVis.set_signature(4, &REDFLAG);
+    cpltVis.set_signature(4, &REDFLAG);*/
 
 }
 
-/*void flagAimTop() {
+void flagAimTop() {
 
     delay(10);
 
-    if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
+    if(abs(cpltVis.get_by_sig(0, 1).x_middle_coord) > 320) {
 
         runLeftBase(0);
         runRightBase(0);
@@ -135,30 +135,32 @@ void initCpltVis() {
 
     else {
     
-        PID aim = initPID(1, 0, 1, 1.2, 0.0005, 10);
+        PID aim = initPID(1, 1, 0, 0.75, 0.001, 1);
         PID dist = initPID(1, 0, 1, 2, 0, 1);
-        double aimVal, distVal, distSetPoint = 41, topY = -1000, closestX = 1000;
+        double aimVal, distVal, distSetPoint = 15, topY = -1000, closestX = 1000, offset = 3;
 
-        for(int i = 0; i < 1500; i++) {
+        for(int i = 0; i < 2000; i++) {
 
             if(abs(cpltVis.get_by_sig(0, 1).x_middle_coord) > 320)
                 break;
 
-            for(int n = 0; n < 3; n++) {
+            for(int n = 0; n < 2; n++) {
 
-                if(cpltVis.get_by_sig(n, 1).y_middle_coord > topY)
+                if(cpltVis.get_by_sig(n, 1).y_middle_coord > topY && cpltVis.get_by_sig(n, 1).y_middle_coord < 220)
                     topY = cpltVis.get_by_sig(n, 1).y_middle_coord;
 
             }
 
-            for(int n = 0; n < 3; n++) {
+            for(int n = 0; n < 2; n++) {
 
                 if(abs(cpltVis.get_by_sig(n, 1).x_middle_coord) < closestX)
-                    closestX = abs(cpltVis.get_by_sig(n, 1).x_middle_coord);
+                    closestX = cpltVis.get_by_sig(n, 1).x_middle_coord + (offset * (autonCount <= 1 ? 1 : -1));
 
             }
 
-            aim.error = closestX;
+            
+
+            aim.error = -closestX;
             dist.error = topY - distSetPoint;
 
             aimVal = runPID(&aim);
@@ -166,6 +168,8 @@ void initCpltVis() {
 
             runLeftBase(distVal - aimVal);
             runRightBase(distVal + aimVal);
+
+            std::cout << closestX << " | " << aimVal << "\n";
             
             topY = -1000;
             closestX = 1000;
@@ -180,9 +184,9 @@ void initCpltVis() {
 
     master.rumble("-");
 
-}*/
+}
 
-void flagAimTop() {
+/*void flagAimTop() {
 
     delay(10);
 
@@ -224,9 +228,9 @@ void flagAimTop() {
 
     master.rumble("-");
 
-}
+}*/
 
-/*void flagAimLow() {
+void flagAimLow() {
 
     delay(10);
 
@@ -255,14 +259,14 @@ void flagAimTop() {
 
             }
 
-            for(int n = 0; n < 3; n++) {
+            for(int n = 0; n < 2; n++) {
 
                 if(abs(cpltVis.get_by_sig(n, 1).x_middle_coord) < closestX)
                     closestX = abs(cpltVis.get_by_sig(n, 1).x_middle_coord);
 
             }
 
-            aim.error = closestX;
+            aim.error = -closestX;
             dist.error = lowY - distSetPoint;
 
             aimVal = runPID(&aim);
@@ -286,7 +290,7 @@ void flagAimTop() {
 
 }
 
-void flagAimLow() {
+/*void flagAimLow() {
 
     delay(10);
 
@@ -328,6 +332,7 @@ void flagAimLow() {
 
     master.rumble("-");
 
+<<<<<<< HEAD
 }*/
 
 void flagAim(bool height) {
@@ -373,3 +378,6 @@ void flagAim(bool height) {
     master.rumble("-");
 
 }
+=======
+}*/
+>>>>>>> 2f18915fc48a804686598049fd4d3e0a9f1f0dc3
