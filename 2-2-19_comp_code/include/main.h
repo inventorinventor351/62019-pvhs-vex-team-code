@@ -11,7 +11,11 @@ using namespace pros;
 
 #ifdef __cplusplus
 
-
+    #include "pragma.h"
+    #include "misc.h"
+    #include "./subsystems/base.h"
+    #include "./subsystems/catapult.h"
+    #include "./subsystems/intake.h"
 
 #endif
 
