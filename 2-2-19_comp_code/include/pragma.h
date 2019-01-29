@@ -3,6 +3,8 @@
 
 #define PorX(p, x) !whichTeam.get_value() ? p : x
 
+extern Controller master;
+
 //V5 Components
 extern Motor leftBase1; //first motor on the left side of the base
 extern Motor leftBase2; //second motor on the left side of the base

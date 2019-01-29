@@ -1,5 +1,7 @@
 #include "main.h"
 
+Controller master (E_CONTROLLER_MASTER);
+
 //V5 Components
 Motor leftBase1 (1, MOTOR_GEARSET_18, 0); //normal motor plugged into port 1 and not reversed
 Motor leftBase2 (2, MOTOR_GEARSET_18, 0); //normal motor plugged into port 2 and not reversed

@@ -13,6 +13,8 @@ void cpltReturn(void* param) {
     int setpoint = PorX(2810, 2810);
     float cpltVal;
 
+    std::uint_least32_t now = millis();
+
     while(true) {
 
         cpltShoot.error = setpoint - cpltPot.get_value();
@@ -30,7 +32,7 @@ void cpltReturn(void* param) {
             
         }
 
-        delay(1);
+        Task::delay_until(&now, 1);
 
     }
     
