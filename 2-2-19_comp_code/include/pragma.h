@@ -1,6 +1,8 @@
 #ifndef PRAGMA_H
 #define PRAGMA_H
 
+#define PorX(p, x) !whichTeam.get_value() ? p : x
+
 //V5 Components
 extern Motor leftBase1; //first motor on the left side of the base
 extern Motor leftBase2; //second motor on the left side of the base
@@ -14,7 +16,7 @@ extern Motor cplt; //motor that runs the catapult
 extern Vision cpltVis; //vision sensor on catapult to aid in flag aiming
 
 //Legacy Components
-extern ADIDigitalIn PorX; //jumper that allows code to distinguish between P team and X team
+extern ADIDigitalIn whichTeam; //jumper that allows code to distinguish between P team and X team
 extern ADIAnalogIn cpltPot; //potentiometer that measures the angle of the catapult arm
 extern ADIGyro gyro; //gyro used for turning in autonomous
 extern ADIEncoder distEnc; //encoder on a tracking wheel that is parallel to the base wheels
