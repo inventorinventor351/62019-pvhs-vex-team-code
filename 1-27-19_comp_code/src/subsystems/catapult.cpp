@@ -12,7 +12,7 @@ void cpltReturn(void* param) {
 
     PID frame = !PorX.get_value() ? initPID(1, 0, 1, 1.63, 0, 5) : initPID(1, 0, 1, 1.63, 0, 5);
     PID cpltShoot = frame;
-    int setpoint = 2810;
+    int setpoint = PorX() ? 3030 : 2600;
     double cpltVal;
 
     while(true) {
@@ -332,7 +332,6 @@ void flagAimLow() {
 
     master.rumble("-");
 
-<<<<<<< HEAD
 }*/
 
 void flagAim(bool height) {
@@ -378,6 +377,3 @@ void flagAim(bool height) {
     master.rumble("-");
 
 }
-=======
-}*/
->>>>>>> 2f18915fc48a804686598049fd4d3e0a9f1f0dc3
