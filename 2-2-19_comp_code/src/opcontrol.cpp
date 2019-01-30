@@ -29,6 +29,7 @@ void opcontrol() {
 		else
 			runIntake(0);
 		
+		std::cout << "objects: " << cpltVis.get_object_count() << " | middle x:" << cpltVis.get_by_size(0).x_middle_coord << " | middle y: " << cpltVis.get_by_size(0).y_middle_coord << "\n";
 
 		Task::delay_until(&now, 10);
 		

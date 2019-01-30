@@ -4,7 +4,7 @@ void initCpltVis() {
 
     vision_signature_s_t GREENFLAG;
     GREENFLAG.id = 1;
-    GREENFLAG.range = 2.8;
+    GREENFLAG.range = 4.0;//2.8;
     GREENFLAG.u_min = -3383;
     GREENFLAG.u_max = -2431;
     GREENFLAG.u_mean = -2907;
@@ -46,7 +46,7 @@ void runCplt(float voltPerc) {
 
 }
 
-void cpltReturn(void* param) {
+void cpltControl(void* param) {
 
     PID frame = PorX(initPID(1, 0, 1, 1.63, 0, 5), initPID(1, 0, 1, 1.63, 0, 5));
     PID cpltShoot = frame;
@@ -96,7 +96,7 @@ void flagAim(bool height) {
 
         for(int j = 0; j < cpltVis.get_object_count(); j ++) {
 
-            if(height == 0){
+            if(height == 0) {
 
                 if(cpltVis.get_by_size(j).y_middle_coord < lowY)
                     highY = cpltVis.get_by_size(j).y_middle_coord;
@@ -110,17 +110,10 @@ void flagAim(bool height) {
 
             }
 
+            if(abs(cpltVis.get_by_size(j).x_middle_coord) < closestX)
+                closestX = cpltVis.get_by_size(j).x_middle_coord;
+
             if(j)
-                break;
-
-        }
-
-        for(int k = 0; k < cpltVis.get_object_count(); k ++) {
-
-            if(abs(cpltVis.get_by_size(k).x_middle_coord) < closestX)
-                closestX = cpltVis.get_by_size(k).x_middle_coord;
-
-            if(k)
                 break;
 
         }
