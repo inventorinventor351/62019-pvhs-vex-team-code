@@ -4,7 +4,7 @@ void initCpltVis() {
 
     vision_signature_s_t GREENFLAG;
     GREENFLAG.id = 1;
-    GREENFLAG.range = 4.0;//2.8;
+    GREENFLAG.range = 3.5;//2.8;
     GREENFLAG.u_min = -3383;
     GREENFLAG.u_max = -2431;
     GREENFLAG.u_mean = -2907;
@@ -45,6 +45,8 @@ void runCplt(float voltPerc) {
     cplt.move_voltage((voltPerc / 100) * 12000);
 
 }
+
+bool shoot = 0;
 
 void cpltControl(void* param) {
 
