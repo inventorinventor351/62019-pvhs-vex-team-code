@@ -12,7 +12,7 @@ void cpltControl(void* param) {
 
     PID frame = PorX(initPID(1, 0, 1, 1.63, 0, 5), initPID(1, 0, 1, 1.63, 0, 5));
     PID cpltShoot = frame;
-    int setpoint = PorX(2810, 2810);
+    int setpoint = PorX(3100, 2810);
     float cpltVal;
 
     std::uint_least32_t now = millis();
