@@ -12,7 +12,7 @@ void cpltReturn(void* param) {
 
     PID frame = !PorX.get_value() ? initPID(1, 0, 1, 1.63, 0, 5) : initPID(1, 0, 1, 1.63, 0, 5);
     PID cpltShoot = frame;
-    int setpoint = PorX() ? 3030 : 2600;
+    int setpoint = 3050;
     double cpltVal;
 
     while(true) {
