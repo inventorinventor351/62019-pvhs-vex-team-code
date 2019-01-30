@@ -4,7 +4,7 @@ void autonomous()
 {
 
 
-     leftBase1.tare_position();
+    leftBase1.tare_position();
     leftBase2.tare_position();
     leftBase3.tare_position();
     rightBase1.tare_position();
