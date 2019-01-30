@@ -34,5 +34,7 @@ void moveStraight(float setPoint);
 
 void resetBaseEncoderValue();
 
+void driveDist(int dist, int speed);
+
 
 #endif
