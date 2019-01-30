@@ -19,7 +19,7 @@ Motor rightBase3 (9, MOTOR_GEARSET_18, 1); //normal motor plugged into port 9 an
 ADIDigitalIn whichTeam (7); //jumper plugged into legacy port 1
 ADIAnalogIn cpltPot (4); //potentiometer plugged into legacy port 2
 ADIGyro gyro (3); //gryo plugged into legacy port 3
-ADIEncoder distEnc (5, 4, 0); //encoder plugged into legacy ports 4 and 5 and not reversed
+ADIEncoder distEnc (5, 6, 1); //encoder plugged into legacy ports 4 and 5 and not reversed
 
 ADIDigitalOut descorer (8); //pistons y-cabled and plugged into legacy port 6 and only P team has it
 ADIDigitalOut transPstn (2); //piston plugged into port 7 and only P team has it

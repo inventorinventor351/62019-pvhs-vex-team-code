@@ -23,8 +23,13 @@ void opcontrol() {
 		if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L1, E_CONTROLLER_DIGITAL_L2)))
 			runIntake(100);
 
-		else if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L2, E_CONTROLLER_DIGITAL_R2)))
-			runIntake(-100);
+		else if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L2, E_CONTROLLER_DIGITAL_R2))) {
+			runIntake(-80);
+			if(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 100 > 60)
+				runLeftBase(PorX(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 100, 60));
+			if(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100 > 80)
+				runRightBase(PorX(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100, 60));
+		}
 
 		else
 			runIntake(0);
@@ -41,7 +46,7 @@ void opcontrol() {
 		else if(!flagAimAck) {
 
 			flagAimAck = 1;
-			flagAim();
+			flagAim(1);
 
 		}
 
@@ -73,6 +78,8 @@ void opcontrol() {
 				master.rumble(".");
 
 		}
+
+		//std::cout << "objects: " << cpltVis.get_object_count() << " | bigY: " << cpltVis.get_by_size(0).y_middle_coord << " | smallY: " << cpltVis.get_by_size(1).y_middle_coord << "\n";
 
 		Task::delay_until(&now, 10);
 		
