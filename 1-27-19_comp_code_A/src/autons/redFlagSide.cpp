@@ -2,14 +2,16 @@
 
 void redFlagSide()
 {
+    
     runIntake(70);
-    drivePD(2.9);
-    delay(300);
-    drivePD(-2.9);
-    delay(300);
-    runIntake(0);
-    pvitBase(90, 50);
+    driveDist(3, 80);
     delay(100);
-    drivePD(2.8);
+    runIntake(0);
+    driveDist(2.8, -70);
+    driveRelativeLeft(1, -100);
+    driveRelativeRight(1, 100);
+    delay(300);
+    
+
 
 }
