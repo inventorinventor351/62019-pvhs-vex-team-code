@@ -1,7 +1,7 @@
 #ifndef PRAGMA_H
 #define PRAGMA_H
 
-#define PorX(p, x) !whichTeam.get_value() ? p : x
+#define PorX(p, x) (!whichTeam.get_value() ? p : x)
 
 extern Controller master;
 
