@@ -6,7 +6,9 @@ void runCplt(float voltPerc) {
 
 }
 
-void cpltReturn(void* param) {
+bool shoot = 0;
+
+void cpltControl(void* param) {
 
     PID frame = PorX(initPID(1, 0, 1, 1.63, 0, 5), initPID(1, 0, 1, 1.63, 0, 5));
     PID cpltShoot = frame;
@@ -44,7 +46,7 @@ void initCpltVis() {
 
 }
 
-void flagAim(bool height) {
+void flagAim() {
 
 
 
