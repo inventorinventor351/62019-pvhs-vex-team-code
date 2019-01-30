@@ -4,7 +4,7 @@ void opcontrol() {
 
 	std::uint_least32_t now = millis();
 	initCpltVis();
-	initIntkVis();
+	//initIntkVis();
 	gyro.reset();
 	descorer.set_value(1);
 	bool transPstnAck = 1, transPstnState = 1, desPstnAck = 1, desPstnState = 0;
@@ -18,9 +18,15 @@ void opcontrol() {
 		runRightBase(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100);
 
 		if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_UP : E_CONTROLLER_DIGITAL_UP))
+<<<<<<< HEAD
 			flagAimTop();
+		/*if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_DOWN : E_CONTROLLER_DIGITAL_DOWN))
+			flagAimLow();*/
+=======
+			flagAim(1);
 		if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_DOWN : E_CONTROLLER_DIGITAL_DOWN))
-			flagAimLow();
+			flagAim(0);
+>>>>>>> 530bbc4aba451862d2cc1f2a94e102e9cb799ad3
 
 		if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_A : E_CONTROLLER_DIGITAL_A))
 			shoot = true;
@@ -55,30 +61,7 @@ void opcontrol() {
 		if(!PorX.get_value() ? 0 : master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			master.rumble(".");
 
-		/*if(!(count % 50)) {
-
-			for(int n = 0; n < cpltVis.get_object_count(); n++) {
-
-                if(cpltVis.get_by_size(n).y_middle_coord > topY)
-                    topY = cpltVis.get_by_size(n).y_middle_coord;
-
-            }
-
-			for(int n = 0; n < 2; n++) {
-
-                if(cpltVis.get_by_size(n).y_middle_coord < lowY)
-                    lowY = cpltVis.get_by_size(n).y_middle_coord;
-
-            }
-
-			std::cout << "1 : " << cpltVis.get_by_size(0).y_middle_coord << " | " << "2 : " << cpltVis.get_by_size(1).y_middle_coord << " | " << "3 : " << cpltVis.get_by_size(2).y_middle_coord << "\n";
-
-			topY = -1000;
-			lowY = 1000;
-
-		}
-		
-		count++;*/
+		std::cout << cpltVis.get_by_sig(0, 1).y_middle_coord << " | " << cpltVis.get_by_sig(1, 1).y_middle_coord << "\n";
 
 		Task::delay_until(&now, 1);
 
