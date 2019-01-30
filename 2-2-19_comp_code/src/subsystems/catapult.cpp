@@ -37,6 +37,9 @@ void initCpltVis() {
     REDFLAG.v_mean = -650;
     REDFLAG.type = 0;
     cpltVis.set_signature(3, &REDFLAG);*/
+
+}
+
 void runCplt(float voltPerc) {
 
     cplt.move_voltage((voltPerc / 100) * 12000);
@@ -77,6 +80,76 @@ void cpltReturn(void* param) {
 
 void flagAim(bool height) {
 
+    delay(50);
 
+    PID aim = initPID(0, 0, 0, 0, 0, 0);
+    PID dist = initPID(0, 0, 0, 0, 0, 0);
+
+    double aimVal, distVal;
+    int aimSum, distSum, distSetPoint, highY = -201, lowY = 201, closestX = 321, offset, time = 2000, Ycount, Xcount;
+
+    for(int i = 0; i < time; i ++) {
+
+        if(abs(cpltVis.get_object_count()) == 0) {
+            break;
+        }
+
+        for(int j = 0; j < cpltVis.get_object_count(); j ++) {
+
+            if(height == 0){
+
+                if(cpltVis.get_by_size(j).y_middle_coord < lowY)
+                    highY = cpltVis.get_by_size(j).y_middle_coord;
+
+            }
+            
+            else if(height == 1) {
+
+                if(cpltVis.get_by_size(j).y_middle_coord > highY)
+                    highY = cpltVis.get_by_size(j).y_middle_coord;
+
+            }
+
+            if(j)
+                break;
+
+        }
+
+        for(int k = 0; k < cpltVis.get_object_count(); k ++) {
+
+            if(abs(cpltVis.get_by_size(k).x_middle_coord) < closestX)
+                closestX = cpltVis.get_by_size(k).x_middle_coord;
+
+            if(k)
+                break;
+
+        }
+
+        if(lowY < 201 || highY > -201)
+            Ycount++;
+            distSum += (!height ? lowY : highY);
+
+        if(closestX < 321)
+            Xcount++;
+            aimSum += closestX;
+        
+        closestX = 201;
+        highY = -201;
+        lowY = 201;
+
+        if(!(i % 50)) {
+
+            aim.error = -aimSum / Xcount;
+            dist.error = (distSum / Ycount) - distSetPoint;
+
+            aimVal = runPID(&aim);
+            distVal = runPID(&dist);
+
+            aimSum = 0;
+            distSum = 0;
+
+        }
+
+    }
 
 }
