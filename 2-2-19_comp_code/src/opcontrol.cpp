@@ -23,7 +23,7 @@ void opcontrol() {
 		if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L1, E_CONTROLLER_DIGITAL_L2)))
 			runIntake(100);
 
-		else if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L2, E_CONTROLLER_DIGITAL_R2)))
+		else if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2)))
 			runIntake(-100);
 
 		else
@@ -41,7 +41,7 @@ void opcontrol() {
 		else if(!flagAimAck) {
 
 			flagAimAck = 1;
-			flagAim();
+			flagAim(0);
 
 		}
 
