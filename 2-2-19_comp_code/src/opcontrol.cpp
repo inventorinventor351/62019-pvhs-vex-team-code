@@ -46,7 +46,11 @@ void opcontrol() {
 		else if(!flagAimAck) {
 
 			flagAimAck = 1;
+<<<<<<< HEAD
 			flagAim(1);
+=======
+			flagAim(0);
+>>>>>>> 0d0d94f54a4246a721b18d67ce4b30d1d850e49f
 
 		}
 
