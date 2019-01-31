@@ -46,11 +46,7 @@ void opcontrol() {
 		else if(!flagAimAck) {
 
 			flagAimAck = 1;
-<<<<<<< HEAD
 			flagAim(1);
-=======
-			flagAim(0);
->>>>>>> 0d0d94f54a4246a721b18d67ce4b30d1d850e49f
 
 		}
 
@@ -83,6 +79,7 @@ void opcontrol() {
 
 		}
 
+		std::cout << cpltPot.get_value() << "\n";
 		//std::cout << "objects: " << cpltVis.get_object_count() << " | bigY: " << cpltVis.get_by_size(0).y_middle_coord << " | smallY: " << cpltVis.get_by_size(1).y_middle_coord << "\n";
 
 		Task::delay_until(&now, 10);
