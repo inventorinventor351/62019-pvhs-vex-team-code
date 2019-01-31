@@ -2,7 +2,7 @@
 
 void initialize() {
 
-    Task cpltGo (cpltControl, (void*)"PROS", TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "catapult control task");  
+    
 
 }
 
@@ -93,6 +93,8 @@ void competition_initialize() {
     lcd::register_btn0_cb(on_left_pressed);
     lcd::register_btn1_cb(on_center_pressed);
     lcd::register_btn2_cb(on_right_pressed);
+
+    Task cpltGo (cpltControl, (void*)"PROS", TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "catapult control task");  
 
 }
 
