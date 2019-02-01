@@ -12,10 +12,10 @@ void autonomous()
     rightBase3.tare_position();
 
     if(autonCount == 0)
-        blueCapSide();
+        blueFlagSide();
 
     if(autonCount == 1)
-        blueFlagSide();
+        blueCapSide();
     
     if(autonCount == 2)
         redFlagSide();
