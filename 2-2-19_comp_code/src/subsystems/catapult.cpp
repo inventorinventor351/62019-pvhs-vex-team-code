@@ -50,9 +50,10 @@ bool shoot = 0;
 
 void cpltControl(void* param) {
 
-    PID frame = initPID(1, 1, 1, 1, 0.00002, 5);
+    delay(1000);
+    PID frame = initPID(1, 1, 1, 1, 0.00001, 5);
     PID cpltShoot = frame;
-    int setpoint = 2110;
+    int setpoint = 1600;
     float cpltVal;
 
     std::uint_least32_t now = millis();
@@ -62,6 +63,7 @@ void cpltControl(void* param) {
         cpltShoot.error = setpoint - cpltPot.get_value();
         cpltVal = runPID(&cpltShoot);
         runCplt(cpltVal);
+        //std::cout << cpltShoot.error << "\n";
         
         if(shoot) {
 
@@ -88,8 +90,9 @@ void flagAim(bool height) {
     PID dist = initPID(1, 0, 0, 1.5, 0, 0);
 
     double aimVal, distVal;
-    int aimSum, distSum, distSetPoint = 45, highY = -201, lowY = 201, closestX = 321, time = 1000, Ycount, Xcount;
+    int aimSum, distSum, highY = -201, lowY = 201, closestX = 321, time = 1000, Ycount, Xcount;
     int offset = autonCount < 2 ? 8 : -8;
+    int distSetPoint = PorX(44, 45);
 
     for(int i = 0; i < time; i ++) {
 

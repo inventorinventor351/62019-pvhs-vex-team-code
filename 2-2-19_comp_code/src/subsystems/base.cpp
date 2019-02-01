@@ -36,8 +36,8 @@ void moveStraight(float setPoint, int time) {
 
     float distVal, diffVal;
 
-    PID dist = initPID(1, 0, 1, 0.1, 0, 0.275);
-    PID diff = initPID(1, 0, 0, 0.8, 0, 0);
+    PID dist = PorX(initPID(1, 0, 1, 0.1, 0, 0.275), initPID(1, 0, 1, 0.24, 0, 1));
+    PID diff = PorX(initPID(1, 0, 0, 0.8, 0, 0), initPID(1, 0, 0, 0.5, 0, 0));
 
     distEnc.reset();
     gyro.reset();

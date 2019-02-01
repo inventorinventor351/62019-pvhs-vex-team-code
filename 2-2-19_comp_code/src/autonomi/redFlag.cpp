@@ -38,7 +38,7 @@ void redFlag(){
     shoot = true;
     delay(200);
 
-    pvtBase(20, 400);
+    pvtBase(-5, 200);
     moveStraight(-1800, 1000);
     moveStraight(1800, 1000);
     

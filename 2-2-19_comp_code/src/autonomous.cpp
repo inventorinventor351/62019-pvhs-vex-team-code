@@ -5,10 +5,9 @@ void autonomous() {
     transPstn.set_value(0);
     descorer.set_value(0);
     initCpltVis();
+    delay(1500);
 
-    moveStraight(1000, 1000);
-
-    /*if(autonCount == 0)
+    if(autonCount == 0)
         redFlag();
 
     else if(autonCount == 1)
@@ -25,6 +24,6 @@ void autonomous() {
         runLeftBase(0);
         runRightBase(0);
 
-    }*/
+    }
 
 }
