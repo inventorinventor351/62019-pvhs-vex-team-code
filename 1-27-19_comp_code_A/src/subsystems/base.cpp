@@ -174,19 +174,12 @@ void driveDist(int dist, int speed){
 
     resetBaseEncoderValue();
 
-    leftBase1.tare_position();
-    leftBase2.tare_position();
-    leftBase3.tare_position();
-    rightBase1.tare_position();
-    rightBase2.tare_position();
-    rightBase3.tare_position();
-
-    dist = dist * 360;
+   // dist = dist * 360;
 
      while(abs(leftBase1.get_position()) < dist && abs(rightBase1.get_position()) < dist) {
 
-        driveVelocityLeft(speed);
-        driveVelocityRight(speed);
+        runLeftBase(speed);
+        runRightBase(speed);
 
     }
 
