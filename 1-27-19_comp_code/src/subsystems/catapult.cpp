@@ -12,7 +12,7 @@ void cpltReturn(void* param) {
 
     PID frame = !PorX.get_value() ? initPID(1, 0, 1, 1.63, 0, 5) : initPID(1, 0, 1, 1.63, 0, 5);
     PID cpltShoot = frame;
-    int setpoint = 3050;
+    int setpoint = 1730;
     double cpltVal;
 
     while(true) {
@@ -122,7 +122,7 @@ void initCpltVis() {
 
 }
 
-void flagAimTop() {
+/*void flagAimTop() {
 
     delay(10);
 
@@ -184,11 +184,11 @@ void flagAimTop() {
 
     master.rumble("-");
 
-}
+}*/
 
-/*void flagAimTop() {
+void flagAimTop() {
 
-    delay(10);
+    /*delay(10);
 
     PID aim = initPID(1, 1, 1, 1.2, 0.0005, 10);
     PID dist = initPID(1, 0, 1, 2, 0, 1);
@@ -227,12 +227,12 @@ void flagAimTop() {
     runRightBase(0);
 
     master.rumble("-");
-
-}*/
+    */
+}
 
 void flagAimLow() {
 
-    delay(10);
+    /*delay(10);
 
     if(abs(cpltVis.get_by_size(0).x_middle_coord) > 320) {
 
@@ -287,8 +287,8 @@ void flagAimLow() {
     runRightBase(0);
 
     master.rumble("-");
+}*/
 
-}
 
 /*void flagAimLow() {
 
@@ -331,8 +331,8 @@ void flagAimLow() {
     runRightBase(0);
 
     master.rumble("-");
-
-}*/
+    */
+}
 
 void flagAim(bool height) {
 

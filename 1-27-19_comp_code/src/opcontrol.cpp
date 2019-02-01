@@ -32,7 +32,7 @@ void opcontrol() {
 			runIntake(100);
 
 		else if(master.get_digital(!PorX.get_value() ? E_CONTROLLER_DIGITAL_R1 : E_CONTROLLER_DIGITAL_R2))
-			runIntake(-100);
+			runIntake(-80);
 
 		else
 			runIntake(0);
