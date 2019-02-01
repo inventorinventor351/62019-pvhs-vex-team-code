@@ -52,7 +52,7 @@ void cpltControl(void* param) {
 
     PID frame = initPID(1, 1, 1, 1, 0.00002, 5);
     PID cpltShoot = frame;
-    int setpoint = 2150;
+    int setpoint = 2110;
     float cpltVal;
 
     std::uint_least32_t now = millis();
@@ -88,7 +88,7 @@ void flagAim(bool height) {
     PID dist = initPID(1, 0, 0, 1.5, 0, 0);
 
     double aimVal, distVal;
-    int aimSum, distSum, distSetPoint = 17, highY = -201, lowY = 201, closestX = 321, time = 1000, Ycount, Xcount;
+    int aimSum, distSum, distSetPoint = 45, highY = -201, lowY = 201, closestX = 321, time = 1000, Ycount, Xcount;
     int offset = autonCount < 2 ? 8 : -8;
 
     for(int i = 0; i < time; i ++) {

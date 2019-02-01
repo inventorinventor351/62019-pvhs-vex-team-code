@@ -51,6 +51,8 @@ void moveStraight(float setPoint, int time) {
         distVal = (abs(distVal) > 90) ? (90 * sgn(distVal)) : distVal;
         diffVal = runPID(&diff);
 
+        std::cout << "gyro: " << gyro.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "Err: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "diffErr: " << diff.error << "  |  " << "distVal: " << distVal << "  |  " << "diffVal: " << diffVal << "  |  " << "ms: " << i << "\n";
+
         runLeftBase(distVal - diffVal);
         runRightBase(distVal + diffVal);
 
@@ -68,7 +70,7 @@ void pvtBase(float setPoint, int time) {
     float distVal, dispVal;
     setPoint *= 10.0;
 
-    PID dist = initPID(1, 0, 0, 0.081, 0, 0);
+    PID dist = initPID(1, 0, 0, 0.11, 0, 0);
     PID disp = initPID(0, 0, 0, 0, 0, 0);
 
     distEnc.reset();
@@ -84,6 +86,8 @@ void pvtBase(float setPoint, int time) {
 
         runLeftBase(-distVal - dispVal);
         runRightBase(distVal - dispVal);
+
+        std::cout << "gyro: " << gyro.get_value() << "  |  " << "distEnc: " << distEnc.get_value() << "  |  " << "turnErr: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "distVal: " << distVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
 
         delay(1);
 

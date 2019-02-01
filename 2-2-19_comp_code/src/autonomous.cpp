@@ -2,13 +2,13 @@
 
 void autonomous() {
 
-/*    transPstn.set_value(0);
+    transPstn.set_value(0);
     descorer.set_value(0);
     initCpltVis();
-    initIntkVis();
-    delay(1000);
 
-    if(autonCount == 0)
+    moveStraight(1000, 1000);
+
+    /*if(autonCount == 0)
         redFlag();
 
     else if(autonCount == 1)

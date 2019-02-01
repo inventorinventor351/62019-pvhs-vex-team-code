@@ -18,6 +18,7 @@ extern int autonCount;
     #include "./subsystems/base.h"
     #include "./subsystems/catapult.h"
     #include "./subsystems/intake.h"
+    #include "autons.h"
 
 #endif
 
