@@ -17,7 +17,7 @@ void skills() {
     runIntake(0);
 
     pvtBase(90, 1000);
-    moveStraight(2670, 2000);
+    moveStraight(2670, 1, 2000);
     pvtBase(-90, 1000);
     moveStraight(700, -1, 1000);
 
