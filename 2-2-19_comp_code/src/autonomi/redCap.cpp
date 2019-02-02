@@ -40,9 +40,9 @@ void redCap() {
     runIntake(-100);
     moveStraight(1250, 1250);
     delay(300);
-    moveStraight(-760, 800);
+    moveStraight(-640, 800);
     runIntake(0);
-    pvtBase(103, 2100);
+    pvtBase(140, 2000);
     runRightBase(100);
     runLeftBase(100);
     delay(2350);
