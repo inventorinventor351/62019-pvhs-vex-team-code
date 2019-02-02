@@ -14,30 +14,6 @@ void initCpltVis() {
     GREENFLAG.type = 0;
     cpltVis.set_signature(1, &GREENFLAG);
 
-    /*vision_signature_s_t BLUEFLAG;
-    BLUEFLAG.id = 2;
-    BLUEFLAG.range = 1.9;
-    BLUEFLAG.u_min = -4097;
-    BLUEFLAG.u_max = -1771;
-    BLUEFLAG.u_mean = -2934;
-    BLUEFLAG.v_min = 5209;
-    BLUEFLAG.v_max = 13017;
-    BLUEFLAG.v_mean = 9113;
-    BLUEFLAG.type = 0;
-    cpltVis.set_signature(2, &BLUEFLAG);
-
-    vision_signature_s_t REDFLAG;
-    REDFLAG.id = 3;
-    REDFLAG.range = 1.9;
-    REDFLAG.u_min = 5727;
-    REDFLAG.u_max = 13413;
-    REDFLAG.u_mean = 9670;
-    REDFLAG.v_min = -1171;
-    REDFLAG.v_max = -129;
-    REDFLAG.v_mean = -650;
-    REDFLAG.type = 0;
-    cpltVis.set_signature(3, &REDFLAG);*/
-
 }
 
 void runCplt(float voltPerc) {
@@ -51,9 +27,9 @@ bool shoot = 0;
 void cpltControl(void* param) {
 
     delay(1000);
-    PID frame = PorX(initPID(1, 1, 1, 1, 0.00001, 5), initPID(1, 0, 1, 1, 0, 2));
+    PID frame = PorX(initPID(1, 0, 0, 2.25, 0.00005, 5), initPID(1, 0, 1, 1, 0, 2));
     PID cpltShoot = frame;
-    int setpoint = PorX(2110, 3320);
+    int setpoint = PorX(2665, 3320);
     float cpltVal;
 
     std::uint_least32_t now = millis();
@@ -63,12 +39,11 @@ void cpltControl(void* param) {
         cpltShoot.error = setpoint - cpltPot.get_value();
         cpltVal = runPID(&cpltShoot);
         runCplt(cpltVal);
-        std::cout << "error: " << cpltShoot.error << " |  cpltVal: " << cpltVal << "\n";
         
         if(shoot) {
 
             runCplt(100);
-			delay(200);
+			delay(300);
 			runCplt(0);
 			delay(200);
 			cpltShoot = frame;
@@ -91,8 +66,8 @@ void flagAim(bool height) {
 
     double aimVal, distVal;
     int aimSum, distSum, highY = -201, lowY = 201, closestX = 321, time = 1000, Ycount, Xcount;
-    int offset = autonCount < 2 ? 8 : -8;
-    int distSetPoint = PorX(44, 45);
+    int offset = autonCount < 2 ? 22 : -22;
+    int distSetPoint = PorX(70, 45);
 
     for(int i = 0; i < time; i ++) {
 
@@ -124,8 +99,6 @@ void flagAim(bool height) {
 
         }
 
-        //std::cout << "highY: " << highY << " | closestX: " << closestX << "\n";
-
         if(abs(lowY) < 201 || abs(highY) < 201)
             Ycount++;
             distSum += (!height ? lowY : highY);
@@ -153,7 +126,7 @@ void flagAim(bool height) {
             runLeftBase(distVal + aimVal);
             runRightBase(distVal - aimVal);
 
-            std::cout << "aim error: " << aim.error << " | dist error: " << dist.error << " | aimVal: " << aimVal << " | distVal: " << distVal << "\n";
+            //std::cout << "aim error: " << aim.error << " | dist error: " << dist.error << " | aimVal: " << aimVal << " | distVal: " << distVal << "\n";
 
             aimSum = 0;
             distSum = 0;

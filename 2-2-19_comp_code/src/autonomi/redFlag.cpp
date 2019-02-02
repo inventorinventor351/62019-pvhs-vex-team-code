@@ -40,6 +40,6 @@ void redFlag(){
 
     pvtBase(-5, 200);
     moveStraight(-1800, 1000);
-    moveStraight(1800, 1000);
+    moveStraight(1000, 1000);
     
 }

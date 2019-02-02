@@ -2,10 +2,10 @@
 
 void autonomous() {
 
-    /*transPstn.set_value(0);
+    transPstn.set_value(1);
     descorer.set_value(0);
     initCpltVis();
-    delay(1500);
+    delay(750);
 
     if(autonCount == 0)
         redFlag();
