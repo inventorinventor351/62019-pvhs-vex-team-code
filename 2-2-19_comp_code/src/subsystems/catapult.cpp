@@ -51,9 +51,9 @@ bool shoot = 0;
 void cpltControl(void* param) {
 
     delay(1000);
-    PID frame = PorX(initPID(1, 1, 1, 1, 0.00001, 50), initPID(1, 1, 1, 1, 0.00001, 5));
+    PID frame = PorX(initPID(1, 1, 1, 1, 0.00001, 5), initPID(1, 0, 1, 1, 0, 2));
     PID cpltShoot = frame;
-    int setpoint = PorX(2110, 1600);
+    int setpoint = PorX(2110, 3320);
     float cpltVal;
 
     std::uint_least32_t now = millis();
@@ -63,7 +63,7 @@ void cpltControl(void* param) {
         cpltShoot.error = setpoint - cpltPot.get_value();
         cpltVal = runPID(&cpltShoot);
         runCplt(cpltVal);
-        std::cout << cpltShoot.error << "\n";
+        std::cout << "error: " << cpltShoot.error << " |  cpltVal: " << cpltVal << "\n";
         
         if(shoot) {
 
