@@ -22,13 +22,13 @@ void runRightBase(float voltPerc) {
 
 float getDist() {
 
-    return (float)distEnc.get_value();
+    return ((float)distEnc.get_value() * PorX(-1, 1));
 
 }
 
 float getYaw() {
 
-    return (float)gyro.get_value() * 0.94;
+    return ((float)gyro.get_value() * 0.94);
 
 }
 
