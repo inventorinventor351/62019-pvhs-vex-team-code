@@ -21,7 +21,7 @@ void redCap() {
     moveStraight(800, 800);
     moveStraight(-400, 500);*/
 
-    shoot = true;
+    ///shoot = true;
     delay(300);
     pvtBase(120, 1000);
     runLeftBase(-100);

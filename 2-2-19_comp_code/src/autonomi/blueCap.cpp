@@ -22,7 +22,7 @@ void blueCap() {
     runRightBase(0);
     runLeftBase(0);*/
 
-    shoot = true;
+    //shoot = true;
     delay(300);
     pvtBase(-120, 1000);
     runLeftBase(-100);
