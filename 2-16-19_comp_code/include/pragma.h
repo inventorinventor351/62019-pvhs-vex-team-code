@@ -16,9 +16,9 @@ extern Motor cplt; //motor that runs the catapult
 extern Vision cpltVis; //vision sensor on catapult to aid in flag aiming
 
 //Legacy Components
-extern ADIDigitalIn whichTeam;
+extern ADIGyro gyro1;
+extern ADIGyro gyro2;
 extern ADIAnalogIn cpltPot;
-extern ADIGyro gyro;
-extern ADIEncoder distEnc;
+extern ADIDigitalIn whichTeam;
 
 #endif

@@ -57,7 +57,7 @@ void initCpltVis() {
 
 }
 
-void flagAim(bool height) {
+void flagAim() {
 
     
 
