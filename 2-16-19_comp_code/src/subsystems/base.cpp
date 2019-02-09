@@ -79,7 +79,7 @@ void moveStraight(float setPoint, int time) {
 
 void pvtBase(float setPoint, int time) {
 
-    float yawVal, dispVal;
+    float yawVal, dispVal, prevYaw;
 
     PID yaw = initPID(1, 0, 0, 0.11, 0, 0);
     PID disp = initPID(0, 0, 0, 0, 0, 0);
@@ -89,8 +89,13 @@ void pvtBase(float setPoint, int time) {
 
     for(int i = 0; i < time; i++) {
 
-        yaw.error = getYaw() + setPoint;
+        if(abs(gyro1.get_value() - gyro2.get_value()) > 100)
+            yaw.error = (abs(prevYaw - gyro1.get_value()) > abs(prevYaw - gyro2.get_value()) ? gyro2.get_value() : gyro1.get_value()) + setPoint; 
+        else
+            yaw.error = getYaw() + setPoint;
+
         disp.error = getDist();
+        prevYaw = getYaw();
 
         yawVal = runPID(&yaw);
         dispVal = runPID(&disp);

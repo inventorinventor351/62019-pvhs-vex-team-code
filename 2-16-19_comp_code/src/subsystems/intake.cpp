@@ -2,6 +2,6 @@
 
 void runIntake(float voltPerc) {
 
-    intk.move_voltage((-voltPerc / 100) * 12000);
+    intk.move_voltage((voltPerc / 100) * 12000);
 
 }

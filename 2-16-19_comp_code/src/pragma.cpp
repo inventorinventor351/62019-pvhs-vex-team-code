@@ -9,7 +9,7 @@ Motor leftBase3 (3, MOTOR_GEARSET_18, 0); //normal motor plugged into port 3 and
 Motor rightBase1 (4, MOTOR_GEARSET_18, 0); //normal motor plugged into port 4 and not reversed
 Motor rightBase2 (5, MOTOR_GEARSET_18, 0); //normal motor plugged into port 5 and not reversed
 Motor rightBase3 (6, MOTOR_GEARSET_18, 0); //normal motor plugged into port 6 and not reversed
-Motor intk (7, MOTOR_GEARSET_18, 0); //normal motor plugged into port 7 and not reversed
+Motor intk (7, MOTOR_GEARSET_18, 1); //normal motor plugged into port 7 and not reversed
 Motor cplt (8, MOTOR_GEARSET_18, 0); //normal motor plugged into port 8 and not reversed
 
 Vision cpltVis (9, VISION_ZERO_CENTER); //vision sensor plugged into port 9 and (0,0) is at the center of the screen

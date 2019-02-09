@@ -14,8 +14,13 @@ void opcontrol() {
 		if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L1, E_CONTROLLER_DIGITAL_L2)))
 			runIntake(100);
 
-		else if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2)))
+		else if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2))) {\
+
 			runIntake(-100);
+			runLeftBase(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100 > 60 ? 60 : ((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100);
+			runRightBase(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100 > 60 ? 60 : ((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100);
+		
+		}
 
 		else
 			runIntake(0);
@@ -28,7 +33,7 @@ void opcontrol() {
 
 		else if(!shootAck) {
 
-			shoot = 1;
+			shoot = true;
 			shootAck = 1;
 
 		}
