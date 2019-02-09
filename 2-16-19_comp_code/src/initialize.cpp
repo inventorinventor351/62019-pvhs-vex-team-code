@@ -2,7 +2,8 @@
 
 void initialize() {
 
-    Task cpltGo (cpltControl, (void*)"PROS", TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "catapult control task");
+    Task cpltGo (cpltControl, (void*)"PROS", TASK_PRIORITY_DEFAULT - 1, TASK_STACK_DEPTH_DEFAULT - 1, "catapult control task");
+    Task goGetYaw (getYaw, (void*)"PROS", TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "angular position task");
 
 }
 
