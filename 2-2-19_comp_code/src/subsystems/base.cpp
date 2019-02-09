@@ -36,7 +36,7 @@ void moveStraight(float setPoint, int time) {
 
     float distVal, diffVal;
 
-    PID dist = PorX(initPID(1, 0, 1, 0.1, 0, 0.275), initPID(1, 0, 1, 0.24, 0, 1));
+    PID dist = PorX(initPID(1, 0, 1, 0.1, 0, 0.275), initPID(1, 0, 1, 0.3, 0, 1));
     PID diff = PorX(initPID(1, 0, 0, 0.8, 0, 0), initPID(1, 0, 0, 0.5, 0, 0));
 
     distEnc.reset();
@@ -70,7 +70,7 @@ void pvtBase(float setPoint, int time) {
     float distVal, dispVal;
     setPoint *= 10.0;
 
-    PID dist = initPID(1, 0, 0, 0.11, 0, 0);
+    PID dist = initPID(1, 0, 0, 0.14, 0, 0);
     PID disp = initPID(0, 0, 0, 0, 0, 0);
 
     distEnc.reset();

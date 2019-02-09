@@ -82,8 +82,8 @@ void opcontrol() {
 
 		//std::cout << whichTeam.get_value() << "\n";
 		//std::cout << cpltPot.get_value() << "\n";
-		//std::cout << "objects: " << cpltVis.get_object_count() << " | bigY: " << cpltVis.get_by_size(0).y_middle_coord << " | smallY: " << cpltVis.get_by_size(1).y_middle_coord << "\n";
-		std::cout << getDist() << "   |   " << getYaw() << "\n";
+		std::cout << "objects: " << cpltVis.get_object_count() << " | bigY: " << cpltVis.get_by_size(0).y_middle_coord << " | smallY: " << cpltVis.get_by_size(1).y_middle_coord << "\n";
+		//std::cout << getDist() << "   |   " << getYaw() << "\n";
 		
 		Task::delay_until(&now, 10);
 		

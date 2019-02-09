@@ -66,8 +66,8 @@ void flagAim(bool height) {
 
     double aimVal, distVal;
     int aimSum, distSum, highY = -201, lowY = 201, closestX = 321, time = 1000, Ycount, Xcount;
-    int offset = autonCount < 2 ? 22 : -22;
-    int distSetPoint = PorX(70, 45);
+    int offset = autonCount < 2 ? 4 : -4;
+    int distSetPoint = PorX(70, 29);
 
     for(int i = 0; i < time; i ++) {
 
