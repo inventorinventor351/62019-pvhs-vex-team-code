@@ -6,6 +6,7 @@ void opcontrol() {
 
 	bool shootAck = 1;
 	resetYaw = 1;
+	initCpltVis();
 
 	while(true) {
 
@@ -39,7 +40,7 @@ void opcontrol() {
 
 		}
 
-		//std::cout << "gyro1: " << gyro1.get_value() * 0.094 << " | gyro2: " << gyro2.get_value() * 0.094 << " | yaw: " << yaw << "\n";
+		std::cout << "big: " << cpltVis.get_by_sig(0, 1).x_middle_coord << " | small: " << cpltVis.get_by_sig(1, 1).x_middle_coord << " | objects: " << cpltVis.get_object_count() << "\n";
 		
 		Task::delay_until(&now, 10);
 		

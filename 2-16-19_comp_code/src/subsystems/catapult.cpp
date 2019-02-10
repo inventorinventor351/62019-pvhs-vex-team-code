@@ -11,9 +11,9 @@ bool shoot = 0;
 void cpltControl(void* param) {
 
     delay(1000);
-    PID frame = PorX(initPID(1, 0, 0, 2.25, 0.00005, 5), initPID(1, 0, 0, 2.25, 0, 5));
+    PID frame = PorX(initPID(1, 0, 0, 2.25, 0.00005, 5), initPID(1, 0, 0, 2, 0, 5));
     PID cpltShoot = frame;
-    int setpoint = PorX(2665, 3300);
+    int setpoint = PorX(2665, 3350);
     float cpltVal;
 
     std::uint_least32_t now = millis();
@@ -66,8 +66,8 @@ void flagAim() {
 
     double aimVal, distVal;
     int aimSum, distSum, highY = -201, closestX = 321, time = 1000, Ycount, Xcount;
-    int offset = autonCount < 2 ? 4 : -4;
-    int distSetPoint = PorX(70, 29);
+    int offset = autonCount < 2 ? 42 : 32;
+    int distSetPoint = PorX(70, 51);
 
     for(int i = 0; i < time; i ++) {
 
@@ -79,7 +79,7 @@ void flagAim() {
             if(cpltVis.get_by_size(j).y_middle_coord > highY && cpltVis.get_by_size(j).y_middle_coord != 3)
                 highY = cpltVis.get_by_size(j).y_middle_coord;
 
-            if(abs(cpltVis.get_by_size(j).x_middle_coord) < abs(closestX))
+            if(abs(cpltVis.get_by_size(j).x_middle_coord) + offset < abs(closestX))
                 closestX = cpltVis.get_by_size(j).x_middle_coord;
 
             if(j)
