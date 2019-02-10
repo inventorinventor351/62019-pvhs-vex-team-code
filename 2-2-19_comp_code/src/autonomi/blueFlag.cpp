@@ -8,8 +8,8 @@ void blueFlag(){
     moveStraight(-750, 1000);
     pvtBase(-90, 1000);
     runIntake(-100);
-    moveStraight(1000, 1000);
-    runIntake(0);
+    moveStraight(1200, 1000);
+    runIntake(100);
 
     /*pvtBase(110, 1000);
     flagAim();
@@ -27,7 +27,7 @@ void blueFlag(){
     runLeftBase(0);
     runRightBase(0);*/
     
-    moveStraight(-1000, 800);
+    moveStraight(-1200, 1000);
     pvtBase(-90, 1000);
     moveStraight(500, 700);
     pvtBase(-90, 1000);
@@ -37,9 +37,10 @@ void blueFlag(){
     delay(100);
     shoot = true;
     delay(200);
+    runIntake(0);
 
-    pvtBase(5, 200);
+    pvtBase(-15, 500);
     moveStraight(-1800, 1000);
-    moveStraight(1800, 1000);
+    moveStraight(1000, 1000);
     
 }
