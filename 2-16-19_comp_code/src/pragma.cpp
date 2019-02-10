@@ -15,7 +15,7 @@ Motor cplt (16, MOTOR_GEARSET_18, 0); //normal motor plugged into port 16 and no
 Vision cpltVis (10, VISION_ZERO_CENTER); //vision sensor plugged into port 9 and (0,0) is at the center of the screen
 
 //Legacy Components
-ADIGyro gyro1 (3); //gyro plugged into port 3
+ADIGyro gyro1 (2); //gyro plugged into port 3
 ADIGyro gyro2 (4); //gyro plugged into port 4
-ADIAnalogIn cpltPot (5); //catapult plugged into port 5
-ADIDigitalIn whichTeam (7); //jumper plugged into port 7
+ADIAnalogIn cpltPot (3); //catapult plugged into port 5
+ADIDigitalIn whichTeam (5); //jumper plugged into port 7
