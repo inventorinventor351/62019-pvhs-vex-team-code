@@ -20,3 +20,29 @@ float runPID(PID *pid) {
     return (pid->error * pid->kP * (float)pid->useP) + (pid->integral * pid->kI * (float)pid->useI) + (pid->derivative * pid->kD * (float)pid->useD); //calculate final value
 
 }
+
+float controllerRemap(int joystickVal) {
+
+    float percentVal = 0.0;
+
+    if((float)joystickVal <= -3.0) {
+
+        percentVal = (0.653226 * (float)joystickVal) - 17.0403;
+
+    }
+
+    else if((float)joystickVal >= 3.0) {
+
+        percentVal = (0.653226 * (float)joystickVal) + 17.0403;
+
+    }
+
+    else {
+
+        percentVal = 0.0;
+
+    }
+
+    return percentVal;
+
+}

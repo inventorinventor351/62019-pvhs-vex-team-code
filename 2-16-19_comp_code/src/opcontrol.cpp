@@ -6,23 +6,13 @@ void opcontrol() {
 
 	bool shootAck = 1;
 	resetYaw = 1;
-	float leftBaseVal, rightBaseVal;
 	initCpltVis();
 	
 	while(true) {
 
-		leftBaseVal = ((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 200;
-		rightBaseVal = ((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 200;
-		leftBaseVal = (PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2) && (leftBaseVal > 120)) ? 120 : leftBaseVal;
-		rightBaseVal = (PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2) && (rightBaseVal > 120)) ? 120 : rightBaseVal;
-
-		leftBase1.move_velocity((leftBase1.is_over_temp() || leftBase1.is_over_current() || rightBase1.is_over_temp() || rightBase1.is_over_current()) ? 0 : leftBaseVal);
-		leftBase2.move_velocity((leftBase2.is_over_temp() || leftBase2.is_over_current() || rightBase2.is_over_temp() || rightBase2.is_over_current()) ? 0 : leftBaseVal);
-		leftBase3.move_velocity((leftBase3.is_over_temp() || leftBase3.is_over_current() || rightBase3.is_over_temp() || rightBase3.is_over_current()) ? 0 : leftBaseVal);
-		rightBase1.move_velocity((leftBase1.is_over_temp() || leftBase1.is_over_current() || rightBase1.is_over_temp() || rightBase1.is_over_current()) ? 0 : rightBaseVal);
-		rightBase2.move_velocity((leftBase2.is_over_temp() || leftBase2.is_over_current() || rightBase2.is_over_temp() || rightBase2.is_over_current()) ? 0 : rightBaseVal);
-		rightBase3.move_velocity((leftBase3.is_over_temp() || leftBase3.is_over_current() || rightBase3.is_over_temp() || rightBase3.is_over_current()) ? 0 : rightBaseVal);
-
+		runLeftBase(!(master.get_digital(PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2)) && (controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)) > 40)) ? controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)) : 40);
+		runRightBase(!(master.get_digital(PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2)) && (controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) > 40)) ? controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) : 40);
+		
 		if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L1, E_CONTROLLER_DIGITAL_L2)))
 			runIntk(100);
 

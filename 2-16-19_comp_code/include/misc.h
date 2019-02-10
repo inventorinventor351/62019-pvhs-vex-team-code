@@ -21,4 +21,6 @@ PID initPID(bool useP, bool useI, bool useD, float kP, float kI, float kD); //gi
 
 float runPID(PID *pid); //inputs a PID struct, does the actual PID math, then outputs a double
 
+float controllerRemap(int joystickVal); //remaps joystick values to base motor values
+
 #endif
