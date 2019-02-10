@@ -15,11 +15,12 @@ void redCapSide(){
    runIntake(-100);
    driveDist(2.6, 70);
    delay(600);
-   runIntake(0); //-----------------much good
+   runIntake(50); //-----------------much good
    driveDist(5, -70);
    runLeftBase(-80);
    runRightBase(40);
    delay(200);
+   runIntake(0);
    runLeftBase(0);
    runRightBase(0);
    delay(200);
@@ -27,7 +28,7 @@ void redCapSide(){
    runRightBase(-90);
    delay(400);
    runIntake(80);
-   driveDist(5, 90);
+   driveDist(5.3, 100);
    delay(200);
    runIntake(0);
    

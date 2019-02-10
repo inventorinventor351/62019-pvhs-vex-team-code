@@ -18,7 +18,7 @@ void cpltControl(void* param) {
 
     std::uint_least32_t now = millis();
 
-    while(true) {
+    while(!(cplt.is_over_temp() && cplt.is_over_current())) {
 
         cpltShoot.error = setpoint - cpltPot.get_value();
         cpltVal = runPID(&cpltShoot);
@@ -38,6 +38,8 @@ void cpltControl(void* param) {
         Task::delay_until(&now, 1);
 
     }
+
+    runCplt(0);
     
 }
 
