@@ -3,7 +3,7 @@
 void autonomous() {
 
     delay(1225);
-    pvtBase(90, 1200);
+    runLeftBase(18);    
 
     /*switch(autonCount) {
 

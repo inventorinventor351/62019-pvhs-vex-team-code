@@ -24,13 +24,13 @@ void opcontrol() {
 		rightBase3.move_velocity((leftBase3.is_over_temp() || leftBase3.is_over_current() || rightBase3.is_over_temp() || rightBase3.is_over_current()) ? 0 : rightBaseVal);
 
 		if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L1, E_CONTROLLER_DIGITAL_L2)))
-			runIntake(100);
+			runIntk(100);
 
 		else if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2)))
-			runIntake(-100);
+			runIntk(-100);
 
 		else
-			runIntake(0);
+			runIntk(0);
 
 		if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L2, E_CONTROLLER_DIGITAL_L1)))
 			flagAim();
