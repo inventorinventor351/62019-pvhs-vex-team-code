@@ -5,6 +5,7 @@ void opcontrol() {
 	std::uint_least32_t now = millis();
 
 	bool shootAck = 1;
+	resetYaw = 1;
 	float leftBaseVal, rightBaseVal;
 	
 	while(true) {
