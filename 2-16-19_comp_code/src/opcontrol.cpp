@@ -4,24 +4,28 @@ void opcontrol() {
 
 	std::uint_least32_t now = millis();
 
-	bool shootAck = 1;
-	resetYaw = 1;
-
+	bool shootAck = 1, resetYaw = 1;
+	float leftBaseVal, rightBaseVal;
+	
 	while(true) {
 
-		runLeftBase(pow(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0), 3) * 125);
-		runRightBase(pow(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0), 3) * 125);
+		leftBaseVal = ((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0) * 100;
+		rightBaseVal = ((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0) * 100;
+		leftBaseVal = (PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2) && (leftBaseVal > 60)) ? 60 : leftBaseVal;
+		rightBaseVal = (PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2) && (rightBaseVal > 60)) ? 60 : rightBaseVal;
+
+		leftBase1.move_velocity((leftBase1.is_over_temp() || leftBase1.is_over_current() || rightBase1.is_over_temp() || rightBase1.is_over_current()) ? 0 : leftBaseVal);
+		leftBase2.move_velocity((leftBase2.is_over_temp() || leftBase2.is_over_current() || rightBase2.is_over_temp() || rightBase2.is_over_current()) ? 0 : leftBaseVal);
+		leftBase3.move_velocity((leftBase3.is_over_temp() || leftBase3.is_over_current() || rightBase3.is_over_temp() || rightBase3.is_over_current()) ? 0 : leftBaseVal);
+		rightBase1.move_velocity((leftBase1.is_over_temp() || leftBase1.is_over_current() || rightBase1.is_over_temp() || rightBase1.is_over_current()) ? 0 : rightBaseVal);
+		rightBase2.move_velocity((leftBase2.is_over_temp() || leftBase2.is_over_current() || rightBase2.is_over_temp() || rightBase2.is_over_current()) ? 0 : rightBaseVal);
+		rightBase3.move_velocity((leftBase3.is_over_temp() || leftBase3.is_over_current() || rightBase3.is_over_temp() || rightBase3.is_over_current()) ? 0 : rightBaseVal);
 
 		if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_L1, E_CONTROLLER_DIGITAL_L2)))
 			runIntake(100);
 
-		else if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2))) {
-
-			runLeftBase(pow(((float)master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) / 127.0), 3) * 125 > 60 ? 60 : pow(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0), 3) * 125);
-			runRightBase(pow(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0), 3) * 125 > 60 ? 60 : pow(((float)master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) / 127.0), 3) * 125);
+		else if(master.get_digital(PorX(E_CONTROLLER_DIGITAL_R1, E_CONTROLLER_DIGITAL_R2)))
 			runIntake(-100);
-
-		}
 
 		else
 			runIntake(0);
