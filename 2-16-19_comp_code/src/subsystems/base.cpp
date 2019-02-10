@@ -18,7 +18,7 @@ void runRightBase(float voltPerc) {
 
 float getDist() {
 
-    return ((leftBase1.get_position() + leftBase2.get_position() + leftBase3.get_position() + rightBase1.get_position() + rightBase2.get_position() + rightBase3.get_position()) / 6);
+    return ((leftBase1.get_position() + leftBase2.get_position() + leftBase3.get_position() + rightBase1.get_position() + rightBase2.get_position() + rightBase3.get_position()) * 360 / (900 * 6));
 
 }
 
@@ -61,14 +61,14 @@ void getYaw(void* param) {
         
         }
 
-        gyro1prev = gyro1.get_value();
-        gyro2prev = gyro2.get_value();
-
         if((abs(gyro1.get_value() - gyro1prev)) > 50) 
             useGyro1 = 0;
 
         if((abs(gyro2.get_value() - gyro2prev)) > 50) 
             useGyro2 = 0;
+
+        gyro1prev = gyro1.get_value();
+        gyro2prev = gyro2.get_value();
 
         yaw = ((useGyro1 ? gyro1.get_value() : 0) + (useGyro2 ? gyro2.get_value() : 0)) * (0.094 / ((useGyro1 + useGyro2) > 0 ? (useGyro1 + useGyro2) : 1));
 
@@ -82,7 +82,7 @@ void moveStraight(float setPoint, int time) {
 
     float distVal, diffVal;
 
-    PID dist = PorX(initPID(1, 0, 1, 0.1, 0, 0.275), initPID(1, 0, 1, 0.24, 0, 1));
+    PID dist = PorX(initPID(1, 0, 1, 0.1, 0, 0.275), initPID(1, 0, 1, 0.3, 0, 1));
     PID diff = PorX(initPID(1, 0, 0, 0.8, 0, 0), initPID(1, 0, 0, 0.5, 0, 0));
 
     resetEncs();
@@ -96,6 +96,8 @@ void moveStraight(float setPoint, int time) {
         distVal = runPID(&dist);
         distVal = (abs(distVal) > 90) ? (90 * sgn(distVal)) : distVal;
         diffVal = runPID(&diff);
+
+        std::cout << "yaw: " << yaw << "  |  " << "distEnc: " << getDist() << "  |  " << "Err: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "diffErr: " << diff.error << "  |  " << "distVal: " << distVal << "  |  " << "diffVal: " << diffVal << "  |  " << "ms: " << i << "\n";
 
         runLeftBase(distVal - diffVal);
         runRightBase(distVal + diffVal);
@@ -113,7 +115,7 @@ void pvtBase(float setPoint, int time) {
 
     float yawVal, dispVal, prevYaw;
 
-    PID YAW = initPID(1, 0, 0, 0.11, 0, 0);
+    PID YAW = initPID(1, 0, 0, 1.1, 0, 0);
     PID disp = initPID(0, 0, 0, 0, 0, 0);
 
     resetEncs();
@@ -121,11 +123,13 @@ void pvtBase(float setPoint, int time) {
 
     for(int i = 0; i < time; i++) {
 
-        YAW.error = yaw;
+        YAW.error = yaw - setPoint;
         disp.error = getDist();
 
         yawVal = runPID(&YAW);
         dispVal = runPID(&disp);
+
+        std::cout << "yaw: " << yaw << "  |  " << "Err: " << YAW.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "yawVal: " << yawVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
 
         runLeftBase(-yawVal - dispVal);
         runRightBase(yawVal - dispVal);
@@ -138,3 +142,58 @@ void pvtBase(float setPoint, int time) {
     runRightBase(0);
 
 }
+
+/*void checkTemp(void* param) {
+
+    delay(1000);
+
+    std::uint_least32_t now = millis();
+    while(true) {
+
+        if(leftBase1.is_over_temp())
+            leftBase1.set_voltage_limit(0);
+
+        else
+            leftBase1.set_voltage_limit(12000);
+
+
+        if(leftBase2.is_over_temp())
+            leftBase2.set_voltage_limit(0);
+
+        else
+            leftBase2.set_voltage_limit(12000);
+
+
+        if(leftBase3.is_over_temp())
+            leftBase3.set_voltage_limit(0);
+
+        else
+            leftBase3.set_voltage_limit(12000);
+
+
+        if(rightBase1.is_over_temp())
+            rightBase1.set_voltage_limit(0);
+
+        else
+            rightBase1.set_voltage_limit(12000);
+
+
+        if(rightBase2.is_over_temp())
+            rightBase2.set_voltage_limit(0);
+
+        else
+            rightBase2.set_voltage_limit(12000);
+
+
+        if(rightBase3.is_over_temp())
+            rightBase3.set_voltage_limit(0);
+
+        else
+            rightBase3.set_voltage_limit(12000);
+            
+
+        task::delay_until(&now, 1);
+
+    }
+    
+}*/

@@ -2,7 +2,7 @@
 
 void blueFlag(){
     
-    runIntake(80);
+    /*runIntake(80);
     moveStraight(1800, 1600);
 
     moveStraight(-650, 1000);
@@ -25,6 +25,6 @@ void blueFlag(){
 
     pvtBase(-15, 500);
     moveStraight(-1800, 1000);
-    moveStraight(1000, 1000);
+    moveStraight(1000, 1000);*/
     
 }

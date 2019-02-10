@@ -2,9 +2,10 @@
 
 void autonomous() {
 
-    
+    delay(1225);
+    pvtBase(90, 1200);
 
-    switch(autonCount) {
+    /*switch(autonCount) {
 
         case 0:
             redFlag();
@@ -25,6 +26,6 @@ void autonomous() {
         default:
             break;
 
-    }
+    }*/
 
 }
