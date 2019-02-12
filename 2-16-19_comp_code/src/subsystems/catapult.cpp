@@ -10,7 +10,6 @@ bool shoot = 0;
 
 void cpltControl(void* param) {
 
-    delay(1000);
     PID frame = PorX(initPID(1, 0, 0, 2.25, 0.00005, 5), initPID(1, 0, 0, 2, 0, 5));
     PID cpltShoot = frame;
     int setpoint = PorX(2600, 3300);
@@ -83,7 +82,7 @@ void flagAim() {
 
             if(abs(cpltVis.get_by_size(j).x_middle_coord) + offset < abs(closestX))
                 closestX = cpltVis.get_by_size(j).x_middle_coord;
-
+                
             if(j)
                 break;
 
