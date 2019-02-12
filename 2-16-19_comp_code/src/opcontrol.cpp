@@ -35,7 +35,7 @@ void opcontrol() {
 
 		}
 
-		std::cout << "big: " << cpltVis.get_by_sig(0, 1).x_middle_coord << " | small: " << cpltVis.get_by_sig(1, 1).x_middle_coord << " | objects: " << cpltVis.get_object_count() << "\n";
+		//std::cout << "big: " << cpltVis.get_by_sig(0, 1).x_middle_coord << " | small: " << cpltVis.get_by_sig(1, 1).x_middle_coord << " | objects: " << cpltVis.get_object_count() << "\n";
 		
 		Task::delay_until(&now, 10);
 		

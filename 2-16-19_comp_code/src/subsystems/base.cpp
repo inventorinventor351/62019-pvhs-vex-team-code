@@ -38,15 +38,8 @@ bool resetYaw = 0;
 
 void getYaw(void* param) {
 
-    delay(1225);
-    gyro1.reset();
-    gyro2.reset();
-
-    int gyro1prev;
-    int gyro2prev;
-    bool useGyro1 = 1;
-    bool useGyro2 = 1;
-
+    float prevYaw = 0.0;
+    bool useGyro1 = 1, useGyro2 = 1;
     std::uint_least32_t now = millis();
 
     while(true) {
@@ -58,20 +51,21 @@ void getYaw(void* param) {
             gyro2.reset();
             yaw = 0;
             resetYaw = 0;
+            useGyro1 = 1;
+            useGyro2 = 1;
         
         }
 
-        if((abs(gyro1.get_value() - gyro1prev)) > 50) 
+        if(abs(prevYaw - gyro1.get_value()) > 10)
             useGyro1 = 0;
 
-        if((abs(gyro2.get_value() - gyro2prev)) > 50) 
+        if(abs(prevYaw - gyro2.get_value()) > 10)
             useGyro2 = 0;
 
-        gyro1prev = gyro1.get_value();
-        gyro2prev = gyro2.get_value();
+        yaw = (gyro1.get_value() + gyro2.get_value()) / (useGyro1 + useGyro2);
 
-        yaw = ((useGyro1 ? gyro1.get_value() : 0) + (useGyro2 ? gyro2.get_value() : 0)) * (0.094 / ((useGyro1 + useGyro2) > 0 ? (useGyro1 + useGyro2) : 1));
-
+        std::cout << "gyro1: " << gyro1.get_value() << "   |   gyro2: " << gyro2.get_value() << "   |   yaw: " << yaw << "\n";
+        
         Task::delay_until(&now, 1);
 
     }
