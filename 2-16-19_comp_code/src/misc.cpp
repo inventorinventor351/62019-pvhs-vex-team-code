@@ -27,13 +27,15 @@ float controllerRemap(int joystickVal) {
 
     if((float)joystickVal <= -3.0) {
 
-        percentVal = (0.653226 * (float)joystickVal) - 17.0403;
+        //percentVal = (0.653226 * (float)joystickVal) - 17.0403;
+        percentVal = pow(-pow(x, 2) - 6 * x + 18327.7, 0.5) - 154.414;
 
     }
 
     else if((float)joystickVal >= 3.0) {
 
-        percentVal = (0.653226 * (float)joystickVal) + 17.0403;
+        //percentVal = (0.653226 * (float)joystickVal) + 17.0403;
+        percentVal = -pow(-pow(x, 2) + 6 * x + 18327.7, 0.5) + 154.414;
 
     }
 
