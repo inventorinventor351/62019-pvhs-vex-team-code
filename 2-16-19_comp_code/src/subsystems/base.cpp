@@ -18,7 +18,7 @@ void runRightBase(float voltPerc) {
 
 float getDist() {
 
-    return ((leftBase1.get_position() + leftBase2.get_position() + leftBase3.get_position() + rightBase1.get_position() + rightBase2.get_position() + rightBase3.get_position()) * 360 / (900 * 6));
+    return ((leftBase1.get_position() + leftBase2.get_position() + leftBase3.get_position() + rightBase1.get_position() + rightBase2.get_position() + rightBase3.get_position()) / 6);
 
 }
 
@@ -53,6 +53,7 @@ void getYaw(void* param) {
             resetYaw = 0;
             useGyro1 = 1;
             useGyro2 = 1;
+            prevYaw = 0;
         
         }
 
@@ -64,7 +65,9 @@ void getYaw(void* param) {
 
         yaw = (gyro1.get_value() + gyro2.get_value()) / (useGyro1 + useGyro2);
 
-        std::cout << "gyro1: " << gyro1.get_value() << "   |   gyro2: " << gyro2.get_value() << "   |   yaw: " << yaw << "\n";
+        prevYaw = yaw;
+
+        //std::cout << "gyro1: " << gyro1.get_value() << "   |   gyro2: " << gyro2.get_value() << "   |   yaw: " << yaw << "\n";
         
         Task::delay_until(&now, 1);
 
@@ -75,12 +78,14 @@ void getYaw(void* param) {
 void moveStraight(float setPoint, int time) {
 
     float distVal, diffVal;
+    setPoint *= 0.678788;
 
-    PID dist = PorX(initPID(1, 0, 1, 0.1, 0, 0.275), initPID(1, 0, 1, 0.3, 0, 1));
-    PID diff = PorX(initPID(1, 0, 0, 0.8, 0, 0), initPID(1, 0, 0, 0.5, 0, 0));
+    PID dist = PorX(initPID(1, 0, 1, 0.1, 0, 0.275), initPID(1, 0, 1, 0.5, 0, 1));
+    PID diff = PorX(initPID(1, 0, 0, 0.8, 0, 0), initPID(1, 0, 0, 2, 0, 0));
 
     resetEncs();
     resetYaw = 1;
+    delay(200);
 
     for(int i = 0; i < time; i++) {
 
@@ -91,7 +96,8 @@ void moveStraight(float setPoint, int time) {
         distVal = (abs(distVal) > 90) ? (90 * sgn(distVal)) : distVal;
         diffVal = runPID(&diff);
 
-        std::cout << "yaw: " << yaw << "  |  " << "distEnc: " << getDist() << "  |  " << "Err: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "diffErr: " << diff.error << "  |  " << "distVal: " << distVal << "  |  " << "diffVal: " << diffVal << "  |  " << "ms: " << i << "\n";
+        if(!(i % 20))
+            std::cout << "yaw: " << yaw << "  |  " << "distEnc: " << getDist() << "  |  " << "Err: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "diffErr: " << diff.error << "  |  " << "distVal: " << distVal << "  |  " << "diffVal: " << diffVal << "  |  " << "ms: " << i << "\n";
 
         runLeftBase(distVal - diffVal);
         runRightBase(distVal + diffVal);
@@ -108,12 +114,14 @@ void moveStraight(float setPoint, int time) {
 void pvtBase(float setPoint, int time) {
 
     float yawVal, dispVal, prevYaw;
+    setPoint *= -1;
 
-    PID YAW = initPID(1, 0, 0, 1.1, 0, 0);
+    PID YAW = initPID(1, 0, 0, 1.425, 0, 0);
     PID disp = initPID(0, 0, 0, 0, 0, 0);
 
     resetEncs();
     resetYaw = 1;
+    delay(200);
 
     for(int i = 0; i < time; i++) {
 

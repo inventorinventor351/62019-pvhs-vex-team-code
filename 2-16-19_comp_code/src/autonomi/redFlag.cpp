@@ -8,10 +8,10 @@ void redFlag(){
     moveStraight(-650, 1000);
     pvtBase(90, 1000);
     runIntk(-100);
-    moveStraight(1200, 1000);
+    moveStraight(800, 1000);
     runIntk(100);
 
-    moveStraight(-1200, 1000);
+    moveStraight(-800, 1000);
     pvtBase(90, 1000);
     moveStraight(600, 700);
     pvtBase(90, 1000);
@@ -23,7 +23,6 @@ void redFlag(){
     delay(200);
     runIntk(0);
 
-    pvtBase(15, 500);
     moveStraight(-1800, 1000);
     moveStraight(1000, 1000);
     

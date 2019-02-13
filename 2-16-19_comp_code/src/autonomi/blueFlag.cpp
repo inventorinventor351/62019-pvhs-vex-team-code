@@ -23,7 +23,6 @@ void blueFlag(){
     delay(200);
     runIntk(0);
 
-    pvtBase(-15, 500);
     moveStraight(-1800, 1000);
     moveStraight(1000, 1000);
     

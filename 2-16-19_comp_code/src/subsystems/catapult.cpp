@@ -10,7 +10,7 @@ bool shoot = 0;
 
 void cpltControl(void* param) {
 
-    PID frame = PorX(initPID(1, 0, 0, 2.25, 0.00005, 5), initPID(1, 0, 0, 2, 0, 5));
+    PID frame = PorX(initPID(1, 0, 0, 2.25, 0.00005, 5), initPID(1, 0, 0, 2, 0, 1));
     PID cpltShoot = frame;
     int setpoint = PorX(2600, 3300);
     float cpltVal;
@@ -46,7 +46,7 @@ void initCpltVis() {
 
     vision_signature_s_t GREENFLAG;
     GREENFLAG.id = 1;
-    GREENFLAG.range = 3;
+    GREENFLAG.range = 3.5;
     GREENFLAG.u_min = -3383;
     GREENFLAG.u_max = -2431;
     GREENFLAG.u_mean = -2907;
@@ -68,7 +68,7 @@ void flagAim() {
     double aimVal, distVal;
     int aimSum, distSum, highY = -201, closestX = 321, time = 1000, Ycount, Xcount;
     int offset = autonCount < 2 ? 42 : 32;
-    int distSetPoint = PorX(70, 51);
+    int distSetPoint = PorX(70, 54);
 
     for(int i = 0; i < time; i ++) {
 

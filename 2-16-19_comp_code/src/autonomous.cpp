@@ -3,9 +3,8 @@
 void autonomous() {
 
     delay(1225);
-    runLeftBase(18);    
 
-    /*switch(autonCount) {
+    switch(autonCount) {
 
         case 0:
             redFlag();
@@ -26,6 +25,6 @@ void autonomous() {
         default:
             break;
 
-    }*/
+    }
 
 }
