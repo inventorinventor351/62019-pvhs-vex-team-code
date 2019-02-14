@@ -9,4 +9,6 @@ void blueFlagSide();
 void redCapSide();
 void redFlagSide();
 
+void skills();
+
 #endif

@@ -23,6 +23,8 @@ void autonomous()
     if(autonCount == 3)
         redCapSide();
 
+    if(autonCount == 4)
+        skills();
         
         
 

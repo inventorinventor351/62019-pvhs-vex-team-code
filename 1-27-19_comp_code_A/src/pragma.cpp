@@ -9,7 +9,7 @@ Motor rightBase3 (9, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_ROTATIONS); //normal m
 
 Motor intake (10, MOTOR_GEARSET_18, 1); //normal motor plugged into port 10 and not reversed
 
-Motor deSr (17, MOTOR_GEARSET_06, 0); //torke motor plugged into port 17 and not reversed
+Motor deSr (17, MOTOR_GEARSET_06, 1); //torke motor plugged into port 17 and not reversed
 
 Vision visn(11); //vision sensor plugged into port 11
 

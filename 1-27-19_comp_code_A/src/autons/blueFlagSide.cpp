@@ -5,7 +5,9 @@ void blueFlagSide()
    runIntake(70);
    driveDist(3, 80);
    delay(100);
+   driveDist(0.4, 60);
    runIntake(0);
+   driveDist(0.3, 50);
    driveDist(1.5, -70);
    runLeftBase(60);
    runRightBase(-40);

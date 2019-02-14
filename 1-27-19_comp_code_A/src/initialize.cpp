@@ -23,11 +23,11 @@ void lcdScroll() {
 
     if(autonCount < 0) {
 
-        autonCount = 3;
+        autonCount = 4;
 
     }
 
-    else if(autonCount > 3) {
+    else if(autonCount > 4) {
 
         autonCount = 0;
 
@@ -50,6 +50,11 @@ void lcdScroll() {
             case 3:
                 lcd::set_text(1, "RED cap side");
                 break;
+
+            case 4:
+                lcd::set_text(1, "Skills LMAO");
+                break;
+
 
         }
 
