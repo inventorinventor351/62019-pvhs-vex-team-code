@@ -63,7 +63,7 @@ void getYaw(void* param) {
         if(abs(prevYaw - gyro2.get_value()) > 10)
             useGyro2 = 0;
 
-        yaw = (gyro1.get_value() + gyro2.get_value()) / (useGyro1 + useGyro2);
+        yaw = PorX((gyro1.get_value() + gyro2.get_value()) / (useGyro1 + useGyro2), gyro2.get_value());
 
         prevYaw = yaw;
 
@@ -117,7 +117,7 @@ void pvtBase(float setPoint, int time) {
     setPoint *= -1;
 
     PID YAW = initPID(1, 0, 0, 1.425, 0, 0);
-    PID disp = initPID(0, 0, 0, 0, 0, 0);
+    PID disp = initPID(1, 0, 0, 1, 0, 0);
 
     resetEncs();
     resetYaw = 1;

@@ -8,7 +8,7 @@ void autonomous() {
 
         case 0:
             redFlag();
-            break;
+            break; 
 
         case 1:
             redCap();
