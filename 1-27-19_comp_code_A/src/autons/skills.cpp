@@ -30,7 +30,7 @@ void skills()
   delay(100); 
   runRightBase(-80); //backward
   runLeftBase(-80);
-  delay(400);
+  delay(600);
   runLeftBase(0);
   runRightBase(0);
   delay(400);
