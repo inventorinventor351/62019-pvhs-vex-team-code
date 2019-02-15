@@ -3,27 +3,44 @@
 void redFlag(){
     
     runIntk(80);
-    moveStraight(1800, 1600);
+    moveStraight(1800, 1200);
 
-    moveStraight(-650, 1000);
-    pvtBase(90, 1000);
-    runIntk(-100);
-    moveStraight(800, 1000);
+    moveStraight(-550, 500);
+    pvtBase(90, 700);
+    runIntk(-60);
+    runLeftBase(60);
+    runRightBase(60);
+    delay(700);
     runIntk(100);
 
-    moveStraight(-800, 1000);
-    pvtBase(90, 1000);
-    moveStraight(600, 700);
-    pvtBase(90, 1000);
-    moveStraight(-400, 300);
+    moveStraight(-800, 800);
+    pvtBase(90, 700);
+    moveStraight(700, 700);
+    pvtBase(90, 700);
     flagAim();
-    flagAim();
-    delay(100);
+    delay(50);
     shoot = true;
-    delay(200);
+    delay(100);
     runIntk(0);
 
-    moveStraight(-1800, 1000);
-    moveStraight(1000, 1000);
+    runLeftBase(-100);
+    runRightBase(-100);
+    delay(1000);
+    runLeftBase(0);
+    runRightBase(0);
+    delay(100);
+    moveStraight(3200, 2100);
+    pvtBase(-90, 700);
+    runLeftBase(100);
+    runRightBase(100);
+    delay(300);
+    runLeftBase(0);
+    runLeftBase(0);
+    delay(100);
+    runLeftBase(-100);
+    runRightBase(-100);
+    delay(1300);
+    runLeftBase(0);
+    runRightBase(0);
     
 }
