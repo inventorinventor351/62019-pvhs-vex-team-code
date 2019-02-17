@@ -80,8 +80,8 @@ void moveStraight(float setPoint, int time) {
     float distVal, diffVal;
     setPoint *= 0.678788;
 
-    PID dist = PorX(initPID(1, 0, 1, 0.1, 0, 0.275), initPID(1, 0, 1, 0.5, 0, 1));
-    PID diff = PorX(initPID(1, 0, 0, 0.8, 0, 0), initPID(1, 0, 0, 2, 0, 0));
+    PID dist = PorX(initPID(1, 0, 1, 0.5, 0, 1), initPID(1, 0, 1, 0.5, 0, 1));
+    PID diff = PorX(initPID(1, 0, 0, 2, 0, 0), initPID(1, 0, 0, 2, 0, 0));
 
     resetEncs();
     resetYaw = 1;

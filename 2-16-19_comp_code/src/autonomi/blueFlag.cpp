@@ -18,7 +18,7 @@ void blueFlag(){
     moveStraight(700, 700);
     pvtBase(-90, 650);
     flagAim();
-    delay(400);
+    delay(800);
     shoot = true;
     delay(500);
     runIntk(0);

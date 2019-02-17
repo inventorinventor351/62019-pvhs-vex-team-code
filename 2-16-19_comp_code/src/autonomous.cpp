@@ -5,7 +5,7 @@ void autonomous() {
     delay(1225);
     initCpltVis();
 
-    switch(autonCount) {
+   switch(autonCount) {
 
         case 0:
             redFlag();

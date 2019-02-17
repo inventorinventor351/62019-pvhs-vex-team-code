@@ -12,7 +12,7 @@ void cpltControl(void* param) {
 
     PID frame = PorX(initPID(1, 0, 0, 2.25, 0.00005, 5), initPID(1, 0, 0, 1.8, 0, 1));
     PID cpltShoot = frame;
-    int setpoint = PorX(3860, 1710);
+    int setpoint = PorX(2525, 1740);
     float cpltVal;
 
     std::uint_least32_t now = millis();
@@ -135,5 +135,7 @@ void flagAim() {
 
     runLeftBase(0);
     runRightBase(0);
+    
+    master.rumble("- -");
 
 }
