@@ -3,6 +3,7 @@
 void autonomous() {
 
     delay(1225);
+    initCpltVis();
 
     switch(autonCount) {
 
