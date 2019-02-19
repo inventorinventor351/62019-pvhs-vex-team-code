@@ -28,28 +28,28 @@ void lcdScroll() {
 
         case 0:
             lcd::set_text(1, "RED   FLAG    SIDE");
-            lcd::set_text(2, "3 flags");
+            lcd::set_text(2, "6 flags");
             lcd::set_text(3, "2 caps");
             lcd::set_text(4, "no parking");
             break;
 
         case 1:
             lcd::set_text(1, "RED   CAP    SIDE");
-            lcd::set_text(2, "0 flags");
+            lcd::set_text(2, "5 flags");
             lcd::set_text(3, "2 caps");
             lcd::set_text(4, "yes parking");
             break;
 
         case 2:
             lcd::set_text(1, "BLUE   FLAG    SIDE");
-            lcd::set_text(2, "3 flags");
+            lcd::set_text(2, "6 flags");
             lcd::set_text(3, "2 caps");
             lcd::set_text(4, "no parking");
             break;
 
         case 3:
             lcd::set_text(1, "BLUE   CAP    SIDE");
-            lcd::set_text(2, "0 flags");
+            lcd::set_text(2, "5 flags");
             lcd::set_text(3, "2 caps");
             lcd::set_text(4, "yes parking");
             break;
