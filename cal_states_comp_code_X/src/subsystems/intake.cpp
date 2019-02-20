@@ -13,6 +13,7 @@ void yaBoi() {
     moveStraight(-100, 300);
     moveStraight(100, 300);
     runIntake(100);
-    delay(3000);
+    delay(2000);
+    runIntake(0);
 
 }
