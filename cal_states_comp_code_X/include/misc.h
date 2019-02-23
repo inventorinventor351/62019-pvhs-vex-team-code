@@ -23,4 +23,5 @@ float runPID(PID *pid); //inputs a PID struct, does the actual PID math, then ou
 
 float controllerRemap(int joystickVal); //remaps joystick values to base motor values
 
+extern int autonCount;
 #endif

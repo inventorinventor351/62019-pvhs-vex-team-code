@@ -21,7 +21,7 @@ void redCap() {
 
     pvtBase(100, 700);
     moveStraight(1000, 800);
-    yaBoi();
+    //yaBoi();
     pvtBase(-150, 1000);
     moveStraight(1200, 1000);
     shoot = true;
