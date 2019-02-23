@@ -8,7 +8,7 @@ void initialize() {
 
 }
 
-int autonCount = 0;
+extern autonCount = 0;
 
 void lcdScroll() {
 
