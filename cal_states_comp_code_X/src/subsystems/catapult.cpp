@@ -10,9 +10,9 @@ bool shoot = 0;
 
 void cpltControl(void* param) {
 
-    PID frame = PorX(initPID(1, 0, 0, 2.25, 0.00005, 5), initPID(1, 0, 0, 1.8, 0, 1));
+    PID frame = initPID(1, 0, 0, 1.5, 0, 1);
     PID cpltShoot = frame;
-    int setpoint = PorX(2525, 1740);
+    int setpoint = 3250;
     float cpltVal;
 
     std::uint_least32_t now = millis();
@@ -27,11 +27,15 @@ void cpltControl(void* param) {
 
             runCplt(100);
 			delay(300);
-			runCplt(0);
-			delay(300);
 			cpltShoot = frame;
             shoot = 0;
             
+        }
+
+        if(fatalBall.get_value()) {
+
+            runCplt(0);
+
         }
 
         Task::delay_until(&now, 1);
@@ -67,8 +71,8 @@ void flagAim() {
 
     double aimVal, distVal;
     int aimSum, distSum, highY = -201, closestX = 321, time = 1000, Ycount, Xcount;
-    int offset = autonCount < 2 ? 47 : 27;
-    int distSetPoint = PorX(70, 54);
+    int offset = autonCount < 2 ? -10 : -20;
+    int distSetPoint = -17;
 
     for(int i = 0; i < time; i ++) {
 
@@ -77,10 +81,10 @@ void flagAim() {
 
         for(int j = 0; j < cpltVis.get_object_count(); j ++) {
 
-            if(cpltVis.get_by_size(j).y_middle_coord > highY && cpltVis.get_by_size(j).y_middle_coord != 3)
+            if(cpltVis.get_by_size(j).y_middle_coord > highY)
                 highY = cpltVis.get_by_size(j).y_middle_coord;
 
-            if(abs(cpltVis.get_by_size(j).x_middle_coord) + offset < abs(closestX))
+            if(abs(cpltVis.get_by_size(j).x_middle_coord) + offset < abs(closestX + offset))
                 closestX = cpltVis.get_by_size(j).x_middle_coord;
                 
             if(j)
