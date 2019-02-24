@@ -11,6 +11,8 @@
 
 using namespace pros;
 
+extern int autonCount;
+
 #include "pragma.h"
 #include "misc.h"
 #include "./subsystems/base.h"

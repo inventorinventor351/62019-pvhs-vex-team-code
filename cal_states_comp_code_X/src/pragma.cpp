@@ -13,8 +13,8 @@ Motor intk (15, MOTOR_GEARSET_18, 1, E_MOTOR_ENCODER_DEGREES); //normal motor pl
 Motor cplt (16, MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_DEGREES); //normal motor plugged into port 16 and not reversed
 
 Vision cpltVis (10, VISION_ZERO_CENTER); //vision sensor plugged into port 9 and (0,0) is at the center of the screen
-/*Vision cpltVis ();
-Vision cpltVi2 ();*/
+
+// Vision cpltVi2 ();
 
 //Legacy Components
 ADIGyro gyro1 (4, 0.09375); //gyro plugged into port 4

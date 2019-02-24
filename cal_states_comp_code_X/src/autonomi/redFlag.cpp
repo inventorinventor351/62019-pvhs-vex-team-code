@@ -1,23 +1,22 @@
 #include "main.h"
 
-void redFlag() {
+void redFlag() {//works
 
     runIntk(100);
     moveStraight(1800, 1200);
-    moveStraight(-1500, 1150);
+    moveStraight(-1400, 1100);
     pvtBase(-90, 650);
-    moveStraight(-700, 600);
+    runIntk(0);
     shoot = true;
     delay(500);
-    runIntk(0);
 
-    moveStraight(-1100, 900);
-    moveStraight(600, 500);
-    pvtBase(-75, 600);
-    moveStraight(-2000, 1300);
+    moveStraight(-2050, 1400);
+    moveStraight(750, 650);
+    pvtBase(-80, 650);
+    moveStraight(-2000, 1400);
 
     pvtBase(30, 400);
-    moveStraight(1200, 1000);
+    moveStraight(700, 500);
     yaBoi();
     shoot = true;
     delay(500);

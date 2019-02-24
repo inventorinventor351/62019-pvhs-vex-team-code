@@ -8,12 +8,12 @@ void runIntk(float voltPerc) {
 
 void yaBoi() {
 
-    runIntake(-100);
+    runIntk(-100);
     delay(500);
     moveStraight(-100, 300);
     moveStraight(100, 300);
-    runIntake(100);
-    delay(2000);
-    runIntake(0);
+    runIntk(100);
+    delay(500);
+    runIntk(0);
 
 }

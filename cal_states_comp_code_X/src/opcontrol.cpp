@@ -16,7 +16,7 @@ void opcontrol() {
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
 			runIntk(100);
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_R))
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
 			runIntk(-100);
 
 		else
@@ -35,8 +35,8 @@ void opcontrol() {
 
 		}
 
-		std::cout << "big: " << cpltVis.get_by_sig(0, 1).x_middle_coord << " | small: " << cpltVis.get_by_sig(1, 1).x_middle_coord << " | objects: " << cpltVis.get_object_count() << "\n";
-		//std:: cout << gyro1.get_value() << " | " << gyro2.get_value() << " | " << yaw << "\n";
+		//std::cout << "big: " << cpltVis.get_by_sig(0, 1).x_middle_coord << " | small: " << cpltVis.get_by_sig(1, 1).x_middle_coord << " | objects: " << cpltVis.get_object_count() << "\n";
+		std:: cout << gyro1.get_value() << " | " << gyro2.get_value() << " | " << yaw << "\n";
 
 		Task::delay_until(&now, 10);
 		

@@ -8,7 +8,7 @@ void initialize() {
 
 }
 
-extern autonCount = 0;
+int autonCount = 0;
 
 void lcdScroll() {
 
@@ -35,7 +35,7 @@ void lcdScroll() {
 
         case 1:
             lcd::set_text(1, "RED   CAP    SIDE");
-            lcd::set_text(2, "5 flags");
+            lcd::set_text(2, "2 flags");
             lcd::set_text(3, "2 caps");
             lcd::set_text(4, "yes parking");
             break;
@@ -49,7 +49,7 @@ void lcdScroll() {
 
         case 3:
             lcd::set_text(1, "BLUE   CAP    SIDE");
-            lcd::set_text(2, "5 flags");
+            lcd::set_text(2, "2 flags");
             lcd::set_text(3, "2 caps");
             lcd::set_text(4, "yes parking");
             break;
