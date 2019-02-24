@@ -49,29 +49,22 @@ void getYaw(void* param) {
             delay(100);
             gyro1.reset();
             gyro2.reset();
-            //gyro3.reset();
             yaw = 0;
             resetYaw = 0;
             useGyro1 = 1;
             useGyro2 = 1;
-            //useGyro3 = 1;
             prevYaw = 0;
         
         }
 
-        //if(abs(prevYaw - gyro1.get_value()) > 10)
+        if(abs(prevYaw - gyro1.get_value()) > 10)
             useGyro1 = 0;
 
         if(abs(prevYaw - gyro2.get_value()) > 10)
             useGyro2 = 0;
 
-        //if(abs(prevYaw - gyro3.get_value()) > 10)
-          //  useGyro3 = 0;
+        yaw = ((gyro1.get_value() * useGyro1) - (gyro2.get_value() * useGyro2)) / (useGyro1 + useGyro2 );
 
-        yaw = ((gyro1.get_value() * useGyro1) + (gyro2.get_value() * useGyro2)) / (useGyro1 + useGyro2 );
-
-        // + (gyro3.get_value() * useGyro3) ADD THIS LATER
-        // + useGyro3 THIS TOO
         prevYaw = yaw;
 
         //std::cout << "gyro1: " << gyro1.get_value() << " | gyro2: " << gyro2.get_value() << " | gyro3: " << gyro3.get_value() << " | yaw: " << yaw << "\n";
