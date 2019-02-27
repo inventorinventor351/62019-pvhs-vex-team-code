@@ -36,6 +36,7 @@ void intkArmControl(void* param) {
 
             armSetPoint = 0;
             intk.tare_position();
+            resetIntkEnc = 0;
 
         }
 
