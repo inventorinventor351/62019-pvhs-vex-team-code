@@ -4,9 +4,7 @@ void autonomous() {
     
     initCpltVis();
 
-    runIntk(-100);
-    delay(600);
-    runIntk(0);
+    armSetPoint += 750;
 
    /*switch(autonCount) {
 

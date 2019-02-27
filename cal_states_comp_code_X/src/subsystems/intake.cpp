@@ -8,7 +8,7 @@ void runIntk(float voltPerc) {
 
 void yaBoi() {
 
-    runIntk(-100);
+    armSetPoint -= 700;
     delay(400);
     moveStraight(-100, 200);
     runIntk(100);
@@ -31,6 +31,8 @@ void intkArmControl(void* param) {
 
         moveArm.error = armSetPoint - intk.get_position();
         runIntk(runPID(&moveArm));
+
+        std::cout << armSetPoint << " | " << intk.get_position() << " | " << moveArm.error << "\n";
 
         if(resetIntkEnc) {
 

@@ -140,6 +140,6 @@ void flagAim() {
     runLeftBase(0);
     runRightBase(0);
     
-    master.rumble("- -");
+    master.rumble("-");
 
 }
