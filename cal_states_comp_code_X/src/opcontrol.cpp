@@ -10,17 +10,17 @@ void opcontrol() {
 	
 	while(true) {
 
-		runLeftBase((master.get_digital( E_CONTROLLER_DIGITAL_R2) && (controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)) > 45)) ? 45 : controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)));
-		runRightBase((master.get_digital( E_CONTROLLER_DIGITAL_R2) && (controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) > 45)) ? 45 : controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)));
+		runLeftBase((master.get_digital(E_CONTROLLER_DIGITAL_R2) && (controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)) > 45)) ? 45 : controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y)));
+		runRightBase((master.get_digital(E_CONTROLLER_DIGITAL_R2) && (controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) > 45)) ? 45 : controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)));
 		
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			runIntk(100);
+			armSetPoint += 13;
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			runIntk(-100);
+			armSetPoint -= 13;
 
 		else
-			runIntk(0);
+			armSetPoint += 0;
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			flagAim();
