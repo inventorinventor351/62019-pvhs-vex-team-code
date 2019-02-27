@@ -4,7 +4,9 @@ void autonomous() {
     
     initCpltVis();
 
-    pvtBase(90, 700);
+    runIntk(-100);
+    delay(600);
+    runIntk(0);
 
    /*switch(autonCount) {
 
