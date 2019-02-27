@@ -36,7 +36,7 @@ void resetEncs() {
 float yaw = 0.0;
 bool resetYaw = 0;
 
-void getYaw(void* param) {
+/*void getYaw(void* param) {
 
     float prevYaw = 0.0;
     bool useGyro1 = 1, useGyro2 = 1, useGyro3 = 1;
@@ -60,20 +60,20 @@ void getYaw(void* param) {
         if(abs(prevYaw - gyro1.get_value()) > 10)
             useGyro1 = 0;
 
-        if(abs(prevYaw - gyro2.get_value()) > 10)
+        if(abs(prevYaw + gyro2.get_value()) > 10)
             useGyro2 = 0;
 
         yaw = ((gyro1.get_value() * useGyro1) - (gyro2.get_value() * useGyro2)) / (useGyro1 + useGyro2 );
 
         prevYaw = yaw;
 
-        //std::cout << "gyro1: " << gyro1.get_value() << " | gyro2: " << gyro2.get_value() << " | gyro3: " << gyro3.get_value() << " | yaw: " << yaw << "\n";
-        
+        std:: cout << gyro1.get_value() << " | " << gyro2.get_value() << " | " << yaw << "\n";
+
         Task::delay_until(&now, 1);
 
     }
 
-}
+}*/
 
 void moveStraight(float setPoint, int time) {
 
@@ -84,13 +84,13 @@ void moveStraight(float setPoint, int time) {
     PID diff = initPID(1, 0, 0, 2, 0, 0);
 
     resetEncs();
-    resetYaw = 1;
+    gyro1.reset();
     delay(200);
 
     for(int i = 0; i < time; i++) {
 
         dist.error = setPoint - getDist();  
-        diff.error = yaw;
+        diff.error = gyro1.get_value();
 
         distVal = runPID(&dist);
         distVal = (abs(distVal) > 90) ? (90 * sgn(distVal)) : distVal;
@@ -102,8 +102,8 @@ void moveStraight(float setPoint, int time) {
         }
 
 
-        if(!(i % 20))
-            std::cout << "yaw: " << yaw << "  |  " << "distEnc: " << getDist() << "  |  " << "Err: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "diffErr: " << diff.error << "  |  " << "distVal: " << distVal << "  |  " << "diffVal: " << diffVal << "  |  time: " << i << "\n";
+        if(!(i % 10))
+            std::cout << "yaw: " << gyro1.get_value() << "  |  " << "distEnc: " << getDist() << "  |  " << "Err: " << dist.error << "  |  " << "setPnt: " << setPoint << "  |  " << "diffErr: " << diff.error << "  |  " << "distVal: " << distVal << "  |  " << "diffVal: " << diffVal << "  |  time: " << i << "\n";
 
         runLeftBase(distVal - diffVal);
         runRightBase(distVal + diffVal);
@@ -122,22 +122,22 @@ void pvtBase(float setPoint, int time) {
     float yawVal, dispVal, prevYaw;
     setPoint *= -1;
 
-    PID YAW = initPID(1, 0, 0, 1.425, 0, 0);
+    PID YAW = initPID(1, 0, 0, 1.3, 0, 0);
     PID disp = initPID(1, 0, 0, 1, 0, 0);
 
     resetEncs();
-    resetYaw = 1;
+    gyro1.reset();
     delay(200);
 
     for(int i = 0; i < time; i++) {
 
-        YAW.error = yaw - setPoint;
+        YAW.error = gyro1.get_value() - setPoint;
         disp.error = getDist();
 
         yawVal = runPID(&YAW);
         dispVal = runPID(&disp);
 
-        std::cout << "yaw: " << yaw << "  |  " << "Err: " << YAW.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "yawVal: " << yawVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
+        std::cout << "gyro1.get_value(): " << gyro1.get_value() << "  |  " << "Err: " << YAW.error << "  |  " << "setPnt: " << setPoint << "  |  " << "dispErr: " << disp.error << "  |  " << "yawVal: " << yawVal << "  |  " << "dispVal: " << dispVal << "  |  " << "ms: " << i << "\n";
 
         runLeftBase(-yawVal - dispVal);
         runRightBase(yawVal - dispVal);

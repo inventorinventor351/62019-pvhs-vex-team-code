@@ -71,7 +71,7 @@ void opcontrol() {
 			intk.set_voltage_limit(12000);
 
 
-		std::cout << "big: " << cpltVis.get_by_sig(0, 1).y_middle_coord << " | small: " << cpltVis.get_by_sig(1, 1).y_middle_coord << " | objects: " << cpltVis.get_object_count() << "\n";
+		//std::cout << "big: " << cpltVis.get_by_sig(0, 1).y_middle_coord << " | small: " << cpltVis.get_by_sig(1, 1).y_middle_coord << " | objects: " << cpltVis.get_object_count() << "\n";
 		//std:: cout << gyro1.get_value() << " | " << gyro2.get_value() << " | " << yaw << "\n";
 
 		Task::delay_until(&now, 10);

@@ -3,8 +3,8 @@
 void autonomous() {
     
     initCpltVis();
-    
-    blueCap();
+
+    pvtBase(90, 700);
 
    /*switch(autonCount) {
 

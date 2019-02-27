@@ -19,5 +19,5 @@ Vision cpltVis (4, VISION_ZERO_CENTER); //vision sensor plugged into port 3 and 
 ADIDigitalIn whichTeam (1); //jumper plugged into port 1
 ADIDigitalIn fatalBall(2); //limit switch that detects a fatal ball in catapult into port 2
 ADIAnalogIn cpltPot (3); //catapult plugged into port 3
-ADIGyro gyro1 (7, 0.09375); //gyro plugged into port 4
-ADIGyro gyro2 (6, 0.09375); //gyro plugged into port 5
+ADIGyro gyro1 (5, 0.09375); //gyro plugged into port 4
+//ADIGyro gyro2 (7, 0.09375); //gyro plugged into port 5

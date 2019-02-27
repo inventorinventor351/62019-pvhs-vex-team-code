@@ -18,6 +18,7 @@ void redFlag() {//works
     pvtBase(30, 400);
     moveStraight(700, 500);
     yaBoi();
+    runIntk(100);
     shoot = true;
     delay(500);
 
