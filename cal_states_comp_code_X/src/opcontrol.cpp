@@ -14,13 +14,13 @@ void opcontrol() {
 		runRightBase((master.get_digital( E_CONTROLLER_DIGITAL_R2) && (controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)) > 45)) ? 45 : controllerRemap(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y)));
 		
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			runIntk(100);
+			armSetPoint += 1;
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			runIntk(-100);
+			armSetPoint -= 1;
 
 		else
-			runIntk(0);
+			armSetPoint += 0;
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
 			flagAim();
