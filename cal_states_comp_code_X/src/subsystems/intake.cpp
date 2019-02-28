@@ -8,13 +8,10 @@ void runIntk(float voltPerc) {
 
 void yaBoi() {
 
-    armSetPoint -= 700;
-    delay(400);
-    moveStraight(-100, 200);
-    runIntk(100);
-    moveStraight(100, 200);
-    delay(500);
-    runIntk(0);
+    armSetPoint -= 1000;
+    delay(700);
+    moveStraight(-150, 200);
+    armSetPoint += 4500;
 
 }
 
@@ -32,7 +29,7 @@ void intkArmControl(void* param) {
         moveArm.error = armSetPoint - intk.get_position();
         runIntk(runPID(&moveArm));
 
-        std::cout << armSetPoint << " | " << intk.get_position() << " | " << moveArm.error << "\n";
+        //std::cout << armSetPoint << " | " << intk.get_position() << " | " << moveArm.error << "\n";
 
         if(resetIntkEnc) {
 
@@ -41,6 +38,12 @@ void intkArmControl(void* param) {
             resetIntkEnc = 0;
 
         }
+
+        if(intk.is_over_temp() || intk.is_over_current())
+			intk.set_voltage_limit(0);
+
+		else
+			intk.set_voltage_limit(12000);
 
         Task::delay_until(&now, 1);
 

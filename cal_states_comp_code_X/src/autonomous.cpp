@@ -4,7 +4,7 @@ void autonomous() {
     
     initCpltVis();
 
-    armSetPoint += 750;
+    redFlag();
 
    /*switch(autonCount) {
 

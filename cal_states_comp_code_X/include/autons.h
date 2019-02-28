@@ -5,5 +5,6 @@ void blueCap();
 void redFlag();
 void redCap();
 void blueFlag();
+void skills();
 
 #endif

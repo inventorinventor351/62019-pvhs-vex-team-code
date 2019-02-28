@@ -22,5 +22,5 @@ extern ADIDigitalIn fatalBall;
 extern ADIAnalogIn cpltPot; //potentiometer that measures the angle of the catapult arm
 extern ADIGyro gyro1; //gyro used for turning in autonomous
 extern ADIGyro gyro2; //gyro used for turning in autonomous
-
+extern ADIGyro gyro3;
 #endif

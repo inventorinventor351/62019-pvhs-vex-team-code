@@ -12,7 +12,7 @@ void cpltControl(void* param) {
 
     PID frame = initPID(1, 0, 0, 1.5, 0, 1);
     PID cpltShoot = frame;
-    int setpoint = 3250;
+    int setpoint = 3280;
     float cpltVal;
 
     std::uint_least32_t now = millis();
@@ -32,11 +32,11 @@ void cpltControl(void* param) {
             
         }
 
-        if(fatalBall.get_value()) {
+        if(fatalBall.get_value())
+            cplt.set_voltage_limit(0);
 
-            runCplt(0);
-
-        }
+        else
+            cplt.set_voltage_limit(12000);
 
         Task::delay_until(&now, 1);
 
