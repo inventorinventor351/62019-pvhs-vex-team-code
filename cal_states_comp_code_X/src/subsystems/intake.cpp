@@ -10,8 +10,8 @@ void yaBoi() {
 
     armSetPoint -= 1000;
     delay(700);
-    moveStraight(-150, 200);
     armSetPoint += 4500;
+    moveStraight(-100, 200);
 
 }
 
@@ -23,6 +23,7 @@ void intkArmControl(void* param) {
     std::uint_least32_t now = millis();
     PID moveArm = initPID(1, 0, 0, 1, 0, 0);
     intk.tare_position();
+    bool armAck = 1;
 
     while(true) {
 
@@ -44,6 +45,13 @@ void intkArmControl(void* param) {
 
 		else
 			intk.set_voltage_limit(12000);
+
+        if(armBtn.get_value() && !pros::competition::is_autonomous()) {
+            armSetPoint = intk.get_position();
+            runIntk(30);
+            delay(25);
+        }
+
 
         Task::delay_until(&now, 1);
 

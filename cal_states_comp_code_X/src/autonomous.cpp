@@ -4,7 +4,7 @@ void autonomous() {
     
     initCpltVis();
 
-    redFlag();
+    yaBoi();
 
    /*switch(autonCount) {
 

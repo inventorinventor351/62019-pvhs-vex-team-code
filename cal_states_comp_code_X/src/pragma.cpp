@@ -22,3 +22,4 @@ ADIAnalogIn cpltPot (3); //catapult plugged into port 3
 ADIGyro gyro1 (6, 0.09375); //gyro plugged into port 4
 ADIGyro gyro2 (7, 0.09375); //gyro plugged into port 5
 ADIGyro gyro3 (5, 0.09375);
+ADIDigitalIn armBtn (8);

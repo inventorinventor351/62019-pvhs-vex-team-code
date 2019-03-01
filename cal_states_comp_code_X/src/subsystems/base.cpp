@@ -69,7 +69,7 @@ void getYaw(void* param) {
         rawYaw = ((gyro1.get_value() * useGyro1) - (gyro2.get_value() * useGyro2)) / (useGyro1 + useGyro2);
         prevYaw = rawYaw;
 
-        if(useGyro1 + useGyro2 == 2) 
+        if((useGyro1 + useGyro2) == 2) 
             drift = (useGyro1 * gyro1.get_value() + useGyro2 * gyro2.get_value()) / 2;
         else
             drift = 0;
@@ -77,7 +77,7 @@ void getYaw(void* param) {
         yaw = drift - rawYaw;
         prevYaw = rawYaw;
 
-        std::cout << gyro1.get_value() << " | " << gyro2.get_value() << " | " << gyro3.get_value() << " | " << rawYaw << " | " << drift << " | " << yaw << "\n";
+        //std::cout << gyro1.get_value() << " | " << gyro2.get_value() << " | " << gyro3.get_value() << " | " << rawYaw << " | " << drift << " | " << yaw << "\n";
 
         Task::delay_until(&now, 1);
 

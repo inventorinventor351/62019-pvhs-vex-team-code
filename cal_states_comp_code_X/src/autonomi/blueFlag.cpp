@@ -2,24 +2,28 @@
 
 void blueFlag() {
 
-    runIntk(100);
-    moveStraight(1800, 1200);
-    moveStraight(-1500, 1150);
-    pvtBase(90, 650);
-    moveStraight(-700, 600);
+    armSetPoint += 5000;
+    moveStraight(1300, 1100);
+    moveStraight(-1330, 1300);
+    pvtBase(85, 650);
+
+    moveStraight(-600, 500);
     shoot = true;
-    delay(500);
-    runIntk(0);
+    delay(200);
+    moveStraight(-1450, 1100);
+    pvtBase(-10, 200);
+    moveStraight(500, 500);
+    pvtBase(80, 600);
+    moveStraight(-1700, 1200);
 
-    moveStraight(-1100, 900);
-    moveStraight(600, 500);
-    pvtBase(75, 600);
-    moveStraight(-2000, 1300);
-
-    pvtBase(-30, 400);
-    moveStraight(1200, 1000);
+    pvtBase(-40, 400);
+    moveStraight(400, 500);
     yaBoi();
+    armSetPoint -= 2500;
+    delay(1500);
+    armSetPoint += 2500;
+    delay(2000);
+    flagAim();
     shoot = true;
-    delay(500);
 
 }

@@ -38,6 +38,8 @@ void cpltControl(void* param) {
         else
             cplt.set_voltage_limit(12000);
 
+        std::cout << cpltShoot.error << "  |  " << cpltVal << "\n";
+
         Task::delay_until(&now, 1);
 
     }
