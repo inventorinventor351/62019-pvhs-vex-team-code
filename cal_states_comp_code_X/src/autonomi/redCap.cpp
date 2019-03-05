@@ -2,29 +2,28 @@
 
 void redCap() {
 
-    runIntk(80);
-    moveStraight(1800, 1200);
+    armSetPoint += 5000;
+    moveStraight(1320, 1150);
     moveStraight(-1500, 1150);
-    pvtBase(-118, 900);
-    moveStraight(-920, 900);
+    pvtBase(-114, 900);
+    //moveStraight(-750, 900);
     shoot = true;
-
-    pvtBase(118, 900);
-    runIntk(-100);
-    delay(500);
-    pvtBase(-90, 650);
-    runIntk(100);
-    moveStraight(2000, 1500);
-    pvtBase(-10, 300);
-    shoot = true;
-    runIntk(0);
-
-    pvtBase(100, 700);
-    moveStraight(1000, 800);
-    //yaBoi();
-    pvtBase(-150, 1000);
-    moveStraight(1200, 1000);
-    shoot = true;
-    delay(500);
+    delay(200);
+    pvtBase(30, 300);
+    moveStraight(1300, 1200);
+    pvtBase(83, 800);
+    moveStraight(650, 425);
+    yaBoi();
+    pvtBase(120, 1000);
+    moveStraight(2200, 1500);
+    pvtBase(60, 500);
+    runLeftBase(100);
+    runRightBase(100);
+    delay(300);
+    runLeftBase(-100);
+    runRightBase(-100);
+    delay(1500);
+    runLeftBase(0);
+    runRightBase(0);
 
 }

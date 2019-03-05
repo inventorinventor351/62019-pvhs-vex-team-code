@@ -10,9 +10,9 @@ bool shoot = 0;
 
 void cpltControl(void* param) {
 
-    PID frame = initPID(1, 0, 0, 1.5, 0, 1);
+    PID frame = initPID(1, 0, 0, 1, 0, 1);
     PID cpltShoot = frame;
-    int setpoint = 3280;
+    int setpoint = 3325;
     float cpltVal;
 
     std::uint_least32_t now = millis();
@@ -38,7 +38,7 @@ void cpltControl(void* param) {
         else
             cplt.set_voltage_limit(12000);
 
-        std::cout << cpltShoot.error << "  |  " << cpltVal << "\n";
+        //std::cout << cpltShoot.error << "  |  " << cpltVal << "\n";
 
         Task::delay_until(&now, 1);
 
@@ -73,8 +73,8 @@ void flagAim() {
 
     double aimVal, distVal;
     int aimSum, distSum, highY = -201, closestX = 321, time = 1000, Ycount, Xcount;
-    int offset = autonCount < 2 ? -10 : -20;
-    int distSetPoint = -17;
+    int offset = autonCount < 2 ? -10 : -40;
+    int distSetPoint = 43;
 
     for(int i = 0; i < time; i ++) {
 
@@ -134,6 +134,9 @@ void flagAim() {
             Ycount = 0;
 
         }
+
+        std::cout << "big: " << cpltVis.get_by_sig(0, 1).y_middle_coord << "  |  bigx: " << cpltVis.get_by_sig(0, 1).x_middle_coord << " | small: " << cpltVis.get_by_sig(1, 1).y_middle_coord << "  |  smallx:" << cpltVis.get_by_sig(1, 1).x_middle_coord << " | objects: " << cpltVis.get_object_count() << "\n";
+
 
         delay(1);
 

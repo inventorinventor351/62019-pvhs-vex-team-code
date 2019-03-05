@@ -4,9 +4,7 @@ void autonomous() {
     
     initCpltVis();
 
-    yaBoi();
-
-   /*switch(autonCount) {
+   switch(autonCount) {
 
         case 0:
             redFlag();
@@ -27,6 +25,6 @@ void autonomous() {
         default:
             break;
 
-    }*/
+    }
 
 }

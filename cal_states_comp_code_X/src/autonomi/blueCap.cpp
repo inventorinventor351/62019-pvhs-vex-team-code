@@ -2,24 +2,28 @@
 
 void blueCap() {
 
-    runIntk(80);
-    moveStraight(1800, 1200);
-    moveStraight(-1450, 1100);
-    pvtBase(117, 700);
-    moveStraight(-750, 650);
-    runIntk(0);
+    armSetPoint += 5000;
+    moveStraight(1320, 1150);
+    moveStraight(-1500, 1150);
+    pvtBase(114, 900);
+    //moveStraight(-750, 900);
     shoot = true;
+    delay(200);
     pvtBase(-30, 300);
-    moveStraight(1400, 1000);
-    pvtBase(-85, 650);
-    moveStraight(900, 750);
+    moveStraight(1300, 1200);
+    pvtBase(-83, 800);
+    moveStraight(650, 425);
     yaBoi();
-    runIntk(100);
-    moveStraight(-900, 750);
-    pvtBase(-20, 300);
-    runIntk(0);
-    moveStraight(1200, 900);
-    pvtBase(116, 700);
-    moveStraight(-800, 600);
+    pvtBase(-120, 1000);
+    moveStraight(2200, 1500);
+    pvtBase(-60, 500);
+    runLeftBase(100);
+    runRightBase(100);
+    delay(300);
+    runLeftBase(-100);
+    runRightBase(-100);
+    delay(1500);
+    runLeftBase(0);
+    runRightBase(0);
 
 }

@@ -11,7 +11,7 @@ void yaBoi() {
     armSetPoint -= 1000;
     delay(700);
     armSetPoint += 4500;
-    moveStraight(-100, 200);
+    moveStraight(-120, 250);
 
 }
 
