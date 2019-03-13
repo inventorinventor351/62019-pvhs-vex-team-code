@@ -22,6 +22,12 @@ float getDist() {
 
 }
 
+float getDiff() {
+
+    return ((leftBase1.get_position() + leftBase2.get_position() + leftBase3.get_position() - rightBase1.get_position() - rightBase2.get_position() - rightBase3.get_position()) / 6);
+
+}
+
 void resetEncs() {
 
     leftBase1.tare_position();
@@ -154,6 +160,42 @@ void pvtBase(float setPoint, int time) {
 
         runLeftBase(-yawVal - dispVal);
         runRightBase(yawVal - dispVal);
+
+        delay(1);
+
+    }
+
+    runLeftBase(0);
+    runRightBase(0);
+
+}
+
+
+
+void turn(float setPoint, int time) {
+
+    float yawVal, dispVal, prevYaw;
+    //setPoint *= -4.0366;
+    setPoint *= -3.3;
+
+    PID YAW = initPID(1, 0, 0, 1.3, 0, 0);
+    PID disp = initPID(1, 0, 0, 1, 0, 0);
+
+    resetEncs();
+    delay(1);
+
+    for(int i = 0; i < time; i++) {
+
+        YAW.error = setPoint - getDiff();
+        disp.error = getDist();
+
+        yawVal = runPID(&YAW);
+        dispVal = runPID(&disp);
+
+        std::cout << "yaw: " << getDiff() << " | " << "Err: " << YAW.error << " | " << "setPnt: " << setPoint << " | " << "dispErr: " << disp.error << " | " << "yawVal: " << yawVal << " | " << "dispVal: " << dispVal << " | " << "ms: " << i << "\n";
+
+        runLeftBase(yawVal - dispVal);
+        runRightBase(-yawVal - dispVal);
 
         delay(1);
 

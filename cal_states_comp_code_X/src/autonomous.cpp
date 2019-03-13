@@ -3,8 +3,9 @@
 void autonomous() {
     
     initCpltVis();
+    turn(90, 20000);
 
-   switch(autonCount) {
+   /*switch(autonCount) {
 
         case 0:
             redFlag();
@@ -25,6 +26,6 @@ void autonomous() {
         default:
             break;
 
-    }
+    }*/
 
 }
