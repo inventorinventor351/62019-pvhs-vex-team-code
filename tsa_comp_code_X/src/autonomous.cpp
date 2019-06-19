@@ -3,7 +3,7 @@
 void autonomous() {
     
     initCpltVis();
-    pvtBase(90, 1000);
+    skills();
 
    /*switch(autonCount) {
 
