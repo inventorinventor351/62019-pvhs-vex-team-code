@@ -3,7 +3,7 @@
 void autonomous() {
     
     initCpltVis();
-    skills();
+    redFlag();
 
    /*switch(autonCount) {
 

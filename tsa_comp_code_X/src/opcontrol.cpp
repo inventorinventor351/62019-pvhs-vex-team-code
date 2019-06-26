@@ -17,13 +17,13 @@ void opcontrol() {
 			runIntk(100);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2) && !master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			runIntk(-100);
+			runIntk(-80);
 
 		else
 			runIntk(0);
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
-			flagAim();
+		/*if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+			flagAim();*/
 
 		if(!master.get_digital(E_CONTROLLER_DIGITAL_R1))
 			shootAck = 0;

@@ -12,7 +12,7 @@ void cpltControl(void* param) {
 
     PID frame = initPID(1, 0, 0, 1, 0, 1);
     PID cpltShoot = frame;
-    int setpoint = 3325;
+    int setpoint = 3310;
     float cpltVal;
 
     std::uint_least32_t now = millis();
